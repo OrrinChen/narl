@@ -81,16 +81,18 @@ class TrainerServer:
     """Current weights + a bounded queue of incoming batches. The queue bound and the
     version check in pop() are the entire staleness policy."""
 
-    def __init__(self, port: int = 8000, queue_max: int = 8, meta: str = ""):
+    def __init__(self, port: int = 8000, queue_max: int = 8, meta: str = "",
+                 host: str = "0.0.0.0"):
         self.version = 0
         self.blob = _dump({})                 # serialized weights for the current version
         self.meta = meta                      # split fingerprint; workers assert against it
         self.q: deque = deque(maxlen=queue_max)
         self.lock = threading.Lock()
-        self.dropped = 0                      # batches evicted by the bound (a real metric)
+        self.dropped_stale = 0
+        self.dropped_overflow = 0
         self.received = 0
         self.tar = b""                        # same adapter in PEFT dir format, for vLLM
-        server = ThreadingHTTPServer(("0.0.0.0", port), _make_handler(self))
+        server = ThreadingHTTPServer((host, port), _make_handler(self))
         server.daemon_threads = True
         self.server = server
         threading.Thread(target=server.serve_forever, daemon=True).start()
@@ -122,16 +124,23 @@ class TrainerServer:
                     lag = self.version - ver
                     if lag <= max_staleness:
                         return batch, lag
-                    self.dropped += 1        # too old: drop, do not train on it
+                    self.dropped_stale += 1
             time.sleep(0.05)
         raise TimeoutError(f"no fresh rollouts within {timeout}s — are workers running?")
 
     def stats(self) -> dict:
         with self.lock:
-            return {"queued": len(self.q), "dropped": self.dropped, "received": self.received}
+            return {
+                "queued": len(self.q),
+                "dropped": self.dropped_stale + self.dropped_overflow,
+                "dropped_stale": self.dropped_stale,
+                "dropped_overflow": self.dropped_overflow,
+                "received": self.received,
+            }
 
     def close(self) -> None:
         self.server.shutdown()
+        self.server.server_close()
 
 
 def _make_handler(store: "TrainerServer"):
@@ -186,7 +195,7 @@ def _make_handler(store: "TrainerServer"):
             batch = _load(self.rfile.read(n))
             with store.lock:
                 if len(store.q) == store.q.maxlen:
-                    store.dropped += 1        # deque eviction is silent; count it
+                    store.dropped_overflow += 1
                 store.q.append((ver, batch))
                 store.received += 1
             self._send(200, b"ok")

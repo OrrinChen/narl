@@ -566,6 +566,36 @@ class IFEvalTask(LLMTask):
         return f"{p['stem']}\n\nConstraints:\n{reqs}"
 
 
+SMOKE_QUERIES = ("red", "blue", "green", "gold")
+SMOKE_CHOICES = ("one", "two", "three", "four")
+
+
+def token_choice_reward(_prompt, completion, problem):
+    first = next(iter(completion.split()), "")
+    return float(first == problem["answer"])
+
+
+class TokenChoiceTask(LLMTask):
+    """A tiny local task with disjoint train/eval prompts and exact token rewards."""
+    system_prompt = None
+    reward_fns = [(token_choice_reward, 1.0)]
+
+    def __init__(self, n_examples=64, seed=0, n_eval=16, rank=0, world=1):
+        self.rank, self.world = rank, world
+        rows = []
+        for index in range(n_examples):
+            query_index = index % len(SMOKE_QUERIES)
+            context = format(index // len(SMOKE_QUERIES), "b")
+            rows.append({
+                "prompt": f"{' '.join(context)} {SMOKE_QUERIES[query_index]}",
+                "answer": SMOKE_CHOICES[query_index],
+            })
+        self._split(rows, n_eval, seed)
+
+    def build_prompt(self, problem):
+        return problem["prompt"]
+
+
 class CountdownTask(LLMTask):
     def __init__(self, split: str = "train", n_examples: int = 2000, seed: int = 0,
                  n_eval: int = 128, rank: int = 0, world: int = 1):
@@ -643,7 +673,7 @@ def make_task(name: str, **kw):
     keep = lambda *names: {k: v for k, v in kw.items() if k in names}  # noqa: E731
     if name == "cartpole":
         return CartPoleTask(**keep("max_steps", "gamma", "rank", "world"))
-    llm = {"countdown": CountdownTask, "ifeval": IFEvalTask,
+    llm = {"token-choice": TokenChoiceTask, "countdown": CountdownTask, "ifeval": IFEvalTask,
            "gsm8k": GSM8KTask, "math": MathTask}.get(name)
     if llm is None:
         raise ValueError(f"unknown task {name!r}")

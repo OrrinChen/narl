@@ -1,3 +1,33 @@
+# Narl
+
+Narl studies weight updates, KV-cache recomputation, and group composition in asynchronous GRPO. It extends [nanoRL at `793e9b5`](https://github.com/alex000kim/nanoRL/tree/793e9b5b3d176ebb40161d8ba8d2125fe5153473) under its original MIT license. The upstream instructions follow the Narl quickstart.
+
+## CPU baseline
+
+```bash
+uv venv --python 3.11 .venv
+uv pip install --python .venv/bin/python -r requirements-cpu.txt
+.venv/bin/python tests/test_narl_baseline.py
+.venv/bin/python experiments/cpu_baseline.py --out runs/cpu-baseline-repro
+```
+
+Use a new output directory for each run. The smoke run creates a 19,424-parameter Llama decoder and a tokenizer locally, then runs 12 synchronous and 12 asynchronous GRPO steps on a synthetic token-choice task. Both modes start from the same saved weights. The asynchronous actor and learner run as separate processes and communicate over loopback. The run directory contains its configuration, model fixture, role logs, per-step CSVs, and summary JSON.
+
+The contract checks use a fixed batch to compare the zero-lag optimizer update with the synchronous update and verify rejection of an entire group that expires in the queue. The smoke run checks that each role trains and reports consumed versions and separate stale/overflow counts. Its elapsed time includes process startup and evaluation. `accepted_tokens` counts completion tokens admitted into training, including groups with zero advantage.
+
+## CPU KV replay
+
+```bash
+OMP_NUM_THREADS=1 .venv/bin/python tests/test_narl_kv_replay.py
+.venv/bin/python -m experiments.kv_replay --out runs/kv-replay-repro
+```
+
+The replay uses the initial tiny decoder and its snapshot after 12 synchronous GRPO steps. It feeds the same synthetic token history through three paths across a single weight switch. The old cache contains the prompt and 16 branch tokens. The boundary token was sampled before the switch and is fed at the first new-weight decode step. Both recompute paths rebuild the same history under the new weights. The shared path pre-fills the prompt once and physically copies its cache into eight branches before rebuilding their distinct suffixes.
+
+`summary.json` records alignment checks, KL against per-completion recomputation, and timing medians and ranges. `timings.csv` contains each measured repetition. `inputs.json`, the model snapshots, and the snapshot-training configuration and CSV record the workload and weights. Recovery-to-first-logits timing includes recompute and branch copying, with in-memory weight loading recorded separately. The replay measures fixed-history conditional distributions and CPU latency on the tiny model.
+
+---
+
 # nanoRL
 
 One RL training loop that scales from a laptop CPU to a GPU cluster. **No GPU required**: the

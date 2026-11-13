@@ -103,6 +103,7 @@ class Config:
                                     # off. See rl_loss; --role trainer only
     trainer_url: str = ""           # rollout workers: http://trainer-0.<job-group>:8000
     serve_port: int = 8000
+    serve_host: str = "0.0.0.0"
     max_staleness: int = 2          # reject batches sampled >N versions behind; also sizes the
                                     # rollout queue ((max_staleness+1) batches) and the snapshot
                                     # retention window — one number, one policy
@@ -462,7 +463,7 @@ class AsyncSource:
         # batches PER CONSUMED-BATCH-PER-STEP (a world-rank trainer pops `world` per step,
         # and the fleet delivers in bursts), and snapshots outlive every acceptable version.
         self.keep = cfg.max_staleness + 2
-        self.server = (TrainerServer(port=cfg.serve_port,
+        self.server = (TrainerServer(port=cfg.serve_port, host=cfg.serve_host,
                                      queue_max=(cfg.max_staleness + 1) * world,
                                      meta=split_fingerprint(cfg))
                        if rank == 0 else None)
@@ -687,6 +688,10 @@ def train(cfg: Config):
                 g["lr"] = cfg.lr * scale
         # 1 — rollout (no grad)
         batch, staleness = source.next_batch(policy)
+        if cfg.role == "trainer":
+            learner_version = source.version
+        else:
+            learner_version = step + 1
         batch = batch.to(cfg.device)
         # release generation's cached blocks or the update's [micro_batch, T, vocab] logits
         # may not fit
@@ -708,6 +713,9 @@ def train(cfg: Config):
         rew = float(all_sum(batch.reward_mean(), cfg.device)) / world   # mean over all ranks
         if log:
             log.log(step, reward=rew, staleness=staleness, **diag,
+                    learner_version=learner_version,
+                    behavior_version=learner_version - staleness,
+                    groups=batch.n_prompts, accepted_tokens=int(batch.mask.sum().item()),
                     **batch_stats(batch, cfg), **source.stats())
         if cfg.eval_every and step % cfg.eval_every == 0 and hasattr(task, "evaluate"):
             ev = task.evaluate(policy, n=cfg.eval_n, **eval_kw)   # sharded + reduced inside
