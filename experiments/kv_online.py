@@ -31,6 +31,7 @@ QUEUE_CAPACITY = 2
 TAU = 1
 LENGTHS = (16, 24, 32)
 EVAL_LENGTH = 16
+EVAL_EVERY = 12
 FIRST_CONTENT_ID = 3
 MODES = ("recompute", "share_prompt")
 
@@ -268,7 +269,7 @@ def _run(config, seed, mode, total_groups, output, stress_delay_s):
                     "update_ms": update_ms,
                     "loss_tokens": signal_tokens, "diagnostics": diagnostics,
                 })
-                if accepted and updates % 12 == 0:
+                if accepted and updates % EVAL_EVERY == 0:
                     reward = _evaluate(policy, task)
                     _write_line(evaluations, {"update": updates, "time_s": perf_counter() - started,
                                               "loss_tokens": loss_tokens, "reward": reward})
@@ -326,6 +327,7 @@ def main():
             "seeds": args.seeds, "groups": args.groups, "prompt_tokens": PROMPT_TOKENS,
             "completion_lengths": LENGTHS, "fixed_horizon": True, "first_content_token": FIRST_CONTENT_ID,
             "reward_position": "last", "eval_completion_length": EVAL_LENGTH,
+            "eval_every_updates": EVAL_EVERY,
             "queue_capacity": QUEUE_CAPACITY, "max_lag": args.max_lag, "snapshot_slots": 1,
             "publish_every_accepted_groups": 1, "max_swaps_per_group": 1,
             "weight_check_every_tokens": 4, "threads_per_process": 1,
