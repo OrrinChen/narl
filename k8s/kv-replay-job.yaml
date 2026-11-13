@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: narl-kv-replay
+spec:
+  backoffLimit: 1
+  activeDeadlineSeconds: 180
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      containers:
+        - name: kv-replay
+          image: narl-kv-replay:local
+          imagePullPolicy: Never
+          command: ["python", "-m", "experiments.kv_replay"]
+          args: ["--repetitions", "5", "--out", "/results/$(POD_UID)"]
+          env:
+            - name: POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+          resources:
+            requests:
+              cpu: "1"
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          volumeMounts:
+            - name: results
+              mountPath: /results
+      volumes:
+        - name: results
+          hostPath:
+            path: /narl-results
+            type: Directory

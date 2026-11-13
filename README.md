@@ -59,6 +59,10 @@ python3 -m experiments.plot_regroup --run runs/regroup-repro --out runs/regroup-
 python3 -m experiments.plot_kv_online --run runs/online-repro --out runs/online-repro/online.png
 ```
 
+## Local Kubernetes Job
+
+With a local Docker runtime, kind, and kubectl available, run `bash k8s/run-kv-replay.sh`. The runner creates a temporary loopback kind cluster and runs the same KV replay entry point in one Pod with five repetitions. It saves the Job and Pod status, logs, image ID, dependencies, and the Pod's replay artifacts under a new `runs/k8s-kv-replay.*` directory.
+
 ---
 
 # nanoRL
