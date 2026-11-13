@@ -2,6 +2,8 @@
 
 Narl studies weight updates, KV-cache recomputation, and group composition in asynchronous GRPO. It extends [nanoRL at `793e9b5`](https://github.com/alex000kim/nanoRL/tree/793e9b5b3d176ebb40161d8ba8d2125fe5153473) under its original MIT license. The upstream instructions follow the Narl quickstart.
 
+See [the results report](RESULTS.md) for the measured CPU comparisons, source revisions, and local run artifacts.
+
 ## CPU baseline
 
 ```bash
