@@ -209,6 +209,24 @@ FIFO 按完成到达顺序取样，超龄组被拒收，单个剩余组不足以
 
 对照按版本分组，新旧混组只多答对 1 道（1 胜 0 负），同版本打乱多答对 2 道（2 胜 0 负）。对照 GRPO 前，新旧混组在逐题正误上全部相同。三臂两两配对的精确 McNemar p 值为 0.5–1.0。新旧混组和同版本打乱分别改变了 26/128 和 18/128 条答案的 advantage。这个单种子实验确认分组会改动训练信号。留出集只观察到一两题的差异，尚无稳定学习增益证据。[独立审计](runs/gsm8k-matched-mlx-final/audit.json) · [逐题评估与更新记录](runs/gsm8k-matched-mlx-final/summary.json) · [复跑入口](docs/gpu-validation.md#reproduce-the-matched-budget-comparison-on-apple-silicon)
 
+## M. GSM8K 在线滞后一版
+
+用实验 L 的 80 步 SFT adapter 作为 v0。先用 v0 生成并保存的四条答案做一步 GRPO 得到 v1，再用 v1 新采四条答案，沿同一 optimizer 做一步 GRPO 得到 v2。两步均有非零梯度并改变 adapter 字节。五个种子的三臂共用 v1/v2 起点，learner 从 v2 开始，各臂重置相同的 AdamW。锚点准备与正式生成分别计量。[冻结协议](runs/gsm8k-online-lag-5seed/protocol.json) · [锚点采样](runs/gsm8k-online-lag-5seed/warmup-samples.json)
+
+每个 seed 的三臂共用训练题顺序和采样种子规则，边生成边更新各自的 learner。每次用一题两条答案组成 GRPO 组。全新臂两条都用当前版，滞后一版臂两条都用上一个实际发布的版本，混组臂每组各用一条。只有 adapter 字节改变才升版。模型在 Apple M2 上串行切换和学习，组内混版分开解码，同版在预算允许时批量解码。每臂精确生成 6,144 个 completion token（含 EOS），按余额限制尾批，评估使用固定的 32 道新官方测试题。[复跑命令](docs/gpu-validation.md#reproduce-rolling-one-version-lag-on-apple-silicon)
+
+| 种子 | 全新答对 / 32 | 滞后一版答对 / 32 | 新旧混组答对 / 32 | 有效更新，全新 / 滞后 / 混组 |
+| ---: | ---: | ---: | ---: | ---: |
+| 0 | 9 | 7 | 7 | 4 / 2 / 1 |
+| 1 | 9 | 7 | 9 | 2 / 1 / 2 |
+| 2 | 7 | 10 | 9 | 2 / 2 / 1 |
+| 3 | 6 | 8 | 9 | 6 / 4 / 5 |
+| 4 | 9 | 9 | 8 | 4 / 3 / 5 |
+
+共同起点为 **6/32**。全新臂有 4/5 个种子高于起点，滞后与混组各 5/5。三个臂之间的每项对照都是 **2 胜、2 负、1 平**，配对准确率差的中位数均为 **0 个百分点**。三项种子级双侧精确置换检验的 p 值为 0.875–1.0。三臂各消费 30,720 token，有效更新合计为 18、12、14 步。混组中有 15,214/30,720 token 来自滞后一版（49.5%）。独立审计解码并重算留出题分数，重放 2 个准备更新及 242 个正式批次，核对了 44 次实际权重更新的逐步哈希。
+
+在这 5 个种子和 32 道测试题上，未测到滞后一版或混组带来方向稳定的准确率差异。每组只有两条答案，等生成预算下各臂有效更新次数可以不同。混组与同版的解码 batch 形状也不同，共用种子允许生成轨迹分叉。本轮串行推进策略版本，结论适用于该学习对照，集群吞吐和更长滞后仍需单独测量。[配对结果](runs/gsm8k-online-lag-5seed/summary.json) · [独立审计](runs/gsm8k-online-lag-5seed/audit.json)
+
 ## Profiling、部署与验收
 
 - **CPU profiling。** 384-token 回放中，SDPA 占恢复回放 CPU 时间的 85.2%（逐条）和 60.3%（共享）。在线共享路径的 KV 复制中位数约 0.024 ms，actor 拉取权重约 0.20 ms，learner 更新约 15–16 ms。各阶段可重叠。Apple M2 的 PyTorch 检测到 0 个 CUDA 设备，CUDA 微基准未触发。[CPU profile](runs/kv-replay-release/profile.json) · [在线阶段数据](runs/online-release/audit.json)

@@ -1,0 +1,343 @@
+{
+  "heldout_count": 32,
+  "initial_correct": 6,
+  "seed_count": 5,
+  "direction_threshold": 4,
+  "per_seed": {
+    "0": {
+      "correct": {
+        "initial": 6,
+        "fresh": 9,
+        "stale": 7,
+        "mixed": 7
+      },
+      "contrasts": {
+        "stale_vs_fresh": {
+          "wins": 1,
+          "losses": 3,
+          "accuracy_delta": -0.0625,
+          "identical_greedy_token_outputs": 13,
+          "exact_mcnemar_p": 0.625
+        },
+        "mixed_vs_fresh": {
+          "wins": 0,
+          "losses": 2,
+          "accuracy_delta": -0.0625,
+          "identical_greedy_token_outputs": 16,
+          "exact_mcnemar_p": 0.5
+        },
+        "mixed_vs_stale": {
+          "wins": 1,
+          "losses": 1,
+          "accuracy_delta": 0.0,
+          "identical_greedy_token_outputs": 9,
+          "exact_mcnemar_p": 1.0
+        },
+        "fresh_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 18,
+          "exact_mcnemar_p": 0.25
+        },
+        "stale_vs_initial": {
+          "wins": 1,
+          "losses": 0,
+          "accuracy_delta": 0.03125,
+          "identical_greedy_token_outputs": 17,
+          "exact_mcnemar_p": 1.0
+        },
+        "mixed_vs_initial": {
+          "wins": 1,
+          "losses": 0,
+          "accuracy_delta": 0.03125,
+          "identical_greedy_token_outputs": 15,
+          "exact_mcnemar_p": 1.0
+        }
+      }
+    },
+    "1": {
+      "correct": {
+        "initial": 6,
+        "fresh": 9,
+        "stale": 7,
+        "mixed": 9
+      },
+      "contrasts": {
+        "stale_vs_fresh": {
+          "wins": 0,
+          "losses": 2,
+          "accuracy_delta": -0.0625,
+          "identical_greedy_token_outputs": 14,
+          "exact_mcnemar_p": 0.5
+        },
+        "mixed_vs_fresh": {
+          "wins": 2,
+          "losses": 2,
+          "accuracy_delta": 0.0,
+          "identical_greedy_token_outputs": 15,
+          "exact_mcnemar_p": 1.0
+        },
+        "mixed_vs_stale": {
+          "wins": 3,
+          "losses": 1,
+          "accuracy_delta": 0.0625,
+          "identical_greedy_token_outputs": 14,
+          "exact_mcnemar_p": 0.625
+        },
+        "fresh_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 16,
+          "exact_mcnemar_p": 0.25
+        },
+        "stale_vs_initial": {
+          "wins": 1,
+          "losses": 0,
+          "accuracy_delta": 0.03125,
+          "identical_greedy_token_outputs": 16,
+          "exact_mcnemar_p": 1.0
+        },
+        "mixed_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 19,
+          "exact_mcnemar_p": 0.25
+        }
+      }
+    },
+    "2": {
+      "correct": {
+        "initial": 6,
+        "fresh": 7,
+        "stale": 10,
+        "mixed": 9
+      },
+      "contrasts": {
+        "stale_vs_fresh": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 16,
+          "exact_mcnemar_p": 0.25
+        },
+        "mixed_vs_fresh": {
+          "wins": 2,
+          "losses": 0,
+          "accuracy_delta": 0.0625,
+          "identical_greedy_token_outputs": 18,
+          "exact_mcnemar_p": 0.5
+        },
+        "mixed_vs_stale": {
+          "wins": 1,
+          "losses": 2,
+          "accuracy_delta": -0.03125,
+          "identical_greedy_token_outputs": 18,
+          "exact_mcnemar_p": 1.0
+        },
+        "fresh_vs_initial": {
+          "wins": 1,
+          "losses": 0,
+          "accuracy_delta": 0.03125,
+          "identical_greedy_token_outputs": 18,
+          "exact_mcnemar_p": 1.0
+        },
+        "stale_vs_initial": {
+          "wins": 4,
+          "losses": 0,
+          "accuracy_delta": 0.125,
+          "identical_greedy_token_outputs": 15,
+          "exact_mcnemar_p": 0.125
+        },
+        "mixed_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 18,
+          "exact_mcnemar_p": 0.25
+        }
+      }
+    },
+    "3": {
+      "correct": {
+        "initial": 6,
+        "fresh": 6,
+        "stale": 8,
+        "mixed": 9
+      },
+      "contrasts": {
+        "stale_vs_fresh": {
+          "wins": 2,
+          "losses": 0,
+          "accuracy_delta": 0.0625,
+          "identical_greedy_token_outputs": 15,
+          "exact_mcnemar_p": 0.5
+        },
+        "mixed_vs_fresh": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 11,
+          "exact_mcnemar_p": 0.25
+        },
+        "mixed_vs_stale": {
+          "wins": 1,
+          "losses": 0,
+          "accuracy_delta": 0.03125,
+          "identical_greedy_token_outputs": 13,
+          "exact_mcnemar_p": 1.0
+        },
+        "fresh_vs_initial": {
+          "wins": 0,
+          "losses": 0,
+          "accuracy_delta": 0.0,
+          "identical_greedy_token_outputs": 17,
+          "exact_mcnemar_p": 1.0
+        },
+        "stale_vs_initial": {
+          "wins": 2,
+          "losses": 0,
+          "accuracy_delta": 0.0625,
+          "identical_greedy_token_outputs": 14,
+          "exact_mcnemar_p": 0.5
+        },
+        "mixed_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 17,
+          "exact_mcnemar_p": 0.25
+        }
+      }
+    },
+    "4": {
+      "correct": {
+        "initial": 6,
+        "fresh": 9,
+        "stale": 9,
+        "mixed": 8
+      },
+      "contrasts": {
+        "stale_vs_fresh": {
+          "wins": 2,
+          "losses": 2,
+          "accuracy_delta": 0.0,
+          "identical_greedy_token_outputs": 14,
+          "exact_mcnemar_p": 1.0
+        },
+        "mixed_vs_fresh": {
+          "wins": 1,
+          "losses": 2,
+          "accuracy_delta": -0.03125,
+          "identical_greedy_token_outputs": 13,
+          "exact_mcnemar_p": 1.0
+        },
+        "mixed_vs_stale": {
+          "wins": 2,
+          "losses": 3,
+          "accuracy_delta": -0.03125,
+          "identical_greedy_token_outputs": 12,
+          "exact_mcnemar_p": 1.0
+        },
+        "fresh_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 15,
+          "exact_mcnemar_p": 0.25
+        },
+        "stale_vs_initial": {
+          "wins": 3,
+          "losses": 0,
+          "accuracy_delta": 0.09375,
+          "identical_greedy_token_outputs": 14,
+          "exact_mcnemar_p": 0.25
+        },
+        "mixed_vs_initial": {
+          "wins": 2,
+          "losses": 0,
+          "accuracy_delta": 0.0625,
+          "identical_greedy_token_outputs": 16,
+          "exact_mcnemar_p": 0.5
+        }
+      }
+    }
+  },
+  "contrasts": {
+    "stale_vs_fresh": {
+      "seeds_higher": 2,
+      "seeds_lower": 2,
+      "seeds_tied": 1,
+      "median_accuracy_delta": 0.0,
+      "min_accuracy_delta": -0.0625,
+      "max_accuracy_delta": 0.09375,
+      "question_wins": 8,
+      "question_losses": 7,
+      "consistent_direction": null,
+      "exact_seed_sign_flip_p": 1.0
+    },
+    "mixed_vs_fresh": {
+      "seeds_higher": 2,
+      "seeds_lower": 2,
+      "seeds_tied": 1,
+      "median_accuracy_delta": 0.0,
+      "min_accuracy_delta": -0.0625,
+      "max_accuracy_delta": 0.09375,
+      "question_wins": 8,
+      "question_losses": 6,
+      "consistent_direction": null,
+      "exact_seed_sign_flip_p": 0.875
+    },
+    "mixed_vs_stale": {
+      "seeds_higher": 2,
+      "seeds_lower": 2,
+      "seeds_tied": 1,
+      "median_accuracy_delta": 0.0,
+      "min_accuracy_delta": -0.03125,
+      "max_accuracy_delta": 0.0625,
+      "question_wins": 8,
+      "question_losses": 7,
+      "consistent_direction": null,
+      "exact_seed_sign_flip_p": 1.0
+    },
+    "fresh_vs_initial": {
+      "seeds_higher": 4,
+      "seeds_lower": 0,
+      "seeds_tied": 1,
+      "median_accuracy_delta": 0.09375,
+      "min_accuracy_delta": 0.0,
+      "max_accuracy_delta": 0.09375,
+      "question_wins": 10,
+      "question_losses": 0,
+      "consistent_direction": "higher",
+      "exact_seed_sign_flip_p": 0.125
+    },
+    "stale_vs_initial": {
+      "seeds_higher": 5,
+      "seeds_lower": 0,
+      "seeds_tied": 0,
+      "median_accuracy_delta": 0.0625,
+      "min_accuracy_delta": 0.03125,
+      "max_accuracy_delta": 0.125,
+      "question_wins": 11,
+      "question_losses": 0,
+      "consistent_direction": "higher",
+      "exact_seed_sign_flip_p": 0.0625
+    },
+    "mixed_vs_initial": {
+      "seeds_higher": 5,
+      "seeds_lower": 0,
+      "seeds_tied": 0,
+      "median_accuracy_delta": 0.09375,
+      "min_accuracy_delta": 0.03125,
+      "max_accuracy_delta": 0.09375,
+      "question_wins": 12,
+      "question_losses": 0,
+      "consistent_direction": "higher",
+      "exact_seed_sign_flip_p": 0.0625
+    }
+  },
+  "elapsed_s": 2619.8037453748984
+}

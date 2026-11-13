@@ -11,6 +11,8 @@ In the online token-choice experiment with a 19K-parameter Llama, 128-token prom
 
 On GSM8K, LoRA SFT raised tagged exact-match accuracy from 3/24 to 9/24 on a separate development split. Three GRPO arms then trained on the same 27,877 sampled tokens. Version-homogeneous, mixed-version, and within-version shuffled groups scored 10/32, 11/32, and 12/32 on the same fresh test questions, versus 11/32 before GRPO. [Matched-budget results](RESULTS.md#l-gsm8k-开发集验收与同预算分组对照)
 
+The rolling GSM8K experiment started from two adjacent GRPO checkpoints and generated 6,144 tokens per arm in each of five paired seeds. Every pairwise comparison of fresh, one-version-stale, and mixed-version groups had two wins, two losses, and one tie on 32 held-out questions. [Online lag results](RESULTS.md#m-gsm8k-在线滞后一版)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline
