@@ -1,0 +1,575 @@
+{
+  "protocol": {
+    "seeds": [
+      81,
+      82
+    ],
+    "groups": 144,
+    "actors": 3,
+    "threads_per_process": 1,
+    "queue_capacity": 2,
+    "max_lag": 1,
+    "fifo_windows": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "version_aware_window": 5,
+    "group_size": 8,
+    "prompt_tokens": 128,
+    "completion_lengths": [
+      8,
+      24,
+      64
+    ],
+    "parameters": 19424,
+    "wall_time": "actor startup, rollout, training and trace writes; eval outside timer",
+    "cache_mode": "shared at start, in-flight rebuild and learner scoring in all arms",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15",
+    "torch": "2.8.0",
+    "source_commit": "6f860a8223ab0e5c7bdd03a5b4740dbe39b6e918",
+    "train_config": {
+      "task": "token-choice",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/dispatch-tune-a/model",
+      "steps": 200,
+      "n_prompts": 1,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.001,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 16,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 80
+    }
+  },
+  "runs": [
+    {
+      "seed": 81,
+      "arm": "fifo-1",
+      "window": 1,
+      "wall_s": 8.612856750027277,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 10.960195591324009,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 4280.1129834051,
+      "consumed_groups": 144,
+      "consumed_groups_s": 16.71919134142617,
+      "accepted_tokens_s": 4280.1129834051,
+      "loss_tokens": 22656,
+      "loss_tokens_s": 2630.4861043843844,
+      "stale_groups": 0,
+      "stale_tokens": 0,
+      "p95_consumed_group_s": 0.06809245806653053,
+      "lag_histogram_consumed": {
+        "0": 144
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        }
+      }
+    },
+    {
+      "seed": 81,
+      "arm": "fifo-2",
+      "window": 2,
+      "wall_s": 5.0651762910420075,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 2.771818759618327,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 7277.930299325542,
+      "consumed_groups": 100,
+      "consumed_groups_s": 19.74264946648639,
+      "accepted_tokens_s": 2830.306227515489,
+      "loss_tokens": 8832,
+      "loss_tokens_s": 1743.6708008800779,
+      "stale_groups": 44,
+      "stale_tokens": 22528,
+      "p95_consumed_group_s": 0.042844667099416256,
+      "lag_histogram_consumed": {
+        "0": 93,
+        "1": 7
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 44,
+          "stale_tokens": 22528
+        }
+      }
+    },
+    {
+      "seed": 81,
+      "arm": "fifo-3",
+      "window": 3,
+      "wall_s": 3.910616958979517,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 0.7979768353980035,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 9426.645561732472,
+      "consumed_groups": 97,
+      "consumed_groups_s": 24.804270276911073,
+      "accepted_tokens_s": 3273.140820045997,
+      "loss_tokens": 8064,
+      "loss_tokens_s": 2062.0787166289783,
+      "stale_groups": 47,
+      "stale_tokens": 24064,
+      "p95_consumed_group_s": 0.04440804093610495,
+      "lag_histogram_consumed": {
+        "0": 49,
+        "1": 48
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 47,
+          "stale_tokens": 24064
+        }
+      }
+    },
+    {
+      "seed": 81,
+      "arm": "fifo-4",
+      "window": 4,
+      "wall_s": 3.9198654170613736,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 0.3732762086438015,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 9404.404508263968,
+      "consumed_groups": 87,
+      "consumed_groups_s": 22.194639545870366,
+      "accepted_tokens_s": 2775.6054972306847,
+      "loss_tokens": 7232,
+      "loss_tokens_s": 1844.9613011003964,
+      "stale_groups": 57,
+      "stale_tokens": 25984,
+      "p95_consumed_group_s": 0.05413824995048344,
+      "lag_histogram_consumed": {
+        "0": 9,
+        "1": 78
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 10,
+          "stale_tokens": 1920
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 47,
+          "stale_tokens": 24064
+        }
+      }
+    },
+    {
+      "seed": 81,
+      "arm": "fifo-5",
+      "window": 5,
+      "wall_s": 3.2461932089645416,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 0.021062992163933814,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 11356.0708272687,
+      "consumed_groups": 76,
+      "consumed_groups_s": 23.412038380870804,
+      "accepted_tokens_s": 2602.432897915744,
+      "loss_tokens": 5184,
+      "loss_tokens_s": 1596.947460084661,
+      "stale_groups": 68,
+      "stale_tokens": 28416,
+      "p95_consumed_group_s": 0.032109874999150634,
+      "lag_histogram_consumed": {
+        "0": 19,
+        "1": 57
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 20,
+          "stale_tokens": 3840
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 48,
+          "stale_tokens": 24576
+        }
+      }
+    },
+    {
+      "seed": 81,
+      "arm": "version_aware",
+      "window": 5,
+      "wall_s": 5.6653076249640435,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 6.9366428834619,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 6506.972337664359,
+      "consumed_groups": 144,
+      "consumed_groups_s": 25.4178606940014,
+      "accepted_tokens_s": 6506.972337664359,
+      "loss_tokens": 24256,
+      "loss_tokens_s": 4281.497423567347,
+      "stale_groups": 0,
+      "stale_tokens": 0,
+      "p95_consumed_group_s": 0.06385704199783504,
+      "lag_histogram_consumed": {
+        "0": 72,
+        "1": 72
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        }
+      }
+    },
+    {
+      "seed": 82,
+      "arm": "version_aware",
+      "window": 5,
+      "wall_s": 5.274064416997135,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 6.386040119221434,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 6989.675719772315,
+      "consumed_groups": 144,
+      "consumed_groups_s": 27.303420780360604,
+      "accepted_tokens_s": 6989.675719772315,
+      "loss_tokens": 24640,
+      "loss_tokens_s": 4671.918666861703,
+      "stale_groups": 0,
+      "stale_tokens": 0,
+      "p95_consumed_group_s": 0.06095662491861731,
+      "lag_histogram_consumed": {
+        "0": 72,
+        "1": 72
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        }
+      }
+    },
+    {
+      "seed": 82,
+      "arm": "fifo-5",
+      "window": 5,
+      "wall_s": 4.131771499989554,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 0.05087824759539217,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 8922.081000871707,
+      "consumed_groups": 74,
+      "consumed_groups_s": 17.909993328572764,
+      "accepted_tokens_s": 2029.1538387399196,
+      "loss_tokens": 6400,
+      "loss_tokens_s": 1548.9723959846715,
+      "stale_groups": 70,
+      "stale_tokens": 28480,
+      "p95_consumed_group_s": 0.06769054103642702,
+      "lag_histogram_consumed": {
+        "0": 22,
+        "1": 52
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 23,
+          "stale_tokens": 4416
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 47,
+          "stale_tokens": 24064
+        }
+      }
+    },
+    {
+      "seed": 82,
+      "arm": "fifo-4",
+      "window": 4,
+      "wall_s": 3.9326064999913797,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 0.20907809131313115,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 9373.93558193041,
+      "consumed_groups": 88,
+      "consumed_groups_s": 22.377016363115125,
+      "accepted_tokens_s": 2815.4355133228482,
+      "loss_tokens": 7872,
+      "loss_tokens_s": 2001.7258273913892,
+      "stale_groups": 56,
+      "stale_tokens": 25792,
+      "p95_consumed_group_s": 0.030406750040128827,
+      "lag_histogram_consumed": {
+        "0": 9,
+        "1": 79
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 9,
+          "stale_tokens": 1728
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 47,
+          "stale_tokens": 24064
+        }
+      }
+    },
+    {
+      "seed": 82,
+      "arm": "fifo-3",
+      "window": 3,
+      "wall_s": 3.3801731249550357,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 0.664073797990568,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 10905.950268594712,
+      "consumed_groups": 97,
+      "consumed_groups_s": 28.6967549927758,
+      "accepted_tokens_s": 3786.788287706497,
+      "loss_tokens": 9472,
+      "loss_tokens_s": 2802.223332902808,
+      "stale_groups": 47,
+      "stale_tokens": 24064,
+      "p95_consumed_group_s": 0.030356208910234272,
+      "lag_histogram_consumed": {
+        "0": 52,
+        "1": 45
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 47,
+          "stale_tokens": 24064
+        }
+      }
+    },
+    {
+      "seed": 82,
+      "arm": "fifo-2",
+      "window": 2,
+      "wall_s": 3.785179666010663,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 2.568663129583001,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 9739.035726896498,
+      "consumed_groups": 100,
+      "consumed_groups_s": 26.418825214020448,
+      "accepted_tokens_s": 3787.4027826819715,
+      "loss_tokens": 10368,
+      "loss_tokens_s": 2739.10379818964,
+      "stale_groups": 44,
+      "stale_tokens": 22528,
+      "p95_consumed_group_s": 0.034724041004665196,
+      "lag_histogram_consumed": {
+        "0": 93,
+        "1": 7
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 44,
+          "stale_tokens": 22528
+        }
+      }
+    },
+    {
+      "seed": 82,
+      "arm": "fifo-1",
+      "window": 1,
+      "wall_s": 6.072983624995686,
+      "initial_reward": 0.25,
+      "final_reward": 0.25,
+      "actor_idle_s": 8.916957294219173,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 6070.1629176591405,
+      "consumed_groups": 144,
+      "consumed_groups_s": 23.711573897106017,
+      "accepted_tokens_s": 6070.1629176591405,
+      "loss_tokens": 24448,
+      "loss_tokens_s": 4025.698323864222,
+      "stale_groups": 0,
+      "stale_tokens": 0,
+      "p95_consumed_group_s": 0.05573566700331867,
+      "lag_histogram_consumed": {
+        "0": 144
+      },
+      "buckets": {
+        "8": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "24": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        },
+        "64": {
+          "groups": 48,
+          "stale_groups": 0,
+          "stale_tokens": 0
+        }
+      }
+    }
+  ]
+}

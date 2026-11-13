@@ -1,0 +1,42 @@
+{
+  "upstream_commit": "793e9b5b3d176ebb40161d8ba8d2125fe5153473",
+  "machine": "macOS-26.5.1-arm64-arm-64bit",
+  "logical_cpus": 8,
+  "python": "3.11.15",
+  "dependencies": {
+    "torch": "2.8.0",
+    "transformers": "4.57.6",
+    "tokenizers": "0.22.2",
+    "pyyaml": "6.0.3"
+  },
+  "seed": 0,
+  "threads_per_role": 1,
+  "model_parameters": 19424,
+  "sync": {
+    "updates": 12,
+    "nonzero_gradient_updates": 9,
+    "groups_consumed": 24,
+    "accepted_tokens": 686,
+    "lag_values": [
+      0
+    ],
+    "dropped_stale_batches": 0,
+    "dropped_overflow_batches": 0,
+    "last_heldout_eval": 0.5625,
+    "elapsed_s_including_startup": 2.428
+  },
+  "async": {
+    "updates": 12,
+    "nonzero_gradient_updates": 10,
+    "groups_consumed": 24,
+    "accepted_tokens": 678,
+    "lag_values": [
+      0,
+      1
+    ],
+    "dropped_stale_batches": 5,
+    "dropped_overflow_batches": 13,
+    "last_heldout_eval": 0.25,
+    "elapsed_s_including_startup": 2.684
+  }
+}

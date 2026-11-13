@@ -1,0 +1,1650 @@
+{
+  "source_run": "/Users/orynwilder/Documents/New project 2/narl/runs/sequence-5seed",
+  "protocol": {
+    "stage": "main",
+    "args": {
+      "out": "/Users/orynwilder/Documents/New project 2/narl/runs/sequence-5seed",
+      "development": false,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "groups": 512,
+      "threshold": 0.75,
+      "lr": 0.002,
+      "eval_every": 32,
+      "fifo_windows": [
+        2
+      ],
+      "version_window": 2
+    },
+    "source_commit": "6622853a23034220f17bcd7eb0a6f906a20f6003",
+    "source_sha256": {
+      "experiments/kv_sequence.py": "2e92da36b35d29c9b42e1ecdc7f8d5d5aa34d267eb47b6cdddfd1420fac20c8e",
+      "experiments/kv_batch_dispatch.py": "591f498e3a56d68efa46fbafcf3ebc5bbc2195a634a1c1f63315e16c950ada85",
+      "experiments/kv_sequence_task.py": "32b8384b4b2f61221a28673c0d9cb910423f1a7f91f1519d58a14950723b5528",
+      "experiments/kv_online.py": "f2f3385d723c60967bf44b3c8293af36ee1c1528ff489c6fea7a559a83598984",
+      "experiments/shared_prefix.py": "accbb5881e6dcba7ad1945b8b41b804251e9f05715fe959368760258033dc88f"
+    },
+    "initial_model_sha256": "ae5a0d5748f0b2c5cfe9e999759c4a64ec062918f803ee77c5871016e30d57ac",
+    "optimizer_groups_per_update": 2,
+    "max_lag": 1,
+    "actor_count": 3,
+    "torch_threads_per_process": 1,
+    "queue_capacity": 2,
+    "max_pending_learner_groups": 2,
+    "group_size": 8,
+    "prompt_tokens": 128,
+    "model_parameters": 19424,
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15 (main, Apr 14 2026, 14:45:51) [Clang 22.1.3 ]",
+    "torch": "2.8.0",
+    "cpu": "Apple M2",
+    "train_config": {
+      "task": "sequence",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/sequence-5seed/model",
+      "steps": 200,
+      "n_prompts": 2,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.002,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 64,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 320
+    },
+    "train_reward": "fraction of correct answer positions across the entire completion",
+    "eval": "greedy exact match by bucket; evaluated every fixed number of received groups, timed at the second consecutive post-initial hit at distinct update counts",
+    "wall_clock": "actor startup, training, periodic and final eval, trace writes; initial eval untimed",
+    "arms": "all use shared prefix and at most one in-flight switch; FIFO uses arrival order"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 6688,
+          "update": 48,
+          "time_s": 4.550276165944524,
+          "eval_started_s": 4.471361874951981,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6736
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 6688,
+          "update": 48,
+          "time_s": 4.550276165944524,
+          "eval_started_s": 4.471361874951981,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6736
+        }
+      },
+      "wall_s": 9.483426249935292,
+      "generated_tokens": 35040,
+      "updates": 256,
+      "loss_tokens_s": 1285.400411068012,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 28896,
+          "tokens_by_status": {
+            "consumed": 28896
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 32,
+          "post_swap_nonzero_advantage_tokens": 2176,
+          "exact_post_swap_nonzero_advantage_tokens": 2172
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 121
+          },
+          "groups": 121,
+          "generated_tokens": 11616,
+          "tokens_by_status": {
+            "consumed": 11616
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 8,
+          "post_swap_nonzero_advantage_tokens": 416,
+          "exact_post_swap_nonzero_advantage_tokens": 416
+        },
+        "16": {
+          "statuses": {
+            "consumed": 135
+          },
+          "groups": 135,
+          "generated_tokens": 17280,
+          "tokens_by_status": {
+            "consumed": 17280
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 24,
+          "post_swap_nonzero_advantage_tokens": 1760,
+          "exact_post_swap_nonzero_advantage_tokens": 1756
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 6584,
+          "update": 47,
+          "time_s": 4.576505874982104,
+          "eval_started_s": 4.455019832937978,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6736
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 6584,
+          "update": 47,
+          "time_s": 4.576505874982104,
+          "eval_started_s": 4.455019832937978,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6736
+        }
+      },
+      "wall_s": 8.79413845797535,
+      "generated_tokens": 35040,
+      "updates": 232,
+      "loss_tokens_s": 1337.0269363153752,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 208,
+            "stale": 48
+          },
+          "groups": 256,
+          "generated_tokens": 28896,
+          "tokens_by_status": {
+            "consumed": 23264,
+            "stale": 5632
+          },
+          "retained_group_fraction": 0.8125,
+          "retained_token_fraction": 0.805094130675526,
+          "post_swap_nonzero_advantage_groups": 17,
+          "post_swap_nonzero_advantage_tokens": 1280,
+          "exact_post_swap_nonzero_advantage_tokens": 1280
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 105,
+            "stale": 16
+          },
+          "groups": 121,
+          "generated_tokens": 11616,
+          "tokens_by_status": {
+            "consumed": 10080,
+            "stale": 1536
+          },
+          "retained_group_fraction": 0.8677685950413223,
+          "retained_token_fraction": 0.8677685950413223,
+          "post_swap_nonzero_advantage_groups": 3,
+          "post_swap_nonzero_advantage_tokens": 192,
+          "exact_post_swap_nonzero_advantage_tokens": 192
+        },
+        "16": {
+          "statuses": {
+            "consumed": 103,
+            "stale": 32
+          },
+          "groups": 135,
+          "generated_tokens": 17280,
+          "tokens_by_status": {
+            "consumed": 13184,
+            "stale": 4096
+          },
+          "retained_group_fraction": 0.762962962962963,
+          "retained_token_fraction": 0.762962962962963,
+          "post_swap_nonzero_advantage_groups": 14,
+          "post_swap_nonzero_advantage_tokens": 1088,
+          "exact_post_swap_nonzero_advantage_tokens": 1088
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 6968,
+          "update": 48,
+          "time_s": 5.4559100830229,
+          "eval_started_s": 5.379411375033669,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 7120
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 6968,
+          "update": 48,
+          "time_s": 5.4559100830229,
+          "eval_started_s": 5.379411375033669,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 7120
+        }
+      },
+      "wall_s": 9.624564166995697,
+      "generated_tokens": 35064,
+      "updates": 256,
+      "loss_tokens_s": 1229.1465665081362,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 253
+          },
+          "groups": 253,
+          "generated_tokens": 6072,
+          "tokens_by_status": {
+            "consumed": 6072
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 259
+          },
+          "groups": 259,
+          "generated_tokens": 28992,
+          "tokens_by_status": {
+            "consumed": 28992
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 22,
+          "post_swap_nonzero_advantage_tokens": 1792,
+          "exact_post_swap_nonzero_advantage_tokens": 1792
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 253
+          },
+          "groups": 253,
+          "generated_tokens": 6072,
+          "tokens_by_status": {
+            "consumed": 6072
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 130
+          },
+          "groups": 130,
+          "generated_tokens": 12480,
+          "tokens_by_status": {
+            "consumed": 12480
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 6,
+          "post_swap_nonzero_advantage_tokens": 384,
+          "exact_post_swap_nonzero_advantage_tokens": 384
+        },
+        "16": {
+          "statuses": {
+            "consumed": 129
+          },
+          "groups": 129,
+          "generated_tokens": 16512,
+          "tokens_by_status": {
+            "consumed": 16512
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 16,
+          "post_swap_nonzero_advantage_tokens": 1408,
+          "exact_post_swap_nonzero_advantage_tokens": 1408
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 128,
+          "received_tokens": 8800,
+          "update": 63,
+          "time_s": 5.141219915938564,
+          "eval_started_s": 5.059771499945782,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 8992
+        },
+        "long": {
+          "received_groups": 128,
+          "received_tokens": 8800,
+          "update": 63,
+          "time_s": 5.141219915938564,
+          "eval_started_s": 5.059771499945782,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 8992
+        }
+      },
+      "wall_s": 9.92947837500833,
+      "generated_tokens": 35064,
+      "updates": 232,
+      "loss_tokens_s": 1180.0217048148988,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 253
+          },
+          "groups": 253,
+          "generated_tokens": 6072,
+          "tokens_by_status": {
+            "consumed": 6072
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 211,
+            "stale": 47,
+            "unbatched": 1
+          },
+          "groups": 259,
+          "generated_tokens": 28992,
+          "tokens_by_status": {
+            "consumed": 23264,
+            "stale": 5600,
+            "unbatched": 128
+          },
+          "retained_group_fraction": 0.8146718146718147,
+          "retained_token_fraction": 0.8024282560706402,
+          "post_swap_nonzero_advantage_groups": 10,
+          "post_swap_nonzero_advantage_tokens": 608,
+          "exact_post_swap_nonzero_advantage_tokens": 608
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 253
+          },
+          "groups": 253,
+          "generated_tokens": 6072,
+          "tokens_by_status": {
+            "consumed": 6072
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 117,
+            "stale": 13
+          },
+          "groups": 130,
+          "generated_tokens": 12480,
+          "tokens_by_status": {
+            "consumed": 11232,
+            "stale": 1248
+          },
+          "retained_group_fraction": 0.9,
+          "retained_token_fraction": 0.9,
+          "post_swap_nonzero_advantage_groups": 7,
+          "post_swap_nonzero_advantage_tokens": 384,
+          "exact_post_swap_nonzero_advantage_tokens": 384
+        },
+        "16": {
+          "statuses": {
+            "consumed": 94,
+            "stale": 34,
+            "unbatched": 1
+          },
+          "groups": 129,
+          "generated_tokens": 16512,
+          "tokens_by_status": {
+            "consumed": 12032,
+            "stale": 4352,
+            "unbatched": 128
+          },
+          "retained_group_fraction": 0.7286821705426356,
+          "retained_token_fraction": 0.7286821705426356,
+          "post_swap_nonzero_advantage_groups": 3,
+          "post_swap_nonzero_advantage_tokens": 224,
+          "exact_post_swap_nonzero_advantage_tokens": 224
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 5936,
+          "update": 48,
+          "time_s": 5.103637416032143,
+          "eval_started_s": 4.956470957957208,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6056
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 5936,
+          "update": 48,
+          "time_s": 5.103637416032143,
+          "eval_started_s": 4.956470957957208,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6056
+        }
+      },
+      "wall_s": 9.507604083046317,
+      "generated_tokens": 34752,
+      "updates": 256,
+      "loss_tokens_s": 1194.6227357377297,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 28608,
+          "tokens_by_status": {
+            "consumed": 28608
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 30,
+          "post_swap_nonzero_advantage_tokens": 1952,
+          "exact_post_swap_nonzero_advantage_tokens": 1948
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 130
+          },
+          "groups": 130,
+          "generated_tokens": 12480,
+          "tokens_by_status": {
+            "consumed": 12480
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 10,
+          "post_swap_nonzero_advantage_tokens": 544,
+          "exact_post_swap_nonzero_advantage_tokens": 540
+        },
+        "16": {
+          "statuses": {
+            "consumed": 126
+          },
+          "groups": 126,
+          "generated_tokens": 16128,
+          "tokens_by_status": {
+            "consumed": 16128
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 20,
+          "post_swap_nonzero_advantage_tokens": 1408,
+          "exact_post_swap_nonzero_advantage_tokens": 1408
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 5936,
+          "update": 47,
+          "time_s": 4.542435250012204,
+          "eval_started_s": 4.457753584021702,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6056
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 5936,
+          "update": 47,
+          "time_s": 4.542435250012204,
+          "eval_started_s": 4.457753584021702,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6056
+        }
+      },
+      "wall_s": 8.820635459036566,
+      "generated_tokens": 34752,
+      "updates": 231,
+      "loss_tokens_s": 1320.7665200657177,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 206,
+            "stale": 49,
+            "unbatched": 1
+          },
+          "groups": 256,
+          "generated_tokens": 28608,
+          "tokens_by_status": {
+            "consumed": 22848,
+            "stale": 5664,
+            "unbatched": 96
+          },
+          "retained_group_fraction": 0.8046875,
+          "retained_token_fraction": 0.7986577181208053,
+          "post_swap_nonzero_advantage_groups": 21,
+          "post_swap_nonzero_advantage_tokens": 1184,
+          "exact_post_swap_nonzero_advantage_tokens": 1184
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 256
+          },
+          "groups": 256,
+          "generated_tokens": 6144,
+          "tokens_by_status": {
+            "consumed": 6144
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 110,
+            "stale": 19,
+            "unbatched": 1
+          },
+          "groups": 130,
+          "generated_tokens": 12480,
+          "tokens_by_status": {
+            "consumed": 10560,
+            "stale": 1824,
+            "unbatched": 96
+          },
+          "retained_group_fraction": 0.8461538461538461,
+          "retained_token_fraction": 0.8461538461538461,
+          "post_swap_nonzero_advantage_groups": 6,
+          "post_swap_nonzero_advantage_tokens": 320,
+          "exact_post_swap_nonzero_advantage_tokens": 320
+        },
+        "16": {
+          "statuses": {
+            "consumed": 96,
+            "stale": 30
+          },
+          "groups": 126,
+          "generated_tokens": 16128,
+          "tokens_by_status": {
+            "consumed": 12288,
+            "stale": 3840
+          },
+          "retained_group_fraction": 0.7619047619047619,
+          "retained_token_fraction": 0.7619047619047619,
+          "post_swap_nonzero_advantage_groups": 15,
+          "post_swap_nonzero_advantage_tokens": 864,
+          "exact_post_swap_nonzero_advantage_tokens": 864
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 128,
+          "received_tokens": 8880,
+          "update": 64,
+          "time_s": 5.3324327080044895,
+          "eval_started_s": 5.235404666978866,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 9032
+        },
+        "long": {
+          "received_groups": 128,
+          "received_tokens": 8880,
+          "update": 64,
+          "time_s": 5.3324327080044895,
+          "eval_started_s": 5.235404666978866,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 9032
+        }
+      },
+      "wall_s": 9.53763141692616,
+      "generated_tokens": 35048,
+      "updates": 256,
+      "loss_tokens_s": 1381.6847625935075,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 255
+          },
+          "groups": 255,
+          "generated_tokens": 6120,
+          "tokens_by_status": {
+            "consumed": 6120
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 257
+          },
+          "groups": 257,
+          "generated_tokens": 28928,
+          "tokens_by_status": {
+            "consumed": 28928
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 30,
+          "post_swap_nonzero_advantage_tokens": 2112,
+          "exact_post_swap_nonzero_advantage_tokens": 2112
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 255
+          },
+          "groups": 255,
+          "generated_tokens": 6120,
+          "tokens_by_status": {
+            "consumed": 6120
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 124
+          },
+          "groups": 124,
+          "generated_tokens": 11904,
+          "tokens_by_status": {
+            "consumed": 11904
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 12,
+          "post_swap_nonzero_advantage_tokens": 704,
+          "exact_post_swap_nonzero_advantage_tokens": 704
+        },
+        "16": {
+          "statuses": {
+            "consumed": 133
+          },
+          "groups": 133,
+          "generated_tokens": 17024,
+          "tokens_by_status": {
+            "consumed": 17024
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 18,
+          "post_swap_nonzero_advantage_tokens": 1408,
+          "exact_post_swap_nonzero_advantage_tokens": 1408
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 128,
+          "received_tokens": 8880,
+          "update": 63,
+          "time_s": 6.05430420790799,
+          "eval_started_s": 5.954941749922,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 9032
+        },
+        "long": {
+          "received_groups": 128,
+          "received_tokens": 8880,
+          "update": 63,
+          "time_s": 6.05430420790799,
+          "eval_started_s": 5.954941749922,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 9032
+        }
+      },
+      "wall_s": 10.31454395793844,
+      "generated_tokens": 35048,
+      "updates": 231,
+      "loss_tokens_s": 1172.1313176134274,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 255
+          },
+          "groups": 255,
+          "generated_tokens": 6120,
+          "tokens_by_status": {
+            "consumed": 6120
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 207,
+            "stale": 50
+          },
+          "groups": 257,
+          "generated_tokens": 28928,
+          "tokens_by_status": {
+            "consumed": 23232,
+            "stale": 5696
+          },
+          "retained_group_fraction": 0.8054474708171206,
+          "retained_token_fraction": 0.8030973451327433,
+          "post_swap_nonzero_advantage_groups": 14,
+          "post_swap_nonzero_advantage_tokens": 928,
+          "exact_post_swap_nonzero_advantage_tokens": 928
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 255
+          },
+          "groups": 255,
+          "generated_tokens": 6120,
+          "tokens_by_status": {
+            "consumed": 6120
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 102,
+            "stale": 22
+          },
+          "groups": 124,
+          "generated_tokens": 11904,
+          "tokens_by_status": {
+            "consumed": 9792,
+            "stale": 2112
+          },
+          "retained_group_fraction": 0.8225806451612904,
+          "retained_token_fraction": 0.8225806451612904,
+          "post_swap_nonzero_advantage_groups": 6,
+          "post_swap_nonzero_advantage_tokens": 288,
+          "exact_post_swap_nonzero_advantage_tokens": 288
+        },
+        "16": {
+          "statuses": {
+            "consumed": 105,
+            "stale": 28
+          },
+          "groups": 133,
+          "generated_tokens": 17024,
+          "tokens_by_status": {
+            "consumed": 13440,
+            "stale": 3584
+          },
+          "retained_group_fraction": 0.7894736842105263,
+          "retained_token_fraction": 0.7894736842105263,
+          "post_swap_nonzero_advantage_groups": 8,
+          "post_swap_nonzero_advantage_tokens": 640,
+          "exact_post_swap_nonzero_advantage_tokens": 640
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 128,
+          "received_tokens": 7624,
+          "update": 64,
+          "time_s": 4.974819374969229,
+          "eval_started_s": 4.8819511668989435,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 7816
+        },
+        "long": {
+          "received_groups": 128,
+          "received_tokens": 7624,
+          "update": 64,
+          "time_s": 4.974819374969229,
+          "eval_started_s": 4.8819511668989435,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 7816
+        }
+      },
+      "wall_s": 9.502609208924696,
+      "generated_tokens": 33728,
+      "updates": 256,
+      "loss_tokens_s": 1311.9554562226126,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 268
+          },
+          "groups": 268,
+          "generated_tokens": 6432,
+          "tokens_by_status": {
+            "consumed": 6432
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 244
+          },
+          "groups": 244,
+          "generated_tokens": 27296,
+          "tokens_by_status": {
+            "consumed": 27296
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 26,
+          "post_swap_nonzero_advantage_tokens": 1760,
+          "exact_post_swap_nonzero_advantage_tokens": 1760
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 268
+          },
+          "groups": 268,
+          "generated_tokens": 6432,
+          "tokens_by_status": {
+            "consumed": 6432
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 123
+          },
+          "groups": 123,
+          "generated_tokens": 11808,
+          "tokens_by_status": {
+            "consumed": 11808
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 11,
+          "post_swap_nonzero_advantage_tokens": 640,
+          "exact_post_swap_nonzero_advantage_tokens": 640
+        },
+        "16": {
+          "statuses": {
+            "consumed": 121
+          },
+          "groups": 121,
+          "generated_tokens": 15488,
+          "tokens_by_status": {
+            "consumed": 15488
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 15,
+          "post_swap_nonzero_advantage_tokens": 1120,
+          "exact_post_swap_nonzero_advantage_tokens": 1120
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 128,
+          "received_tokens": 7624,
+          "update": 64,
+          "time_s": 5.983414874994196,
+          "eval_started_s": 5.889569291961379,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 7816
+        },
+        "long": {
+          "received_groups": 128,
+          "received_tokens": 7624,
+          "update": 64,
+          "time_s": 5.983414874994196,
+          "eval_started_s": 5.889569291961379,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 7816
+        }
+      },
+      "wall_s": 9.926770083955489,
+      "generated_tokens": 33728,
+      "updates": 236,
+      "loss_tokens_s": 1206.7369243659127,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 268
+          },
+          "groups": 268,
+          "generated_tokens": 6432,
+          "tokens_by_status": {
+            "consumed": 6432
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 204,
+            "stale": 40
+          },
+          "groups": 244,
+          "generated_tokens": 27296,
+          "tokens_by_status": {
+            "consumed": 22592,
+            "stale": 4704
+          },
+          "retained_group_fraction": 0.8360655737704918,
+          "retained_token_fraction": 0.8276670574443142,
+          "post_swap_nonzero_advantage_groups": 17,
+          "post_swap_nonzero_advantage_tokens": 992,
+          "exact_post_swap_nonzero_advantage_tokens": 992
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 268
+          },
+          "groups": 268,
+          "generated_tokens": 6432,
+          "tokens_by_status": {
+            "consumed": 6432
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "12": {
+          "statuses": {
+            "consumed": 110,
+            "stale": 13
+          },
+          "groups": 123,
+          "generated_tokens": 11808,
+          "tokens_by_status": {
+            "consumed": 10560,
+            "stale": 1248
+          },
+          "retained_group_fraction": 0.8943089430894309,
+          "retained_token_fraction": 0.8943089430894309,
+          "post_swap_nonzero_advantage_groups": 5,
+          "post_swap_nonzero_advantage_tokens": 288,
+          "exact_post_swap_nonzero_advantage_tokens": 288
+        },
+        "16": {
+          "statuses": {
+            "consumed": 94,
+            "stale": 27
+          },
+          "groups": 121,
+          "generated_tokens": 15488,
+          "tokens_by_status": {
+            "consumed": 12032,
+            "stale": 3456
+          },
+          "retained_group_fraction": 0.7768595041322314,
+          "retained_token_fraction": 0.7768595041322314,
+          "post_swap_nonzero_advantage_groups": 12,
+          "post_swap_nonzero_advantage_tokens": 704,
+          "exact_post_swap_nonzero_advantage_tokens": 704
+        }
+      }
+    }
+  ],
+  "comparisons": {
+    "fifo-2": {
+      "pairs": [
+        {
+          "seed": 0,
+          "fifo": {
+            "received_groups": 96,
+            "received_tokens": 6584,
+            "update": 47,
+            "time_s": 4.576505874982104,
+            "eval_started_s": 4.455019832937978,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 6736
+          },
+          "version_aware": {
+            "received_groups": 96,
+            "received_tokens": 6688,
+            "update": 48,
+            "time_s": 4.550276165944524,
+            "eval_started_s": 4.471361874951981,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 6736
+          },
+          "time_saved_s": 0.026229709037579596,
+          "time_saved_fraction": 0.005731383232995935,
+          "actor_completed_tokens_saved": 0,
+          "received_tokens_saved": -104,
+          "final_accuracy": {
+            "fifo": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "version_aware": {
+              "short": 1.0,
+              "long": 1.0
+            }
+          },
+          "retained_group_fraction_delta": {
+            "short": 0.0,
+            "long": 0.1875
+          }
+        },
+        {
+          "seed": 1,
+          "fifo": {
+            "received_groups": 128,
+            "received_tokens": 8800,
+            "update": 63,
+            "time_s": 5.141219915938564,
+            "eval_started_s": 5.059771499945782,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 8992
+          },
+          "version_aware": {
+            "received_groups": 96,
+            "received_tokens": 6968,
+            "update": 48,
+            "time_s": 5.4559100830229,
+            "eval_started_s": 5.379411375033669,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 7120
+          },
+          "time_saved_s": -0.3146901670843363,
+          "time_saved_fraction": -0.061209240652933206,
+          "actor_completed_tokens_saved": 1872,
+          "received_tokens_saved": 1832,
+          "final_accuracy": {
+            "fifo": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "version_aware": {
+              "short": 1.0,
+              "long": 1.0
+            }
+          },
+          "retained_group_fraction_delta": {
+            "short": 0.0,
+            "long": 0.1853281853281853
+          }
+        },
+        {
+          "seed": 2,
+          "fifo": {
+            "received_groups": 96,
+            "received_tokens": 5936,
+            "update": 47,
+            "time_s": 4.542435250012204,
+            "eval_started_s": 4.457753584021702,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 6056
+          },
+          "version_aware": {
+            "received_groups": 96,
+            "received_tokens": 5936,
+            "update": 48,
+            "time_s": 5.103637416032143,
+            "eval_started_s": 4.956470957957208,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 6056
+          },
+          "time_saved_s": -0.5612021660199389,
+          "time_saved_fraction": -0.12354654169664414,
+          "actor_completed_tokens_saved": 0,
+          "received_tokens_saved": 0,
+          "final_accuracy": {
+            "fifo": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "version_aware": {
+              "short": 1.0,
+              "long": 1.0
+            }
+          },
+          "retained_group_fraction_delta": {
+            "short": 0.0,
+            "long": 0.1953125
+          }
+        },
+        {
+          "seed": 3,
+          "fifo": {
+            "received_groups": 128,
+            "received_tokens": 8880,
+            "update": 63,
+            "time_s": 6.05430420790799,
+            "eval_started_s": 5.954941749922,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 9032
+          },
+          "version_aware": {
+            "received_groups": 128,
+            "received_tokens": 8880,
+            "update": 64,
+            "time_s": 5.3324327080044895,
+            "eval_started_s": 5.235404666978866,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 9032
+          },
+          "time_saved_s": 0.7218714999035001,
+          "time_saved_fraction": 0.11923277640403473,
+          "actor_completed_tokens_saved": 0,
+          "received_tokens_saved": 0,
+          "final_accuracy": {
+            "fifo": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "version_aware": {
+              "short": 1.0,
+              "long": 1.0
+            }
+          },
+          "retained_group_fraction_delta": {
+            "short": 0.0,
+            "long": 0.19455252918287935
+          }
+        },
+        {
+          "seed": 4,
+          "fifo": {
+            "received_groups": 128,
+            "received_tokens": 7624,
+            "update": 64,
+            "time_s": 5.983414874994196,
+            "eval_started_s": 5.889569291961379,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 7816
+          },
+          "version_aware": {
+            "received_groups": 128,
+            "received_tokens": 7624,
+            "update": 64,
+            "time_s": 4.974819374969229,
+            "eval_started_s": 4.8819511668989435,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 7816
+          },
+          "time_saved_s": 1.008595500024967,
+          "time_saved_fraction": 0.16856519581152152,
+          "actor_completed_tokens_saved": 0,
+          "received_tokens_saved": 0,
+          "final_accuracy": {
+            "fifo": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "version_aware": {
+              "short": 1.0,
+              "long": 1.0
+            }
+          },
+          "retained_group_fraction_delta": {
+            "short": 0.0,
+            "long": 0.16393442622950816
+          }
+        }
+      ],
+      "paired_hits": 5,
+      "fifo_hits": 5,
+      "version_aware_hits": 5,
+      "version_aware_faster": 3,
+      "median_time_saved_s": 0.026229709037579596,
+      "median_time_saved_fraction": 0.005731383232995935,
+      "median_actor_completed_tokens_saved": 0,
+      "median_received_tokens_saved": 0
+    }
+  }
+}

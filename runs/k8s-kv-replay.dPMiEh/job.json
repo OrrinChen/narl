@@ -1,0 +1,133 @@
+{
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": {
+        "creationTimestamp": "2026-11-13T13:18:54Z",
+        "generation": 1,
+        "labels": {
+            "batch.kubernetes.io/controller-uid": "4b7824b0-bfaa-45a3-adf2-969dd777fe94",
+            "batch.kubernetes.io/job-name": "narl-kv-replay",
+            "controller-uid": "4b7824b0-bfaa-45a3-adf2-969dd777fe94",
+            "job-name": "narl-kv-replay"
+        },
+        "name": "narl-kv-replay",
+        "namespace": "default",
+        "resourceVersion": "694",
+        "uid": "4b7824b0-bfaa-45a3-adf2-969dd777fe94"
+    },
+    "spec": {
+        "activeDeadlineSeconds": 180,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+            "matchLabels": {
+                "batch.kubernetes.io/controller-uid": "4b7824b0-bfaa-45a3-adf2-969dd777fe94"
+            }
+        },
+        "suspend": false,
+        "template": {
+            "metadata": {
+                "labels": {
+                    "batch.kubernetes.io/controller-uid": "4b7824b0-bfaa-45a3-adf2-969dd777fe94",
+                    "batch.kubernetes.io/job-name": "narl-kv-replay",
+                    "controller-uid": "4b7824b0-bfaa-45a3-adf2-969dd777fe94",
+                    "job-name": "narl-kv-replay"
+                }
+            },
+            "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                    {
+                        "args": [
+                            "--repetitions",
+                            "5",
+                            "--out",
+                            "/results/$(POD_UID)"
+                        ],
+                        "command": [
+                            "python",
+                            "-m",
+                            "experiments.kv_replay"
+                        ],
+                        "env": [
+                            {
+                                "name": "POD_UID",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.uid"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "narl-kv-replay:narl-dpmieh",
+                        "imagePullPolicy": "Never",
+                        "name": "kv-replay",
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "1Gi"
+                            },
+                            "requests": {
+                                "cpu": "1",
+                                "memory": "512Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/results",
+                                "name": "results"
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/narl-results",
+                            "type": "Directory"
+                        },
+                        "name": "results"
+                    }
+                ]
+            }
+        }
+    },
+    "status": {
+        "completionTime": "2026-11-13T13:19:21Z",
+        "conditions": [
+            {
+                "lastProbeTime": "2026-11-13T13:19:21Z",
+                "lastTransitionTime": "2026-11-13T13:19:21Z",
+                "message": "Reached expected number of succeeded pods",
+                "reason": "CompletionsReached",
+                "status": "True",
+                "type": "SuccessCriteriaMet"
+            },
+            {
+                "lastProbeTime": "2026-11-13T13:19:21Z",
+                "lastTransitionTime": "2026-11-13T13:19:21Z",
+                "message": "Reached expected number of succeeded pods",
+                "reason": "CompletionsReached",
+                "status": "True",
+                "type": "Complete"
+            }
+        ],
+        "ready": 0,
+        "startTime": "2026-11-13T13:18:54Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+    }
+}

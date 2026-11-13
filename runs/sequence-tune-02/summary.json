@@ -1,0 +1,450 @@
+{
+  "protocol": {
+    "stage": "development",
+    "args": {
+      "out": "/Users/orynwilder/Documents/New project 2/narl/runs/sequence-tune-02",
+      "development": true,
+      "seeds": [
+        122,
+        123
+      ],
+      "groups": 512,
+      "threshold": 0.75,
+      "lr": 0.002,
+      "eval_every": 32,
+      "fifo_windows": [
+        2
+      ],
+      "version_window": 2
+    },
+    "source_commit": "257ef785dd84fc6a7206a0a37446acbd93f7f26a",
+    "source_sha256": {
+      "experiments/kv_sequence.py": "9914d00f154faf4126e51b6e6165d99b6359c9e7b6924befb596893fc4581e84",
+      "experiments/kv_batch_dispatch.py": "591f498e3a56d68efa46fbafcf3ebc5bbc2195a634a1c1f63315e16c950ada85",
+      "experiments/kv_sequence_task.py": "32b8384b4b2f61221a28673c0d9cb910423f1a7f91f1519d58a14950723b5528",
+      "experiments/kv_online.py": "f2f3385d723c60967bf44b3c8293af36ee1c1528ff489c6fea7a559a83598984",
+      "experiments/shared_prefix.py": "accbb5881e6dcba7ad1945b8b41b804251e9f05715fe959368760258033dc88f"
+    },
+    "initial_model_sha256": "ae5a0d5748f0b2c5cfe9e999759c4a64ec062918f803ee77c5871016e30d57ac",
+    "optimizer_groups_per_update": 2,
+    "max_lag": 1,
+    "actor_count": 3,
+    "torch_threads_per_process": 1,
+    "queue_capacity": 2,
+    "group_size": 8,
+    "prompt_tokens": 128,
+    "model_parameters": 19424,
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15 (main, Apr 14 2026, 14:45:51) [Clang 22.1.3 ]",
+    "torch": "2.8.0",
+    "train_config": {
+      "task": "sequence",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/sequence-tune-02/model",
+      "steps": 200,
+      "n_prompts": 2,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.002,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 64,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 320
+    },
+    "train_reward": "fraction of correct answer positions across the entire completion",
+    "eval": "greedy exact match by bucket; evaluated every fixed number of received groups, timed at the second consecutive post-initial hit at distinct update counts",
+    "wall_clock": "actor startup, training, periodic and final eval, trace writes; initial eval untimed",
+    "arms": "all use shared prefix and at most one in-flight switch; FIFO uses arrival order"
+  },
+  "runs": [
+    {
+      "seed": 122,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 6872,
+          "update": 47,
+          "time_s": 5.126070625032298,
+          "eval_started_s": 5.0187700419919565,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6992
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 6872,
+          "update": 47,
+          "time_s": 5.126070625032298,
+          "eval_started_s": 5.0187700419919565,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6992
+        }
+      },
+      "wall_s": 9.376383083988912,
+      "generated_tokens": 35488,
+      "updates": 233,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 248
+          },
+          "groups": 248,
+          "generated_tokens": 5952,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 218,
+            "stale": 46
+          },
+          "groups": 264,
+          "generated_tokens": 29536,
+          "post_swap_nonzero_advantage_groups": 19,
+          "post_swap_nonzero_advantage_tokens": 1376
+        }
+      },
+      "loss_tokens_s": 1341.6687316756047
+    },
+    {
+      "seed": 122,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 96,
+          "received_tokens": 6872,
+          "update": 48,
+          "time_s": 4.595518583082594,
+          "eval_started_s": 4.510145792039111,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6992
+        },
+        "long": {
+          "received_groups": 96,
+          "received_tokens": 6872,
+          "update": 48,
+          "time_s": 4.595518583082594,
+          "eval_started_s": 4.510145792039111,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 6992
+        }
+      },
+      "wall_s": 9.243770875036716,
+      "generated_tokens": 35488,
+      "updates": 256,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 248
+          },
+          "groups": 248,
+          "generated_tokens": 5952,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 264
+          },
+          "groups": 264,
+          "generated_tokens": 29536,
+          "post_swap_nonzero_advantage_groups": 36,
+          "post_swap_nonzero_advantage_tokens": 2304
+        }
+      },
+      "loss_tokens_s": 1444.4321674023497
+    },
+    {
+      "seed": 123,
+      "arm": "version_aware",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 192,
+          "received_tokens": 13504,
+          "update": 96,
+          "time_s": 5.388391332933679,
+          "eval_started_s": 5.311706374981441,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 13624
+        },
+        "long": {
+          "received_groups": 192,
+          "received_tokens": 13504,
+          "update": 96,
+          "time_s": 5.388391332933679,
+          "eval_started_s": 5.311706374981441,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 13624
+        }
+      },
+      "wall_s": 8.875365625019185,
+      "generated_tokens": 35264,
+      "updates": 256,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 252
+          },
+          "groups": 252,
+          "generated_tokens": 6048,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 260
+          },
+          "groups": 260,
+          "generated_tokens": 29216,
+          "post_swap_nonzero_advantage_groups": 23,
+          "post_swap_nonzero_advantage_tokens": 1472
+        }
+      },
+      "loss_tokens_s": 1747.5336403356873
+    },
+    {
+      "seed": 123,
+      "arm": "fifo-2",
+      "window": 2,
+      "initial_accuracy": {
+        "short": 0.0,
+        "long": 0.0
+      },
+      "final_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "best_accuracy": {
+        "short": 1.0,
+        "long": 1.0
+      },
+      "target": {
+        "short": {
+          "received_groups": 192,
+          "received_tokens": 13504,
+          "update": 94,
+          "time_s": 6.0018260419601575,
+          "eval_started_s": 5.9209219589829445,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 13624
+        },
+        "long": {
+          "received_groups": 192,
+          "received_tokens": 13504,
+          "update": 94,
+          "time_s": 6.0018260419601575,
+          "eval_started_s": 5.9209219589829445,
+          "accuracy": {
+            "short": 1.0,
+            "long": 1.0
+          },
+          "actor_completed_tokens": 13624
+        }
+      },
+      "wall_s": 9.457659667008556,
+      "generated_tokens": 35264,
+      "updates": 234,
+      "by_bucket": {
+        "short": {
+          "statuses": {
+            "consumed": 252
+          },
+          "groups": 252,
+          "generated_tokens": 6048,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0
+        },
+        "long": {
+          "statuses": {
+            "consumed": 216,
+            "stale": 44
+          },
+          "groups": 260,
+          "generated_tokens": 29216,
+          "post_swap_nonzero_advantage_groups": 18,
+          "post_swap_nonzero_advantage_tokens": 1184
+        }
+      },
+      "loss_tokens_s": 1544.8853642902798
+    }
+  ],
+  "comparisons": {
+    "fifo-2": {
+      "pairs": [
+        {
+          "seed": 122,
+          "fifo": {
+            "received_groups": 96,
+            "received_tokens": 6872,
+            "update": 47,
+            "time_s": 5.126070625032298,
+            "eval_started_s": 5.0187700419919565,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 6992
+          },
+          "version_aware": {
+            "received_groups": 96,
+            "received_tokens": 6872,
+            "update": 48,
+            "time_s": 4.595518583082594,
+            "eval_started_s": 4.510145792039111,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 6992
+          },
+          "time_saved_s": 0.5305520419497043,
+          "time_saved_fraction": 0.10350072809353095,
+          "actor_completed_tokens_saved": 0
+        },
+        {
+          "seed": 123,
+          "fifo": {
+            "received_groups": 192,
+            "received_tokens": 13504,
+            "update": 94,
+            "time_s": 6.0018260419601575,
+            "eval_started_s": 5.9209219589829445,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 13624
+          },
+          "version_aware": {
+            "received_groups": 192,
+            "received_tokens": 13504,
+            "update": 96,
+            "time_s": 5.388391332933679,
+            "eval_started_s": 5.311706374981441,
+            "accuracy": {
+              "short": 1.0,
+              "long": 1.0
+            },
+            "actor_completed_tokens": 13624
+          },
+          "time_saved_s": 0.6134347090264782,
+          "time_saved_fraction": 0.10220801215127095,
+          "actor_completed_tokens_saved": 0
+        }
+      ],
+      "paired_hits": 2,
+      "fifo_hits": 2,
+      "version_aware_hits": 2,
+      "version_aware_faster": 2,
+      "median_time_saved_s": 0.5719933754880913,
+      "median_time_saved_fraction": 0.10285437012240095,
+      "median_actor_completed_tokens_saved": 0.0
+    }
+  }
+}

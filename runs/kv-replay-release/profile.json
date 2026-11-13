@@ -1,0 +1,1231 @@
+{
+  "machine": "macOS-26.5.1-arm64-arm-64bit",
+  "torch": "2.8.0",
+  "threads": 1,
+  "dtype": "torch.float32",
+  "replay_source": "runs/kv-replay-release",
+  "snapshots": {
+    "old": {
+      "optimizer_steps": 0,
+      "path": "model/model.safetensors",
+      "sha256": "ae5a0d5748f0b2c5cfe9e999759c4a64ec062918f803ee77c5871016e30d57ac"
+    },
+    "new": {
+      "optimizer_steps": 12,
+      "path": "new_state.pt",
+      "sha256": "b1a7fc9fe97a839c9c9e214ed95aacaa337532aac221f80a8482d621506ac22e"
+    },
+    "max_abs_weight_delta": 0.02610548585653305
+  },
+  "repetitions_per_mode": 5,
+  "profiler_boundary": "Stage times include profiler overhead. Old cache preparation and state_dict copy are outside replay_total. SDPA includes its child operators and measures only the attention computation, excluding Q/K/V and output projections. Operators in top_operators_by_self_cpu cover all stages.",
+  "cuda_gate": {
+    "torch_cuda_version": null,
+    "cuda_available": false,
+    "cuda_device_count": 0,
+    "mps_available": true,
+    "decision": "no CUDA benchmark"
+  },
+  "cases": [
+    {
+      "prompt_length": 32,
+      "cached_suffix_length": 16,
+      "group_size": 8,
+      "profile": {
+        "retain": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 11.695542999999994,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.3391085999999985,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 10.497441999999998,
+              "sdpa_ms": 5.329039000000004,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.0994883999999994,
+              "mean_sdpa_ms_per_replay": 1.0658078000000009
+            },
+            "weight_load": {
+              "cpu_ms": 0.8406780000000007,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.16813560000000013,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 29.866304,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 5.9732608,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "continuation_decode": {
+              "cpu_ms": 29.343089999999997,
+              "sdpa_ms": 13.32060699999999,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 5.868618,
+              "mean_sdpa_ms_per_replay": 2.664121399999998
+            }
+          },
+          "mean_recovery_sdpa_ms": 2.664121399999998,
+          "recovery_sdpa_fraction": 0.4460078823278565,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 6.420237000000173,
+              "calls": 230
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 4.648598999999805,
+              "calls": 15570
+            },
+            {
+              "name": "aten::as_strided",
+              "self_cpu_ms": 2.040217000000091,
+              "calls": 19215
+            },
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 1.550066999999981,
+              "calls": 90
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 1.4693859999999914,
+              "calls": 1170
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 1.1000900000000893,
+              "calls": 670
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 0.9062969999999686,
+              "calls": 1260
+            },
+            {
+              "name": "aten::matmul",
+              "self_cpu_ms": 0.7525189999999111,
+              "calls": 900
+            },
+            {
+              "name": "aten::cat",
+              "self_cpu_ms": 0.7303009999999758,
+              "calls": 420
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 0.6162140000000136,
+              "calls": 110
+            }
+          ]
+        },
+        "recompute": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 10.127752000000008,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.0255504000000015,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 9.159908999999994,
+              "sdpa_ms": 5.113194000000002,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 1.8319817999999988,
+              "mean_sdpa_ms_per_replay": 1.0226388000000004
+            },
+            "weight_load": {
+              "cpu_ms": 0.8810950000000006,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.17621900000000013,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 39.707045,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.941409,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "prompt_and_suffix_prefill": {
+              "cpu_ms": 9.476536999999993,
+              "sdpa_ms": 5.45832,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 1.8953073999999988,
+              "mean_sdpa_ms_per_replay": 1.091664
+            },
+            "continuation_decode": {
+              "cpu_ms": 29.631167000000026,
+              "sdpa_ms": 13.593425,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 5.926233400000005,
+              "mean_sdpa_ms_per_replay": 2.718685
+            }
+          },
+          "mean_recovery_sdpa_ms": 3.810349,
+          "recovery_sdpa_fraction": 0.4798076764463334,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 7.926951999999654,
+              "calls": 260
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 5.544966000000435,
+              "calls": 17620
+            },
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 2.7386249999999754,
+              "calls": 100
+            },
+            {
+              "name": "aten::as_strided",
+              "self_cpu_ms": 2.3577369999997235,
+              "calls": 21700
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 1.8670819999999755,
+              "calls": 1300
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 1.3824209999999744,
+              "calls": 740
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 1.1147200000000166,
+              "calls": 140
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 1.1043349999999523,
+              "calls": 1390
+            },
+            {
+              "name": "aten::cat",
+              "self_cpu_ms": 0.9234410000000242,
+              "calls": 470
+            },
+            {
+              "name": "aten::add",
+              "self_cpu_ms": 0.8915839999999462,
+              "calls": 650
+            }
+          ]
+        },
+        "share_prompt": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 11.141188999999997,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.2282377999999996,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 10.144925999999998,
+              "sdpa_ms": 5.711411000000004,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.0289851999999997,
+              "mean_sdpa_ms_per_replay": 1.1422822000000008
+            },
+            "weight_load": {
+              "cpu_ms": 0.9178440000000005,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.18356880000000012,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 47.27425499999999,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 9.454850999999998,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "prompt_prefill": {
+              "cpu_ms": 3.567670999999997,
+              "sdpa_ms": 0.8343409999999949,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.7135341999999995,
+              "mean_sdpa_ms_per_replay": 0.16686819999999897
+            },
+            "branch_copy": {
+              "cpu_ms": 0.1603770000000004,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.03207540000000008,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "suffix_prefill": {
+              "cpu_ms": 11.289691,
+              "sdpa_ms": 1.0782220000000016,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.2579382,
+              "mean_sdpa_ms_per_replay": 0.21564440000000032
+            },
+            "continuation_decode": {
+              "cpu_ms": 31.636509000000004,
+              "sdpa_ms": 14.269564000000047,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 6.327301800000001,
+              "mean_sdpa_ms_per_replay": 2.8539128000000096
+            }
+          },
+          "mean_recovery_sdpa_ms": 3.236425400000009,
+          "recovery_sdpa_fraction": 0.3423031626833685,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 7.034868000000095,
+              "calls": 270
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 5.247332000000071,
+              "calls": 15975
+            },
+            {
+              "name": "aten::as_strided",
+              "self_cpu_ms": 2.4288209999998354,
+              "calls": 20665
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 1.9992909999999924,
+              "calls": 1410
+            },
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 1.6639370000000189,
+              "calls": 100
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 1.50896299999987,
+              "calls": 810
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 1.1620650000000938,
+              "calls": 1490
+            },
+            {
+              "name": "aten::cat",
+              "self_cpu_ms": 1.0417929999999587,
+              "calls": 510
+            },
+            {
+              "name": "aten::matmul",
+              "self_cpu_ms": 0.9689900000000446,
+              "calls": 1080
+            },
+            {
+              "name": "aten::_scaled_dot_product_flash_attention_for_cpu",
+              "self_cpu_ms": 0.9391809999999923,
+              "calls": 10
+            }
+          ]
+        }
+      },
+      "fixed_draw_equivalence": {
+        "draw_seed": 547,
+        "compared_sampled_tokens": 64,
+        "sampled_tokens": [
+          [
+            12,
+            5,
+            1,
+            0,
+            9,
+            12,
+            9,
+            12
+          ],
+          [
+            5,
+            4,
+            11,
+            7,
+            6,
+            4,
+            3,
+            6
+          ],
+          [
+            12,
+            10,
+            0,
+            5,
+            7,
+            7,
+            5,
+            9
+          ],
+          [
+            3,
+            5,
+            6,
+            11,
+            0,
+            10,
+            8,
+            7
+          ],
+          [
+            1,
+            11,
+            6,
+            3,
+            7,
+            3,
+            6,
+            1
+          ],
+          [
+            3,
+            6,
+            6,
+            11,
+            12,
+            4,
+            4,
+            12
+          ],
+          [
+            1,
+            1,
+            7,
+            6,
+            9,
+            9,
+            9,
+            5
+          ],
+          [
+            9,
+            4,
+            11,
+            0,
+            2,
+            3,
+            11,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "prompt_length": 128,
+      "cached_suffix_length": 16,
+      "group_size": 8,
+      "profile": {
+        "retain": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 39.11456800000001,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.822913600000002,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 38.16747600000001,
+              "sdpa_ms": 30.896048000000008,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.633495200000001,
+              "mean_sdpa_ms_per_replay": 6.179209600000002
+            },
+            "weight_load": {
+              "cpu_ms": 0.9629689999999964,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.1925937999999993,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 37.125375000000005,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.425075000000001,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "continuation_decode": {
+              "cpu_ms": 36.569662,
+              "sdpa_ms": 18.522193999999967,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 7.3139324000000006,
+              "mean_sdpa_ms_per_replay": 3.7044387999999935
+            }
+          },
+          "mean_recovery_sdpa_ms": 3.7044387999999935,
+          "recovery_sdpa_fraction": 0.49890927701066895,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 10.537002000000012,
+              "calls": 90
+            },
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 9.021222000000186,
+              "calls": 230
+            },
+            {
+              "name": "aten::all",
+              "self_cpu_ms": 9.018884999999905,
+              "calls": 135
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 5.862194000000231,
+              "calls": 17610
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 4.626021000000037,
+              "calls": 110
+            },
+            {
+              "name": "aten::isneginf",
+              "self_cpu_ms": 3.049737999999997,
+              "calls": 90
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 2.76060199999998,
+              "calls": 1170
+            },
+            {
+              "name": "aten::as_strided",
+              "self_cpu_ms": 2.521817000000491,
+              "calls": 21255
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 1.8624659999999762,
+              "calls": 1260
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 1.609854999999945,
+              "calls": 670
+            }
+          ]
+        },
+        "recompute": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 40.028156999999986,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 8.005631399999997,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 38.990725999999995,
+              "sdpa_ms": 31.300517999999972,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.798145199999999,
+              "mean_sdpa_ms_per_replay": 6.2601035999999946
+            },
+            "weight_load": {
+              "cpu_ms": 1.110302000000007,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.2220604000000014,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 73.99782800000001,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 14.799565600000003,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "prompt_and_suffix_prefill": {
+              "cpu_ms": 37.005205000000004,
+              "sdpa_ms": 29.359200999999963,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.401041000000001,
+              "mean_sdpa_ms_per_replay": 5.871840199999992
+            },
+            "continuation_decode": {
+              "cpu_ms": 36.22611199999999,
+              "sdpa_ms": 18.66053999999998,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 7.2452223999999985,
+              "mean_sdpa_ms_per_replay": 3.7321079999999958
+            }
+          },
+          "mean_recovery_sdpa_ms": 9.603948199999987,
+          "recovery_sdpa_fraction": 0.6489344660224342,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 18.838377999999974,
+              "calls": 100
+            },
+            {
+              "name": "aten::all",
+              "self_cpu_ms": 16.562722999999995,
+              "calls": 150
+            },
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 12.832078000000216,
+              "calls": 260
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 8.741259999999976,
+              "calls": 140
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 6.4394269999999105,
+              "calls": 19780
+            },
+            {
+              "name": "aten::isneginf",
+              "self_cpu_ms": 5.732471999999998,
+              "calls": 100
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 4.883079999999943,
+              "calls": 1300
+            },
+            {
+              "name": "aten::as_strided",
+              "self_cpu_ms": 2.737475999999988,
+              "calls": 23860
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 2.5403259999999577,
+              "calls": 740
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 2.4375980000000643,
+              "calls": 1390
+            }
+          ]
+        },
+        "share_prompt": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 38.637232999999995,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.727446599999999,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 37.645138,
+              "sdpa_ms": 30.439494000000003,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 7.529027600000001,
+              "mean_sdpa_ms_per_replay": 6.0878988000000005
+            },
+            "weight_load": {
+              "cpu_ms": 0.9674699999999912,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.19349399999999822,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 55.224294,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 11.0448588,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "prompt_prefill": {
+              "cpu_ms": 6.6631320000000045,
+              "sdpa_ms": 3.538712999999984,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 1.332626400000001,
+              "mean_sdpa_ms_per_replay": 0.7077425999999968
+            },
+            "branch_copy": {
+              "cpu_ms": 0.1850030000000006,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.03700060000000012,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "suffix_prefill": {
+              "cpu_ms": 12.141914999999983,
+              "sdpa_ms": 2.4330739999999955,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 2.4283829999999966,
+              "mean_sdpa_ms_per_replay": 0.4866147999999991
+            },
+            "continuation_decode": {
+              "cpu_ms": 35.585228,
+              "sdpa_ms": 18.027203000000018,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 7.1170456,
+              "mean_sdpa_ms_per_replay": 3.6054406000000037
+            }
+          },
+          "mean_recovery_sdpa_ms": 4.799798,
+          "recovery_sdpa_fraction": 0.43457305221502696,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 11.20818499999999,
+              "calls": 100
+            },
+            {
+              "name": "aten::all",
+              "self_cpu_ms": 9.741712000000035,
+              "calls": 150
+            },
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 9.388610000000455,
+              "calls": 270
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 5.751994999999906,
+              "calls": 18030
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 5.150942999999982,
+              "calls": 160
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 3.428615999999997,
+              "calls": 1410
+            },
+            {
+              "name": "aten::isneginf",
+              "self_cpu_ms": 3.1924999999999795,
+              "calls": 100
+            },
+            {
+              "name": "aten::as_strided",
+              "self_cpu_ms": 2.6626969999998926,
+              "calls": 22720
+            },
+            {
+              "name": "aten::_scaled_dot_product_flash_attention_for_cpu",
+              "self_cpu_ms": 2.2118190000000175,
+              "calls": 10
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 2.0240870000000215,
+              "calls": 1490
+            }
+          ]
+        }
+      },
+      "fixed_draw_equivalence": {
+        "draw_seed": 547,
+        "compared_sampled_tokens": 64,
+        "sampled_tokens": [
+          [
+            12,
+            5,
+            1,
+            0,
+            9,
+            12,
+            9,
+            12
+          ],
+          [
+            5,
+            4,
+            11,
+            7,
+            6,
+            4,
+            3,
+            6
+          ],
+          [
+            12,
+            10,
+            0,
+            5,
+            7,
+            7,
+            5,
+            9
+          ],
+          [
+            2,
+            5,
+            6,
+            11,
+            0,
+            10,
+            8,
+            7
+          ],
+          [
+            1,
+            11,
+            6,
+            3,
+            7,
+            3,
+            7,
+            0
+          ],
+          [
+            3,
+            6,
+            6,
+            11,
+            12,
+            4,
+            4,
+            12
+          ],
+          [
+            1,
+            1,
+            6,
+            6,
+            9,
+            9,
+            9,
+            5
+          ],
+          [
+            8,
+            5,
+            11,
+            0,
+            2,
+            3,
+            11,
+            7
+          ]
+        ]
+      }
+    },
+    {
+      "prompt_length": 384,
+      "cached_suffix_length": 16,
+      "group_size": 8,
+      "profile": {
+        "retain": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 247.15897099999998,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.4317942,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 246.12695699999998,
+              "sdpa_ms": 228.778242,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.22539139999999,
+              "mean_sdpa_ms_per_replay": 45.7556484
+            },
+            "weight_load": {
+              "cpu_ms": 1.1137649999999994,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.2227529999999999,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 42.43527999999997,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 8.487055999999994,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "continuation_decode": {
+              "cpu_ms": 41.72006900000007,
+              "sdpa_ms": 23.017459999999843,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 8.344013800000015,
+              "mean_sdpa_ms_per_replay": 4.603491999999969
+            }
+          },
+          "mean_recovery_sdpa_ms": 4.603491999999969,
+          "recovery_sdpa_fraction": 0.5424132938441754,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 80.31992600000018,
+              "calls": 90
+            },
+            {
+              "name": "aten::all",
+              "self_cpu_ms": 70.09383799999972,
+              "calls": 135
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 32.49994099999987,
+              "calls": 110
+            },
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 26.590349000000774,
+              "calls": 230
+            },
+            {
+              "name": "aten::isneginf",
+              "self_cpu_ms": 19.700498000000096,
+              "calls": 90
+            },
+            {
+              "name": "aten::add_",
+              "self_cpu_ms": 8.027392000000058,
+              "calls": 10
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 5.720010999999388,
+              "calls": 17610
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 5.19333499999999,
+              "calls": 1170
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 3.8698189999998447,
+              "calls": 1260
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 3.2850909999999747,
+              "calls": 670
+            }
+          ]
+        },
+        "recompute": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 246.39808800000003,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.27961760000001,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 245.18940599999996,
+              "sdpa_ms": 225.88045300000002,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.037881199999994,
+              "mean_sdpa_ms_per_replay": 45.1760906
+            },
+            "weight_load": {
+              "cpu_ms": 1.3165569999999716,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.2633113999999943,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 293.4758509999999,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 58.695170199999986,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "prompt_and_suffix_prefill": {
+              "cpu_ms": 246.60346600000005,
+              "sdpa_ms": 226.28812299999987,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.32069320000001,
+              "mean_sdpa_ms_per_replay": 45.25762459999997
+            },
+            "continuation_decode": {
+              "cpu_ms": 45.63266100000007,
+              "sdpa_ms": 23.689050999999644,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 9.126532200000014,
+              "mean_sdpa_ms_per_replay": 4.737810199999929
+            }
+          },
+          "mean_recovery_sdpa_ms": 49.9954347999999,
+          "recovery_sdpa_fraction": 0.8517810686917459,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 151.13479000000015,
+              "calls": 100
+            },
+            {
+              "name": "aten::all",
+              "self_cpu_ms": 135.05718500000043,
+              "calls": 150
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 59.616057999999256,
+              "calls": 140
+            },
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 52.781886000005876,
+              "calls": 260
+            },
+            {
+              "name": "aten::isneginf",
+              "self_cpu_ms": 40.95373099999993,
+              "calls": 100
+            },
+            {
+              "name": "aten::add_",
+              "self_cpu_ms": 15.551238999999955,
+              "calls": 20
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 9.57074900000055,
+              "calls": 1300
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 7.277633999999569,
+              "calls": 1390
+            },
+            {
+              "name": "aten::mm",
+              "self_cpu_ms": 6.696668999998336,
+              "calls": 740
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 6.641552000000068,
+              "calls": 19780
+            }
+          ]
+        },
+        "share_prompt": {
+          "stages": {
+            "old_cache_prepare": {
+              "cpu_ms": 249.862164,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.9724328,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "old_prefill": {
+              "cpu_ms": 248.778607,
+              "sdpa_ms": 231.118803,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 49.7557214,
+              "mean_sdpa_ms_per_replay": 46.223760600000006
+            },
+            "weight_load": {
+              "cpu_ms": 1.3298089999999938,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.26596179999999875,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "replay_total": {
+              "cpu_ms": 92.34762900000003,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 18.469525800000007,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "prompt_prefill": {
+              "cpu_ms": 32.042530999999926,
+              "sdpa_ms": 26.671252999999997,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 6.4085061999999855,
+              "mean_sdpa_ms_per_replay": 5.334250599999999
+            },
+            "branch_copy": {
+              "cpu_ms": 0.31442100000000206,
+              "sdpa_ms": 0.0,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 0.06288420000000042,
+              "mean_sdpa_ms_per_replay": 0.0
+            },
+            "suffix_prefill": {
+              "cpu_ms": 17.018260000000016,
+              "sdpa_ms": 5.736114999999961,
+              "calls": 5,
+              "mean_cpu_ms_per_replay": 3.4036520000000032,
+              "mean_sdpa_ms_per_replay": 1.147222999999992
+            },
+            "continuation_decode": {
+              "cpu_ms": 42.052953000000095,
+              "sdpa_ms": 23.304797999999995,
+              "calls": 40,
+              "mean_cpu_ms_per_replay": 8.410590600000019,
+              "mean_sdpa_ms_per_replay": 4.660959599999999
+            }
+          },
+          "mean_recovery_sdpa_ms": 11.14243319999999,
+          "recovery_sdpa_fraction": 0.6032874541911621,
+          "top_operators_by_self_cpu": [
+            {
+              "name": "aten::_softmax",
+              "self_cpu_ms": 91.03685599999993,
+              "calls": 100
+            },
+            {
+              "name": "aten::all",
+              "self_cpu_ms": 77.88968099999958,
+              "calls": 150
+            },
+            {
+              "name": "aten::where",
+              "self_cpu_ms": 35.250531999999936,
+              "calls": 160
+            },
+            {
+              "name": "aten::bmm",
+              "self_cpu_ms": 30.363029999999636,
+              "calls": 270
+            },
+            {
+              "name": "aten::isneginf",
+              "self_cpu_ms": 23.020580999999936,
+              "calls": 100
+            },
+            {
+              "name": "aten::add_",
+              "self_cpu_ms": 8.725569999999957,
+              "calls": 25
+            },
+            {
+              "name": "aten::select",
+              "self_cpu_ms": 5.892032999999937,
+              "calls": 18030
+            },
+            {
+              "name": "aten::mul",
+              "self_cpu_ms": 5.7399180000004995,
+              "calls": 1410
+            },
+            {
+              "name": "aten::_scaled_dot_product_flash_attention_for_cpu",
+              "self_cpu_ms": 5.312187999999951,
+              "calls": 10
+            },
+            {
+              "name": "aten::copy_",
+              "self_cpu_ms": 4.291121000000812,
+              "calls": 1490
+            }
+          ]
+        }
+      },
+      "fixed_draw_equivalence": {
+        "draw_seed": 547,
+        "compared_sampled_tokens": 64,
+        "sampled_tokens": [
+          [
+            12,
+            5,
+            1,
+            0,
+            9,
+            12,
+            9,
+            12
+          ],
+          [
+            5,
+            4,
+            11,
+            7,
+            6,
+            4,
+            3,
+            6
+          ],
+          [
+            12,
+            10,
+            0,
+            5,
+            7,
+            7,
+            5,
+            9
+          ],
+          [
+            2,
+            5,
+            6,
+            11,
+            0,
+            10,
+            8,
+            7
+          ],
+          [
+            1,
+            11,
+            6,
+            3,
+            7,
+            3,
+            7,
+            0
+          ],
+          [
+            3,
+            6,
+            6,
+            11,
+            12,
+            4,
+            4,
+            12
+          ],
+          [
+            1,
+            1,
+            6,
+            6,
+            9,
+            9,
+            9,
+            5
+          ],
+          [
+            8,
+            5,
+            11,
+            0,
+            2,
+            3,
+            11,
+            7
+          ]
+        ]
+      }
+    }
+  ]
+}

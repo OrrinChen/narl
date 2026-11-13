@@ -1,0 +1,578 @@
+[
+  {
+    "prompt": "1 1 0 0 0 1 0 0 0 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 1 0 0 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 0 0 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 0 1 0 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 1 0 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 1 1 1 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 1 0 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 1 0 1 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 1 1 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 1 0 1 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 0 0 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 1 0 0 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 1 0 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 0 1 1 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 1 1 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 0 0 1 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 0 0 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 0 0 0 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 0 0 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 1 0 0 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 1 1 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 1 1 1 1 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 0 0 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 0 0 0 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 1 1 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 0 1 1 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 1 1 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 1 0 1 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 0 1 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 0 0 0 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 1 1 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 1 1 1 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 0 0 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 0 1 0 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 0 1 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 0 1 0 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 0 1 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 1 0 0 0 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 1 0 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 0 1 1 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 1 0 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 1 1 1 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 1 0 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 0 0 1 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 0 1 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 0 1 0 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 0 1 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 1 1 0 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 1 1 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 1 0 1 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 1 0 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 1 0 1 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 0 1 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 1 1 0 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 0 1 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 0 0 0 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 0 0 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 1 1 0 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 1 1 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 0 0 1 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 0 1 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 1 1 0 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 0 0 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 0 0 0 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 1 0 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 0 0 1 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 0 1 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 1 0 0 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 0 1 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 1 0 0 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 0 1 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 0 1 0 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 0 1 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 1 1 0 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 0 1 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 1 0 0 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 1 1 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 0 1 1 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 0 0 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 1 1 0 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 0 0 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 0 1 0 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 0 1 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 0 1 0 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 1 0 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 1 1 1 1 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 1 1 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 1 1 1 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 0 0 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 0 1 0 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 1 0 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 1 0 1 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 1 1 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 1 0 1 1 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 0 1 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 0 0 0 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 1 1 1 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 0 0 1 1 1 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 1 1 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 0 0 1 1 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 0 1 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 1 1 0 0 1 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 1 0 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 0 1 1 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 0 0 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 1 0 0 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 1 1 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 1 1 1 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 0 0 1 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 1 1 0 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 1 1 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 0 0 1 1 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 1 1 0 0 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 0 1 1 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 0 0 1 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 1 0 0 0 0 1",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 0 0 1 0 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 1 0 0 1 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 0 1 0 0 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 1 1 0 1 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 1 1 1 0 0 1 four red",
+    "operands": [
+      "four",
+      "red"
+    ],
+    "filler": "1 1 0 0 1 1 1 0 0 1",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 0 0 1 0 0 four blue",
+    "operands": [
+      "four",
+      "blue"
+    ],
+    "filler": "1 1 0 0 0 0 0 1 0 0",
+    "answer": "1"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 1 1 0 0 four green",
+    "operands": [
+      "four",
+      "green"
+    ],
+    "filler": "1 1 0 0 0 1 1 1 0 0",
+    "answer": "0"
+  },
+  {
+    "prompt": "1 1 0 0 0 1 0 1 1 1 four gold",
+    "operands": [
+      "four",
+      "gold"
+    ],
+    "filler": "1 1 0 0 0 1 0 1 1 1",
+    "answer": "1"
+  }
+]

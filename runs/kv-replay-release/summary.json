@@ -1,0 +1,661 @@
+{
+  "machine": "macOS-26.5.1-arm64-arm-64bit",
+  "cpu": "Apple M2",
+  "python": "3.11.15",
+  "torch": "2.8.0",
+  "transformers": "4.57.6",
+  "attention_backend": "sdpa",
+  "dtype": "torch.float32",
+  "threads": 1,
+  "interop_threads": 1,
+  "seed": 0,
+  "parameters": 19424,
+  "upstream_commit": "793e9b5b3d176ebb40161d8ba8d2125fe5153473",
+  "source_commit": "de59470bface643a846aec1c125940f836d864a5",
+  "snapshots": {
+    "old": {
+      "optimizer_steps": 0,
+      "path": "model/model.safetensors",
+      "sha256": "ae5a0d5748f0b2c5cfe9e999759c4a64ec062918f803ee77c5871016e30d57ac"
+    },
+    "new": {
+      "optimizer_steps": 12,
+      "path": "new_state.pt",
+      "sha256": "b1a7fc9fe97a839c9c9e214ed95aacaa337532aac221f80a8482d621506ac22e"
+    },
+    "max_abs_weight_delta": 0.02610548585653305
+  },
+  "warmups_per_mode": 3,
+  "repetitions_per_mode": 15,
+  "decode_steps": 8,
+  "tolerance": {
+    "atol": 2e-06,
+    "rtol": 1e-05,
+    "forced_logprob_atol": 2e-06
+  },
+  "timing_definition": "First token measures recovery and first decode to logits. Old prefill, weight load, cache discard, mask setup and sampling are outside this timer. Weight load is an in-memory state_dict copy.",
+  "kl_direction": "KL(P_recompute || P_candidate), same teacher-forced history",
+  "cases": [
+    {
+      "prompt_length": 32,
+      "suffix_length": 16,
+      "group_size": 8,
+      "weight_switch_after_sampled_token": 17,
+      "old_cache_tokens_per_branch": 48,
+      "same_weight_retain_vs_full": {
+        "mean_kl_nats": 1.65343704187731e-16,
+        "max_kl_nats": 1.310187287177726e-15,
+        "mean_kl_by_decode_step_nats": [
+          2.5715930054881423e-16,
+          9.085252328773937e-17,
+          2.068905521884954e-16,
+          1.7621441356232915e-16,
+          2.376815890839527e-16,
+          6.944319441483246e-17,
+          8.733865389992065e-17,
+          1.97169406515764e-16
+        ],
+        "max_abs_logit_error": 1.1920928955078125e-07,
+        "max_abs_forced_token_logprob_error": 3.7124875174043837e-08,
+        "greedy_matches": 64,
+        "predictions": 64
+      },
+      "new_weight_recompute_vs_full": {
+        "mean_kl_nats": 5.002445785544546e-16,
+        "max_kl_nats": 3.0620500182385258e-15,
+        "mean_kl_by_decode_step_nats": [
+          4.441655921472655e-16,
+          8.78547152991212e-16,
+          7.048422263744649e-16,
+          3.2241668986036297e-16,
+          3.4479700428010935e-16,
+          5.845210922119542e-16,
+          3.2328591470635887e-16,
+          3.993809558639088e-16
+        ],
+        "max_abs_logit_error": 1.7881393432617188e-07,
+        "max_abs_forced_token_logprob_error": 7.380192545980435e-08,
+        "greedy_matches": 64,
+        "predictions": 64
+      },
+      "modes": {
+        "retain": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.172292,
+              "min": 0.141583,
+              "max": 0.187167
+            },
+            "recompute_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "cache_copy_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "first_decode_ms": {
+              "median": 0.424958,
+              "min": 0.350709,
+              "max": 0.445333
+            },
+            "first_token_ms": {
+              "median": 0.425583,
+              "min": 0.35125,
+              "max": 0.446042
+            },
+            "replay_ms": {
+              "median": 3.543667,
+              "min": 3.152958,
+              "max": 3.954875
+            }
+          },
+          "prompt_tokens_recomputed": 0,
+          "suffix_tokens_recomputed": 0,
+          "vs_recompute": {
+            "mean_kl_nats": 0.002013593030092006,
+            "max_kl_nats": 0.005040959878932924,
+            "mean_kl_by_decode_step_nats": [
+              0.0017084927194636753,
+              0.002136725998741943,
+              0.0021101624724273902,
+              0.00166701049239305,
+              0.0020357477486599666,
+              0.0020855764168616303,
+              0.0022813276871109745,
+              0.002083700705077417
+            ],
+            "max_abs_logit_error": 0.22067058086395264,
+            "max_abs_forced_token_logprob_error": 0.1456314594954109,
+            "greedy_matches": 46,
+            "predictions": 64
+          }
+        },
+        "recompute": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.157708,
+              "min": 0.139916,
+              "max": 0.181875
+            },
+            "recompute_ms": {
+              "median": 1.495958,
+              "min": 1.299208,
+              "max": 1.592916
+            },
+            "cache_copy_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "first_decode_ms": {
+              "median": 0.42175,
+              "min": 0.343333,
+              "max": 0.512958
+            },
+            "first_token_ms": {
+              "median": 1.924625,
+              "min": 1.643959,
+              "max": 2.107791
+            },
+            "replay_ms": {
+              "median": 5.325417,
+              "min": 4.451125,
+              "max": 5.64825
+            }
+          },
+          "prompt_tokens_recomputed": 256,
+          "suffix_tokens_recomputed": 128,
+          "vs_recompute": {
+            "mean_kl_nats": 0.0,
+            "max_kl_nats": 0.0,
+            "mean_kl_by_decode_step_nats": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_abs_logit_error": 0.0,
+            "max_abs_forced_token_logprob_error": 0.0,
+            "greedy_matches": 64,
+            "predictions": 64
+          }
+        },
+        "share_prompt": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.157791,
+              "min": 0.13725,
+              "max": 0.186583
+            },
+            "recompute_ms": {
+              "median": 2.202292,
+              "min": 1.9426260000000002,
+              "max": 2.760333
+            },
+            "cache_copy_ms": {
+              "median": 0.016708,
+              "min": 0.012541,
+              "max": 0.02025
+            },
+            "first_decode_ms": {
+              "median": 0.411917,
+              "min": 0.3545,
+              "max": 0.476209
+            },
+            "first_token_ms": {
+              "median": 2.667667,
+              "min": 2.313375,
+              "max": 3.247333
+            },
+            "replay_ms": {
+              "median": 5.973875,
+              "min": 5.142,
+              "max": 6.792292
+            }
+          },
+          "prompt_tokens_recomputed": 32,
+          "suffix_tokens_recomputed": 128,
+          "vs_recompute": {
+            "mean_kl_nats": 1.6998884751233782e-16,
+            "max_kl_nats": 1.280720921729964e-15,
+            "mean_kl_by_decode_step_nats": [
+              2.7561616551716087e-16,
+              7.340487910905327e-17,
+              1.7739949921869655e-16,
+              2.1757788874773406e-16,
+              2.518134173056967e-16,
+              1.5997964505479975e-16,
+              1.0295763022058447e-16,
+              1.0116165492497691e-16
+            ],
+            "max_abs_logit_error": 1.1920928955078125e-07,
+            "max_abs_forced_token_logprob_error": 5.6769338563356087e-08,
+            "greedy_matches": 64,
+            "predictions": 64
+          }
+        }
+      }
+    },
+    {
+      "prompt_length": 128,
+      "suffix_length": 16,
+      "group_size": 8,
+      "weight_switch_after_sampled_token": 17,
+      "old_cache_tokens_per_branch": 144,
+      "same_weight_retain_vs_full": {
+        "mean_kl_nats": 1.8258314412867486e-16,
+        "max_kl_nats": 7.468684558435697e-16,
+        "mean_kl_by_decode_step_nats": [
+          2.2580199467606085e-16,
+          1.425994006671796e-16,
+          2.149228231842215e-16,
+          1.2968562669697307e-16,
+          2.891464854490285e-16,
+          1.7974080888800263e-16,
+          1.1938308134965366e-16,
+          1.5938493211827902e-16
+        ],
+        "max_abs_logit_error": 8.940696716308594e-08,
+        "max_abs_forced_token_logprob_error": 7.966835546824313e-08,
+        "greedy_matches": 64,
+        "predictions": 64
+      },
+      "new_weight_recompute_vs_full": {
+        "mean_kl_nats": 3.774162354528973e-16,
+        "max_kl_nats": 1.1869294283559995e-15,
+        "mean_kl_by_decode_step_nats": [
+          5.614626560566151e-16,
+          4.118238611704469e-16,
+          2.839755188619107e-16,
+          2.7865386370016075e-16,
+          2.4061612931426714e-16,
+          4.0056787687249675e-16,
+          3.894009662748073e-16,
+          4.528290113724737e-16
+        ],
+        "max_abs_logit_error": 1.2665987014770508e-07,
+        "max_abs_forced_token_logprob_error": 1.4111874824251913e-07,
+        "greedy_matches": 64,
+        "predictions": 64
+      },
+      "modes": {
+        "retain": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.171541,
+              "min": 0.143708,
+              "max": 0.204167
+            },
+            "recompute_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "cache_copy_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "first_decode_ms": {
+              "median": 0.567708,
+              "min": 0.473917,
+              "max": 0.601625
+            },
+            "first_token_ms": {
+              "median": 0.568333,
+              "min": 0.474458,
+              "max": 0.602208
+            },
+            "replay_ms": {
+              "median": 4.38,
+              "min": 3.674167,
+              "max": 5.123458
+            }
+          },
+          "prompt_tokens_recomputed": 0,
+          "suffix_tokens_recomputed": 0,
+          "vs_recompute": {
+            "mean_kl_nats": 0.002017267674439146,
+            "max_kl_nats": 0.004012136026620337,
+            "mean_kl_by_decode_step_nats": [
+              0.0026992565489700653,
+              0.0019016145138598959,
+              0.001736810492655524,
+              0.002122174186323773,
+              0.0021261856938078042,
+              0.001623588112076643,
+              0.0020580503004062178,
+              0.0018704615474132455
+            ],
+            "max_abs_logit_error": 0.2184925377368927,
+            "max_abs_forced_token_logprob_error": 0.20923571694703202,
+            "greedy_matches": 48,
+            "predictions": 64
+          }
+        },
+        "recompute": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.166708,
+              "min": 0.141375,
+              "max": 0.214458
+            },
+            "recompute_ms": {
+              "median": 6.538917,
+              "min": 6.18775,
+              "max": 7.552875
+            },
+            "cache_copy_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "first_decode_ms": {
+              "median": 0.511708,
+              "min": 0.467541,
+              "max": 0.622625
+            },
+            "first_token_ms": {
+              "median": 7.11775,
+              "min": 6.66875,
+              "max": 8.177958
+            },
+            "replay_ms": {
+              "median": 10.798833,
+              "min": 9.932208,
+              "max": 12.187375
+            }
+          },
+          "prompt_tokens_recomputed": 1024,
+          "suffix_tokens_recomputed": 128,
+          "vs_recompute": {
+            "mean_kl_nats": 0.0,
+            "max_kl_nats": 0.0,
+            "mean_kl_by_decode_step_nats": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_abs_logit_error": 0.0,
+            "max_abs_forced_token_logprob_error": 0.0,
+            "greedy_matches": 64,
+            "predictions": 64
+          }
+        },
+        "share_prompt": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.166,
+              "min": 0.140209,
+              "max": 0.183667
+            },
+            "recompute_ms": {
+              "median": 3.2515840000000003,
+              "min": 2.862959,
+              "max": 3.731457
+            },
+            "cache_copy_ms": {
+              "median": 0.019042,
+              "min": 0.01625,
+              "max": 0.022958
+            },
+            "first_decode_ms": {
+              "median": 0.545208,
+              "min": 0.47825,
+              "max": 0.684875
+            },
+            "first_token_ms": {
+              "median": 3.853416,
+              "min": 3.368167,
+              "max": 4.35425
+            },
+            "replay_ms": {
+              "median": 7.660375,
+              "min": 6.576084,
+              "max": 8.262792
+            }
+          },
+          "prompt_tokens_recomputed": 128,
+          "suffix_tokens_recomputed": 128,
+          "vs_recompute": {
+            "mean_kl_nats": 1.5637029971701642e-16,
+            "max_kl_nats": 7.775510620656985e-16,
+            "mean_kl_by_decode_step_nats": [
+              5.705832206281574e-17,
+              2.152666992900834e-16,
+              2.672396579974703e-16,
+              1.9599031413674813e-16,
+              1.325138007933704e-16,
+              1.2484674795171659e-16,
+              2.0294016112204032e-16,
+              5.5106694381886485e-17
+            ],
+            "max_abs_logit_error": 5.960464477539063e-08,
+            "max_abs_forced_token_logprob_error": 5.7718665402717306e-08,
+            "greedy_matches": 64,
+            "predictions": 64
+          }
+        }
+      }
+    },
+    {
+      "prompt_length": 384,
+      "suffix_length": 16,
+      "group_size": 8,
+      "weight_switch_after_sampled_token": 17,
+      "old_cache_tokens_per_branch": 400,
+      "same_weight_retain_vs_full": {
+        "mean_kl_nats": 2.3466086975237774e-16,
+        "max_kl_nats": 7.277047133300835e-16,
+        "mean_kl_by_decode_step_nats": [
+          2.394616628791844e-16,
+          2.7377504404788866e-16,
+          2.2430822305763297e-16,
+          2.135980864409567e-16,
+          4.1405343332774886e-16,
+          1.8684011724309332e-16,
+          1.758471096335682e-16,
+          1.494032813889488e-16
+        ],
+        "max_abs_logit_error": 8.940696716308594e-08,
+        "max_abs_forced_token_logprob_error": 5.188266438693745e-08,
+        "greedy_matches": 64,
+        "predictions": 64
+      },
+      "new_weight_recompute_vs_full": {
+        "mean_kl_nats": 6.006643457216608e-16,
+        "max_kl_nats": 1.86152619084385e-15,
+        "mean_kl_by_decode_step_nats": [
+          7.367372720495308e-16,
+          4.743430254045058e-16,
+          5.114263511094409e-16,
+          9.09291322776665e-16,
+          6.294109748334738e-16,
+          3.893278101370898e-16,
+          5.591896616766737e-16,
+          5.955883477859066e-16
+        ],
+        "max_abs_logit_error": 1.4901161193847656e-07,
+        "max_abs_forced_token_logprob_error": 1.0879545619957298e-07,
+        "greedy_matches": 64,
+        "predictions": 64
+      },
+      "modes": {
+        "retain": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.212083,
+              "min": 0.180208,
+              "max": 0.259166
+            },
+            "recompute_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "cache_copy_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "first_decode_ms": {
+              "median": 0.924208,
+              "min": 0.745209,
+              "max": 1.022625
+            },
+            "first_token_ms": {
+              "median": 0.925625,
+              "min": 0.745917,
+              "max": 1.024
+            },
+            "replay_ms": {
+              "median": 5.848625,
+              "min": 5.025959,
+              "max": 6.476792
+            }
+          },
+          "prompt_tokens_recomputed": 0,
+          "suffix_tokens_recomputed": 0,
+          "vs_recompute": {
+            "mean_kl_nats": 0.002436185852239095,
+            "max_kl_nats": 0.004238065502447957,
+            "mean_kl_by_decode_step_nats": [
+              0.002048772562922979,
+              0.0021531366902215487,
+              0.0027694908878549258,
+              0.0024138671403899237,
+              0.002582616998241546,
+              0.0022923267070385886,
+              0.0025760086213578925,
+              0.0026532672098853564
+            ],
+            "max_abs_logit_error": 0.21735148131847382,
+            "max_abs_forced_token_logprob_error": 0.22361394497956244,
+            "greedy_matches": 39,
+            "predictions": 64
+          }
+        },
+        "recompute": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.202,
+              "min": 0.179334,
+              "max": 0.362625
+            },
+            "recompute_ms": {
+              "median": 47.665125,
+              "min": 44.346084,
+              "max": 49.986292
+            },
+            "cache_copy_ms": {
+              "median": 0.0,
+              "min": 0.0,
+              "max": 0.0
+            },
+            "first_decode_ms": {
+              "median": 0.935833,
+              "min": 0.767958,
+              "max": 1.552583
+            },
+            "first_token_ms": {
+              "median": 49.223917,
+              "min": 45.117916,
+              "max": 51.034167
+            },
+            "replay_ms": {
+              "median": 53.828,
+              "min": 49.700166,
+              "max": 56.211084
+            }
+          },
+          "prompt_tokens_recomputed": 3072,
+          "suffix_tokens_recomputed": 128,
+          "vs_recompute": {
+            "mean_kl_nats": 0.0,
+            "max_kl_nats": 0.0,
+            "mean_kl_by_decode_step_nats": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max_abs_logit_error": 0.0,
+            "max_abs_forced_token_logprob_error": 0.0,
+            "greedy_matches": 64,
+            "predictions": 64
+          }
+        },
+        "share_prompt": {
+          "timing_ms": {
+            "weight_load_ms": {
+              "median": 0.222166,
+              "min": 0.177042,
+              "max": 0.284542
+            },
+            "recompute_ms": {
+              "median": 9.195707,
+              "min": 8.232376,
+              "max": 11.19775
+            },
+            "cache_copy_ms": {
+              "median": 0.03675,
+              "min": 0.029875,
+              "max": 0.042792
+            },
+            "first_decode_ms": {
+              "median": 0.782375,
+              "min": 0.634084,
+              "max": 0.877666
+            },
+            "first_token_ms": {
+              "median": 10.020042,
+              "min": 8.973041,
+              "max": 12.115333
+            },
+            "replay_ms": {
+              "median": 14.888084,
+              "min": 13.229166,
+              "max": 17.463083
+            }
+          },
+          "prompt_tokens_recomputed": 384,
+          "suffix_tokens_recomputed": 128,
+          "vs_recompute": {
+            "mean_kl_nats": 9.977708019368423e-17,
+            "max_kl_nats": 5.128816796381474e-16,
+            "mean_kl_by_decode_step_nats": [
+              2.1752636221819647e-16,
+              1.1564375392740452e-17,
+              1.1944706061640855e-16,
+              8.348703221172286e-17,
+              7.801555291623935e-17,
+              8.6250113178047e-17,
+              8.926914369600121e-17,
+              1.12657001320118e-16
+            ],
+            "max_abs_logit_error": 5.960464477539063e-08,
+            "max_abs_forced_token_logprob_error": 3.207484677858474e-08,
+            "greedy_matches": 64,
+            "predictions": 64
+          }
+        }
+      }
+    }
+  ]
+}

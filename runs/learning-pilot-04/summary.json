@@ -1,0 +1,325 @@
+{
+  "protocol": {
+    "frozen_at_utc": "2026-11-13T13:52:03.411859+00:00",
+    "stage": "pilot",
+    "source_commit": "6f860a8223ab0e5c7bdd03a5b4740dbe39b6e918",
+    "source_sha256": {
+      "experiments/kv_learning.py": "cd5f5bdc7236034ff2423b836ffbb54075dfd0d4e498ce54723d9d8f67e18a2a",
+      "experiments/kv_online.py": "5f0c55fe467cf84ec559212236e6dc4f8ae4b748ba6ee573ab8fdd3e391bc91a",
+      "experiments/shared_prefix.py": "accbb5881e6dcba7ad1945b8b41b804251e9f05715fe959368760258033dc88f"
+    },
+    "seeds": [
+      100,
+      101
+    ],
+    "groups_per_arm": 384,
+    "group_size": 8,
+    "generated_tokens_per_arm": 36864,
+    "prompt_tokens": 128,
+    "completion_lengths": [
+      8,
+      12,
+      16
+    ],
+    "eval_completion_length": 1,
+    "reward": "first generated token equals the class of the final input query token",
+    "training_credit": "first generated token; remaining tokens exercise rollout and in-flight swaps",
+    "task": "synthetic query classification with disjoint held-out distractor-query pairs and filler strings; all query tokens and labels appear in training",
+    "train_operand_shifts": [
+      0,
+      1
+    ],
+    "training_distractors": [
+      "one",
+      "two"
+    ],
+    "heldout_distractors": [
+      "three"
+    ],
+    "heldout_size": 64,
+    "training_size": 320,
+    "heldout_label_counts": {
+      "0": 32,
+      "1": 32
+    },
+    "heldout_unique_operand_pairs": 4,
+    "heldout_sha256": "8c181df5d46a536d601d8347b7f6d0f151e859cea782ab016e927e4636dee714",
+    "initial_model_sha256": "ae5a0d5748f0b2c5cfe9e999759c4a64ec062918f803ee77c5871016e30d57ac",
+    "target_accuracy": 0.75,
+    "target_crossing": "the second of two consecutive greedy evaluations at distinct update counts both meeting target; missing means a sustained crossing was not observed",
+    "target_token_count": "complete actor-generated groups by the end of evaluation; excludes the partially decoded in-flight group; received count recorded separately",
+    "action_labels": [
+      "0",
+      "1"
+    ],
+    "eval_every_admitted_groups": 24,
+    "arm_order": "alternate by seed index",
+    "arms": {
+      "recompute": "per-completion prefill, rebuild, and learner scoring",
+      "share_prompt": "share prompt prefill at start and swap, and during learner scoring"
+    },
+    "timing": "includes actor startup, online training, periodic/final evaluation and logging; initial model load and first evaluation precede the timer",
+    "queue_capacity": 2,
+    "max_lag": 1,
+    "threads_per_process": 1,
+    "snapshot_slots": 1,
+    "parameters": 19424,
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "logical_cpus": 8,
+    "cpu": "Apple M2",
+    "python": "3.11.15",
+    "torch": "2.8.0",
+    "transformers": "4.57.6",
+    "train_config": {
+      "task": "query-class",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/learning-pilot-04/model",
+      "steps": 200,
+      "n_prompts": 1,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.002,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 64,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 320
+    }
+  },
+  "runs": [
+    {
+      "seed": 100,
+      "mode": "recompute",
+      "wall_s": 9.938750666915439,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 3709.1181010018236,
+      "accepted_tokens": 31136,
+      "loss_tokens": 456,
+      "loss_tokens_s": 45.881018176454845,
+      "consumed_groups": 327,
+      "consumed_groups_s": 32.9015196133788,
+      "dropped_stale_groups": 57,
+      "dropped_overflow_groups": 0,
+      "zero_signal_groups": 270,
+      "lag_histogram_consumed": {
+        "0": 40,
+        "1": 287
+      },
+      "weight_switches_in_flight": 277,
+      "initial_reward": 0.0,
+      "final_reward": 1.0,
+      "queue_put_median_ms": 0.011603988241404295,
+      "queue_put_max_ms": 143.02325004246086,
+      "target_crossing": {
+        "wall_s": 3.489692416973412,
+        "received_generated_tokens": 6624,
+        "actor_completed_tokens": 6912,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "best_heldout_accuracy": 1.0,
+      "training_prompt_sha256": "2eefbed07146b48393dc46f7dd610332e5c1cf507ea5dc2a43a50b48c65f9e33"
+    },
+    {
+      "seed": 100,
+      "mode": "share_prompt",
+      "wall_s": 8.016886750003323,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 4598.29372043764,
+      "accepted_tokens": 34080,
+      "loss_tokens": 456,
+      "loss_tokens_s": 56.87993534395518,
+      "consumed_groups": 355,
+      "consumed_groups_s": 44.281528612070375,
+      "dropped_stale_groups": 29,
+      "dropped_overflow_groups": 0,
+      "zero_signal_groups": 298,
+      "lag_histogram_consumed": {
+        "0": 16,
+        "1": 339
+      },
+      "weight_switches_in_flight": 321,
+      "initial_reward": 0.0,
+      "final_reward": 1.0,
+      "queue_put_median_ms": 0.008333532605320215,
+      "queue_put_max_ms": 38.22354204021394,
+      "target_crossing": {
+        "wall_s": 3.306363333016634,
+        "received_generated_tokens": 4896,
+        "actor_completed_tokens": 5184,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "best_heldout_accuracy": 1.0,
+      "training_prompt_sha256": "2eefbed07146b48393dc46f7dd610332e5c1cf507ea5dc2a43a50b48c65f9e33"
+    },
+    {
+      "seed": 101,
+      "mode": "share_prompt",
+      "wall_s": 7.394686416024342,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 4985.201254797692,
+      "accepted_tokens": 34080,
+      "loss_tokens": 440,
+      "loss_tokens_s": 59.50218511585787,
+      "consumed_groups": 355,
+      "consumed_groups_s": 48.007444809385326,
+      "dropped_stale_groups": 29,
+      "dropped_overflow_groups": 0,
+      "zero_signal_groups": 300,
+      "lag_histogram_consumed": {
+        "0": 16,
+        "1": 339
+      },
+      "weight_switches_in_flight": 320,
+      "initial_reward": 0.0,
+      "final_reward": 1.0,
+      "queue_put_median_ms": 0.007916998583823442,
+      "queue_put_max_ms": 37.2829579282552,
+      "target_crossing": {
+        "wall_s": 2.9216065000509843,
+        "received_generated_tokens": 4896,
+        "actor_completed_tokens": 5184,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "best_heldout_accuracy": 1.0,
+      "training_prompt_sha256": "7c62d2ff99c73568f7eece0e54b8f173cbca43447f27b46e0421c38e9e01b2e0"
+    },
+    {
+      "seed": 101,
+      "mode": "recompute",
+      "wall_s": 10.741122999927029,
+      "generated_tokens": 36864,
+      "generated_tokens_s": 3432.043372024549,
+      "accepted_tokens": 31552,
+      "loss_tokens": 480,
+      "loss_tokens_s": 44.688064739902984,
+      "consumed_groups": 331,
+      "consumed_groups_s": 30.816144643558097,
+      "dropped_stale_groups": 53,
+      "dropped_overflow_groups": 0,
+      "zero_signal_groups": 271,
+      "lag_histogram_consumed": {
+        "0": 40,
+        "1": 291
+      },
+      "weight_switches_in_flight": 279,
+      "initial_reward": 0.0,
+      "final_reward": 1.0,
+      "queue_put_median_ms": 0.012916512787342072,
+      "queue_put_max_ms": 30.968250008299947,
+      "target_crossing": {
+        "wall_s": 3.8589189159683883,
+        "received_generated_tokens": 6400,
+        "actor_completed_tokens": 6688,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "best_heldout_accuracy": 1.0,
+      "training_prompt_sha256": "7c62d2ff99c73568f7eece0e54b8f173cbca43447f27b46e0421c38e9e01b2e0"
+    }
+  ],
+  "pairs": [
+    {
+      "seed": 100,
+      "baseline_target": {
+        "wall_s": 3.489692416973412,
+        "received_generated_tokens": 6624,
+        "actor_completed_tokens": 6912,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "shared_target": {
+        "wall_s": 3.306363333016634,
+        "received_generated_tokens": 4896,
+        "actor_completed_tokens": 5184,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "target_wall_speedup": 1.0554473496987138,
+      "target_actor_completed_token_delta": -1728,
+      "budget_wall_speedup": 1.239726963451407,
+      "useful_token_throughput_change": 0.2397269634514072,
+      "final_accuracy_delta": 0.0
+    },
+    {
+      "seed": 101,
+      "baseline_target": {
+        "wall_s": 3.8589189159683883,
+        "received_generated_tokens": 6400,
+        "actor_completed_tokens": 6688,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "shared_target": {
+        "wall_s": 2.9216065000509843,
+        "received_generated_tokens": 4896,
+        "actor_completed_tokens": 5184,
+        "update": 48,
+        "accuracy": 1.0
+      },
+      "target_wall_speedup": 1.3208208962778003,
+      "target_actor_completed_token_delta": -1504,
+      "budget_wall_speedup": 1.4525461115769471,
+      "useful_token_throughput_change": 0.331500602278868,
+      "final_accuracy_delta": 0.0
+    }
+  ],
+  "summary": {
+    "paired_target_reaches": 2,
+    "target_reaches_by_arm": {
+      "baseline": 2,
+      "shared": 2
+    },
+    "target_wall_speedup_median": 1.1881341229882572,
+    "target_actor_completed_token_delta_median": -1616.0,
+    "budget_wall_speedup_median": 1.3461365375141772,
+    "useful_token_throughput_change_median": 0.2856137828651376
+  }
+}

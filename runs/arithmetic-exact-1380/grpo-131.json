@@ -1,0 +1,62 @@
+{
+  "curve": [
+    {
+      "groups": 0,
+      "noncarry": 0.5,
+      "carry": 0.765625,
+      "all": 0.6328125
+    },
+    {
+      "groups": 96,
+      "noncarry": 0.609375,
+      "carry": 0.84375,
+      "all": 0.7265625
+    },
+    {
+      "groups": 192,
+      "noncarry": 0.65625,
+      "carry": 0.875,
+      "all": 0.765625
+    },
+    {
+      "groups": 288,
+      "noncarry": 0.609375,
+      "carry": 0.78125,
+      "all": 0.6953125
+    },
+    {
+      "groups": 384,
+      "noncarry": 0.640625,
+      "carry": 0.890625,
+      "all": 0.765625
+    },
+    {
+      "groups": 480,
+      "noncarry": 0.609375,
+      "carry": 0.921875,
+      "all": 0.765625
+    },
+    {
+      "groups": 576,
+      "noncarry": 0.71875,
+      "carry": 0.84375,
+      "all": 0.78125
+    },
+    {
+      "groups": 672,
+      "noncarry": 0.640625,
+      "carry": 0.875,
+      "all": 0.7578125
+    },
+    {
+      "groups": 768,
+      "noncarry": 0.609375,
+      "carry": 0.921875,
+      "all": 0.765625
+    }
+  ],
+  "useful_groups": {
+    "noncarry": 349,
+    "carry": 341
+  }
+}

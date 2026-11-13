@@ -1,0 +1,1311 @@
+{
+  "protocol": {
+    "stage": "main",
+    "args": {
+      "out": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-prefix-5seed",
+      "development": false,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "groups": 768,
+      "threshold": 0.7,
+      "lr": 0.0001,
+      "eval_every": 96,
+      "fifo_windows": [
+        2
+      ],
+      "version_window": 2,
+      "checkpoint": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-sft-03/sft-1380"
+    },
+    "source_commit": "4e9aeb595a127ca77b5780afb0c70e87fdfbb905",
+    "source_sha256": {
+      "experiments/kv_sequence.py": "9b6f6ac1d5578fdc9e734fc0f8fff823648d91aa226d0c05baeabff14f6c55db",
+      "experiments/kv_batch_dispatch.py": "e2d781f5aa59a59771ad0f888abe13e30e002c0ded5cc6a103a94dc3054ef6ae",
+      "experiments/kv_sequence_task.py": "32b8384b4b2f61221a28673c0d9cb910423f1a7f91f1519d58a14950723b5528",
+      "experiments/kv_online.py": "7d93828908c6f3f632884e9241791ab17519bb8debefca5839f9f080c21f8c89",
+      "experiments/shared_prefix.py": "accbb5881e6dcba7ad1945b8b41b804251e9f05715fe959368760258033dc88f",
+      "experiments/kv_arithmetic_task.py": "26d878d70b0b587ad4bcde960431f75d1ad7b4c98c42fbe22bb3368893ebb211"
+    },
+    "initial_model_sha256": "560493dbc3bdb081f054740e052172f3815b19c81fcd58353753a104bc0e268d",
+    "initial_weight_sha256": "5332933594861074f2ef866450a8129e08cc91e554f1d45a92daffdc9814be91",
+    "publication": "changed_weights_only",
+    "optimizer_groups_per_update": 2,
+    "max_lag": 1,
+    "actor_count": 3,
+    "torch_threads_per_process": 1,
+    "queue_capacity": 2,
+    "max_pending_learner_groups": 2,
+    "group_size": 8,
+    "prompt_tokens": 128,
+    "model_parameters": 113088,
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15 (main, Apr 14 2026, 14:45:51) [Clang 22.1.3 ]",
+    "torch": "2.8.0",
+    "cpu": "Apple M2",
+    "train_config": {
+      "task": "arithmetic",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-prefix-5seed/model",
+      "steps": 200,
+      "n_prompts": 2,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.0001,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 128,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 3200
+    },
+    "train_reward": "exact match of all answer digits",
+    "eval": "greedy exact match by bucket; evaluated every fixed number of received groups, timed at the second consecutive post-initial hit at distinct update counts",
+    "wall_clock": "actor startup, training, periodic and final eval, trace writes; initial eval untimed",
+    "arms": "recompute: per-completion prompt prefill and suffix-only dense learner scoring; share_prompt: actor prefill and differentiable learner prefix reuse; both use FIFO",
+    "benchmark": "prefix",
+    "task": "arithmetic",
+    "action_labels": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "reward_kind": "exact_match",
+    "rollout_horizon": 3,
+    "swap_check": "every four generated tokens, outside the three-token rollout horizon",
+    "training_clock": "all actors ready and released through a start gate, through evaluation",
+    "accuracy_metric": "all: exact match of every answer digit"
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "arm": "recompute",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.75,
+        "carry": 0.90625,
+        "all": 0.828125
+      },
+      "best_accuracy": {
+        "noncarry": 0.796875,
+        "carry": 0.90625,
+        "all": 0.8359375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 13.365867667016573,
+          "eval_started_s": 13.054387166979723,
+          "accuracy": {
+            "noncarry": 0.765625,
+            "carry": 0.828125,
+            "all": 0.796875
+          },
+          "training_started_s": 5.526115917018615,
+          "training_time_s": 7.8397517499979585,
+          "actor_completed_tokens": 4656
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 13.365867667016573,
+          "eval_started_s": 13.054387166979723,
+          "accuracy": {
+            "noncarry": 0.765625,
+            "carry": 0.828125,
+            "all": 0.796875
+          },
+          "training_started_s": 5.526115917018615,
+          "training_time_s": 7.8397517499979585,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 13.365867667016573,
+          "eval_started_s": 13.054387166979723,
+          "accuracy": {
+            "noncarry": 0.765625,
+            "carry": 0.828125,
+            "all": 0.796875
+          },
+          "training_started_s": 5.526115917018615,
+          "training_time_s": 7.8397517499979585,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 38.12167920905631,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 380,
+      "no_op_updates": 4,
+      "by_bucket": {
+        "carry": {
+          "statuses": {
+            "consumed": 388
+          },
+          "groups": 388,
+          "generated_tokens": 9312,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 380
+          },
+          "groups": 380,
+          "generated_tokens": 9120,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 428.73242572476363
+    },
+    {
+      "seed": 0,
+      "arm": "share_prompt",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.75,
+        "carry": 0.90625,
+        "all": 0.828125
+      },
+      "best_accuracy": {
+        "noncarry": 0.796875,
+        "carry": 0.90625,
+        "all": 0.8359375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 6.942017833003774,
+          "eval_started_s": 6.731074249953963,
+          "accuracy": {
+            "noncarry": 0.765625,
+            "carry": 0.828125,
+            "all": 0.796875
+          },
+          "training_started_s": 3.942362083005719,
+          "training_time_s": 2.9996557499980554,
+          "actor_completed_tokens": 4656
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 6.942017833003774,
+          "eval_started_s": 6.731074249953963,
+          "accuracy": {
+            "noncarry": 0.765625,
+            "carry": 0.828125,
+            "all": 0.796875
+          },
+          "training_started_s": 3.942362083005719,
+          "training_time_s": 2.9996557499980554,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 6.942017833003774,
+          "eval_started_s": 6.731074249953963,
+          "accuracy": {
+            "noncarry": 0.765625,
+            "carry": 0.828125,
+            "all": 0.796875
+          },
+          "training_started_s": 3.942362083005719,
+          "training_time_s": 2.9996557499980554,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 16.00443658302538,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 380,
+      "no_op_updates": 4,
+      "by_bucket": {
+        "carry": {
+          "statuses": {
+            "consumed": 388
+          },
+          "groups": 388,
+          "generated_tokens": 9312,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 380
+          },
+          "groups": 380,
+          "generated_tokens": 9120,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 1021.2168304215573
+    },
+    {
+      "seed": 1,
+      "arm": "share_prompt",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.796875,
+        "carry": 0.921875,
+        "all": 0.859375
+      },
+      "best_accuracy": {
+        "noncarry": 0.796875,
+        "carry": 0.921875,
+        "all": 0.859375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 384,
+          "received_tokens": 9216,
+          "update": 192,
+          "policy_version": 190,
+          "time_s": 9.327557874959894,
+          "eval_started_s": 9.139065374969505,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.980496458010748,
+          "training_time_s": 5.3470614169491455,
+          "actor_completed_tokens": 9264
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 94,
+          "time_s": 6.997088499949314,
+          "eval_started_s": 6.804020083043724,
+          "accuracy": {
+            "noncarry": 0.671875,
+            "carry": 0.875,
+            "all": 0.7734375
+          },
+          "training_started_s": 3.980496458010748,
+          "training_time_s": 3.0165920419385657,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 94,
+          "time_s": 6.997088499949314,
+          "eval_started_s": 6.804020083043724,
+          "accuracy": {
+            "noncarry": 0.671875,
+            "carry": 0.875,
+            "all": 0.7734375
+          },
+          "training_started_s": 3.980496458010748,
+          "training_time_s": 3.0165920419385657,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 14.823110167053528,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 379,
+      "no_op_updates": 5,
+      "by_bucket": {
+        "carry": {
+          "statuses": {
+            "consumed": 378
+          },
+          "groups": 378,
+          "generated_tokens": 9072,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 390
+          },
+          "groups": 390,
+          "generated_tokens": 9360,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 1112.3171732641458
+    },
+    {
+      "seed": 1,
+      "arm": "recompute",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.796875,
+        "carry": 0.921875,
+        "all": 0.859375
+      },
+      "best_accuracy": {
+        "noncarry": 0.796875,
+        "carry": 0.921875,
+        "all": 0.859375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 384,
+          "received_tokens": 9216,
+          "update": 192,
+          "policy_version": 190,
+          "time_s": 19.939368542050943,
+          "eval_started_s": 19.73507375002373,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.9911385000450537,
+          "training_time_s": 15.94823004200589,
+          "actor_completed_tokens": 9264
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 94,
+          "time_s": 12.513709250022657,
+          "eval_started_s": 12.281009417027235,
+          "accuracy": {
+            "noncarry": 0.671875,
+            "carry": 0.875,
+            "all": 0.7734375
+          },
+          "training_started_s": 3.9911385000450537,
+          "training_time_s": 8.522570749977604,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 94,
+          "time_s": 12.513709250022657,
+          "eval_started_s": 12.281009417027235,
+          "accuracy": {
+            "noncarry": 0.671875,
+            "carry": 0.875,
+            "all": 0.7734375
+          },
+          "training_started_s": 3.9911385000450537,
+          "training_time_s": 8.522570749977604,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 33.67213708302006,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 379,
+      "no_op_updates": 5,
+      "by_bucket": {
+        "carry": {
+          "statuses": {
+            "consumed": 378
+          },
+          "groups": 378,
+          "generated_tokens": 9072,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 390
+          },
+          "groups": 390,
+          "generated_tokens": 9360,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 489.6630100830294
+    },
+    {
+      "seed": 2,
+      "arm": "recompute",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.703125,
+        "carry": 0.875,
+        "all": 0.7890625
+      },
+      "best_accuracy": {
+        "noncarry": 0.78125,
+        "carry": 0.890625,
+        "all": 0.8359375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 9.943246457958594,
+          "eval_started_s": 9.74709662492387,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.9844283330021426,
+          "training_time_s": 5.958818124956451,
+          "actor_completed_tokens": 4656
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 9.943246457958594,
+          "eval_started_s": 9.74709662492387,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.9844283330021426,
+          "training_time_s": 5.958818124956451,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 9.943246457958594,
+          "eval_started_s": 9.74709662492387,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.9844283330021426,
+          "training_time_s": 5.958818124956451,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 27.467862666933797,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 377,
+      "no_op_updates": 7,
+      "by_bucket": {
+        "noncarry": {
+          "statuses": {
+            "consumed": 407
+          },
+          "groups": 407,
+          "generated_tokens": 9768,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "carry": {
+          "statuses": {
+            "consumed": 361
+          },
+          "groups": 361,
+          "generated_tokens": 8664,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 584.5376538644356
+    },
+    {
+      "seed": 2,
+      "arm": "share_prompt",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.703125,
+        "carry": 0.875,
+        "all": 0.7890625
+      },
+      "best_accuracy": {
+        "noncarry": 0.78125,
+        "carry": 0.890625,
+        "all": 0.8359375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 5.739096083911136,
+          "eval_started_s": 5.564568499918096,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.411079083918594,
+          "training_time_s": 2.328016999992542,
+          "actor_completed_tokens": 4656
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 5.739096083911136,
+          "eval_started_s": 5.564568499918096,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.411079083918594,
+          "training_time_s": 2.328016999992542,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 5.739096083911136,
+          "eval_started_s": 5.564568499918096,
+          "accuracy": {
+            "noncarry": 0.78125,
+            "carry": 0.890625,
+            "all": 0.8359375
+          },
+          "training_started_s": 3.411079083918594,
+          "training_time_s": 2.328016999992542,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 13.475403583957814,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 377,
+      "no_op_updates": 7,
+      "by_bucket": {
+        "noncarry": {
+          "statuses": {
+            "consumed": 407
+          },
+          "groups": 407,
+          "generated_tokens": 9768,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "carry": {
+          "statuses": {
+            "consumed": 361
+          },
+          "groups": 361,
+          "generated_tokens": 8664,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 1191.504202450332
+    },
+    {
+      "seed": 3,
+      "arm": "share_prompt",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.8125,
+        "carry": 0.890625,
+        "all": 0.8515625
+      },
+      "best_accuracy": {
+        "noncarry": 0.8125,
+        "carry": 0.90625,
+        "all": 0.8515625
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 576,
+          "received_tokens": 13824,
+          "update": 288,
+          "policy_version": 286,
+          "time_s": 11.338434749981388,
+          "eval_started_s": 11.161597625003196,
+          "accuracy": {
+            "noncarry": 0.71875,
+            "carry": 0.875,
+            "all": 0.796875
+          },
+          "training_started_s": 4.430940584046766,
+          "training_time_s": 6.907494165934622,
+          "actor_completed_tokens": 13872
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 6.8152597500011325,
+          "eval_started_s": 6.646542500006035,
+          "accuracy": {
+            "noncarry": 0.6875,
+            "carry": 0.8125,
+            "all": 0.75
+          },
+          "training_started_s": 4.430940584046766,
+          "training_time_s": 2.3843191659543663,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 288,
+          "received_tokens": 6912,
+          "update": 144,
+          "policy_version": 143,
+          "time_s": 7.865681417053565,
+          "eval_started_s": 7.689388417056762,
+          "accuracy": {
+            "noncarry": 0.6875,
+            "carry": 0.78125,
+            "all": 0.734375
+          },
+          "training_started_s": 4.430940584046766,
+          "training_time_s": 3.434740833006799,
+          "actor_completed_tokens": 6960
+        }
+      },
+      "wall_s": 14.209080667002127,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 382,
+      "no_op_updates": 2,
+      "by_bucket": {
+        "carry": {
+          "statuses": {
+            "consumed": 389
+          },
+          "groups": 389,
+          "generated_tokens": 9336,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 379
+          },
+          "groups": 379,
+          "generated_tokens": 9096,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 1148.561288549799
+    },
+    {
+      "seed": 3,
+      "arm": "recompute",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.8125,
+        "carry": 0.890625,
+        "all": 0.8515625
+      },
+      "best_accuracy": {
+        "noncarry": 0.8125,
+        "carry": 0.90625,
+        "all": 0.8515625
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 576,
+          "received_tokens": 13824,
+          "update": 288,
+          "policy_version": 286,
+          "time_s": 20.39354366704356,
+          "eval_started_s": 20.19417999999132,
+          "accuracy": {
+            "noncarry": 0.71875,
+            "carry": 0.875,
+            "all": 0.796875
+          },
+          "training_started_s": 3.4201433340786025,
+          "training_time_s": 16.973400332964957,
+          "actor_completed_tokens": 13872
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 95,
+          "time_s": 8.929066749988124,
+          "eval_started_s": 8.757447250070982,
+          "accuracy": {
+            "noncarry": 0.6875,
+            "carry": 0.8125,
+            "all": 0.75
+          },
+          "training_started_s": 3.4201433340786025,
+          "training_time_s": 5.508923415909521,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 288,
+          "received_tokens": 6912,
+          "update": 144,
+          "policy_version": 143,
+          "time_s": 11.693811209057458,
+          "eval_started_s": 11.497298417030834,
+          "accuracy": {
+            "noncarry": 0.6875,
+            "carry": 0.78125,
+            "all": 0.734375
+          },
+          "training_started_s": 3.4201433340786025,
+          "training_time_s": 8.273667874978855,
+          "actor_completed_tokens": 6960
+        }
+      },
+      "wall_s": 26.801235584076494,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 382,
+      "no_op_updates": 2,
+      "by_bucket": {
+        "carry": {
+          "statuses": {
+            "consumed": 389
+          },
+          "groups": 389,
+          "generated_tokens": 9336,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 379
+          },
+          "groups": 379,
+          "generated_tokens": 9096,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 608.9271499742443
+    },
+    {
+      "seed": 4,
+      "arm": "recompute",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.75,
+        "carry": 0.890625,
+        "all": 0.8203125
+      },
+      "best_accuracy": {
+        "noncarry": 0.8125,
+        "carry": 0.9375,
+        "all": 0.859375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 93,
+          "time_s": 8.820417959010229,
+          "eval_started_s": 8.599693041993305,
+          "accuracy": {
+            "noncarry": 0.703125,
+            "carry": 0.890625,
+            "all": 0.796875
+          },
+          "training_started_s": 3.2822681249817833,
+          "training_time_s": 5.538149834028445,
+          "actor_completed_tokens": 4656
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 93,
+          "time_s": 8.820417959010229,
+          "eval_started_s": 8.599693041993305,
+          "accuracy": {
+            "noncarry": 0.703125,
+            "carry": 0.890625,
+            "all": 0.796875
+          },
+          "training_started_s": 3.2822681249817833,
+          "training_time_s": 5.538149834028445,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 93,
+          "time_s": 8.820417959010229,
+          "eval_started_s": 8.599693041993305,
+          "accuracy": {
+            "noncarry": 0.703125,
+            "carry": 0.890625,
+            "all": 0.796875
+          },
+          "training_started_s": 3.2822681249817833,
+          "training_time_s": 5.538149834028445,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 26.1375784589909,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 374,
+      "no_op_updates": 10,
+      "by_bucket": {
+        "noncarry": {
+          "statuses": {
+            "consumed": 364
+          },
+          "groups": 364,
+          "generated_tokens": 8736,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "carry": {
+          "statuses": {
+            "consumed": 404
+          },
+          "groups": 404,
+          "generated_tokens": 9696,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 620.7154968642172
+    },
+    {
+      "seed": 4,
+      "arm": "share_prompt",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.734375,
+        "carry": 0.90625,
+        "all": 0.8203125
+      },
+      "best_accuracy": {
+        "noncarry": 0.8125,
+        "carry": 0.9375,
+        "all": 0.859375
+      },
+      "target": {
+        "noncarry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 93,
+          "time_s": 6.647922749980353,
+          "eval_started_s": 6.470236832974479,
+          "accuracy": {
+            "noncarry": 0.703125,
+            "carry": 0.890625,
+            "all": 0.796875
+          },
+          "training_started_s": 4.054584082914516,
+          "training_time_s": 2.5933386670658365,
+          "actor_completed_tokens": 4656
+        },
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 93,
+          "time_s": 6.647922749980353,
+          "eval_started_s": 6.470236832974479,
+          "accuracy": {
+            "noncarry": 0.703125,
+            "carry": 0.890625,
+            "all": 0.796875
+          },
+          "training_started_s": 4.054584082914516,
+          "training_time_s": 2.5933386670658365,
+          "actor_completed_tokens": 4656
+        },
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 93,
+          "time_s": 6.647922749980353,
+          "eval_started_s": 6.470236832974479,
+          "accuracy": {
+            "noncarry": 0.703125,
+            "carry": 0.890625,
+            "all": 0.796875
+          },
+          "training_started_s": 4.054584082914516,
+          "training_time_s": 2.5933386670658365,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 14.586338832974434,
+      "generated_tokens": 18432,
+      "updates": 384,
+      "publications": 374,
+      "no_op_updates": 10,
+      "by_bucket": {
+        "noncarry": {
+          "statuses": {
+            "consumed": 364
+          },
+          "groups": 364,
+          "generated_tokens": 8736,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "carry": {
+          "statuses": {
+            "consumed": 404
+          },
+          "groups": 404,
+          "generated_tokens": 9696,
+          "post_swap_nonzero_advantage_groups": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "loss_tokens_s": 1108.9828767333936
+    }
+  ],
+  "comparisons": {
+    "recompute": {
+      "pairs": [
+        {
+          "seed": 0,
+          "baseline": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 95,
+            "time_s": 13.365867667016573,
+            "eval_started_s": 13.054387166979723,
+            "accuracy": {
+              "noncarry": 0.765625,
+              "carry": 0.828125,
+              "all": 0.796875
+            },
+            "training_started_s": 5.526115917018615,
+            "training_time_s": 7.8397517499979585,
+            "actor_completed_tokens": 4656
+          },
+          "shared": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 95,
+            "time_s": 6.942017833003774,
+            "eval_started_s": 6.731074249953963,
+            "accuracy": {
+              "noncarry": 0.765625,
+              "carry": 0.828125,
+              "all": 0.796875
+            },
+            "training_started_s": 3.942362083005719,
+            "training_time_s": 2.9996557499980554,
+            "actor_completed_tokens": 4656
+          },
+          "time_saved_s": 6.423849834012799,
+          "time_saved_fraction": 0.48061599845591485,
+          "training_time_saved_s": 4.840095999999903,
+          "training_time_saved_fraction": 0.617378732687698,
+          "actor_completed_tokens_saved": 0
+        },
+        {
+          "seed": 1,
+          "baseline": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 94,
+            "time_s": 12.513709250022657,
+            "eval_started_s": 12.281009417027235,
+            "accuracy": {
+              "noncarry": 0.671875,
+              "carry": 0.875,
+              "all": 0.7734375
+            },
+            "training_started_s": 3.9911385000450537,
+            "training_time_s": 8.522570749977604,
+            "actor_completed_tokens": 4656
+          },
+          "shared": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 94,
+            "time_s": 6.997088499949314,
+            "eval_started_s": 6.804020083043724,
+            "accuracy": {
+              "noncarry": 0.671875,
+              "carry": 0.875,
+              "all": 0.7734375
+            },
+            "training_started_s": 3.980496458010748,
+            "training_time_s": 3.0165920419385657,
+            "actor_completed_tokens": 4656
+          },
+          "time_saved_s": 5.5166207500733435,
+          "time_saved_fraction": 0.4408461663805522,
+          "training_time_saved_s": 5.505978708039038,
+          "training_time_saved_fraction": 0.6460466999412715,
+          "actor_completed_tokens_saved": 0
+        },
+        {
+          "seed": 2,
+          "baseline": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 95,
+            "time_s": 9.943246457958594,
+            "eval_started_s": 9.74709662492387,
+            "accuracy": {
+              "noncarry": 0.78125,
+              "carry": 0.890625,
+              "all": 0.8359375
+            },
+            "training_started_s": 3.9844283330021426,
+            "training_time_s": 5.958818124956451,
+            "actor_completed_tokens": 4656
+          },
+          "shared": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 95,
+            "time_s": 5.739096083911136,
+            "eval_started_s": 5.564568499918096,
+            "accuracy": {
+              "noncarry": 0.78125,
+              "carry": 0.890625,
+              "all": 0.8359375
+            },
+            "training_started_s": 3.411079083918594,
+            "training_time_s": 2.328016999992542,
+            "actor_completed_tokens": 4656
+          },
+          "time_saved_s": 4.204150374047458,
+          "time_saved_fraction": 0.4228146603650207,
+          "training_time_saved_s": 3.6308011249639094,
+          "training_time_saved_fraction": 0.609315647637835,
+          "actor_completed_tokens_saved": 0
+        },
+        {
+          "seed": 3,
+          "baseline": {
+            "received_groups": 288,
+            "received_tokens": 6912,
+            "update": 144,
+            "policy_version": 143,
+            "time_s": 11.693811209057458,
+            "eval_started_s": 11.497298417030834,
+            "accuracy": {
+              "noncarry": 0.6875,
+              "carry": 0.78125,
+              "all": 0.734375
+            },
+            "training_started_s": 3.4201433340786025,
+            "training_time_s": 8.273667874978855,
+            "actor_completed_tokens": 6960
+          },
+          "shared": {
+            "received_groups": 288,
+            "received_tokens": 6912,
+            "update": 144,
+            "policy_version": 143,
+            "time_s": 7.865681417053565,
+            "eval_started_s": 7.689388417056762,
+            "accuracy": {
+              "noncarry": 0.6875,
+              "carry": 0.78125,
+              "all": 0.734375
+            },
+            "training_started_s": 4.430940584046766,
+            "training_time_s": 3.434740833006799,
+            "actor_completed_tokens": 6960
+          },
+          "time_saved_s": 3.8281297920038924,
+          "time_saved_fraction": 0.32736374168917737,
+          "training_time_saved_s": 4.838927041972056,
+          "training_time_saved_fraction": 0.5848587488755612,
+          "actor_completed_tokens_saved": 0
+        },
+        {
+          "seed": 4,
+          "baseline": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 93,
+            "time_s": 8.820417959010229,
+            "eval_started_s": 8.599693041993305,
+            "accuracy": {
+              "noncarry": 0.703125,
+              "carry": 0.890625,
+              "all": 0.796875
+            },
+            "training_started_s": 3.2822681249817833,
+            "training_time_s": 5.538149834028445,
+            "actor_completed_tokens": 4656
+          },
+          "shared": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 93,
+            "time_s": 6.647922749980353,
+            "eval_started_s": 6.470236832974479,
+            "accuracy": {
+              "noncarry": 0.703125,
+              "carry": 0.890625,
+              "all": 0.796875
+            },
+            "training_started_s": 4.054584082914516,
+            "training_time_s": 2.5933386670658365,
+            "actor_completed_tokens": 4656
+          },
+          "time_saved_s": 2.1724952090298757,
+          "time_saved_fraction": 0.24630297783231803,
+          "training_time_saved_s": 2.9448111669626087,
+          "training_time_saved_fraction": 0.5317319421133386,
+          "actor_completed_tokens_saved": 0
+        }
+      ],
+      "paired_hits": 5,
+      "baseline_hits": 5,
+      "shared_hits": 5,
+      "shared_faster": 5,
+      "shared_training_faster": 5,
+      "median_time_saved_s": 4.204150374047458,
+      "median_time_saved_fraction": 0.4228146603650207,
+      "median_training_time_saved_s": 4.838927041972056,
+      "median_training_time_saved_fraction": 0.609315647637835,
+      "median_actor_completed_tokens_saved": 0
+    }
+  }
+}

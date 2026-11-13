@@ -1,0 +1,465 @@
+{
+  "source_run": "/Users/orynwilder/Documents/New project 2/narl/runs/online-backpressure",
+  "protocol": {
+    "comparison": [
+      "recompute",
+      "share_prompt"
+    ],
+    "selection": "both cross-version recompute modes passed replay parity",
+    "seeds": [
+      0
+    ],
+    "groups": 18,
+    "prompt_tokens": 128,
+    "completion_lengths": [
+      16,
+      24,
+      32
+    ],
+    "fixed_horizon": true,
+    "first_content_token": 3,
+    "reward_position": "last",
+    "eval_completion_length": 16,
+    "queue_capacity": 2,
+    "max_lag": 1,
+    "snapshot_slots": 1,
+    "publish_every_accepted_groups": 1,
+    "max_swaps_per_group": 1,
+    "weight_check_every_tokens": 4,
+    "threads_per_process": 1,
+    "initial_learner_stress_delay_s": 4.0,
+    "train_config": {
+      "task": "token-choice",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/online-backpressure/model",
+      "steps": 200,
+      "n_prompts": 1,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.001,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 16,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 80
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15",
+    "torch": "2.8.0",
+    "parameters": 19424,
+    "transformers": "4.57.6",
+    "logical_cpus": 8,
+    "cpu": "Apple M2",
+    "source_commit": "470ae27704b8edbf1d9c2cb82c016c97ee396913",
+    "wall_time_includes": "actor startup, training, periodic and final evaluation, output logging"
+  },
+  "paired_seeds": 1,
+  "comparison_timing": "Per-arm phase medians use the groups observed in that arm. Wall time includes actor startup and evaluation.",
+  "queue_measurement": "Queue capacity comes from the protocol. The queue trace records producer put latency, not actual queue depth.",
+  "pairs": [
+    {
+      "seed": 0,
+      "recompute": {
+        "wall_s": 13.696281375014223,
+        "generated_tokens": 3456,
+        "generated_tokens_s": 252.33126462374616,
+        "accepted_tokens": 2624,
+        "loss_tokens": 1344,
+        "loss_tokens_s": 98.12882513145685,
+        "consumed_groups": 14,
+        "consumed_groups_s": 1.0221752617860087,
+        "dropped_stale_groups": 4,
+        "dropped_overflow_groups": 0,
+        "zero_signal_groups": 7,
+        "lag_histogram_consumed": {
+          "0": 1,
+          "1": 13
+        },
+        "weight_switches_in_flight": 10,
+        "initial_reward": 0.25,
+        "final_reward": 0.25,
+        "queue_put_median_ms": 0.021479499991983175,
+        "queue_put_max_ms": 1863.4245420107618,
+        "accepted_tokens_s": 191.58484906617764,
+        "consumed_in_flight_switches": 9,
+        "stale_group_fraction": 0.2222222222222222,
+        "queue_put_over_1ms_count": 4,
+        "reward_change": 0.0,
+        "phase_ms": {
+          "actor_generate": {
+            "count": 18,
+            "median": 40.6026664422825,
+            "min": 21.7862919671461,
+            "max": 186.06062489561737
+          },
+          "actor_pull_weights": {
+            "count": 18,
+            "median": 0.33970701042562723,
+            "min": 0.15416601672768593,
+            "max": 10.38391888141632
+          },
+          "producer_queue_put": {
+            "count": 18,
+            "median": 0.021479499991983175,
+            "min": 0.012999982573091984,
+            "max": 1863.4245420107618
+          },
+          "queue_to_learner_including_backpressure": {
+            "count": 18,
+            "median": 27.77941699605435,
+            "min": 0.1752080861479044,
+            "max": 2001.426583970897
+          },
+          "learner_update_consumed": {
+            "count": 14,
+            "median": 24.074687506072223,
+            "min": 1.0159580269828439,
+            "max": 655.4136660415679
+          },
+          "learner_publish_consumed": {
+            "count": 14,
+            "median": 0.12997904559597373,
+            "min": 0.08416699711233377,
+            "max": 0.39304199162870646
+          },
+          "switch_recompute": {
+            "count": 10,
+            "median": 8.178020499999999,
+            "min": 6.570042,
+            "max": 28.175292
+          },
+          "switch_cache_copy": {
+            "count": 10,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "switch_recovery": {
+            "count": 10,
+            "median": 9.205416543409228,
+            "min": 7.282499922439456,
+            "max": 29.28995806723833
+          }
+        },
+        "consumed": {
+          "groups": 14,
+          "completion_length_histogram_groups": {
+            "16": 5,
+            "24": 5,
+            "32": 4
+          },
+          "completion_reward_histogram": {
+            "0.0": 100,
+            "1.0": 12
+          },
+          "mean_reward": 0.10714285714285714,
+          "group_reward": {
+            "count": 14,
+            "median": 0.0625,
+            "min": 0.0,
+            "max": 0.375
+          },
+          "lag_histogram_groups": {
+            "0": 1,
+            "1": 13
+          }
+        },
+        "dropped_stale": {
+          "groups": 4,
+          "completion_length_histogram_groups": {
+            "16": 1,
+            "24": 1,
+            "32": 2
+          },
+          "completion_reward_histogram": {
+            "0.0": 29,
+            "1.0": 3
+          },
+          "mean_reward": 0.09375,
+          "group_reward": {
+            "count": 4,
+            "median": 0.125,
+            "min": 0.0,
+            "max": 0.125
+          },
+          "lag_histogram_groups": {
+            "2": 4
+          }
+        },
+        "evaluation": [
+          {
+            "update": 0,
+            "time_s": 0,
+            "loss_tokens": 0,
+            "reward": 0.25
+          },
+          {
+            "update": 12,
+            "time_s": 11.605237165931612,
+            "loss_tokens": 1088,
+            "reward": 0.25
+          },
+          {
+            "update": 14,
+            "time_s": 13.696281375014223,
+            "loss_tokens": 1344,
+            "reward": 0.25
+          }
+        ]
+      },
+      "share_prompt": {
+        "wall_s": 12.903119625058025,
+        "generated_tokens": 3456,
+        "generated_tokens_s": 267.8422040890331,
+        "accepted_tokens": 2688,
+        "loss_tokens": 1600,
+        "loss_tokens_s": 124.00102041158941,
+        "consumed_groups": 14,
+        "consumed_groups_s": 1.0850089286014073,
+        "dropped_stale_groups": 4,
+        "dropped_overflow_groups": 0,
+        "zero_signal_groups": 6,
+        "lag_histogram_consumed": {
+          "0": 3,
+          "1": 11
+        },
+        "weight_switches_in_flight": 9,
+        "initial_reward": 0.25,
+        "final_reward": 0.0,
+        "queue_put_median_ms": 0.016583013348281384,
+        "queue_put_max_ms": 157.39129099529237,
+        "accepted_tokens_s": 208.3217142914702,
+        "consumed_in_flight_switches": 6,
+        "stale_group_fraction": 0.2222222222222222,
+        "queue_put_over_1ms_count": 1,
+        "reward_change": -0.25,
+        "phase_ms": {
+          "actor_generate": {
+            "count": 18,
+            "median": 30.693104024976492,
+            "min": 20.107332966290414,
+            "max": 323.99166701361537
+          },
+          "actor_pull_weights": {
+            "count": 18,
+            "median": 0.28877094155177474,
+            "min": 0.16495701856911182,
+            "max": 9.132041945122182
+          },
+          "producer_queue_put": {
+            "count": 18,
+            "median": 0.016583013348281384,
+            "min": 0.01216609962284565,
+            "max": 157.39129099529237
+          },
+          "queue_to_learner_including_backpressure": {
+            "count": 18,
+            "median": 0.7474374724552035,
+            "min": 0.1567500876262784,
+            "max": 376.84945797082037
+          },
+          "learner_update_consumed": {
+            "count": 14,
+            "median": 23.232541512697935,
+            "min": 0.69183309096843,
+            "max": 350.0817500753328
+          },
+          "learner_publish_consumed": {
+            "count": 14,
+            "median": 0.11252093827351928,
+            "min": 0.08516700472682714,
+            "max": 0.2460000105202198
+          },
+          "switch_recompute": {
+            "count": 9,
+            "median": 4.879041,
+            "min": 3.352875,
+            "max": 162.762709
+          },
+          "switch_cache_copy": {
+            "count": 9,
+            "median": 0.034125,
+            "min": 0.024666,
+            "max": 0.061958
+          },
+          "switch_recovery": {
+            "count": 9,
+            "median": 5.573499947786331,
+            "min": 3.9662079652771354,
+            "max": 163.9362919377163
+          }
+        },
+        "consumed": {
+          "groups": 14,
+          "completion_length_histogram_groups": {
+            "16": 5,
+            "24": 4,
+            "32": 5
+          },
+          "completion_reward_histogram": {
+            "0.0": 99,
+            "1.0": 13
+          },
+          "mean_reward": 0.11607142857142858,
+          "group_reward": {
+            "count": 14,
+            "median": 0.125,
+            "min": 0.0,
+            "max": 0.375
+          },
+          "lag_histogram_groups": {
+            "0": 3,
+            "1": 11
+          }
+        },
+        "dropped_stale": {
+          "groups": 4,
+          "completion_length_histogram_groups": {
+            "16": 1,
+            "24": 2,
+            "32": 1
+          },
+          "completion_reward_histogram": {
+            "0.0": 30,
+            "1.0": 2
+          },
+          "mean_reward": 0.0625,
+          "group_reward": {
+            "count": 4,
+            "median": 0.0625,
+            "min": 0.0,
+            "max": 0.125
+          },
+          "lag_histogram_groups": {
+            "2": 4
+          }
+        },
+        "evaluation": [
+          {
+            "update": 0,
+            "time_s": 0,
+            "loss_tokens": 0,
+            "reward": 0.25
+          },
+          {
+            "update": 12,
+            "time_s": 11.313543250085786,
+            "loss_tokens": 1344,
+            "reward": 0.0
+          },
+          {
+            "update": 14,
+            "time_s": 12.903119625058025,
+            "loss_tokens": 1600,
+            "reward": 0.0
+          }
+        ]
+      },
+      "difference_shared_minus_recompute": {
+        "switch_recovery_median_ms": -3.631916595622897,
+        "wall_s": -0.793161749956198,
+        "generated_tokens_s": 15.510939465286924,
+        "accepted_tokens_s": 16.736865225292547,
+        "loss_tokens_s": 25.87219528013256,
+        "consumed_groups_s": 0.06283366681539859,
+        "dropped_stale_groups": 0,
+        "final_reward": -0.25
+      }
+    }
+  ],
+  "paired_differences_across_seeds": {
+    "switch_recovery_median_ms": {
+      "count": 1,
+      "median": -3.631916595622897,
+      "min": -3.631916595622897,
+      "max": -3.631916595622897
+    },
+    "wall_s": {
+      "count": 1,
+      "median": -0.793161749956198,
+      "min": -0.793161749956198,
+      "max": -0.793161749956198
+    },
+    "generated_tokens_s": {
+      "count": 1,
+      "median": 15.510939465286924,
+      "min": 15.510939465286924,
+      "max": 15.510939465286924
+    },
+    "accepted_tokens_s": {
+      "count": 1,
+      "median": 16.736865225292547,
+      "min": 16.736865225292547,
+      "max": 16.736865225292547
+    },
+    "loss_tokens_s": {
+      "count": 1,
+      "median": 25.87219528013256,
+      "min": 25.87219528013256,
+      "max": 25.87219528013256
+    },
+    "consumed_groups_s": {
+      "count": 1,
+      "median": 0.06283366681539859,
+      "min": 0.06283366681539859,
+      "max": 0.06283366681539859
+    },
+    "dropped_stale_groups": {
+      "count": 1,
+      "median": 0,
+      "min": 0,
+      "max": 0
+    },
+    "final_reward": {
+      "count": 1,
+      "median": -0.25,
+      "min": -0.25,
+      "max": -0.25
+    }
+  }
+}

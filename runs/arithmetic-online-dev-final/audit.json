@@ -1,0 +1,535 @@
+{
+  "source_run": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-online-dev-final",
+  "protocol": {
+    "stage": "development",
+    "args": {
+      "out": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-online-dev-final",
+      "development": true,
+      "seeds": [
+        132
+      ],
+      "groups": 384,
+      "threshold": 0.7,
+      "lr": 0.0001,
+      "eval_every": 96,
+      "fifo_windows": [
+        2
+      ],
+      "version_window": 2,
+      "checkpoint": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-sft-03/sft-1380"
+    },
+    "source_commit": "00c396ede8b085779ca1f05a0f53d9739de58ec6",
+    "source_sha256": {
+      "experiments/kv_sequence.py": "9b6f6ac1d5578fdc9e734fc0f8fff823648d91aa226d0c05baeabff14f6c55db",
+      "experiments/kv_batch_dispatch.py": "e2d781f5aa59a59771ad0f888abe13e30e002c0ded5cc6a103a94dc3054ef6ae",
+      "experiments/kv_sequence_task.py": "32b8384b4b2f61221a28673c0d9cb910423f1a7f91f1519d58a14950723b5528",
+      "experiments/kv_online.py": "7d93828908c6f3f632884e9241791ab17519bb8debefca5839f9f080c21f8c89",
+      "experiments/shared_prefix.py": "accbb5881e6dcba7ad1945b8b41b804251e9f05715fe959368760258033dc88f",
+      "experiments/kv_arithmetic_task.py": "26d878d70b0b587ad4bcde960431f75d1ad7b4c98c42fbe22bb3368893ebb211"
+    },
+    "initial_model_sha256": "560493dbc3bdb081f054740e052172f3815b19c81fcd58353753a104bc0e268d",
+    "initial_weight_sha256": "5332933594861074f2ef866450a8129e08cc91e554f1d45a92daffdc9814be91",
+    "publication": "changed_weights_only",
+    "optimizer_groups_per_update": 2,
+    "max_lag": 1,
+    "actor_count": 3,
+    "torch_threads_per_process": 1,
+    "queue_capacity": 2,
+    "max_pending_learner_groups": 2,
+    "group_size": 8,
+    "prompt_tokens": 128,
+    "model_parameters": 113088,
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15 (main, Apr 14 2026, 14:45:51) [Clang 22.1.3 ]",
+    "torch": "2.8.0",
+    "cpu": "Apple M2",
+    "train_config": {
+      "task": "arithmetic",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/arithmetic-online-dev-final/model",
+      "steps": 200,
+      "n_prompts": 2,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.0001,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 128,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 1,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 3200
+    },
+    "train_reward": "exact match of all answer digits",
+    "eval": "greedy exact match by bucket; evaluated every fixed number of received groups, timed at the second consecutive post-initial hit at distinct update counts",
+    "wall_clock": "actor startup, training, periodic and final eval, trace writes; initial eval untimed",
+    "arms": "recompute: per-completion prompt prefill and suffix-only dense learner scoring; share_prompt: actor prefill and differentiable learner prefix reuse; both use FIFO",
+    "benchmark": "prefix",
+    "task": "arithmetic",
+    "action_labels": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "reward_kind": "exact_match",
+    "rollout_horizon": 3,
+    "swap_check": "every four generated tokens, outside the three-token rollout horizon",
+    "training_clock": "all actors ready and released through a start gate, through evaluation",
+    "accuracy_metric": "all: exact match of every answer digit"
+  },
+  "runs": [
+    {
+      "seed": 132,
+      "arm": "share_prompt",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.65625,
+        "carry": 0.75,
+        "all": 0.703125
+      },
+      "best_accuracy": {
+        "all": 0.7578125,
+        "noncarry": 0.671875,
+        "carry": 0.84375
+      },
+      "target": {
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 7.592405290924944,
+          "eval_started_s": 7.289174165925942,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 4.249354708008468,
+          "training_time_s": 3.343050582916476,
+          "actor_completed_tokens": 4656
+        },
+        "noncarry": null,
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 7.592405290924944,
+          "eval_started_s": 7.289174165925942,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 4.249354708008468,
+          "training_time_s": 3.343050582916476,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 12.535254332935438,
+      "generated_tokens": 9216,
+      "updates": 192,
+      "loss_tokens_s": 675.8538578463827,
+      "publications": 192,
+      "no_op_updates": 0,
+      "by_bucket": {
+        "all": {
+          "statuses": {
+            "consumed": 384
+          },
+          "groups": 384,
+          "generated_tokens": 9216,
+          "tokens_by_status": {
+            "consumed": 9216
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 188
+          },
+          "groups": 188,
+          "generated_tokens": 4512,
+          "tokens_by_status": {
+            "consumed": 4512
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "carry": {
+          "statuses": {
+            "consumed": 196
+          },
+          "groups": 196,
+          "generated_tokens": 4704,
+          "tokens_by_status": {
+            "consumed": 4704
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 384
+          },
+          "groups": 384,
+          "generated_tokens": 9216,
+          "tokens_by_status": {
+            "consumed": 9216
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "distinct_snapshot_target": {
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 7.592405290924944,
+          "eval_started_s": 7.289174165925942,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 4.249354708008468,
+          "training_time_s": 3.343050582916476,
+          "actor_completed_tokens": 4656
+        },
+        "noncarry": null,
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 7.592405290924944,
+          "eval_started_s": 7.289174165925942,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 4.249354708008468,
+          "training_time_s": 3.343050582916476,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "final_weight_sha256": "3faf8f629d62f28bbc5dda26150e0c32f170990a32a7807a393a0ccb47a421d5",
+      "all_skipped_updates": 0,
+      "training_started_s": 4.249354708008468,
+      "training_wall_s": 8.28589962492697
+    },
+    {
+      "seed": 132,
+      "arm": "recompute",
+      "window": 2,
+      "initial_accuracy": {
+        "noncarry": 0.5,
+        "carry": 0.765625,
+        "all": 0.6328125
+      },
+      "final_accuracy": {
+        "noncarry": 0.65625,
+        "carry": 0.75,
+        "all": 0.703125
+      },
+      "best_accuracy": {
+        "all": 0.7578125,
+        "noncarry": 0.671875,
+        "carry": 0.84375
+      },
+      "target": {
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 13.67511058296077,
+          "eval_started_s": 13.45145587506704,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 5.8492527910275385,
+          "training_time_s": 7.825857791933231,
+          "actor_completed_tokens": 4656
+        },
+        "noncarry": null,
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 13.67511058296077,
+          "eval_started_s": 13.45145587506704,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 5.8492527910275385,
+          "training_time_s": 7.825857791933231,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "wall_s": 22.949838874978013,
+      "generated_tokens": 9216,
+      "updates": 192,
+      "loss_tokens_s": 369.1529185085887,
+      "publications": 192,
+      "no_op_updates": 0,
+      "by_bucket": {
+        "all": {
+          "statuses": {
+            "consumed": 384
+          },
+          "groups": 384,
+          "generated_tokens": 9216,
+          "tokens_by_status": {
+            "consumed": 9216
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "noncarry": {
+          "statuses": {
+            "consumed": 188
+          },
+          "groups": 188,
+          "generated_tokens": 4512,
+          "tokens_by_status": {
+            "consumed": 4512
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        },
+        "carry": {
+          "statuses": {
+            "consumed": 196
+          },
+          "groups": 196,
+          "generated_tokens": 4704,
+          "tokens_by_status": {
+            "consumed": 4704
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "by_length": {
+        "3": {
+          "statuses": {
+            "consumed": 384
+          },
+          "groups": 384,
+          "generated_tokens": 9216,
+          "tokens_by_status": {
+            "consumed": 9216
+          },
+          "retained_group_fraction": 1.0,
+          "retained_token_fraction": 1.0,
+          "post_swap_nonzero_advantage_groups": 0,
+          "post_swap_nonzero_advantage_tokens": 0,
+          "exact_post_swap_nonzero_advantage_tokens": 0
+        }
+      },
+      "distinct_snapshot_target": {
+        "all": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 13.67511058296077,
+          "eval_started_s": 13.45145587506704,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 5.8492527910275385,
+          "training_time_s": 7.825857791933231,
+          "actor_completed_tokens": 4656
+        },
+        "noncarry": null,
+        "carry": {
+          "received_groups": 192,
+          "received_tokens": 4608,
+          "update": 96,
+          "policy_version": 96,
+          "time_s": 13.67511058296077,
+          "eval_started_s": 13.45145587506704,
+          "accuracy": {
+            "noncarry": 0.65625,
+            "carry": 0.828125,
+            "all": 0.7421875
+          },
+          "training_started_s": 5.8492527910275385,
+          "training_time_s": 7.825857791933231,
+          "actor_completed_tokens": 4656
+        }
+      },
+      "final_weight_sha256": "dc1991a1e8bfed6da3547a4036b9f51fedacbfd5ead5636d911d3bea36a4965b",
+      "all_skipped_updates": 0,
+      "training_started_s": 5.8492527910275385,
+      "training_wall_s": 17.100586083950475
+    }
+  ],
+  "comparisons": {
+    "recompute": {
+      "pairs": [
+        {
+          "seed": 132,
+          "baseline": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 96,
+            "time_s": 13.67511058296077,
+            "eval_started_s": 13.45145587506704,
+            "accuracy": {
+              "noncarry": 0.65625,
+              "carry": 0.828125,
+              "all": 0.7421875
+            },
+            "training_started_s": 5.8492527910275385,
+            "training_time_s": 7.825857791933231,
+            "actor_completed_tokens": 4656
+          },
+          "shared": {
+            "received_groups": 192,
+            "received_tokens": 4608,
+            "update": 96,
+            "policy_version": 96,
+            "time_s": 7.592405290924944,
+            "eval_started_s": 7.289174165925942,
+            "accuracy": {
+              "noncarry": 0.65625,
+              "carry": 0.828125,
+              "all": 0.7421875
+            },
+            "training_started_s": 4.249354708008468,
+            "training_time_s": 3.343050582916476,
+            "actor_completed_tokens": 4656
+          },
+          "time_saved_s": 6.0827052920358256,
+          "time_saved_fraction": 0.44480117766761573,
+          "actor_completed_tokens_saved": 0,
+          "received_tokens_saved": 0,
+          "final_accuracy": {
+            "baseline": {
+              "noncarry": 0.65625,
+              "carry": 0.75,
+              "all": 0.703125
+            },
+            "shared": {
+              "noncarry": 0.65625,
+              "carry": 0.75,
+              "all": 0.703125
+            }
+          },
+          "retained_group_fraction_delta": {
+            "all": 0.0,
+            "noncarry": 0.0,
+            "carry": 0.0
+          },
+          "training_time_saved_s": 4.482807209016755,
+          "training_time_saved_fraction": 0.572819916768429
+        }
+      ],
+      "paired_hits": 1,
+      "baseline_hits": 1,
+      "shared_hits": 1,
+      "shared_faster": 1,
+      "median_time_saved_s": 6.0827052920358256,
+      "median_time_saved_fraction": 0.44480117766761573,
+      "median_actor_completed_tokens_saved": 0,
+      "median_received_tokens_saved": 0,
+      "median_training_time_saved_s": 4.482807209016755,
+      "median_training_time_saved_fraction": 0.572819916768429,
+      "shared_training_faster": 1
+    }
+  }
+}

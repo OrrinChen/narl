@@ -1,0 +1,182 @@
+{
+  "stage": "synchronous development pilot",
+  "seeds": [
+    120,
+    121
+  ],
+  "groups_per_run": 512,
+  "evaluate_every_groups": 64,
+  "reward": "fraction of correct completion positions",
+  "evaluation": "greedy exact match by bucket",
+  "task_sha256": "32b8384b4b2f61221a28673c0d9cb910423f1a7f91f1519d58a14950723b5528",
+  "config": {
+    "task": "sequence",
+    "algo": "grpo",
+    "model": "runs/sequence-pilot-01/model",
+    "steps": 200,
+    "n_prompts": 2,
+    "group_size": 8,
+    "inner_epochs": 1,
+    "lr": 0.002,
+    "gamma": 0.99,
+    "lam": 0.95,
+    "eps": 0.2,
+    "eps_high": 0.0,
+    "dual_clip": 0.0,
+    "loss_mode": "clip",
+    "warmup_steps": 0,
+    "skip_zero_adv": true,
+    "kl_coef": 0.0,
+    "vf_coef": 0.5,
+    "ent_coef": 0.0,
+    "max_grad_norm": 1.0,
+    "length_norm": true,
+    "norm_std": true,
+    "adapt_sample": false,
+    "overlong_filter": false,
+    "format_gate": false,
+    "max_turns": 1,
+    "max_new_tokens": 256,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "overlong_coef": 0.0,
+    "dtype": "float32",
+    "device": "cpu",
+    "lora": false,
+    "lora_r": 16,
+    "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+    "grad_ckpt": false,
+    "think": false,
+    "debug_samples": 0,
+    "micro_batch": 8,
+    "gen_batch": 0,
+    "seed": 0,
+    "eval_every": 10,
+    "eval_n": 64,
+    "eval_k": 1,
+    "ckpt_every": 50,
+    "resume": "",
+    "role": "",
+    "vllm": false,
+    "vllm_gpu_frac": 0.85,
+    "vllm_max_len": 2048,
+    "tis_clip": 0.0,
+    "trainer_url": "",
+    "serve_port": 8000,
+    "serve_host": "0.0.0.0",
+    "max_staleness": 2,
+    "pop_timeout": 1800.0,
+    "out": "runs/run",
+    "n_examples": 320
+  },
+  "runs": [
+    {
+      "seed": 120,
+      "evaluations": [
+        {
+          "groups": 0,
+          "short": 0.0,
+          "long": 0.0
+        },
+        {
+          "groups": 64,
+          "short": 0.0,
+          "long": 0.0
+        },
+        {
+          "groups": 128,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 192,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 256,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 320,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 384,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 448,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 512,
+          "short": 1.0,
+          "long": 1.0
+        }
+      ],
+      "groups_with_reward_variance": {
+        "short": 90,
+        "long": 111
+      }
+    },
+    {
+      "seed": 121,
+      "evaluations": [
+        {
+          "groups": 0,
+          "short": 0.0,
+          "long": 0.0
+        },
+        {
+          "groups": 64,
+          "short": 0.0,
+          "long": 0.0
+        },
+        {
+          "groups": 128,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 192,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 256,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 320,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 384,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 448,
+          "short": 1.0,
+          "long": 1.0
+        },
+        {
+          "groups": 512,
+          "short": 1.0,
+          "long": 1.0
+        }
+      ],
+      "groups_with_reward_variance": {
+        "short": 87,
+        "long": 113
+      }
+    }
+  ]
+}

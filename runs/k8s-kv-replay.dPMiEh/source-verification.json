@@ -1,0 +1,66 @@
+{
+  "image_id": "sha256:d5743e6dd138096f2b7eadc619bdae90855971989ff1e1f6fdc0b3dccd68eb7e",
+  "image_tag": "narl-kv-replay:narl-dpmieh",
+  "source_commit": "272f8d64bb4940515893a7204ec782b52f63b522",
+  "method": "Read each Dockerfile COPY input inside the recorded immutable image ID in a network-disabled container. Compare SHA-256 to git show at source_commit.",
+  "all_source_files_match": true,
+  "files": {
+    "requirements-cpu.txt": {
+      "git_sha256": "3275913d587decc1299d24d2014551508ba1c48e6164f9e3629ad4a109fea6bc",
+      "image_sha256": "3275913d587decc1299d24d2014551508ba1c48e6164f9e3629ad4a109fea6bc",
+      "matches": true
+    },
+    "algos.py": {
+      "git_sha256": "72050cbeac2f18daed9b93cacb7064a8948e642b276cef305348f2f62473b920",
+      "image_sha256": "72050cbeac2f18daed9b93cacb7064a8948e642b276cef305348f2f62473b920",
+      "matches": true
+    },
+    "core.py": {
+      "git_sha256": "21ece8bfcc7835c51ae207fc46df8d9b78a38e7fda26ab6085b00d59ce5f53ba",
+      "image_sha256": "21ece8bfcc7835c51ae207fc46df8d9b78a38e7fda26ab6085b00d59ce5f53ba",
+      "matches": true
+    },
+    "model.py": {
+      "git_sha256": "f8f4a9a4ad47f5b6cd5271ad853c37703b1e514c42d738f0dc4cda36f0e9d2d5",
+      "image_sha256": "f8f4a9a4ad47f5b6cd5271ad853c37703b1e514c42d738f0dc4cda36f0e9d2d5",
+      "matches": true
+    },
+    "serve.py": {
+      "git_sha256": "25222cf0421ed88fb29e39d8f46b694f05a42d4e13a567b88abf6dc92c1f20e5",
+      "image_sha256": "25222cf0421ed88fb29e39d8f46b694f05a42d4e13a567b88abf6dc92c1f20e5",
+      "matches": true
+    },
+    "tasks.py": {
+      "git_sha256": "8343e073045321672847607701ed4acf1009e47805c9d877a43e55b3383b9c1e",
+      "image_sha256": "8343e073045321672847607701ed4acf1009e47805c9d877a43e55b3383b9c1e",
+      "matches": true
+    },
+    "train.py": {
+      "git_sha256": "fad6bee142f6b1dda8497aa6a872564c1f43e6f9331aa6826b6948878b337a5b",
+      "image_sha256": "fad6bee142f6b1dda8497aa6a872564c1f43e6f9331aa6826b6948878b337a5b",
+      "matches": true
+    },
+    "utils.py": {
+      "git_sha256": "71303aa213ca31c00ae8dd2f6d61102030ee08947c722254b90428b8e482459a",
+      "image_sha256": "71303aa213ca31c00ae8dd2f6d61102030ee08947c722254b90428b8e482459a",
+      "matches": true
+    },
+    "experiments/cpu_baseline.py": {
+      "git_sha256": "95a05c8d9d49eae599e6f506214a660c16e6d8bcae5084a8e52f198bfaa823bd",
+      "image_sha256": "95a05c8d9d49eae599e6f506214a660c16e6d8bcae5084a8e52f198bfaa823bd",
+      "matches": true
+    },
+    "experiments/kv_replay.py": {
+      "git_sha256": "c99104d9c9622252d9cbabd9d9c87db2a009c08ff85755adf95446d766608d56",
+      "image_sha256": "c99104d9c9622252d9cbabd9d9c87db2a009c08ff85755adf95446d766608d56",
+      "matches": true
+    },
+    "configs/narl_cpu_baseline.yaml": {
+      "git_sha256": "e05bac369d119980bac2137e8e20028d4c2fd83f344c908cb284fc2dab3803ac",
+      "image_sha256": "e05bac369d119980bac2137e8e20028d4c2fd83f344c908cb284fc2dab3803ac",
+      "matches": true
+    }
+  },
+  "pod_runtime_image_id": "docker.io/library/import-2026-11-13@sha256:8726e129afa6b9b862857b548160fb0fc4352ebc05864b8d72fbbba7ab019b6c",
+  "pod_uid": "c958688d-35d5-4788-a867-5209b17aa4c5"
+}

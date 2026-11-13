@@ -1,0 +1,489 @@
+{
+  "source_run": "/Users/orynwilder/Documents/New project 2/narl/runs/online-tau2",
+  "protocol": {
+    "comparison": [
+      "recompute",
+      "share_prompt"
+    ],
+    "selection": "both cross-version recompute modes passed replay parity",
+    "seeds": [
+      0
+    ],
+    "groups": 48,
+    "prompt_tokens": 128,
+    "completion_lengths": [
+      16,
+      24,
+      32
+    ],
+    "fixed_horizon": true,
+    "first_content_token": 3,
+    "reward_position": "last",
+    "eval_completion_length": 16,
+    "eval_every_updates": 12,
+    "queue_capacity": 2,
+    "max_lag": 2,
+    "snapshot_slots": 1,
+    "publish_every_accepted_groups": 1,
+    "max_swaps_per_group": 1,
+    "weight_check_every_tokens": 4,
+    "threads_per_process": 1,
+    "initial_learner_stress_delay_s": 0,
+    "train_config": {
+      "task": "token-choice",
+      "algo": "grpo",
+      "model": "/Users/orynwilder/Documents/New project 2/narl/runs/online-tau2/model",
+      "steps": 200,
+      "n_prompts": 1,
+      "group_size": 8,
+      "inner_epochs": 1,
+      "lr": 0.001,
+      "gamma": 0.99,
+      "lam": 0.95,
+      "eps": 0.2,
+      "eps_high": 0.0,
+      "dual_clip": 0.0,
+      "loss_mode": "clip",
+      "warmup_steps": 0,
+      "skip_zero_adv": true,
+      "kl_coef": 0.0,
+      "vf_coef": 0.5,
+      "ent_coef": 0.0,
+      "max_grad_norm": 1.0,
+      "length_norm": true,
+      "norm_std": true,
+      "adapt_sample": false,
+      "overlong_filter": false,
+      "format_gate": false,
+      "max_turns": 1,
+      "max_new_tokens": 256,
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "overlong_coef": 0.0,
+      "dtype": "float32",
+      "device": "cpu",
+      "lora": false,
+      "lora_r": 16,
+      "lora_targets": "q_proj,k_proj,v_proj,o_proj",
+      "grad_ckpt": false,
+      "think": false,
+      "debug_samples": 0,
+      "micro_batch": 8,
+      "gen_batch": 0,
+      "seed": 0,
+      "eval_every": 10,
+      "eval_n": 16,
+      "eval_k": 1,
+      "ckpt_every": 50,
+      "resume": "",
+      "role": "",
+      "vllm": false,
+      "vllm_gpu_frac": 0.85,
+      "vllm_max_len": 2048,
+      "tis_clip": 0.0,
+      "trainer_url": "",
+      "serve_port": 8000,
+      "serve_host": "0.0.0.0",
+      "max_staleness": 2,
+      "pop_timeout": 1800.0,
+      "out": "runs/run",
+      "n_examples": 80
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "python": "3.11.15",
+    "torch": "2.8.0",
+    "parameters": 19424,
+    "transformers": "4.57.6",
+    "logical_cpus": 8,
+    "cpu": "Apple M2",
+    "source_commit": "de59470bface643a846aec1c125940f836d864a5",
+    "wall_time_includes": "actor startup, training, periodic and final evaluation, output logging"
+  },
+  "paired_seeds": 1,
+  "comparison_timing": "Per-arm phase medians use the groups observed in that arm. Wall time includes actor startup and evaluation.",
+  "queue_measurement": "Queue capacity comes from the protocol. The queue trace records producer put latency, not actual queue depth.",
+  "pairs": [
+    {
+      "seed": 0,
+      "recompute": {
+        "wall_s": 3.7435461250133812,
+        "generated_tokens": 9216,
+        "generated_tokens_s": 2461.8369033631334,
+        "accepted_tokens": 9024,
+        "loss_tokens": 4864,
+        "loss_tokens_s": 1299.3028101083205,
+        "consumed_groups": 47,
+        "consumed_groups_s": 12.554940804911814,
+        "dropped_stale_groups": 1,
+        "dropped_overflow_groups": 0,
+        "zero_signal_groups": 22,
+        "lag_histogram_consumed": {
+          "0": 1,
+          "1": 36,
+          "2": 10
+        },
+        "weight_switches_in_flight": 36,
+        "initial_reward": 0.25,
+        "final_reward": 0.25,
+        "queue_put_median_ms": 0.013333046808838844,
+        "queue_put_max_ms": 95.96362500451505,
+        "accepted_tokens_s": 2410.548634543068,
+        "consumed_in_flight_switches": 36,
+        "stale_group_fraction": 0.020833333333333332,
+        "queue_put_over_1ms_count": 1,
+        "reward_change": 0.0,
+        "phase_ms": {
+          "actor_generate": {
+            "count": 48,
+            "median": 28.839354577939957,
+            "min": 17.397709074430168,
+            "max": 39.646207937039435
+          },
+          "actor_pull_weights": {
+            "count": 48,
+            "median": 0.2135215327143669,
+            "min": 0.12287416029721498,
+            "max": 0.43570902198553085
+          },
+          "producer_queue_put": {
+            "count": 48,
+            "median": 0.013333046808838844,
+            "min": 0.008916947990655899,
+            "max": 95.96362500451505
+          },
+          "queue_to_learner_including_backpressure": {
+            "count": 48,
+            "median": 0.19449996761977673,
+            "min": 0.1534579787403345,
+            "max": 137.6717920647934
+          },
+          "learner_update_consumed": {
+            "count": 47,
+            "median": 16.21120807249099,
+            "min": 0.4504580283537507,
+            "max": 166.54458304401487
+          },
+          "learner_publish_consumed": {
+            "count": 47,
+            "median": 0.08929101750254631,
+            "min": 0.06570795085281134,
+            "max": 0.19158306531608105
+          },
+          "switch_recompute": {
+            "count": 36,
+            "median": 6.9967915000000005,
+            "min": 5.908458,
+            "max": 8.671458
+          },
+          "switch_cache_copy": {
+            "count": 36,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "switch_recovery": {
+            "count": 36,
+            "median": 7.626125530805439,
+            "min": 6.455916911363602,
+            "max": 9.375625057145953
+          }
+        },
+        "consumed": {
+          "groups": 47,
+          "completion_length_histogram_groups": {
+            "16": 16,
+            "24": 15,
+            "32": 16
+          },
+          "completion_reward_histogram": {
+            "0.0": 338,
+            "1.0": 38
+          },
+          "mean_reward": 0.10106382978723404,
+          "group_reward": {
+            "count": 47,
+            "median": 0.125,
+            "min": 0.0,
+            "max": 0.375
+          },
+          "lag_histogram_groups": {
+            "0": 1,
+            "1": 36,
+            "2": 10
+          }
+        },
+        "dropped_stale": {
+          "groups": 1,
+          "completion_length_histogram_groups": {
+            "24": 1
+          },
+          "completion_reward_histogram": {
+            "0.0": 7,
+            "1.0": 1
+          },
+          "mean_reward": 0.125,
+          "group_reward": {
+            "count": 1,
+            "median": 0.125,
+            "min": 0.125,
+            "max": 0.125
+          },
+          "lag_histogram_groups": {
+            "3": 1
+          }
+        },
+        "evaluation": [
+          {
+            "update": 0,
+            "time_s": 0,
+            "loss_tokens": 0,
+            "reward": 0.25
+          },
+          {
+            "update": 12,
+            "time_s": 2.311815834022127,
+            "loss_tokens": 1152,
+            "reward": 0.25
+          },
+          {
+            "update": 24,
+            "time_s": 2.648734000045806,
+            "loss_tokens": 2304,
+            "reward": 0.25
+          },
+          {
+            "update": 36,
+            "time_s": 3.0135463339975104,
+            "loss_tokens": 3648,
+            "reward": 0.25
+          },
+          {
+            "update": 47,
+            "time_s": 3.7435461250133812,
+            "loss_tokens": 4864,
+            "reward": 0.25
+          }
+        ]
+      },
+      "share_prompt": {
+        "wall_s": 4.36411391699221,
+        "generated_tokens": 9216,
+        "generated_tokens_s": 2111.768889468348,
+        "accepted_tokens": 9216,
+        "loss_tokens": 4992,
+        "loss_tokens_s": 1143.8748151286884,
+        "consumed_groups": 48,
+        "consumed_groups_s": 10.99879629931431,
+        "dropped_stale_groups": 0,
+        "dropped_overflow_groups": 0,
+        "zero_signal_groups": 22,
+        "lag_histogram_consumed": {
+          "0": 1,
+          "1": 40,
+          "2": 7
+        },
+        "weight_switches_in_flight": 38,
+        "initial_reward": 0.25,
+        "final_reward": 0.25,
+        "queue_put_median_ms": 0.012937409337610006,
+        "queue_put_max_ms": 0.0950830290094018,
+        "accepted_tokens_s": 2111.768889468348,
+        "consumed_in_flight_switches": 38,
+        "stale_group_fraction": 0.0,
+        "queue_put_over_1ms_count": 0,
+        "reward_change": 0.0,
+        "phase_ms": {
+          "actor_generate": {
+            "count": 48,
+            "median": 28.386583493556827,
+            "min": 16.963292029686272,
+            "max": 261.7679999675602
+          },
+          "actor_pull_weights": {
+            "count": 48,
+            "median": 0.2226039068773389,
+            "min": 0.12775009963661432,
+            "max": 2.854958060197532
+          },
+          "producer_queue_put": {
+            "count": 48,
+            "median": 0.012937409337610006,
+            "min": 0.0076669966802001,
+            "max": 0.0950830290094018
+          },
+          "queue_to_learner_including_backpressure": {
+            "count": 48,
+            "median": 0.20177045371383429,
+            "min": 0.12408394832164049,
+            "max": 47.960749943740666
+          },
+          "learner_update_consumed": {
+            "count": 48,
+            "median": 15.400937001686543,
+            "min": 0.435790978372097,
+            "max": 81.77225000690669
+          },
+          "learner_publish_consumed": {
+            "count": 48,
+            "median": 0.08841697126626968,
+            "min": 0.06495800334960222,
+            "max": 0.3380000125616789
+          },
+          "switch_recompute": {
+            "count": 38,
+            "median": 3.368521,
+            "min": 2.538709,
+            "max": 39.387876
+          },
+          "switch_cache_copy": {
+            "count": 38,
+            "median": 0.026229,
+            "min": 0.021666,
+            "max": 0.063417
+          },
+          "switch_recovery": {
+            "count": 38,
+            "median": 4.1823749779723585,
+            "min": 3.130582976154983,
+            "max": 40.91416590381414
+          }
+        },
+        "consumed": {
+          "groups": 48,
+          "completion_length_histogram_groups": {
+            "16": 16,
+            "24": 16,
+            "32": 16
+          },
+          "completion_reward_histogram": {
+            "0.0": 346,
+            "1.0": 38
+          },
+          "mean_reward": 0.09895833333333333,
+          "group_reward": {
+            "count": 48,
+            "median": 0.125,
+            "min": 0.0,
+            "max": 0.375
+          },
+          "lag_histogram_groups": {
+            "0": 1,
+            "1": 40,
+            "2": 7
+          }
+        },
+        "dropped_stale": {
+          "groups": 0,
+          "completion_length_histogram_groups": {},
+          "completion_reward_histogram": {},
+          "mean_reward": null,
+          "group_reward": {
+            "count": 0,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "lag_histogram_groups": {}
+        },
+        "evaluation": [
+          {
+            "update": 0,
+            "time_s": 0,
+            "loss_tokens": 0,
+            "reward": 0.25
+          },
+          {
+            "update": 12,
+            "time_s": 2.6535083330236375,
+            "loss_tokens": 1344,
+            "reward": 0.0
+          },
+          {
+            "update": 24,
+            "time_s": 2.944290333078243,
+            "loss_tokens": 2624,
+            "reward": 0.25
+          },
+          {
+            "update": 36,
+            "time_s": 3.7216530420118943,
+            "loss_tokens": 3840,
+            "reward": 0.25
+          },
+          {
+            "update": 48,
+            "time_s": 4.050857542082667,
+            "loss_tokens": 4992,
+            "reward": 0.25
+          },
+          {
+            "update": 48,
+            "time_s": 4.36411391699221,
+            "loss_tokens": 4992,
+            "reward": 0.25
+          }
+        ]
+      },
+      "difference_shared_minus_recompute": {
+        "switch_recovery_median_ms": -3.4437505528330803,
+        "wall_s": 0.6205677919788286,
+        "generated_tokens_s": -350.0680138947855,
+        "accepted_tokens_s": -298.77974507472027,
+        "loss_tokens_s": -155.4279949796321,
+        "consumed_groups_s": -1.5561445055975032,
+        "dropped_stale_groups": -1,
+        "final_reward": 0.0
+      }
+    }
+  ],
+  "paired_differences_across_seeds": {
+    "switch_recovery_median_ms": {
+      "count": 1,
+      "median": -3.4437505528330803,
+      "min": -3.4437505528330803,
+      "max": -3.4437505528330803
+    },
+    "wall_s": {
+      "count": 1,
+      "median": 0.6205677919788286,
+      "min": 0.6205677919788286,
+      "max": 0.6205677919788286
+    },
+    "generated_tokens_s": {
+      "count": 1,
+      "median": -350.0680138947855,
+      "min": -350.0680138947855,
+      "max": -350.0680138947855
+    },
+    "accepted_tokens_s": {
+      "count": 1,
+      "median": -298.77974507472027,
+      "min": -298.77974507472027,
+      "max": -298.77974507472027
+    },
+    "loss_tokens_s": {
+      "count": 1,
+      "median": -155.4279949796321,
+      "min": -155.4279949796321,
+      "max": -155.4279949796321
+    },
+    "consumed_groups_s": {
+      "count": 1,
+      "median": -1.5561445055975032,
+      "min": -1.5561445055975032,
+      "max": -1.5561445055975032
+    },
+    "dropped_stale_groups": {
+      "count": 1,
+      "median": -1,
+      "min": -1,
+      "max": -1
+    },
+    "final_reward": {
+      "count": 1,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0
+    }
+  }
+}
