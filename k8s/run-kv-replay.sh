@@ -14,6 +14,8 @@ cleanup() {
     rm -f -- "$kubeconfig"
 }
 trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
 printf 'Job artifacts: %s\n' "$out"
 
 source_commit=$(git rev-parse HEAD)
@@ -53,5 +55,7 @@ fi
 
 pod_uid=$("${kube[@]}" get pods -l job-name=narl-kv-replay \
     --field-selector=status.phase=Succeeded -o jsonpath='{.items[0].metadata.uid}')
-test -s "$out/job.log" && test -s "$out/$pod_uid/summary.json" && test -s "$out/$pod_uid/timings.csv"
+test -s "$out/job.log"
+test -s "$out/$pod_uid/summary.json"
+test -s "$out/$pod_uid/timings.csv"
 printf 'Completed. Benchmark result: %s/%s/summary.json\n' "$out" "$pod_uid"
