@@ -15,6 +15,7 @@ from time import perf_counter, sleep
 
 from experiments.cpu_baseline import save_fixture
 from experiments.kv_replay import _forward, rebuild_cache
+from experiments.shared_prefix import shared_prefix_logprobs
 
 import torch
 import torch.nn.functional as F
@@ -70,7 +71,7 @@ class _PublishedWeights:
 
 
 @torch.no_grad()
-def _generate(policy, task, problem, steps, weights, mode, generator):
+def _generate(policy, task, problem, steps, weights, mode, generator, *, share_initial=False):
     model = policy.model
     prompt = _prompt(policy, task, problem)
     prompt_mask = torch.ones_like(prompt)
@@ -78,11 +79,16 @@ def _generate(policy, task, problem, steps, weights, mode, generator):
     version = weights.pull(model, -1)
     start_version = version
     weight_sync_ms = (perf_counter() - start_sync) * 1000
-    # Keep identical initial generation in both arms. The treatment starts at a swap.
     history = prompt.expand(GROUP_SIZE, -1)
-    out = _forward(model, history, prompt_mask.expand(GROUP_SIZE, -1))
+    prefill_start = perf_counter()
+    if share_initial:
+        out = _forward(model, prompt, prompt_mask)
+        out.past_key_values.batch_repeat_interleave(GROUP_SIZE)
+    else:
+        out = _forward(model, history, prompt_mask.expand(GROUP_SIZE, -1))
     cache = out.past_key_values
-    logits = out.logits[:, -1]
+    logits = out.logits[:, -1].expand(GROUP_SIZE, -1)
+    initial_prefill_ms = (perf_counter() - prefill_start) * 1000
     samples, logprobs, versions, switches = [], [], [], []
     for position in range(steps):
         distribution = logits[:, FIRST_CONTENT_ID:].log_softmax(dim=-1)
@@ -133,10 +139,12 @@ def _generate(policy, task, problem, steps, weights, mode, generator):
         "behavior_logprobs": torch.cat(logprobs, dim=1).tolist(), "rewards": rewards.tolist(),
         "version_by_token": versions, "initial_version": start_version, "switches": switches,
         "completion_length": steps, "weight_sync_ms": weight_sync_ms,
+        "initial_prefill_ms": initial_prefill_ms,
+        "initial_prompt_tokens_computed": PROMPT_TOKENS * (1 if share_initial else GROUP_SIZE),
     }
 
 
-def _actor(config, seed, mode, weights, results, total_groups):
+def _actor(config, seed, mode, weights, results, total_groups, share_initial):
     _threads()
     policy = make_policy(config, None)
     task = TokenChoiceTask(n_examples=config.n_examples, n_eval=config.eval_n, seed=seed)
@@ -147,7 +155,7 @@ def _actor(config, seed, mode, weights, results, total_groups):
         problem, = task.sample(1)
         start = perf_counter()
         payload = _generate(policy, task, problem, LENGTHS[group_id % len(LENGTHS)],
-                            weights, mode, generator)
+                            weights, mode, generator, share_initial=share_initial)
         payload.update(group_id=group_id, generation_s=perf_counter() - start,
                        generated_at=perf_counter())
         results.put(payload)
@@ -171,8 +179,14 @@ def _batch(payload):
     return Batch.from_groups([trajectories])
 
 
-def _scoring(policy):
+def _scoring(policy, *, share_learner=False):
     """Use the same content-only categorical support as the actor."""
+    if share_learner:
+        def logprobs(batch):
+            return shared_prefix_logprobs(policy.model, batch, PROMPT_TOKENS, FIRST_CONTENT_ID)
+        policy.logprobs = logprobs
+        return
+
     def logprobs(batch):
         logits = policy.model(batch.states, use_cache=False).logits[:, :-1, FIRST_CONTENT_ID:]
         labels = (batch.states[:, 1:] - FIRST_CONTENT_ID).clamp_min(0)
@@ -197,15 +211,16 @@ def _write_line(handle, row):
     handle.write(json.dumps(row, allow_nan=False) + "\n")
 
 
-def _run(config, seed, mode, total_groups, output, stress_delay_s):
+def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial, share_learner):
     ctx = mp.get_context("spawn")
     policy = make_policy(config, None)
-    _scoring(policy)
+    _scoring(policy, share_learner=share_learner)
     task = TokenChoiceTask(n_examples=config.n_examples, n_eval=config.eval_n, seed=seed)
     optimizer = torch.optim.AdamW(policy.parameters(), lr=config.lr)
     weights = _PublishedWeights(ctx, policy.model)
     results = ctx.Queue(maxsize=QUEUE_CAPACITY)
-    actor = ctx.Process(target=_actor, args=(config, seed, mode, weights, results, total_groups))
+    actor = ctx.Process(target=_actor, args=(config, seed, mode, weights, results, total_groups,
+                                             share_initial))
     seen = updates = generated_tokens = loss_tokens = accepted_tokens = 0
     dropped = switched = zero_groups = 0
     lags = {}
@@ -308,6 +323,10 @@ def main():
     parser.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     parser.add_argument("--max-lag", type=int, default=TAU, choices=(1, 2))
     parser.add_argument("--stress-delay-s", type=float, default=0)
+    parser.add_argument("--share-initial", action="store_true",
+                        help="also share the first actor prefill in the shared arm")
+    parser.add_argument("--share-learner", action="store_true",
+                        help="also share learner prefix computation in the shared arm")
     args = parser.parse_args()
     if args.groups < 12 or len(set(args.seeds)) != len(args.seeds):
         parser.error("use at least 12 groups and distinct seeds")
@@ -324,6 +343,8 @@ def main():
     report = {
         "protocol": {
             "comparison": list(MODES), "selection": "both cross-version recompute modes passed replay parity",
+            "share_initial_in_shared_arm": args.share_initial,
+            "share_learner_in_shared_arm": args.share_learner,
             "seeds": args.seeds, "groups": args.groups, "prompt_tokens": PROMPT_TOKENS,
             "completion_lengths": LENGTHS, "fixed_horizon": True, "first_content_token": FIRST_CONTENT_ID,
             "reward_position": "last", "eval_completion_length": EVAL_LENGTH,
@@ -351,7 +372,9 @@ def main():
         for mode in modes:
             run_dir = output / f"{seed}-{mode}"
             run_dir.mkdir()
-            result = _run(config, seed, mode, args.groups, run_dir, args.stress_delay_s)
+            result = _run(config, seed, mode, args.groups, run_dir, args.stress_delay_s,
+                          args.share_initial and mode == "share_prompt",
+                          args.share_learner and mode == "share_prompt")
             report["runs"].append(result)
             (output / "summary.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
             print(json.dumps(result), flush=True)

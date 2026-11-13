@@ -112,6 +112,11 @@ def check_group(group, index, expected_problem, protocol, mode, vocab, learner_v
     for key in ("weight_sync_ms", "generation_s", "queue_s_including_backpressure", "publish_ms", "update_ms"):
         require(nonnegative(group[key]), f"{label}: invalid {key}")
     require(group["generation_s"] > 0, f"{label}: missing generation time")
+    if "share_initial_in_shared_arm" in protocol:
+        shared_initial = mode == "share_prompt" and protocol["share_initial_in_shared_arm"]
+        require(group["initial_prompt_tokens_computed"] == prompt_length * (1 if shared_initial else size)
+                and nonnegative(group["initial_prefill_ms"]),
+                f"{label}: invalid initial prefill count or timing")
     if accepted:
         require(group["update"] == learner_version + 1 and group["update_ms"] > 0 and group["publish_ms"] > 0,
                 f"{label}: missing consumed update or publication")
@@ -204,10 +209,13 @@ def audit_arm(run, protocol, vocab, reported):
     check_reported(reported, derived, label)
     phases = {
         "actor_generate": [1_000 * group["generation_s"] for group in groups],
+        "actor_initial_prefill": [group["initial_prefill_ms"] for group in groups
+                                 if "initial_prefill_ms" in group],
         "actor_pull_weights": [group["weight_sync_ms"] for group in groups],
         "producer_queue_put": producer_put_ms,
         "queue_to_learner_including_backpressure": [1_000 * group["queue_s_including_backpressure"] for group in groups],
         "learner_update_consumed": [group["update_ms"] for group in consumed],
+        "learner_update_with_advantage": [group["update_ms"] for group in consumed if group["loss_tokens"]],
         "learner_publish_consumed": [group["publish_ms"] for group in consumed],
         "switch_recompute": [switch["recompute_ms"] for switch in switches],
         "switch_cache_copy": [switch["cache_copy_ms"] for switch in switches],

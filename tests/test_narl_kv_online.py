@@ -41,7 +41,8 @@ def test_fixed_switch_preserves_old_logprobs_and_recompute_equivalence():
         new["model.layers.0.self_attn.v_proj.weight"].neg_()
         weights = _SwitchOnce(old, new)
         runs = [
-            _generate(policy, task, problem, 9, weights, mode, torch.Generator().manual_seed(23))
+            _generate(policy, task, problem, 9, weights, mode, torch.Generator().manual_seed(23),
+                      share_initial=mode == "share_prompt")
             for mode in ("recompute", "share_prompt")
         ]
 
@@ -52,6 +53,8 @@ def test_fixed_switch_preserves_old_logprobs_and_recompute_equivalence():
         assert shared["rewards"] == [float(row[-1] == answer) for row in shared["tokens"]]
         assert independent["version_by_token"] == shared["version_by_token"] == [0] * 4 + [1] * 5
         assert independent["switches"][0]["prompt_tokens_recomputed"] == 8 * PROMPT_TOKENS
+        assert independent["initial_prompt_tokens_computed"] == 8 * PROMPT_TOKENS
+        assert shared["initial_prompt_tokens_computed"] == PROMPT_TOKENS
         assert shared["switches"][0]["prompt_tokens_recomputed"] == PROMPT_TOKENS
         assert shared["switches"][0]["suffix_tokens_recomputed"] == 8 * 3
 
