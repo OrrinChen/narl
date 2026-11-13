@@ -47,6 +47,14 @@ def prefill(model, token_ids, attention_mask=None):
     return _forward(model, token_ids, attention_mask)
 
 
+def group_prefill(model, prompt, prompt_mask, group_size, share):
+    if share:
+        out = prefill(model, prompt, prompt_mask)
+        out.past_key_values.batch_repeat_interleave(group_size)
+        return out
+    return prefill(model, prompt.expand(group_size, -1), prompt_mask.expand(group_size, -1))
+
+
 def valid_prediction_mask(continuation, eos_id):
     """Predict after a forced input only while that completion has not reached EOS."""
     return continuation.eq(eos_id).cumsum(dim=1).eq(0)

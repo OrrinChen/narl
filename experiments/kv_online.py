@@ -14,7 +14,7 @@ import sys
 from time import perf_counter, sleep
 
 from experiments.cpu_baseline import save_fixture
-from experiments.kv_replay import _forward, rebuild_cache
+from experiments.kv_replay import _forward, group_prefill, rebuild_cache
 from experiments.shared_prefix import shared_prefix_logprobs
 
 import torch
@@ -82,11 +82,7 @@ def _generate(policy, task, problem, steps, weights, mode, generator, *, share_i
     weight_sync_ms = (perf_counter() - start_sync) * 1000
     history = prompt.expand(GROUP_SIZE, -1)
     prefill_start = perf_counter()
-    if share_initial:
-        out = _forward(model, prompt, prompt_mask)
-        out.past_key_values.batch_repeat_interleave(GROUP_SIZE)
-    else:
-        out = _forward(model, history, prompt_mask.expand(GROUP_SIZE, -1))
+    out = group_prefill(model, prompt, prompt_mask, GROUP_SIZE, share_initial)
     cache = out.past_key_values
     logits = out.logits[:, -1].expand(GROUP_SIZE, -1)
     initial_prefill_ms = (perf_counter() - prefill_start) * 1000
@@ -198,27 +194,28 @@ def _batch(payload, *, credit_tokens=None):
     return Batch.from_groups([_trajectories(payload, credit_tokens=credit_tokens)])
 
 
-def _scoring(policy, *, share_learner=False, action_count=None, suffix_logits_only=False):
+def _scoring(policy, *, share_learner=False, action_count=None, suffix_logits_only=False,
+             prompt_tokens=PROMPT_TOKENS, first_content_id=FIRST_CONTENT_ID):
     """Use the same content-only categorical support as the actor."""
     if share_learner:
         def logprobs(batch):
-            return shared_prefix_logprobs(policy.model, batch, PROMPT_TOKENS, FIRST_CONTENT_ID,
+            return shared_prefix_logprobs(policy.model, batch, prompt_tokens, first_content_id,
                                           action_count=action_count)
         policy.logprobs = logprobs
         return
 
     def logprobs(batch):
-        end = FIRST_CONTENT_ID + action_count if action_count is not None else None
+        end = first_content_id + action_count if action_count is not None else None
         if suffix_logits_only:
-            length = batch.states.size(1) - PROMPT_TOKENS
+            length = batch.states.size(1) - prompt_tokens
             logits = policy.model(batch.states[:, :-1], use_cache=False, logits_to_keep=length).logits
-            labels = (batch.states[:, PROMPT_TOKENS:] - FIRST_CONTENT_ID).masked_fill(
-                batch.mask[:, PROMPT_TOKENS:] == 0, 0)
-            result = -F.cross_entropy(logits[:, :, FIRST_CONTENT_ID:end].transpose(1, 2),
+            labels = (batch.states[:, prompt_tokens:] - first_content_id).masked_fill(
+                batch.mask[:, prompt_tokens:] == 0, 0)
+            result = -F.cross_entropy(logits[:, :, first_content_id:end].transpose(1, 2),
                                       labels, reduction="none")
-            return F.pad(result, (PROMPT_TOKENS, 0)) * batch.mask
-        logits = policy.model(batch.states, use_cache=False).logits[:, :-1, FIRST_CONTENT_ID:end]
-        labels = (batch.states[:, 1:] - FIRST_CONTENT_ID).masked_fill(batch.mask[:, 1:] == 0, 0)
+            return F.pad(result, (prompt_tokens, 0)) * batch.mask
+        logits = policy.model(batch.states, use_cache=False).logits[:, :-1, first_content_id:end]
+        labels = (batch.states[:, 1:] - first_content_id).masked_fill(batch.mask[:, 1:] == 0, 0)
         result = -F.cross_entropy(logits.transpose(1, 2), labels, reduction="none")
         return F.pad(result, (1, 0)) * batch.mask
     policy.logprobs = logprobs
