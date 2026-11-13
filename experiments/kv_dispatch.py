@@ -194,6 +194,10 @@ def _run(config, seed, groups, window, version_aware, output):
             if actor.is_alive():
                 actor.terminate()
                 actor.join(timeout=5)
+                if actor.is_alive():
+                    actor.kill()
+                    actor.join()
+            actor.close()
         results.close()
     wall_s = completed - started
     return {

@@ -24,8 +24,15 @@ def test_oldest_reservation_retains_its_last_version_credit():
     assert dispatch.acquire() == (0, 0, 0)
     assert dispatch.acquire() == (1, 1, 0)
     dispatch.finish(1, 0, object())
-    completed = Event()
+    blocked, completed = Event(), Event()
     reservations = []
+    wait = dispatch.condition.wait
+
+    def observe_wait():
+        blocked.set()
+        return wait()
+
+    dispatch.condition.wait = observe_wait
 
     def acquire():
         reservations.append(dispatch.acquire())
@@ -33,7 +40,8 @@ def test_oldest_reservation_retains_its_last_version_credit():
 
     actor = Thread(target=acquire, daemon=True)
     actor.start()
-    assert not completed.wait(timeout=0.1)
+    assert blocked.wait(timeout=2)
+    assert not completed.is_set()
     dispatch.finish(0, 0, object())
     assert completed.wait(timeout=2)
     actor.join()
