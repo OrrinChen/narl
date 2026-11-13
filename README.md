@@ -43,6 +43,17 @@ The online arm uses a 19,424-parameter Llama with FP32 weights, one actor and on
 
 The actor samples freely and checks for a newer snapshot every four tokens. At most one in-flight swap per group is allowed. Both arms rebuild the history under the new snapshot and differ in whether they share the prompt prefill. Their chronological schedules and realized swaps can differ. The clipped loss uses the probabilities recorded at sampling time, including those for old-weight tokens. The saved per-token versions and group traces feed the audit and throughput report.
 
+For the expanded comparison, share prompt computation at actor startup, after weight
+switches, and during learner scoring. The learner keeps the prefix KV attached to
+autograd, so gradients from every completion flow through the same prefix forward.
+The dense arm and fixed evaluation path use the same settings as before.
+
+```bash
+.venv/bin/python tests/test_shared_prefix.py
+.venv/bin/python -m experiments.kv_online --out runs/prefix-repro --groups 384 --seeds 0 1 2 3 4 --share-initial --share-learner
+.venv/bin/python -m experiments.audit_kv_online --run runs/prefix-repro --out runs/prefix-repro/audit.json
+```
+
 Separate stress and sensitivity runs reuse the online entry point:
 
 ```bash

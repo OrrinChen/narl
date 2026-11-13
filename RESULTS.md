@@ -44,6 +44,22 @@
 
 三种子记录了 371 次在途换版。版本号在每个准入组后递增，包括梯度为零的发布。逐组 trace 中，202 次在途切换跨过至少一个非零梯度更新，其中 109 次所在的组实际被消费。所有消费组的 lag 都在 0–1，98 个过期组被拒绝。审计核对了 token 预算、行为版本、准入、丢组、固定评估记录及每次权重切换。生成吞吐、有效组吞吐、零信号比例、排队和更新耗时、消费组与丢弃组的长度及 reward 分布保存在审计结果。压力运行分别观察到最长约 1.86 秒和 0.16 秒的 producer put，两个 arm 各拒绝 4 个过期组。另以相同队列、快照槽和发布频率运行 `τ=2` 的短对照，实际消费了 lag 2 的组。[正式配置](runs/online-release/protocol.json) · [正式审计与分布](runs/online-release/audit.json) · [学习和吞吐图](runs/online-release/online.png) · [压力审计](runs/online-backpressure/audit.json) · [τ=2 审计](runs/online-tau2/audit.json)
 
+## D. 共享 actor 与 learner 的 prompt 计算
+
+实验 C 的改动只覆盖换版恢复。扩展版在 actor 开始生成时也只对同组 prompt 做一次 prefill，换版后按同样方式重算。在 learner 评分时，八条 completion 共用一次带梯度的 prompt 前向。各分支的梯度通过复制的 KV 回传到同一份前缀计算。两项单元测试将逐 token logprob 和所有参数梯度与逐条评分对齐。actor 的固定换版测试同时验证初始共享前缀下的采样 token、实际行为 logprob 和版本跨度。
+
+在同一台 Apple M2 上，保留实验 C 的 prompt 长度、组大小、生成长度、固定评估集、线程预算、队列容量和滞后阈值。将每臂预算扩展到 384 组（73,728 个生成 token），跑五个配对种子，交替安排执行顺序。对照组在 actor 初始 prefill、换版恢复和 learner 评分时均逐条处理 prompt。优化组在这三处均共享。墙钟包含 actor 启动、评估和日志。源码为 `da12a51`。[运行配置](runs/online-prefix-5seed/protocol.json) · [审计与各阶段分布](runs/online-prefix-5seed/audit.json)
+
+| 种子 | 墙钟，秒 | 有非零 advantage 的已接收 tokens/s | 提升 | 过期丢组 |
+| ---: | ---: | ---: | ---: | ---: |
+| 0 | 12.96 → 10.64 | 2,875 → 4,487 | 56.1% | 91 → 15 |
+| 1 | 13.16 → 10.11 | 3,322 → 4,791 | 44.2% | 45 → 22 |
+| 2 | 13.46 → 9.75 | 2,881 → 4,196 | 45.6% | 50 → 19 |
+| 3 | 13.01 → 9.69 | 2,799 → 4,702 | 68.0% | 88 → 22 |
+| 4 | 14.39 → 12.03 | 2,717 → 3,696 | 36.0% | 66 → 26 |
+
+端到端吞吐增益的配对中位数为 **45.6%**，五个种子的范围为 **36.0–68.0%**。全部已接收 token/s 的配对中位增益为 50.6%。五个种子合计过期丢组从 340 降到 104。各臂的种子中位数再取中位，actor 初始 prefill 从 6.11 ms 降到 1.23 ms，有非零 advantage 的 learner 更新从 17.43 ms 降到 7.89 ms。在线增益归属于三处共享的组合。十次运行的最终留出集 reward 均为 0.25，测量只覆盖本机小模型和合成任务。吞吐分子为非零 advantage 已接收组中的 completion token 数，逐 token 梯度仍受 loss clipping 影响。[在线图表](runs/online-prefix-5seed/online.png) · [原始运行汇总](runs/online-prefix-5seed/summary.json)
+
 ## Profiling、部署与验收
 
 - **CPU profiling。** 384-token 回放中，SDPA 占恢复回放 CPU 时间的 85.2%（逐条）和 60.3%（共享）。在线共享路径的 KV 复制中位数约 0.024 ms，actor 拉取权重约 0.20 ms，learner 更新约 15–16 ms。各阶段可重叠。Apple M2 的 PyTorch 检测到 0 个 CUDA 设备，CUDA 微基准未触发。[CPU profile](runs/kv-replay-release/profile.json) · [在线阶段数据](runs/online-release/audit.json)
