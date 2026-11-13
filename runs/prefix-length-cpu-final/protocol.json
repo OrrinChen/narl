@@ -1,0 +1,45 @@
+{
+  "args": {
+    "out": "runs/prefix-length-cpu-final",
+    "device": "cpu",
+    "dtype": "float32",
+    "model": null,
+    "revision": null,
+    "prompts": [
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      384
+    ],
+    "outputs": [
+      3,
+      16,
+      64,
+      128
+    ],
+    "group_size": 8,
+    "warmups": 3,
+    "repetitions": 15
+  },
+  "device": "cpu",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "hardware": "Apple M2",
+  "parameters": 113088,
+  "torch": "2.8.0",
+  "transformers": "4.57.6",
+  "threads": 1,
+  "source_commit": "90d7fad39e032313e474b34b2af1587cbd30e5e3",
+  "source_sha256": {
+    "experiments/kv_length_sweep.py": "f5b04dd59f7ba0ccd2f9e45c413024fe3344bf4e062008cff0ea148245ff21dd",
+    "experiments/kv_replay.py": "150ce46fa138a89d1449d3154874f3d05172282d2f6b8110933ebda9e92e6424",
+    "experiments/kv_online.py": "9ceb2ddb5c89109c2876710373b8167933dd1a95c8a7970fd171a5018346a87d",
+    "experiments/shared_prefix.py": "accbb5881e6dcba7ad1945b8b41b804251e9f05715fe959368760258033dc88f"
+  },
+  "attention_backend": "sdpa",
+  "actor": "prefill and teacher-forced cached decode, full logits, fixed weights",
+  "learner": "suffix logprobs and backward, no optimizer step",
+  "embedding_grad_check": "all input-token rows on CUDA; all rows on CPU"
+}

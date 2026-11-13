@@ -161,9 +161,39 @@ python3 -m experiments.plot_regroup --run runs/regroup-repro --out runs/regroup-
 python3 -m experiments.plot_kv_online --run runs/online-repro --out runs/online-repro/online.png
 ```
 
+## Prefix and output length sweep
+
+The fixed-token benchmark measures actor prefill plus cached decoding, and
+learner scoring plus backward, separately. It uses identical token histories
+and the same attention backend within each pair. The dense learner only
+projects the answer logits. See [the CPU results](RESULTS.md#j-前缀长度与输出长度的影响)
+and [the GPU and GSM8K protocol](docs/gpu-validation.md).
+
+```bash
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \
+  .venv/bin/python -m experiments.kv_length_sweep --out runs/prefix-length-repro \
+  --warmups 3 --repetitions 15
+python3 -m experiments.plot_kv_lengths --run runs/prefix-length-repro \
+  --out runs/prefix-length-repro/speedup.png
+```
+
 ## Local Kubernetes Job
 
 With a local Docker runtime, kind, and kubectl available, run `bash k8s/run-kv-replay.sh`. The runner creates a temporary loopback kind cluster and runs the same KV replay entry point in one Pod with five repetitions. It saves the Job and Pod status, logs, image ID, dependencies, and the Pod's replay artifacts under a new `runs/k8s-kv-replay.*` directory.
+
+## Related work
+
+Prefix Grouper shares the differentiable GRPO learner prefix. PipelineRL compares
+retained and recomputed KV by KL after a weight change. Narl's fixed-history
+comparison includes a third, group-shared rebuild and records latency and
+numerical agreement across prompt lengths.
+[Prefix Grouper](https://arxiv.org/abs/2506.05433) · [PipelineRL](https://arxiv.org/html/2509.19128)
+
+PSRL documents group-level staleness control. Axolotl documents keeping the
+policy version when an empty training step leaves weights unchanged. Narl
+diagnoses and measures the corresponding expiry bug in its CPU FIFO runner.
+[PSRL](https://psrl.readthedocs.io/en/latest/design/staleness_control.html#group-sampling) ·
+[Axolotl](https://docs.axolotl.ai/docs/grpo.html#async-training-features)
 
 ---
 

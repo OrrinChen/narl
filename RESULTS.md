@@ -148,6 +148,24 @@ FIFO 按完成到达顺序取样，超龄组被拒收，单个剩余组不足以
 
 五对的 45 个总体准确率评估点全部一致，从 63.3% 起步，最终为 78.9%–85.9%。两臂都消费了所有生成组。四对的采样 token 逐组一致，第五对有 13/768 个组的采样 token 不同，最终参数字节在五对中均有差异。组 prefill 的种子中位数再取中位为 13.80 → 2.74 ms，带训练信号的 learner 更新为 54.64 → 19.51 ms。加速测量覆盖这台 CPU 上带填充前缀的三位数输出和小模型。[阶段耗时及轨迹配对](runs/arithmetic-prefix-5seed/phase-analysis.json)
 
+## J. 前缀长度与输出长度的影响
+
+在 Apple M2 上用单线程 PyTorch、113,088 参数的 FP32 Llama 和每组 8 条答案，交叉测量 7 种前缀长度（8–384 token）和 4 种输出长度（3、16、64、128 token）。每种配置每条路径预热 3 次，交替运行并记录 15 次。生成端使用固定权重和相同 token 历史，计 prefill 与缓存解码。训练端计答案 logprob 和反向传播，两臂都只投影答案所需的 logits。每个点的加速比为逐条计算耗时中位数除以共享耗时中位数。源码为 `90d7fad`。
+
+| 前缀 / 输出 token | 生成端加速 | 训练端加速 |
+| --- | ---: | ---: |
+| 8 / 16 | 1.03× | 0.97× |
+| 32 / 128 | 1.00× | 1.15× |
+| 128 / 3 | 2.99× | 2.85× |
+| 128 / 16 | 1.49× | 2.57× |
+| 128 / 64 | 1.12× | 1.99× |
+| 128 / 128 | 1.06× | 1.59× |
+| 384 / 128 | 1.34× | 2.58× |
+
+固定 128-token 前缀时，输出越长，初始 prefill 占生成时间的比例越小，生成端加速趋近 1×。短前缀的几个点接近持平，8/16 和 16/16 的训练端耗时略有回退。28 点的生成 logits、训练 logprob 和 embedding 梯度最大绝对误差分别为 `1.79e-7`、`4.77e-7` 和 `1.19e-7`。[完整曲线](runs/prefix-length-cpu-final/speedup.png) · [实验协议](runs/prefix-length-cpu-final/protocol.json) · [逐点结果](runs/prefix-length-cpu-final/summary.json) · [原始计时](runs/prefix-length-cpu-final/timings.csv)
+
+实验 A 的 32-token 回退发生在换权重后恢复 KV，测量区间与本节的固定权重生成不同。实验 D 的 45.6% 来自 128-token 输入、16/24/32-token 输出的在线训练吞吐。实验 I 的 60.9% 来自 128-token 输入、3-token 输出的达标墙钟，起点为 actor 就绪。CUDA 固定历史对照、vLLM 基线与 GSM8K 混组设计见[复跑方案](docs/gpu-validation.md)。
+
 ## Profiling、部署与验收
 
 - **CPU profiling。** 384-token 回放中，SDPA 占恢复回放 CPU 时间的 85.2%（逐条）和 60.3%（共享）。在线共享路径的 KV 复制中位数约 0.024 ms，actor 拉取权重约 0.20 ms，learner 更新约 15–16 ms。各阶段可重叠。Apple M2 的 PyTorch 检测到 0 个 CUDA 设备，CUDA 微基准未触发。[CPU profile](runs/kv-replay-release/profile.json) · [在线阶段数据](runs/online-release/audit.json)
