@@ -12,7 +12,7 @@ from experiments.kv_online import FIRST_CONTENT_ID, _scoring
 from experiments.shared_prefix import shared_prefix_logprobs
 
 
-def _check_suffix(suffix, completion_mask):
+def _check_suffix(suffix, completion_mask, *, action_count=None):
     with torch.random.fork_rng(devices=[]):
         torch.manual_seed(41)
         model = LlamaForCausalLM(LlamaConfig(
@@ -27,9 +27,10 @@ def _check_suffix(suffix, completion_mask):
         mask=torch.cat((torch.zeros(n, prompt_tokens), torch.tensor(completion_mask)), dim=1),
     )
     policy = SimpleNamespace(model=model)
-    _scoring(policy)
+    _scoring(policy, action_count=action_count)
     dense = policy.logprobs(batch)
-    shared = shared_prefix_logprobs(model, batch, prompt_tokens, FIRST_CONTENT_ID)
+    shared = shared_prefix_logprobs(model, batch, prompt_tokens, FIRST_CONTENT_ID,
+                                    action_count=action_count)
     torch.testing.assert_close(shared, dense, atol=2e-6, rtol=1e-5)
 
     # Different signed token weights exercise accumulation through the shared cache.
@@ -50,8 +51,13 @@ def test_shared_prefix_scores_one_token_completions():
     _check_suffix([[9], [10], [11]], [[1], [1], [1]])
 
 
+def test_shared_prefix_matches_binary_answer_scoring():
+    _check_suffix([[3], [4], [3]], [[1], [1], [1]], action_count=2)
+
+
 if __name__ == "__main__":
     torch.set_num_threads(1)
     test_shared_prefix_scores_and_backpropagates_multiple_suffixes()
     test_shared_prefix_scores_one_token_completions()
+    test_shared_prefix_matches_binary_answer_scoring()
     print("ok  shared prompt learner logprobs and gradients match dense scoring")

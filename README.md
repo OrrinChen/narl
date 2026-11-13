@@ -61,6 +61,41 @@ Separate stress and sensitivity runs reuse the online entry point:
 .venv/bin/python -m experiments.kv_online --out runs/sensitivity-repro --groups 48 --seeds 0 --max-lag 2
 ```
 
+## CPU time to held-out accuracy
+
+The learner trains a tiny decoder to classify four query tokens into two labels.
+The fixed held-out set uses distractor and filler contexts excluded from training.
+Only the first generated token receives credit. The remaining tokens supply
+asynchronous rollout load, including weight swaps. Both arms generate the same
+number of groups and tokens. The reported time is the second evaluation in the
+first pair of consecutive evaluations that reach at least 75% accuracy.
+
+```bash
+.venv/bin/python -m unittest tests.test_narl_kv_learning
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 TOKENIZERS_PARALLELISM=false \
+  .venv/bin/python -m experiments.kv_learning --out runs/learning-repro
+```
+
+The run records the frozen protocol, held-out set, per-group rollout trace, and
+evaluation times with both learner-received and actor-completed token counts.
+
+## CPU rollout dispatch
+
+Three actor processes run fixed 8-, 24-, and 64-token completions against one learner.
+Every arm uses shared prefix computation and the same one-version lag limit.
+FIFO reserves a fixed number of groups and consumes in arrival order. Version-aware
+dispatch admits a new group only if every existing reservation can tolerate one
+more learner publication. Each reservation lasts through the learner's disposition
+of the group, including the optimizer step and weight publication when accepted.
+
+```bash
+.venv/bin/python tests/test_kv_dispatch.py
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 TOKENIZERS_PARALLELISM=false \
+  .venv/bin/python -m experiments.kv_dispatch --out runs/dispatch-repro --groups 384 --seeds 0 1 2 3 4 --windows 1 2
+.venv/bin/python -m experiments.audit_kv_dispatch --run runs/dispatch-repro --out runs/dispatch-repro/audit.json \
+  --baseline fifo-1 --baseline fifo-2
+```
+
 ## Rebuild the figures and CPU profile
 
 Run the plotting modules with a Python environment that includes Matplotlib. Pass an unused output file to the profiling command.
