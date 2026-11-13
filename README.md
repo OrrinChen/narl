@@ -106,6 +106,11 @@ computation, three actors, two full groups per optimizer step, and a one-version
 lag limit. Version-aware admission reserves a learner slot before a group's
 oldest behavior version can expire.
 
+The sequence benchmark advances the policy version only when the published
+parameter bytes change. Optimizer batches have a separate ordinal, which the
+two-evaluation accuracy target still uses. Each update records the candidate
+and preceding snapshot hashes, and each run saves the final published snapshot.
+
 ```bash
 .venv/bin/python -m experiments.kv_sequence_pilot --out runs/sequence-pilot-repro
 .venv/bin/python -m experiments.kv_sequence --out runs/sequence-repro --seeds 0 1 2 3 4 \
