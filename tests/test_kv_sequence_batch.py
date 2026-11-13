@@ -2,6 +2,7 @@
 from copy import deepcopy
 from dataclasses import replace
 from math import log
+import multiprocessing as mp
 from pathlib import Path
 import sys
 from types import SimpleNamespace
@@ -13,7 +14,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from algos import grpo
 from core import Batch, Trajectory
+from experiments.kv_batch_dispatch import BatchDispatch
 from experiments.kv_online import FIRST_CONTENT_ID, GROUP_SIZE, PROMPT_TOKENS, _scoring
+from experiments.kv_sequence import _ChangedWeights
 from train import Config, optimize
 
 
@@ -79,7 +82,35 @@ def test_two_padded_prompt_groups_match_one_dense_grpo_update():
     assert all(state["step"] == 1 for state in shared_opt.state.values())
 
 
+def test_version_tracks_snapshot_bytes_and_empty_publication_releases_batch():
+    ctx = mp.get_context("spawn")
+    model = torch.nn.Linear(1, 1, bias=False)
+    replica = deepcopy(model)
+    with torch.no_grad():
+        model.weight.fill_(0.0)
+    weights = _ChangedWeights(ctx, model)
+    dispatch = BatchDispatch(ctx, weights, total=6, window=2, max_lag=1, version_aware=True)
+    initial_digest = weights.digest
+    assert weights.pull(replica, -1) == 0
+    for expected_before, expected_after, replacement in [(0, 0, None), (0, 1, -0.0), (1, 2, 0.0)]:
+        assert dispatch.admit(*dispatch.acquire()) == 1
+        assert dispatch.admit(*dispatch.acquire()) == 2
+        if replacement is not None:
+            with torch.no_grad():
+                model.weight.fill_(replacement)
+        change = dispatch.complete_update(model)
+        assert change["version_before"] == expected_before and change["version_after"] == expected_after
+        assert change["weights_changed"] == (replacement is not None)
+        assert (change["weight_sha256_before"] != change["weight_sha256_after"]) == change["weights_changed"]
+        assert weights.pull(replica, expected_before) == expected_after
+        assert torch.equal(replica.weight.view(torch.uint8), model.weight.view(torch.uint8))
+    assert weights.digest == initial_digest and weights.version.value == 2
+    assert dispatch.acquire() is None
+
+
 if __name__ == "__main__":
     torch.set_num_threads(1)
     test_two_padded_prompt_groups_match_one_dense_grpo_update()
+    test_version_tracks_snapshot_bytes_and_empty_publication_releases_batch()
     print("ok  two mixed-length prompt groups match the joint dense GRPO update")
+    print("ok  byte-exact policy versions and no-op batch release")

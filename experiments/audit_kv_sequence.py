@@ -7,6 +7,7 @@ import json
 from math import isclose, isfinite
 from pathlib import Path
 from random import Random
+import re
 from statistics import median
 
 from experiments.audit_kv_online import check_reported, read_json, read_rows, require
@@ -94,7 +95,7 @@ def check_group(row, problem, protocol, vocab, version, version_aware, window):
             "wrong GRPO credit count for full completion mask")
 
 
-def check_evaluations(evals, groups, updates, heldout, protocol):
+def check_evaluations(evals, groups, updates, published_versions, heldout, protocol):
     args = protocol["args"]
     expected_counts = [*range(0, args["groups"], args["eval_every"]), args["groups"]]
     require([row["received_groups"] for row in evals] == expected_counts, "evaluation schedule disagrees with protocol")
@@ -105,7 +106,9 @@ def check_evaluations(evals, groups, updates, heldout, protocol):
     buckets = Counter(problem["bucket"] for problem in heldout)
     previous_time = -1.0
     targets = dict.fromkeys(BUCKETS)
+    snapshot_targets = dict.fromkeys(BUCKETS)
     previous = None
+    changed_only = protocol.get("publication") == "changed_weights_only"
     for row in evals:
         now, count = row["time_s"], row["received_groups"]
         start = row.get("eval_started_s", now)
@@ -115,8 +118,13 @@ def check_evaluations(evals, groups, updates, heldout, protocol):
                 "evaluation received-token count disagrees with arrival order")
         require(count == sum(group["received_s"] <= start for group in groups),
                 "evaluation arrived before its received-group count")
-        require(row["update"] == sum(update["finished_s"] <= start for update in updates),
-                "evaluation does not match a published learner version")
+        ordinal = sum(update["finished_s"] <= start for update in updates)
+        require(row["update"] == ordinal, "evaluation does not match a completed training batch")
+        if changed_only:
+            require(row["policy_version"] == published_versions[ordinal],
+                    "evaluation does not match the published policy version")
+            if previous is not None and row["policy_version"] == previous["policy_version"]:
+                require(row["accuracy"] == previous["accuracy"], "accuracy changed on the same policy snapshot")
         require(set(row["accuracy"]) == set(BUCKETS), "evaluation is missing a bucket")
         for bucket, score in row["accuracy"].items():
             hits = score * buckets[bucket]
@@ -127,11 +135,15 @@ def check_evaluations(evals, groups, updates, heldout, protocol):
         require(row["actor_completed_tokens"] >= row["received_tokens"], "rollout budget completed after receipt")
         if previous is not None and 0 < previous["update"] < row["update"]:
             for bucket in BUCKETS:
-                if targets[bucket] is None and min(previous["accuracy"][bucket], row["accuracy"][bucket]) >= args["threshold"]:
-                    targets[bucket] = row
+                if min(previous["accuracy"][bucket], row["accuracy"][bucket]) >= args["threshold"]:
+                    if targets[bucket] is None:
+                        targets[bucket] = row
+                    if (changed_only and snapshot_targets[bucket] is None
+                            and previous["policy_version"] < row["policy_version"]):
+                        snapshot_targets[bucket] = row
         previous = row
     require(evals[0]["time_s"] == 0 and evals[0]["update"] == 0, "initial evaluation was not on untrained weights")
-    return targets
+    return targets, snapshot_targets
 
 
 def retention(groups, size):
@@ -156,13 +168,34 @@ def retention(groups, size):
                 * (row["completion_length"] - row["switches"][0]["after_tokens"]) for row in post_swap)}
 
 
+def check_publication(row, group_rows, protocol, version, weight_hash):
+    changed = row["weights_changed"]
+    before, after = row["weight_sha256_before"], row["weight_sha256_after"]
+    require(type(changed) is bool and re.fullmatch(r"[0-9a-f]{64}", after) is not None
+            and before == weight_hash and changed == (before != after), "broken update weight hash chain")
+    require(row["version_before"] == version and row["version_after"] == version + int(changed),
+            "policy version must advance exactly when weights change")
+    require(0 <= row.get("publication_s", 0.0) <= row["update_s"], "invalid publication timing")
+    size = protocol["group_size"]
+    skipped = row["diagnostics"]["skipped"]
+    expected_skips = size * sum(group["loss_tokens"] == 0 for group in group_rows)
+    if protocol["train_config"]["skip_zero_adv"]:
+        require(skipped == expected_skips, "optimizer skip count disagrees with zero-advantage groups")
+    require(not changed or skipped != size * len(group_rows), "an all-skipped update changed the weights")
+    return row["version_after"], after
+
+
 def audit_arm(folder, reported, train, heldout, protocol, vocab):
     args = protocol["args"]
+    changed_only = protocol.get("publication") == "changed_weights_only"
     version_aware = reported["arm"] == "version_aware"
     window = args["version_window"] if version_aware else int(reported["arm"].split("-")[1])
     groups, updates, waiting_ids = {}, [], []
+    published_versions = [0]
+    weight_hash = protocol.get("initial_weight_sha256")
     for row in read_rows(folder / "trace.jsonl"):
-        version = len(updates)
+        ordinal = len(updates) + 1
+        version = published_versions[-1]
         if "group_id" in row:
             gid = row["group_id"]
             require(type(gid) is int and 0 <= gid < args["groups"] and gid not in groups,
@@ -173,15 +206,21 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
                 raise ValueError(f"{folder.name}: group {gid}: {error}") from None
             groups[gid] = row
             if row["status"] == "consumed":
-                require(row["update"] == version + 1, "consumed group references the wrong update")
+                require(row["update"] == ordinal, "consumed group references the wrong update")
                 waiting_ids.append(gid)
         else:
-            require(row["update"] == version + 1 and row["groups"] == waiting_ids
+            require(row["update"] == ordinal and row["groups"] == waiting_ids
                     and len(waiting_ids) == protocol["optimizer_groups_per_update"], "wrong optimizer publication batch")
             require(max(groups[gid]["received_s"] for gid in waiting_ids) <= row["finished_s"]
                     and (not updates or updates[-1]["finished_s"] <= row["finished_s"])
                     and 0 <= row["update_s"] <= row["finished_s"]
                     and all(isfinite(value) for value in row["diagnostics"].values()), "invalid optimizer record")
+            if changed_only:
+                group_rows = [groups[gid] for gid in waiting_ids]
+                version, weight_hash = check_publication(row, group_rows, protocol, version, weight_hash)
+            else:
+                version += 1
+            published_versions.append(version)
             updates.append(row)
             waiting_ids.clear()
     require(not waiting_ids and len(groups) == args["groups"], f"{folder.name}: missing rollout groups or update")
@@ -189,7 +228,7 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
             "more than one batch was left untrained at drain")
     groups = [groups[gid] for gid in range(len(groups))]
     evals = read_rows(folder / "eval.jsonl")
-    targets = check_evaluations(evals, groups, updates, heldout, protocol)
+    targets, snapshot_targets = check_evaluations(evals, groups, updates, published_versions, heldout, protocol)
     size = protocol["group_size"]
     total = size * sum(row["completion_length"] for row in groups)
     wall = evals[-1]["time_s"]
@@ -202,13 +241,23 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
                "best_accuracy": {bucket: max(row["accuracy"][bucket] for row in evals) for bucket in BUCKETS},
                "target": targets, "wall_s": wall, "generated_tokens": total, "updates": len(updates),
                "loss_tokens_s": sum(row["loss_tokens"] for row in groups) / wall}
+    publications = published_versions[-1]
+    if changed_only:
+        require(sha256((folder / "published_weights.bin").read_bytes()).hexdigest() == weight_hash,
+                f"{folder.name}: saved final policy snapshot disagrees with the weight hash chain")
+        derived.update(publications=publications, no_op_updates=len(updates) - publications)
     check_reported(reported, derived, folder.name)
     for bucket, expected in reported["by_bucket"].items():
         check_reported(buckets[bucket], expected, f"{folder.name}/{bucket}")
     require(set(reported["by_bucket"]) == set(BUCKETS), "summary missing a retention bucket")
     signature = [(row["prompt"], row["completion_length"], row["bucket"]) for row in groups]
-    return {"seed": reported["seed"], "arm": reported["arm"], **derived, "by_bucket": buckets,
-            "by_length": by_length}, signature
+    result = {"seed": reported["seed"], "arm": reported["arm"], **derived, "by_bucket": buckets,
+              "by_length": by_length, "publications": publications}
+    if changed_only:
+        full_batch_size = size * protocol["optimizer_groups_per_update"]
+        result.update(distinct_snapshot_target=snapshot_targets, final_weight_sha256=weight_hash,
+                      all_skipped_updates=sum(row["diagnostics"]["skipped"] == full_batch_size for row in updates))
+    return result, signature
 
 
 def comparison(pairs):
@@ -225,6 +274,11 @@ def audit(run):
     summary = read_json(run / "summary.json")
     require(protocol == summary["protocol"], "run and summary protocols differ")
     args, config = protocol["args"], protocol["train_config"]
+    publication = protocol.get("publication")
+    require(publication in (None, "changed_weights_only"), "unknown policy publication mode")
+    if publication == "changed_weights_only":
+        require(re.fullmatch(r"[0-9a-f]{64}", protocol["initial_weight_sha256"]) is not None,
+                "invalid initial flat-weight SHA256")
     require(protocol["optimizer_groups_per_update"] == config["n_prompts"] == 2
             and protocol["group_size"] == config["group_size"] == config["micro_batch"]
             and protocol["max_lag"] == config["max_staleness"], "learner protocol disagrees with training config")

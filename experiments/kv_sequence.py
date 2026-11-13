@@ -34,6 +34,35 @@ MAX_LAG = 1
 BUCKETS = ("short", "long")
 
 
+class _ChangedWeights(_PublishedWeights):
+    """Advance the version only when the shared CPU parameter bytes change."""
+
+    def __init__(self, ctx, model):
+        super().__init__(ctx, model)
+        self.digest = hashlib.sha256(self.snapshot_bytes()).hexdigest()
+
+    def snapshot_bytes(self):
+        with self.version.get_lock():
+            return self.vector.view(torch.uint8).numpy().tobytes()
+
+    @torch.no_grad()
+    def publish(self, model):
+        candidate = torch.nn.utils.parameters_to_vector(model.parameters())
+        candidate_bytes = candidate.view(torch.uint8)
+        candidate_digest = hashlib.sha256(candidate_bytes.numpy()).hexdigest()
+        with self.version.get_lock():
+            before = self.version.value
+            previous_digest = self.digest
+            changed = not torch.equal(candidate_bytes, self.vector.view(torch.uint8))
+            if changed:
+                self.vector.copy_(candidate)
+                self.version.value += 1
+                self.digest = candidate_digest
+            return {"version_before": before, "version_after": self.version.value,
+                    "weights_changed": changed, "weight_sha256_before": previous_digest,
+                    "weight_sha256_after": candidate_digest}
+
+
 def _worker(config, seed, actor_id, task_type, problems, dispatch, results):
     _threads()
     policy = make_policy(config, None)
@@ -58,7 +87,7 @@ def _worker(config, seed, actor_id, task_type, problems, dispatch, results):
     results.join_thread()
 
 
-def _consume(parked, batch_groups, dispatch, policy, optimizer, config, started, trace):
+def _consume(parked, batch_groups, dispatch, policy, optimizer, config, completed_updates, started, trace):
     for row in parked:
         slot = row["group_id"], row["slot"], row["reserved_version"]
         version = dispatch.weights.version.value
@@ -83,46 +112,53 @@ def _consume(parked, batch_groups, dispatch, policy, optimizer, config, started,
                 advantage = grpo(batch, policy)
                 update_start = perf_counter()
                 diagnostics = optimize(policy, optimizer, batch, advantage, config)
-                dispatch.complete_update(policy.model)
+                publish_start = perf_counter()
+                publication = dispatch.complete_update(policy.model)
+                publication_s = perf_counter() - publish_start
                 update_s = perf_counter() - update_start
+                completed_updates += 1
                 for index, group in enumerate(batch_groups):
                     signal = int(advantage[index * GROUP_SIZE:(index + 1) * GROUP_SIZE].count_nonzero())
-                    group.update(status="consumed", update=version + 1, loss_tokens=signal)
+                    group.update(status="consumed", update=completed_updates, loss_tokens=signal)
                     _write_line(trace, group)
-                _write_line(trace, {"update": version + 1, "groups": [g["group_id"] for g in batch_groups],
+                _write_line(trace, {"update": completed_updates, "groups": [g["group_id"] for g in batch_groups],
                                     "finished_s": perf_counter() - started, "update_s": update_s,
-                                    "diagnostics": diagnostics})
+                                    "publication_s": publication_s, "diagnostics": diagnostics, **publication})
                 batch_groups.clear()
         else:
             continue
         parked.remove(row)
-        return True
-    return False
+        return completed_updates
+    return None
 
 
-def _evaluate_at(policy, task, received, received_tokens, weights, started):
+def _evaluate_at(policy, task, received, received_tokens, completed_updates, weights, started):
     eval_started_s = 0.0 if started is None else perf_counter() - started
     scores = evaluate(policy, task)
     return {"received_groups": received, "received_tokens": received_tokens,
-            "update": weights.version.value, "time_s": 0.0 if started is None else perf_counter() - started,
+            "update": completed_updates, "policy_version": weights.version.value,
+            "time_s": 0.0 if started is None else perf_counter() - started,
             "eval_started_s": eval_started_s, "accuracy": scores}
 
 
-def _run(config, task_type, seed, total, window, queue_size, version_aware, eval_every, output):
+def _run(config, task_type, seed, total, window, queue_size, version_aware, eval_every, initial_digest, output):
     ctx = mp.get_context("spawn")
     task = task_type(config.n_examples, config.eval_n, seed)
     problems = task.sample(total)
     policy = make_policy(config, None)
     _scoring(policy, share_learner=True, action_count=len(LABELS))
     optimizer = torch.optim.AdamW(policy.parameters(), lr=config.lr)
-    weights = _PublishedWeights(ctx, policy.model)
+    weights = _ChangedWeights(ctx, policy.model)
+    if weights.digest != initial_digest:
+        raise RuntimeError("initial parameters do not match the protocol")
     dispatch = BatchDispatch(ctx, weights, total, window, MAX_LAG, version_aware)
     results = ctx.Queue(maxsize=queue_size)
     actors = [ctx.Process(target=_worker, args=(config, seed, actor_id, task_type, problems, dispatch, results))
               for actor_id in range(ACTORS)]
     seen, finished = set(), set()
-    received_tokens, parked, pending = 0, [], []
-    initial = _evaluate_at(policy, task, 0, 0, weights, None)
+    received_tokens, completed_updates = 0, 0
+    parked, pending = [], []
+    initial = _evaluate_at(policy, task, 0, 0, completed_updates, weights, None)
     started = perf_counter()
     try:
         for actor in actors:
@@ -152,10 +188,12 @@ def _run(config, task_type, seed, total, window, queue_size, version_aware, eval
                 row.update(receive_order=len(seen), generated_s=row.pop("generated_at") - started,
                            received_s=perf_counter() - started)
                 parked.append(row)
-                while _consume(parked, pending, dispatch, policy, optimizer, config, started, trace):
-                    pass
+                while (count := _consume(parked, pending, dispatch, policy, optimizer, config,
+                                         completed_updates, started, trace)) is not None:
+                    completed_updates = count
                 if len(seen) % eval_every == 0 and len(seen) < total:
-                    _write_line(evals, _evaluate_at(policy, task, len(seen), received_tokens, weights, started))
+                    _write_line(evals, _evaluate_at(policy, task, len(seen), received_tokens,
+                                                   completed_updates, weights, started))
             if parked or len(seen) != total or (version_aware and pending):
                 raise RuntimeError(f"incomplete drain: {len(seen)}/{total}, {len(parked)=}, {len(pending)=}")
             for row in pending:
@@ -165,7 +203,9 @@ def _run(config, task_type, seed, total, window, queue_size, version_aware, eval
                 actor.join(timeout=5)
                 if actor.exitcode != 0:
                     raise RuntimeError(f"actor exit {actor.exitcode}")
-            _write_line(evals, _evaluate_at(policy, task, len(seen), received_tokens, weights, started))
+            _write_line(evals, _evaluate_at(policy, task, len(seen), received_tokens,
+                                           completed_updates, weights, started))
+        (output / "published_weights.bin").write_bytes(weights.snapshot_bytes())
     finally:
         for actor in actors:
             if actor.is_alive():
@@ -202,13 +242,17 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
     update_ids = [gid for row in updates for gid in row["groups"]]
     if len(update_ids) != len(consumed_ids) or set(update_ids) != consumed_ids:
         raise RuntimeError("trace has missing or duplicate consumed groups")
-    for version, update in enumerate(updates):
-        if update["update"] != version + 1 or len(update["groups"]) != GROUPS_PER_UPDATE:
-            raise RuntimeError("optimizer version did not advance by exactly one full batch")
+    version = 0
+    for ordinal, update in enumerate(updates, start=1):
+        if (update["update"] != ordinal or len(update["groups"]) != GROUPS_PER_UPDATE
+                or update["version_before"] != version
+                or update["version_after"] != version + int(update["weights_changed"])):
+            raise RuntimeError("invalid optimizer batch or policy version change")
         for gid in update["groups"]:
             row = groups[gid]
-            if row["learner_version"] != version or row["update"] != version + 1 or not 0 <= row["lag"] <= MAX_LAG:
+            if row["learner_version"] != version or row["update"] != ordinal or not 0 <= row["lag"] <= MAX_LAG:
                 raise RuntimeError(f"group {gid} violated the optimizer/version contract")
+        version = update["version_after"]
     for problem, row in zip(task.sample(total), groups):
         length = problem["completion_length"]
         answer = [LABELS.index(token) + FIRST_CONTENT_ID for token in problem["answer_tokens"]]
@@ -221,7 +265,8 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
                 raise RuntimeError("trace reward or behavior logprob disagrees with the full answer")
     evals = _jsonl(output / "eval.jsonl")
     generated_tokens = sum(row["completion_length"] for row in groups) * GROUP_SIZE
-    if evals[-1]["received_tokens"] != generated_tokens or evals[-1]["update"] != len(updates):
+    if (evals[-1]["received_tokens"] != generated_tokens or evals[-1]["update"] != len(updates)
+            or evals[-1]["policy_version"] != version):
         raise RuntimeError("evaluation log and trace disagree on final budget")
     for row in evals:
         row["actor_completed_tokens"] = sum(GROUP_SIZE * group["completion_length"] for group in groups
@@ -244,7 +289,8 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
             "initial_accuracy": evals[0]["accuracy"], "final_accuracy": evals[-1]["accuracy"],
             "best_accuracy": {bucket: max(row["accuracy"][bucket] for row in evals) for bucket in BUCKETS},
             "target": targets, "wall_s": evals[-1]["time_s"], "generated_tokens": generated_tokens,
-            "updates": len(updates), "by_bucket": by_bucket,
+            "updates": len(updates), "publications": version, "no_op_updates": len(updates) - version,
+            "by_bucket": by_bucket,
             "loss_tokens_s": sum(row["loss_tokens"] for row in groups) / evals[-1]["time_s"]}
 
 
@@ -307,6 +353,10 @@ def main():
     config = Config(task="sequence", algo="grpo", model=str(fixture), dtype="float32", group_size=GROUP_SIZE,
                     n_prompts=GROUPS_PER_UPDATE, micro_batch=GROUP_SIZE, lr=args.lr,
                     n_examples=TRAIN_EXAMPLES, eval_n=HELDOUT_EXAMPLES, device="cpu", max_staleness=MAX_LAG)
+    initial_policy = make_policy(config, None)
+    initial_weights = _ChangedWeights(mp.get_context("spawn"), initial_policy.model)
+    initial_digest = initial_weights.digest
+    del initial_weights, initial_policy
     queue_size = max(*args.fifo_windows, args.version_window)
     sources = ("experiments/kv_sequence.py", "experiments/kv_batch_dispatch.py",
                "experiments/kv_sequence_task.py", "experiments/kv_online.py", "experiments/shared_prefix.py")
@@ -314,6 +364,7 @@ def main():
                 "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
                 "source_sha256": {path: hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in sources},
                 "initial_model_sha256": hashlib.sha256((fixture / "model.safetensors").read_bytes()).hexdigest(),
+                "initial_weight_sha256": initial_digest, "publication": "changed_weights_only",
                 "optimizer_groups_per_update": GROUPS_PER_UPDATE, "max_lag": MAX_LAG,
                 "actor_count": ACTORS, "torch_threads_per_process": 1, "queue_capacity": queue_size,
                 "max_pending_learner_groups": GROUPS_PER_UPDATE,
@@ -337,7 +388,8 @@ def main():
             arm = "version_aware" if aware else f"fifo-{window}"
             path = output / f"{seed}-{arm}"
             path.mkdir()
-            _run(config, task_type, seed, args.groups, window, queue_size, aware, args.eval_every, path)
+            _run(config, task_type, seed, args.groups, window, queue_size, aware, args.eval_every,
+                 initial_digest, path)
             row = _measure(path, task_type(config.n_examples, config.eval_n, seed), seed, args.groups,
                            window, aware, args.threshold)
             runs.append(row)

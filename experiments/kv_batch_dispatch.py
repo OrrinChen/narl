@@ -95,6 +95,7 @@ class BatchDispatch:
         with self.condition:
             if self._pending.value != GROUPS_PER_UPDATE:
                 raise RuntimeError("cannot publish without a complete learner batch")
-            self.weights.publish(model)
+            publication = self.weights.publish(model)
             self._pending.value = 0
             self.condition.notify_all()
+            return publication
