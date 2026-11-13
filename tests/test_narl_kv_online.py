@@ -48,6 +48,8 @@ def test_fixed_switch_preserves_old_logprobs_and_recompute_equivalence():
         independent, shared = runs
         assert independent["tokens"] == shared["tokens"]
         assert independent["rewards"] == shared["rewards"]
+        answer = policy.tok.convert_tokens_to_ids(problem["answer"])
+        assert shared["rewards"] == [float(row[-1] == answer) for row in shared["tokens"]]
         assert independent["version_by_token"] == shared["version_by_token"] == [0] * 4 + [1] * 5
         assert independent["switches"][0]["prompt_tokens_recomputed"] == 8 * PROMPT_TOKENS
         assert shared["switches"][0]["prompt_tokens_recomputed"] == PROMPT_TOKENS

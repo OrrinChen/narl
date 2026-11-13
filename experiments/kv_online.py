@@ -30,6 +30,7 @@ PROMPT_TOKENS = 128
 QUEUE_CAPACITY = 2
 TAU = 1
 LENGTHS = (16, 24, 32)
+EVAL_LENGTH = 16
 FIRST_CONTENT_ID = 3
 MODES = ("recompute", "share_prompt")
 
@@ -125,7 +126,7 @@ def _generate(policy, task, problem, steps, weights, mode, generator):
     completion = torch.cat(samples, dim=1)
     states = torch.cat((history, completion), dim=1)
     answer = policy.tok.convert_tokens_to_ids(problem["answer"])
-    rewards = completion[:, 0].eq(answer).float()
+    rewards = completion[:, -1].eq(answer).float()
     return {
         "prompt": problem["prompt"], "tokens": states.tolist(),
         "behavior_logprobs": torch.cat(logprobs, dim=1).tolist(), "rewards": rewards.tolist(),
@@ -182,8 +183,11 @@ def _scoring(policy):
 @torch.no_grad()
 def _evaluate(policy, task):
     prompts = torch.cat([_prompt(policy, task, row) for row in task.eval_data])
-    logits = policy.model(prompts, use_cache=False, logits_to_keep=1).logits
-    predicted = logits[:, -1, FIRST_CONTENT_ID:].argmax(-1) + FIRST_CONTENT_ID
+    generated = policy.model.generate(
+        input_ids=prompts, attention_mask=torch.ones_like(prompts), do_sample=False,
+        suppress_tokens=list(range(FIRST_CONTENT_ID)), max_new_tokens=EVAL_LENGTH,
+    )
+    predicted = generated[:, -1]
     answers = torch.tensor([policy.tok.convert_tokens_to_ids(row["answer"]) for row in task.eval_data])
     return float(predicted.eq(answers).float().mean())
 
@@ -264,7 +268,7 @@ def _run(config, seed, mode, total_groups, output, stress_delay_s):
                     "update_ms": update_ms,
                     "loss_tokens": signal_tokens, "diagnostics": diagnostics,
                 })
-                if accepted and updates % 8 == 0:
+                if accepted and updates % 12 == 0:
                     reward = _evaluate(policy, task)
                     _write_line(evaluations, {"update": updates, "time_s": perf_counter() - started,
                                               "loss_tokens": loss_tokens, "reward": reward})
@@ -321,6 +325,7 @@ def main():
             "comparison": list(MODES), "selection": "both cross-version recompute modes passed replay parity",
             "seeds": args.seeds, "groups": args.groups, "prompt_tokens": PROMPT_TOKENS,
             "completion_lengths": LENGTHS, "fixed_horizon": True, "first_content_token": FIRST_CONTENT_ID,
+            "reward_position": "last", "eval_completion_length": EVAL_LENGTH,
             "queue_capacity": QUEUE_CAPACITY, "max_lag": args.max_lag, "snapshot_slots": 1,
             "publish_every_accepted_groups": 1, "max_swaps_per_group": 1,
             "weight_check_every_tokens": 4, "threads_per_process": 1,
