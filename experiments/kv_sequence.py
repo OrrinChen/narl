@@ -236,8 +236,9 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
             "statuses": dict(Counter(row["status"] for row in rows)), "groups": len(rows),
             "generated_tokens": sum(row["completion_length"] for row in rows) * GROUP_SIZE,
             "post_swap_nonzero_advantage_groups": len(post_swap),
-            "post_swap_nonzero_advantage_tokens": GROUP_SIZE * sum(
-                row["completion_length"] - row["switches"][0]["after_tokens"] for row in post_swap),
+            "exact_post_swap_nonzero_advantage_tokens": sum(
+                row["loss_tokens"] // row["completion_length"]
+                * (row["completion_length"] - row["switches"][0]["after_tokens"]) for row in post_swap),
         }
     return {"seed": seed, "arm": "version_aware" if version_aware else f"fifo-{window}", "window": window,
             "initial_accuracy": evals[0]["accuracy"], "final_accuracy": evals[-1]["accuracy"],

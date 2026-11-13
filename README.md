@@ -96,6 +96,28 @@ OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 TOKENIZERS_PARALLEL
   --baseline fifo-1 --baseline fifo-2
 ```
 
+## Two-group CPU updates on short and long sequences
+
+The model generates 3-, 12-, or 16-token alternating bit sequences conditioned
+on a query token. The training reward is the fraction of positions that match.
+Greedy evaluation requires an exact sequence match in each length bucket and
+uses held-out distractor tokens and filler strings. Both arms use shared prefix
+computation, three actors, two full groups per optimizer step, and a one-version
+lag limit. Version-aware admission reserves a learner slot before a group's
+oldest behavior version can expire.
+
+```bash
+.venv/bin/python -m experiments.kv_sequence_pilot --out runs/sequence-pilot-repro
+.venv/bin/python -m experiments.kv_sequence --out runs/sequence-repro --seeds 0 1 2 3 4 \
+  --groups 512 --threshold .75 --lr .002 --eval-every 32 --fifo-windows 2 --version-window 2
+.venv/bin/python -m experiments.audit_kv_sequence --run runs/sequence-repro --out runs/sequence-repro/audit.json
+```
+
+Use `OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
+TOKENIZERS_PARALLELISM=false` for the timed comparison. The formal FIFO window
+was selected on development seeds 120 and 121 by comparing windows 1 through 4.
+See the run protocol and results for the target and timing definitions.
+
 ## Rebuild the figures and CPU profile
 
 Run the plotting modules with a Python environment that includes Matplotlib. Pass an unused output file to the profiling command.
