@@ -34,9 +34,16 @@ def read_split(path, expected_hash):
     return rows
 
 
-def prompt_text(tokenizer, example):
-    message = (example["question"] + "\nReason briefly, then put ONLY the final number "
-               "inside <answer> </answer> tags.")
+def prompt_text(tokenizer, example, prompt_mode="original"):
+    if prompt_mode == "reasoning":
+        message = ("Solve the math problem. Show the calculation step by step before giving the answer. "
+                   "On the final line, write the number as <answer>NUMBER</answer>.\n\n"
+                   "Example: Maya buys three packs of four pens and gives away two. How many pens remain?\n"
+                   "Three packs contain 3 * 4 = 12 pens. After giving away two, 12 - 2 = 10 remain.\n"
+                   "<answer>10</answer>\n\nProblem: " + example["question"])
+    else:
+        message = (example["question"] + "\nReason briefly, then put ONLY the final number "
+                   "inside <answer> </answer> tags.")
     return chat_prompt(tokenizer, message, None, False)
 
 
@@ -48,14 +55,18 @@ def load_model(dtype):
 
 
 @torch.no_grad()
-def generate_group(model, tokenizer, example, group_size, max_new_tokens, *, sample=True, capture=False):
-    prompt = prompt_text(tokenizer, example)
-    ids = tokenizer(prompt, add_special_tokens=False, return_tensors="pt").input_ids
-    inputs = ids.expand(group_size, -1).contiguous().to(model.device)
+def generate_batch(model, tokenizer, examples, max_new_tokens, *, sample=False, capture=False,
+                   prompt_mode="original"):
+    prompts = [prompt_text(tokenizer, example, prompt_mode) for example in examples]
+    encoded = tokenizer(prompts, add_special_tokens=False, padding=True, padding_side="left", return_tensors="pt")
+    input_ids = encoded.input_ids.tolist()
+    masks = encoded.attention_mask.tolist()
+    encoded = encoded.to(model.device)
+    prefix_len = encoded.input_ids.size(1)
     sampling = ({"temperature": 1.0, "top_p": 1.0, "top_k": 0} if sample
                 else {"temperature": None, "top_p": None, "top_k": None})
     output = model.generate(
-        input_ids=inputs, attention_mask=torch.ones_like(inputs),
+        **encoded,
         max_new_tokens=max_new_tokens, do_sample=sample, repetition_penalty=1.0,
         pad_token_id=tokenizer.pad_token_id, return_dict_in_generate=True, output_scores=capture,
         **sampling,
@@ -63,23 +74,31 @@ def generate_group(model, tokenizer, example, group_size, max_new_tokens, *, sam
     stop_ids = model.generation_config.eos_token_id
     stop_ids = set(stop_ids if isinstance(stop_ids, list) else [stop_ids])
     if capture:
-        actions = output.sequences[:, ids.size(1):]
+        actions = output.sequences[:, prefix_len:]
         selected = torch.stack([
             logits.float().log_softmax(-1).gather(1, actions[:, pos:pos + 1]).squeeze(1)
             for pos, logits in enumerate(output.scores)
         ], dim=1).tolist()
     rows = []
-    for index, response in enumerate(output.sequences[:, ids.size(1):].tolist()):
+    for index, response in enumerate(output.sequences[:, prefix_len:].tolist()):
         stop = next((pos for pos, token in enumerate(response) if token in stop_ids), None)
         response = response[:stop + 1] if stop is not None else response
         text = tokenizer.decode(response, skip_special_tokens=True)
         row = {"completion": text, "token_ids": response, "truncated": stop is None,
                "has_answer_tag": extract_answer(text) is not None,
-               "reward": int(gsm8k_reward(prompt, text, example))}
+               "reward": int(gsm8k_reward(prompts[index], text, examples[index]))}
         if capture:
             row["behavior_logprobs"] = selected[index][:len(response)]
-        rows.append(row)
-    return ids[0].tolist(), rows
+        prompt_ids = input_ids[index][-sum(masks[index]):]
+        rows.append((prompt_ids, row))
+    return rows
+
+
+def generate_group(model, tokenizer, example, group_size, max_new_tokens, *, sample=True, capture=False,
+                   prompt_mode="original"):
+    results = generate_batch(model, tokenizer, [example] * group_size, max_new_tokens,
+                             sample=sample, capture=capture, prompt_mode=prompt_mode)
+    return results[0][0], [row for _, row in results]
 
 
 def main():

@@ -9,7 +9,7 @@ Narl studies weight updates, KV-cache recomputation, and group composition in as
 
 In the online token-choice experiment with a 19K-parameter Llama, 128-token prompts, and 16-, 24-, or 32-token outputs, sharing raised useful training-token throughput by a paired median **45.6%**. In the separate two-digit addition experiment with a 113K-parameter Llama, padded 128-token prompts, and three-token answers, the paired median reduction in time to 70% held-out accuracy was **60.9%** from actor readiness and **42.3%** from actor launch. The fixed-weight length sweep covers 28 shapes. At a 128-token prompt, actor speedup fell from **2.99×** to **1.06×** as outputs grew from 3 to 128 tokens. [Online throughput](runs/online-prefix-5seed/summary.json) · [Time to accuracy](RESULTS.md#i-两位数加法上的共享前缀) · [Length sweep](runs/prefix-length-cpu-final/speedup.png)
 
-The GSM8K pilot measures how regrouping fixed Qwen2.5-0.5B-Instruct rollouts changes the GRPO signal, with a same-version shuffle control. [Pilot results](RESULTS.md#k-gsm8k-上的版本混组试跑)
+On GSM8K, LoRA SFT raised tagged exact-match accuracy from 3/24 to 9/24 on a separate development split. Three GRPO arms then trained on the same 27,877 sampled tokens. Version-homogeneous, mixed-version, and within-version shuffled groups scored 10/32, 11/32, and 12/32 on the same fresh test questions, versus 11/32 before GRPO. [Matched-budget results](RESULTS.md#l-gsm8k-开发集验收与同预算分组对照)
 
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 

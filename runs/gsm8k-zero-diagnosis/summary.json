@@ -1,0 +1,99 @@
+{
+  "questions": [
+    {
+      "prompt_id": 426,
+      "gold": 11.0,
+      "final_number": 10.0,
+      "tagged": false,
+      "truncated": false,
+      "tokens": 4,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 799,
+      "gold": 4.0,
+      "final_number": 6.0,
+      "tagged": true,
+      "truncated": false,
+      "tokens": 9,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 419,
+      "gold": 3000.0,
+      "final_number": 4400.0,
+      "tagged": true,
+      "truncated": false,
+      "tokens": 13,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 629,
+      "gold": 17500.0,
+      "final_number": 9250.0,
+      "tagged": false,
+      "truncated": true,
+      "tokens": 128,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 927,
+      "gold": 85000.0,
+      "final_number": 10000.0,
+      "tagged": true,
+      "truncated": false,
+      "tokens": 13,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 771,
+      "gold": 3.0,
+      "final_number": 5.5,
+      "tagged": true,
+      "truncated": false,
+      "tokens": 12,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 765,
+      "gold": 490.0,
+      "final_number": 240.0,
+      "tagged": true,
+      "truncated": false,
+      "tokens": 11,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    },
+    {
+      "prompt_id": 533,
+      "gold": 300.0,
+      "final_number": 100.0,
+      "tagged": true,
+      "truncated": false,
+      "tokens": 11,
+      "unchanged_across_arms": true,
+      "strict_correct": 0,
+      "format_relaxed_correct": 0
+    }
+  ],
+  "heldout_count": 8,
+  "tagged": 6,
+  "truncated": 1,
+  "nontruncated_median_tokens": 11,
+  "unchanged_across_arms": 8,
+  "strict_correct": 0,
+  "format_relaxed_correct": 0
+}

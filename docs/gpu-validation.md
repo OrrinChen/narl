@@ -100,6 +100,57 @@ The four local replay prompts were selected for reward variation during a
 training-split screening run. The eight test prompts are drawn independently
 of rewards. [Model revision](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/tree/7ae557604adf67be50417f59c2c2f167def9a775) · [GSM8K dataset](https://github.com/openai/grade-school-math)
 
+Diagnose the original 0/8 directly from the saved greedy generations.
+
+```bash
+.venv/bin/python -m experiments.gsm8k_zero_diagnosis \
+  --run runs/gsm8k-regroup-local-fp32 --test runs/gsm8k-data/test.jsonl
+```
+
+Six answers had complete tags and all six contained the wrong number. Seven
+generations ended within 4–13 tokens. The remaining generation hit the
+128-token cap after giving the wrong final number. Scoring the final number
+without requiring tags still gives 0/8. All four training arms generated the
+same tokens as the starting checkpoint on each question. [Per-question diagnosis](../runs/gsm8k-zero-diagnosis/summary.json)
+
+For a learning comparison, reserve development questions from the official
+training split before any updates. Keep those questions disjoint from the
+supervised examples and GRPO rollout prompts. Use the same prompt and scorer
+before and after training to verify a development accuracy gain. Freeze the
+checkpoint, prompt, scorer, and training budget before evaluating on a fresh
+sample of official test questions. Exclude the eight inspected pilot questions
+from that sample. Use the same test questions for every arm and report paired
+correct counts, wins, losses, and consumed tokens.
+
+### Reproduce the matched-budget comparison on Apple Silicon
+
+Use the pinned Qwen checkpoint above in the local Hugging Face cache. The
+development run uses MLX BF16, four-example evaluation batches, and a 256-token
+generation cap. It selects the first SFT checkpoint to gain at least three
+correct answers on 24 train-derived development questions. All three replay
+arms use the same sampled completions and start from that checkpoint.
+
+```bash
+uv pip install --python .venv/bin/python mlx==0.29.2 mlx-lm==0.29.1
+export TOKENIZERS_PARALLELISM=false
+data=runs/gsm8k-data
+dev=runs/gsm8k-dev-mlx-repro
+out=runs/gsm8k-matched-mlx-repro
+
+.venv/bin/python -m experiments.gsm8k_mlx_development \
+  --train "$data/train.jsonl" --out "$dev" --max-new-tokens 256 \
+  --eval-batch 4 --checkpoints 16 40 80 160
+.venv/bin/python -m experiments.gsm8k_matched \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --qualification "$dev" \
+  --out "$out" --replay-prompts 16 --heldout-prompts 32 --max-new-tokens 256
+.venv/bin/python -m experiments.audit_gsm8k_matched \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --qualification "$dev" \
+  --run "$out" --out "$out/audit.json"
+```
+
+For an exact replay of the qualified adapters, set `dev=runs/gsm8k-dev-mlx-final`
+and run the last two commands. See [the matched-budget results](../RESULTS.md#l-gsm8k-开发集验收与同预算分组对照).
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer

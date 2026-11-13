@@ -1,0 +1,9 @@
+{
+  "qualified": true,
+  "development_count": 24,
+  "before_correct": 3,
+  "old_adapter_sha256": "ed9739a5fd24ad59c48cb9af03f7c289a9a0436df44da05ccecfe8747abb6e16",
+  "after_correct": 9,
+  "selected_step": 80,
+  "fresh_adapter_sha256": "2c6a2883a67adfb9e2f5bb2ff2f5c14dcab8203847b0f3522b1790f021f56dd2"
+}

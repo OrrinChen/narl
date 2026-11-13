@@ -179,6 +179,36 @@ FIFO 按完成到达顺序取样，超龄组被拒收，单个剩余组不足以
 
 四臂各有 3 步非零梯度。起始检查点及四臂的最终留出成绩均为 **0/8**。首轮 MPS BF16 反传出现非有限梯度，表中训练结果来自同一组已保存样本和 adapter 的 CPU FP32 复跑。这个单种子试跑测到了分组对训练信号的影响。要判断学习效果，需要先在独立开发集获得非零起始分数，再扩大训练与留出预算。在线过期样本的独立效应仍待测量。[独立审计](runs/gsm8k-regroup-local-fp32/audit.json) · [协议](runs/gsm8k-regroup-local-fp32/protocol.json) · [训练与评估记录](runs/gsm8k-regroup-local-fp32/summary.json) · [原始样本](runs/gsm8k-regroup-local-fp32/samples.jsonl)
 
+## L. GSM8K 开发集验收与同预算分组对照
+
+复查原来的 8 道题，6 条有完整标签但数值错误，2 条没有完整标签且给出的最后数值也错。7 条在 4–13 token 内自行结束，只有 1 条用满 128 token。放宽标签后仍为 0/8，起始模型与四个训练臂的答案逐 token 相同。[逐题诊断](runs/gsm8k-zero-diagnosis/summary.json)
+
+在原版 Qwen2.5-0.5B-Instruct 上，用 Apple M2 的 MLX BF16 在预先抽出的 24 道 GSM8K 训练集开发题做验收。监督训练题、GRPO 采样题、开发题和正式测试题互不重叠。用相同推理提示、256-token 上限及带标签数值精确匹配，选择首个比起始模型至少多答对 3 道的检查点。
+
+| 开发集条件 | 答对 / 24 | 有完整答案标签 | 达到生成上限 |
+| --- | ---: | ---: | ---: |
+| 原提示，128 token | 1 | 18 | 1 |
+| 原提示，256 token | 1 | 18 | 1 |
+| 推理提示，训练前 | 3 | 4 | 14 |
+| 同一推理提示，SFT 16 步 | 3 | 3 | 13 |
+| 同一推理提示，SFT 40 步 | 5 | 13 | 11 |
+| 同一推理提示，SFT 80 步 | 9 | 16 | 11 |
+
+80 步检查点通过验收。带标签精确匹配从 3/24 到 9/24。作为开发集敏感性检查，若对无标签且正常结束的答案也取最后一个数字，分数为 8/24 → 9/24。这一轮可确认模型对提示和答案格式的适配，数学能力的独立增益仍难从 24 道题判断。[开发记录](runs/gsm8k-dev-mlx-final/development.json) · [验收文件](runs/gsm8k-dev-mlx-final/dev-qualified.json)
+
+正式对照固定同一批 16 道训练题。每题从初始权重和 80 步检查点各生成 4 条，共 128 条。每臂从 80 步检查点起步，每题消费 8 条并尝试一步 GRPO 更新，四组各 2 条。按版本分组保留原来的同版本组。新旧混组在各组内配对一新一旧。同版本打乱在各自版本内交换同等数量的组员。三臂的 completion ID、生成 token、行为 logprob 和累积顺序完全相同。固定 32 道官方测试题，排除此前试跑检查过的 9 道题。该设计测固定样本如何分组，旧样本来自监督训练前的快照，在线发布间隔的效应需另测。
+
+旧、新快照各采 64 条。两者分别答对 2 条和 11 条，完整标签分别为 4 条和 42 条，触及 256-token 上限分别为 49 条和 21 条。各臂都消费同一份包含 **27,877 个 completion token** 的样本池。[冻结协议](runs/gsm8k-matched-mlx-final/protocol.json) · [采样记录](runs/gsm8k-matched-mlx-final/samples.jsonl)
+
+| 设置 | 正式留出答对 / 32 | 非零 advantage token | 非零梯度更新 |
+| --- | ---: | ---: | ---: |
+| GRPO 前 | 11 | — | — |
+| 按版本分组 | 10 | 4,054 | 6/16 |
+| 新旧混组 | 11 | 3,610 | 5/16 |
+| 同版本打乱 | 12 | 1,642 | 4/16 |
+
+对照按版本分组，新旧混组只多答对 1 道（1 胜 0 负），同版本打乱多答对 2 道（2 胜 0 负）。对照 GRPO 前，新旧混组在逐题正误上全部相同。三臂两两配对的精确 McNemar p 值为 0.5–1.0。新旧混组和同版本打乱分别改变了 26/128 和 18/128 条答案的 advantage。这个单种子实验确认分组会改动训练信号。留出集只观察到一两题的差异，尚无稳定学习增益证据。[独立审计](runs/gsm8k-matched-mlx-final/audit.json) · [逐题评估与更新记录](runs/gsm8k-matched-mlx-final/summary.json) · [复跑入口](docs/gpu-validation.md#reproduce-the-matched-budget-comparison-on-apple-silicon)
+
 ## Profiling、部署与验收
 
 - **CPU profiling。** 384-token 回放中，SDPA 占恢复回放 CPU 时间的 85.2%（逐条）和 60.3%（共享）。在线共享路径的 KV 复制中位数约 0.024 ms，actor 拉取权重约 0.20 ms，learner 更新约 15–16 ms。各阶段可重叠。Apple M2 的 PyTorch 检测到 0 个 CUDA 设备，CUDA 微基准未触发。[CPU profile](runs/kv-replay-release/profile.json) · [在线阶段数据](runs/online-release/audit.json)
