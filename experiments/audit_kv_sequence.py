@@ -3,6 +3,7 @@
 import argparse
 from collections import Counter
 from hashlib import sha256
+from itertools import combinations_with_replacement
 import json
 from math import isclose, isfinite
 from pathlib import Path
@@ -16,6 +17,7 @@ from experiments.audit_kv_online import check_reported, read_json, read_rows, re
 QUERIES = ("red", "blue", "green", "gold")
 LENGTH_SCHEDULE = (3, 12, 3, 16)
 BUCKETS = ("short", "long")
+ARITHMETIC_BUCKETS = ("all", "noncarry", "carry")
 
 
 def workload(count, filler_start, distractors):
@@ -33,7 +35,24 @@ def workload(count, filler_start, distractors):
     return rows
 
 
-def check_group(row, problem, protocol, vocab, version, version_aware, window):
+def arithmetic_workloads(train_count, eval_count, development):
+    """Independently reconstruct disjoint unordered operand pairs and answers."""
+    train, heldout = [], []
+    offset = 0 if development else eval_count // 2
+    pairs = list(combinations_with_replacement(range(10, 100), 2))
+    for index, bucket in enumerate(ARITHMETIC_BUCKETS[1:]):
+        selected = [(a, b) for a, b in pairs if (a % 10 + b % 10 >= 10) == (bucket == "carry")]
+        Random(2041 + index).shuffle(selected)
+        rows = [{"prompt": f"add {left % 10} {right % 10} + {left // 10} {right // 10} =",
+                 "answer_tokens": list(f"{left + right:03d}"[::-1]), "completion_length": 3,
+                 "bucket": bucket, "left": left, "right": right} for left, right in selected]
+        heldout.extend(rows[offset:offset + eval_count // 2])
+        train.extend(rows[eval_count:eval_count + train_count // 2])
+    require(len(train) == train_count and len(heldout) == eval_count, "unbalanced arithmetic data budget")
+    return train, heldout
+
+
+def check_group(row, problem, protocol, vocab, version, arm, window):
     size, prefix_length = protocol["group_size"], protocol["prompt_tokens"]
     length = problem["completion_length"]
     require(all(row[key] == problem[key] for key in ("prompt", "bucket", "completion_length")),
@@ -43,8 +62,9 @@ def check_group(row, problem, protocol, vocab, version, version_aware, window):
     require(0 <= row["generated_s"] <= row["received_s"] and row["dispatch_wait_s"] >= 0,
             "invalid rollout timing")
     prompt = [vocab[token] for token in problem["prompt"].split()]
-    action_ids = [vocab["0"], vocab["1"]]
-    prefix = (action_ids * ((prefix_length - len(prompt) + 1) // 2) + prompt)[-prefix_length:]
+    digits = "0123456789" if protocol.get("task") == "arithmetic" else "01"
+    action_ids = [vocab[digit] for digit in digits]
+    prefix = (action_ids[:2] * ((prefix_length - len(prompt) + 1) // 2) + prompt)[-prefix_length:]
     answer = [vocab[token] for token in problem["answer_tokens"]]
     require(len(row["tokens"]) == len(row["behavior_logprobs"]) == len(row["rewards"]) == size,
             "incomplete rollout group")
@@ -52,18 +72,20 @@ def check_group(row, problem, protocol, vocab, version, version_aware, window):
         completion = tokens[prefix_length:]
         require(tokens[:prefix_length] == prefix and len(completion) == length
                 and all(type(token) is int and token in action_ids for token in completion),
-                "wrong prefix, completion length or binary action")
+                "wrong prefix, completion length or action support")
         require(len(logprobs) == length and all(isfinite(logp) and logp <= 0 for logp in logprobs),
                 "invalid behavior logprobs or missing credited action positions")
         correct = sum(pred == gold for pred, gold in zip(completion, answer))
-        require(isclose(reward, correct / length, abs_tol=1e-7), "reward is not full-sequence token accuracy")
+        expected_reward = float(correct == length) if protocol.get("reward_kind") == "exact_match" else correct / length
+        require(isclose(reward, expected_reward, abs_tol=1e-7), "reward disagrees with the answer verifier")
 
     initial, reserved = row["initial_version"], row["reserved_version"]
     require(row["learner_version"] == version and 0 <= reserved <= initial <= version,
             "invalid learner or behavior version order")
     lag = version - initial
     require(row["lag"] == lag, "incorrect behavior lag")
-    require(row["initial_prompt_tokens_computed"] == prefix_length, "initial prefill did not share the prompt")
+    prefills = size if arm == "recompute" else 1
+    require(row["initial_prompt_tokens_computed"] == prefills * prefix_length, "wrong number of initial prefills")
     versions = [initial] * length
     require(len(row["switches"]) <= 1, "more than one weight switch")
     for switch in row["switches"]:
@@ -71,7 +93,7 @@ def check_group(row, problem, protocol, vocab, version, version_aware, window):
         require(0 < boundary < length and boundary % 4 == 0 and switch["from"] == initial
                 and initial < new <= version, "invalid weight switch boundary or version")
         versions[boundary:] = [new] * (length - boundary)
-        require(switch["prompt_tokens_recomputed"] == prefix_length
+        require(switch["prompt_tokens_recomputed"] == prefills * prefix_length
                 and switch["suffix_tokens_recomputed"] == size * (boundary - 1), "wrong KV rebuild token counts")
         compute, copy, recovery = (switch[key] for key in ("recompute_ms", "cache_copy_ms", "recovery_ms"))
         require(0 <= compute and 0 <= copy and compute + copy <= recovery + 1e-6,
@@ -81,7 +103,7 @@ def check_group(row, problem, protocol, vocab, version, version_aware, window):
     status = row["status"]
     require(status in ("consumed", "stale", "unbatched") and (status == "stale") == (lag > protocol["max_lag"]),
             "group status disagrees with expiry")
-    require(not version_aware or (status == "consumed" and version - reserved <= protocol["max_lag"]),
+    require(arm != "version_aware" or (status == "consumed" and version - reserved <= protocol["max_lag"]),
             "version-aware reservation expired or went unbatched")
     rewards = Counter(row["rewards"])
     if status == "consumed" and len(rewards) > 1:
@@ -95,7 +117,7 @@ def check_group(row, problem, protocol, vocab, version, version_aware, window):
             "wrong GRPO credit count for full completion mask")
 
 
-def check_evaluations(evals, groups, updates, published_versions, heldout, protocol):
+def check_evaluations(evals, groups, updates, published_versions, heldout, protocol, bucket_names, ready):
     args = protocol["args"]
     expected_counts = [*range(0, args["groups"], args["eval_every"]), args["groups"]]
     require([row["received_groups"] for row in evals] == expected_counts, "evaluation schedule disagrees with protocol")
@@ -104,15 +126,25 @@ def check_evaluations(evals, groups, updates, published_versions, heldout, proto
     require([row["receive_order"] for row in arrival] == list(range(1, len(groups) + 1)),
             "missing or duplicate receive order")
     buckets = Counter(problem["bucket"] for problem in heldout)
+    if "all" in bucket_names:
+        buckets["all"] = len(heldout)
     previous_time = -1.0
-    targets = dict.fromkeys(BUCKETS)
-    snapshot_targets = dict.fromkeys(BUCKETS)
+    targets = dict.fromkeys(bucket_names)
+    snapshot_targets = dict.fromkeys(bucket_names)
     previous = None
     changed_only = protocol.get("publication") == "changed_weights_only"
     for row in evals:
         now, count = row["time_s"], row["received_groups"]
         start = row.get("eval_started_s", now)
         require(isfinite(now) and previous_time <= start <= now, "evaluation clock goes backwards")
+        if ready is not None:
+            if count:
+                require(ready == row["training_started_s"] <= start
+                        and isclose(row["training_time_s"], now - ready, abs_tol=1e-9),
+                        "inconsistent training-only evaluation time")
+            else:
+                require(row.get("training_started_s", 0.0) == row.get("training_time_s", 0.0) == 0.0,
+                        "initial evaluation counted timed training")
         previous_time = now
         require(row["received_tokens"] == size * sum(group["completion_length"] for group in arrival[:count]),
                 "evaluation received-token count disagrees with arrival order")
@@ -125,16 +157,20 @@ def check_evaluations(evals, groups, updates, published_versions, heldout, proto
                     "evaluation does not match the published policy version")
             if previous is not None and row["policy_version"] == previous["policy_version"]:
                 require(row["accuracy"] == previous["accuracy"], "accuracy changed on the same policy snapshot")
-        require(set(row["accuracy"]) == set(BUCKETS), "evaluation is missing a bucket")
+        require(set(row["accuracy"]) == set(bucket_names), "evaluation is missing a bucket")
         for bucket, score in row["accuracy"].items():
             hits = score * buckets[bucket]
             require(0 <= score <= 1 and isclose(hits, round(hits), abs_tol=1e-8),
                     "bucket accuracy incompatible with held-out size")
+        if "all" in bucket_names:
+            matches = sum(row["accuracy"][bucket] * buckets[bucket] for bucket in bucket_names if bucket != "all")
+            require(isclose(matches, row["accuracy"]["all"] * buckets["all"], abs_tol=1e-8),
+                    "overall exact match does not agree with the carry strata")
         row["actor_completed_tokens"] = size * sum(group["completion_length"] for group in groups
                                                    if group["generated_s"] <= now)
         require(row["actor_completed_tokens"] >= row["received_tokens"], "rollout budget completed after receipt")
         if previous is not None and 0 < previous["update"] < row["update"]:
-            for bucket in BUCKETS:
+            for bucket in bucket_names:
                 if min(previous["accuracy"][bucket], row["accuracy"][bucket]) >= args["threshold"]:
                     if targets[bucket] is None:
                         targets[bucket] = row
@@ -188,8 +224,15 @@ def check_publication(row, group_rows, protocol, version, weight_hash):
 def audit_arm(folder, reported, train, heldout, protocol, vocab):
     args = protocol["args"]
     changed_only = protocol.get("publication") == "changed_weights_only"
-    version_aware = reported["arm"] == "version_aware"
-    window = args["version_window"] if version_aware else int(reported["arm"].split("-")[1])
+    arm = reported["arm"]
+    prefix_benchmark = protocol.get("benchmark") == "prefix"
+    bucket_names = ARITHMETIC_BUCKETS if prefix_benchmark else BUCKETS
+    if prefix_benchmark:
+        window, = args["fifo_windows"]
+    elif arm == "version_aware":
+        window = args["version_window"]
+    else:
+        window = int(arm.split("-")[1])
     groups, updates, waiting_ids = {}, [], []
     published_versions = [0]
     weight_hash = protocol.get("initial_weight_sha256")
@@ -201,7 +244,7 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
             require(type(gid) is int and 0 <= gid < args["groups"] and gid not in groups,
                     f"{folder.name}: invalid or duplicate group {gid}")
             try:
-                check_group(row, train[gid % len(train)], protocol, vocab, version, version_aware, window)
+                check_group(row, train[gid % len(train)], protocol, vocab, version, arm, window)
             except ValueError as error:
                 raise ValueError(f"{folder.name}: group {gid}: {error}") from None
             groups[gid] = row
@@ -227,18 +270,27 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
     require(sum(row["status"] == "unbatched" for row in groups.values()) < protocol["optimizer_groups_per_update"],
             "more than one batch was left untrained at drain")
     groups = [groups[gid] for gid in range(len(groups))]
+    ready = None
+    if prefix_benchmark:
+        startup = read_json(folder / "actor_ready.json")
+        readiness, ready = startup["actor_ready_s"], startup["training_started_s"]
+        require(set(readiness) == {str(actor_id) for actor_id in range(protocol["actor_count"])}
+                and all(0 < stamp <= ready for stamp in readiness.values())
+                and ready <= min(group["generated_s"] for group in groups), "invalid actor readiness timestamps")
     evals = read_rows(folder / "eval.jsonl")
-    targets, snapshot_targets = check_evaluations(evals, groups, updates, published_versions, heldout, protocol)
+    targets, snapshot_targets = check_evaluations(evals, groups, updates, published_versions, heldout, protocol,
+                                                  bucket_names, ready)
     size = protocol["group_size"]
     total = size * sum(row["completion_length"] for row in groups)
     wall = evals[-1]["time_s"]
     require(evals[-1]["actor_completed_tokens"] == total and evals[-1]["update"] == len(updates) and wall > 0,
             "run ended before the full budget and all updates")
-    buckets = {bucket: retention([row for row in groups if row["bucket"] == bucket], size) for bucket in BUCKETS}
+    buckets = {bucket: retention([row for row in groups if bucket == "all" or row["bucket"] == bucket], size)
+               for bucket in bucket_names}
     by_length = {str(length): retention([row for row in groups if row["completion_length"] == length], size)
-                 for length in sorted(set(LENGTH_SCHEDULE))}
+                 for length in sorted({row["completion_length"] for row in groups})}
     derived = {"window": window, "initial_accuracy": evals[0]["accuracy"], "final_accuracy": evals[-1]["accuracy"],
-               "best_accuracy": {bucket: max(row["accuracy"][bucket] for row in evals) for bucket in BUCKETS},
+               "best_accuracy": {bucket: max(row["accuracy"][bucket] for row in evals) for bucket in bucket_names},
                "target": targets, "wall_s": wall, "generated_tokens": total, "updates": len(updates),
                "loss_tokens_s": sum(row["loss_tokens"] for row in groups) / wall}
     publications = published_versions[-1]
@@ -249,7 +301,8 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
     check_reported(reported, derived, folder.name)
     for bucket, expected in reported["by_bucket"].items():
         check_reported(buckets[bucket], expected, f"{folder.name}/{bucket}")
-    require(set(reported["by_bucket"]) == set(BUCKETS), "summary missing a retention bucket")
+    require(set(bucket_names) - {"all"} <= set(reported["by_bucket"]) <= set(bucket_names),
+            "summary missing a retention bucket")
     signature = [(row["prompt"], row["completion_length"], row["bucket"]) for row in groups]
     result = {"seed": reported["seed"], "arm": reported["arm"], **derived, "by_bucket": buckets,
               "by_length": by_length, "publications": publications}
@@ -257,16 +310,24 @@ def audit_arm(folder, reported, train, heldout, protocol, vocab):
         full_batch_size = size * protocol["optimizer_groups_per_update"]
         result.update(distinct_snapshot_target=snapshot_targets, final_weight_sha256=weight_hash,
                       all_skipped_updates=sum(row["diagnostics"]["skipped"] == full_batch_size for row in updates))
+    if prefix_benchmark:
+        result.update(training_started_s=ready, training_wall_s=wall - ready)
     return result, signature
 
 
-def comparison(pairs):
+def comparison(pairs, baseline_key, treatment_key, prefix_benchmark):
     hits = [pair for pair in pairs if pair["time_saved_s"] is not None]
-    medians = {f"median_{key}": median(row[key] for row in hits) if hits else None for key in (
-        "time_saved_s", "time_saved_fraction", "actor_completed_tokens_saved", "received_tokens_saved")}
-    return {"pairs": pairs, "paired_hits": len(hits), "fifo_hits": sum(pair["fifo"] is not None for pair in pairs),
-            "version_aware_hits": sum(pair["version_aware"] is not None for pair in pairs),
-            "version_aware_faster": sum(pair["time_saved_s"] > 0 for pair in hits), **medians}
+    metrics = ["time_saved_s", "time_saved_fraction", "actor_completed_tokens_saved", "received_tokens_saved"]
+    if prefix_benchmark:
+        metrics.extend(["training_time_saved_s", "training_time_saved_fraction"])
+    medians = {f"median_{key}": median(row[key] for row in hits) if hits else None for key in metrics}
+    result = {"pairs": pairs, "paired_hits": len(hits),
+              f"{baseline_key}_hits": sum(pair[baseline_key] is not None for pair in pairs),
+              f"{treatment_key}_hits": sum(pair[treatment_key] is not None for pair in pairs),
+              f"{treatment_key}_faster": sum(pair["time_saved_s"] > 0 for pair in hits), **medians}
+    if prefix_benchmark:
+        result["shared_training_faster"] = sum(pair["training_time_saved_s"] > 0 for pair in hits)
+    return result
 
 
 def audit(run):
@@ -274,6 +335,13 @@ def audit(run):
     summary = read_json(run / "summary.json")
     require(protocol == summary["protocol"], "run and summary protocols differ")
     args, config = protocol["args"], protocol["train_config"]
+    prefix_benchmark = protocol.get("benchmark") == "prefix"
+    require(not prefix_benchmark or (protocol.get("task") == "arithmetic" and len(args["fifo_windows"]) == 1),
+            "expected a matched two-arm arithmetic prefix benchmark")
+    treatment_arm = "share_prompt" if prefix_benchmark else "version_aware"
+    baseline_key, treatment_key = ("baseline", "shared") if prefix_benchmark else ("fifo", "version_aware")
+    target_bucket = "all" if prefix_benchmark else "long"
+    bucket_names = ARITHMETIC_BUCKETS if prefix_benchmark else BUCKETS
     publication = protocol.get("publication")
     require(publication in (None, "changed_weights_only"), "unknown policy publication mode")
     if publication == "changed_weights_only":
@@ -287,18 +355,25 @@ def audit(run):
     vocab = read_json(run / "model/tokenizer.json")["model"]["vocab"]
     heldout = read_json(run / "heldout.json")
     development = protocol["stage"] == "development"
-    expected_heldout = workload(config["eval_n"], 1024 if development else 2048,
-                                ("three",) if development else ("four",))
+    if prefix_benchmark:
+        require(protocol["action_labels"] == list("0123456789")
+                and [vocab[digit] for digit in protocol["action_labels"]] == list(range(3, 13)),
+                "arithmetic tokenizer does not match the fixed decimal action support")
+        train_pool, expected_heldout = arithmetic_workloads(config["n_examples"], config["eval_n"], development)
+    else:
+        train_pool = workload(config["n_examples"], 0, ("one", "two"))
+        expected_heldout = workload(config["eval_n"], 1024 if development else 2048,
+                                    ("three",) if development else ("four",))
     require(heldout == expected_heldout, "held-out prompts differ from the frozen split")
-    arms = [f"fifo-{window}" for window in args["fifo_windows"]]
-    expected_arms = {(seed, arm) for seed in args["seeds"] for arm in [*arms, "version_aware"]}
+    arms = ["recompute"] if prefix_benchmark else [f"fifo-{window}" for window in args["fifo_windows"]]
+    expected_arms = {(seed, arm) for seed in args["seeds"] for arm in [*arms, treatment_arm]}
     reports = {(row["seed"], row["arm"]): row for row in summary["runs"]}
     require(len(reports) == len(summary["runs"]) and set(reports) == expected_arms, "missing or duplicate run arms")
     verified, paired = [], {arm: [] for arm in arms}
     for seed in args["seeds"]:
-        train = workload(config["n_examples"], 0, ("one", "two"))
+        train = train_pool.copy()
         Random(seed).shuffle(train)
-        treatment, expected = audit_arm(run / f"{seed}-version_aware", reports[seed, "version_aware"],
+        treatment, expected = audit_arm(run / f"{seed}-{treatment_arm}", reports[seed, treatment_arm],
                                         train, heldout, protocol, vocab)
         verified.append(treatment)
         for arm in arms:
@@ -306,19 +381,24 @@ def audit(run):
             require(signature == expected and control["generated_tokens"] == treatment["generated_tokens"]
                     and control["initial_accuracy"] == treatment["initial_accuracy"], f"seed {seed}: unmatched workload")
             verified.append(control)
-            a, b = control["target"]["long"], treatment["target"]["long"]
-            paired[arm].append({"seed": seed, "fifo": a, "version_aware": b,
-                                "time_saved_s": a["time_s"] - b["time_s"] if a and b else None,
-                                "time_saved_fraction": 1 - b["time_s"] / a["time_s"] if a and b else None,
-                                "actor_completed_tokens_saved": a["actor_completed_tokens"] - b["actor_completed_tokens"]
-                                if a and b else None,
-                                "received_tokens_saved": a["received_tokens"] - b["received_tokens"] if a and b else None,
-                                "final_accuracy": {"fifo": control["final_accuracy"],
-                                                   "version_aware": treatment["final_accuracy"]},
-                                "retained_group_fraction_delta": {bucket: treatment["by_bucket"][bucket]["retained_group_fraction"]
-                                                                  - control["by_bucket"][bucket]["retained_group_fraction"]
-                                                                  for bucket in BUCKETS}})
-    comparisons = {arm: comparison(rows) for arm, rows in paired.items()}
+            a, b = control["target"][target_bucket], treatment["target"][target_bucket]
+            pair = {"seed": seed, baseline_key: a, treatment_key: b,
+                    "time_saved_s": a["time_s"] - b["time_s"] if a and b else None,
+                    "time_saved_fraction": 1 - b["time_s"] / a["time_s"] if a and b else None,
+                    "actor_completed_tokens_saved": a["actor_completed_tokens"] - b["actor_completed_tokens"]
+                    if a and b else None,
+                    "received_tokens_saved": a["received_tokens"] - b["received_tokens"] if a and b else None,
+                    "final_accuracy": {baseline_key: control["final_accuracy"],
+                                       treatment_key: treatment["final_accuracy"]},
+                    "retained_group_fraction_delta": {bucket: treatment["by_bucket"][bucket]["retained_group_fraction"]
+                                                      - control["by_bucket"][bucket]["retained_group_fraction"]
+                                                      for bucket in bucket_names}}
+            if prefix_benchmark:
+                pair.update(training_time_saved_s=a["training_time_s"] - b["training_time_s"] if a and b else None,
+                            training_time_saved_fraction=1 - b["training_time_s"] / a["training_time_s"]
+                            if a and b else None)
+            paired[arm].append(pair)
+    comparisons = {arm: comparison(rows, baseline_key, treatment_key, prefix_benchmark) for arm, rows in paired.items()}
     require(set(summary["comparisons"]) == set(arms), "summary comparisons do not match protocol")
     for arm, original in summary["comparisons"].items():
         check_reported(comparisons[arm], {key: value for key, value in original.items() if key != "pairs"}, arm)

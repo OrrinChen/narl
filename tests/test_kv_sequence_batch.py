@@ -51,6 +51,8 @@ def test_two_padded_prompt_groups_match_one_dense_grpo_update():
 
     with torch.no_grad():
         dense_logp = dense.logprobs(batch)
+        _scoring(dense, action_count=2, suffix_logits_only=True)
+        torch.testing.assert_close(dense.logprobs(batch), dense_logp, atol=2e-6, rtol=1e-5)
         shared_logp = torch.cat([shared.logprobs(group) for _, group in batch.micro_batches(GROUP_SIZE)])
         torch.testing.assert_close(shared_logp, dense_logp, atol=2e-6, rtol=1e-5)
         unpadded_logp = shared.logprobs(Batch.from_groups([short]))

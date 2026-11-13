@@ -136,7 +136,11 @@ def _generate(policy, task, problem, steps, weights, mode, generator, *, share_i
     states = torch.cat((history, completion), dim=1)
     if "answer_tokens" in problem:
         answer = policy.tok.convert_tokens_to_ids(problem["answer_tokens"])
-        rewards = completion.eq(torch.tensor(answer)).float().mean(dim=1)
+        correct = completion.eq(torch.tensor(answer))
+        if getattr(task, "reward_kind", "fraction_correct") == "exact_match":
+            rewards = correct.all(dim=1).float()
+        else:
+            rewards = correct.float().mean(dim=1)
     else:
         answer = policy.tok.convert_tokens_to_ids(problem["answer"])
         rewards = completion[:, reward_index].eq(answer).float()
@@ -194,7 +198,7 @@ def _batch(payload, *, credit_tokens=None):
     return Batch.from_groups([_trajectories(payload, credit_tokens=credit_tokens)])
 
 
-def _scoring(policy, *, share_learner=False, action_count=None):
+def _scoring(policy, *, share_learner=False, action_count=None, suffix_logits_only=False):
     """Use the same content-only categorical support as the actor."""
     if share_learner:
         def logprobs(batch):
@@ -205,6 +209,14 @@ def _scoring(policy, *, share_learner=False, action_count=None):
 
     def logprobs(batch):
         end = FIRST_CONTENT_ID + action_count if action_count is not None else None
+        if suffix_logits_only:
+            length = batch.states.size(1) - PROMPT_TOKENS
+            logits = policy.model(batch.states[:, :-1], use_cache=False, logits_to_keep=length).logits
+            labels = (batch.states[:, PROMPT_TOKENS:] - FIRST_CONTENT_ID).masked_fill(
+                batch.mask[:, PROMPT_TOKENS:] == 0, 0)
+            result = -F.cross_entropy(logits[:, :, FIRST_CONTENT_ID:end].transpose(1, 2),
+                                      labels, reduction="none")
+            return F.pad(result, (PROMPT_TOKENS, 0)) * batch.mask
         logits = policy.model(batch.states, use_cache=False).logits[:, :-1, FIRST_CONTENT_ID:end]
         labels = (batch.states[:, 1:] - FIRST_CONTENT_ID).masked_fill(batch.mask[:, 1:] == 0, 0)
         result = -F.cross_entropy(logits.transpose(1, 2), labels, reduction="none")

@@ -9,6 +9,7 @@ import multiprocessing as mp
 from pathlib import Path
 import platform
 import queue
+import shutil
 import statistics
 import subprocess
 import sys
@@ -31,7 +32,7 @@ from train import Config, make_policy, optimize
 
 ACTORS = 3
 MAX_LAG = 1
-BUCKETS = ("short", "long")
+PREFIX_ARMS = ("recompute", "share_prompt")
 
 
 class _ChangedWeights(_PublishedWeights):
@@ -63,10 +64,14 @@ class _ChangedWeights(_PublishedWeights):
                     "weight_sha256_after": candidate_digest}
 
 
-def _worker(config, seed, actor_id, task_type, problems, dispatch, results):
+def _worker(config, seed, actor_id, task_type, problems, dispatch, results, mode, action_count, start_gate):
     _threads()
     policy = make_policy(config, None)
     task = task_type(config.n_examples, config.eval_n, seed)
+    if start_gate is not None:
+        results.put({"ready_actor": actor_id})
+        if not start_gate.wait(timeout=60):
+            raise RuntimeError("learner did not release ready actors")
     while True:
         start = perf_counter()
         reservation = dispatch.acquire()
@@ -78,7 +83,7 @@ def _worker(config, seed, actor_id, task_type, problems, dispatch, results):
         problem = problems[group_id]
         generator = torch.Generator().manual_seed(seed * 100_000 + group_id)
         payload = _generate(policy, task, problem, problem["completion_length"], dispatch.weights,
-                            "share_prompt", generator, share_initial=True, action_count=len(LABELS))
+                            mode, generator, share_initial=mode == "share_prompt", action_count=action_count)
         payload.update(group_id=group_id, actor_id=actor_id, slot=slot, reserved_version=reserved_version,
                        bucket=problem["bucket"], dispatched_at=dispatched_at, generated_at=perf_counter(),
                        dispatch_wait_s=dispatched_at - start)
@@ -132,39 +137,65 @@ def _consume(parked, batch_groups, dispatch, policy, optimizer, config, complete
     return None
 
 
-def _evaluate_at(policy, task, received, received_tokens, completed_updates, weights, started):
+def _evaluate_at(policy, task, received, received_tokens, completed_updates, weights, started, evaluate_task,
+                 training_started_s=None):
     eval_started_s = 0.0 if started is None else perf_counter() - started
-    scores = evaluate(policy, task)
-    return {"received_groups": received, "received_tokens": received_tokens,
-            "update": completed_updates, "policy_version": weights.version.value,
-            "time_s": 0.0 if started is None else perf_counter() - started,
-            "eval_started_s": eval_started_s, "accuracy": scores}
+    scores = evaluate_task(policy, task)
+    elapsed = 0.0 if started is None else perf_counter() - started
+    result = {"received_groups": received, "received_tokens": received_tokens,
+              "update": completed_updates, "policy_version": weights.version.value,
+              "time_s": elapsed, "eval_started_s": eval_started_s, "accuracy": scores}
+    if training_started_s is not None:
+        result.update(training_started_s=training_started_s, training_time_s=elapsed - training_started_s)
+    return result
 
 
-def _run(config, task_type, seed, total, window, queue_size, version_aware, eval_every, initial_digest, output):
+def _write_evaluation(handle, result):
+    _write_line(handle, result)
+    handle.flush()
+
+
+def _run(config, task_type, seed, total, window, queue_size, version_aware, eval_every, initial_digest, output,
+         *, mode="share_prompt", labels=LABELS, evaluate_task=evaluate, ready_timing=False):
     ctx = mp.get_context("spawn")
     task = task_type(config.n_examples, config.eval_n, seed)
     problems = task.sample(total)
     policy = make_policy(config, None)
-    _scoring(policy, share_learner=True, action_count=len(LABELS))
+    _scoring(policy, share_learner=mode == "share_prompt", action_count=len(labels),
+             suffix_logits_only=ready_timing)
     optimizer = torch.optim.AdamW(policy.parameters(), lr=config.lr)
     weights = _ChangedWeights(ctx, policy.model)
     if weights.digest != initial_digest:
         raise RuntimeError("initial parameters do not match the protocol")
     dispatch = BatchDispatch(ctx, weights, total, window, MAX_LAG, version_aware)
     results = ctx.Queue(maxsize=queue_size)
-    actors = [ctx.Process(target=_worker, args=(config, seed, actor_id, task_type, problems, dispatch, results))
+    start_gate = ctx.Event() if ready_timing else None
+    actors = [ctx.Process(target=_worker, args=(config, seed, actor_id, task_type, problems, dispatch, results,
+                                              mode, len(labels), start_gate))
               for actor_id in range(ACTORS)]
     seen, finished = set(), set()
     received_tokens, completed_updates = 0, 0
     parked, pending = [], []
-    initial = _evaluate_at(policy, task, 0, 0, completed_updates, weights, None)
+    initial = _evaluate_at(policy, task, 0, 0, completed_updates, weights, None, evaluate_task)
     started = perf_counter()
+    training_started_s = None
     try:
         for actor in actors:
             actor.start()
+        if start_gate is not None:
+            ready = {}
+            while len(ready) < ACTORS:
+                try:
+                    actor_id = results.get(timeout=45)["ready_actor"]
+                except queue.Empty:
+                    raise RuntimeError(f"actors did not become ready, exits={[p.exitcode for p in actors]}") from None
+                if actor_id in ready or not 0 <= actor_id < ACTORS:
+                    raise RuntimeError("invalid actor readiness marker")
+                ready[actor_id] = perf_counter() - started
+            training_started_s = perf_counter() - started
+            start_gate.set()
         with (output / "trace.jsonl").open("w") as trace, (output / "eval.jsonl").open("w") as evals:
-            _write_line(evals, initial)
+            _write_evaluation(evals, initial)
             while len(finished) < ACTORS:
                 try:
                     row = results.get(timeout=45)
@@ -192,8 +223,9 @@ def _run(config, task_type, seed, total, window, queue_size, version_aware, eval
                                          completed_updates, started, trace)) is not None:
                     completed_updates = count
                 if len(seen) % eval_every == 0 and len(seen) < total:
-                    _write_line(evals, _evaluate_at(policy, task, len(seen), received_tokens,
-                                                   completed_updates, weights, started))
+                    _write_evaluation(evals, _evaluate_at(policy, task, len(seen), received_tokens,
+                                                         completed_updates, weights, started,
+                                                         evaluate_task, training_started_s))
             if parked or len(seen) != total or (version_aware and pending):
                 raise RuntimeError(f"incomplete drain: {len(seen)}/{total}, {len(parked)=}, {len(pending)=}")
             for row in pending:
@@ -203,9 +235,12 @@ def _run(config, task_type, seed, total, window, queue_size, version_aware, eval
                 actor.join(timeout=5)
                 if actor.exitcode != 0:
                     raise RuntimeError(f"actor exit {actor.exitcode}")
-            _write_line(evals, _evaluate_at(policy, task, len(seen), received_tokens,
-                                           completed_updates, weights, started))
+            _write_evaluation(evals, _evaluate_at(policy, task, len(seen), received_tokens,
+                                                 completed_updates, weights, started, evaluate_task, training_started_s))
         (output / "published_weights.bin").write_bytes(weights.snapshot_bytes())
+        if start_gate is not None:
+            (output / "actor_ready.json").write_text(json.dumps(
+                {"actor_ready_s": ready, "training_started_s": training_started_s}, indent=2) + "\n")
     finally:
         for actor in actors:
             if actor.is_alive():
@@ -232,7 +267,7 @@ def _target(evals, bucket, threshold):
     return None
 
 
-def _measure(output, task, seed, total, window, version_aware, threshold):
+def _measure(output, task, seed, total, window, version_aware, threshold, *, prefix_arm=None, labels=LABELS):
     trace = _jsonl(output / "trace.jsonl")
     groups = sorted((row for row in trace if "group_id" in row), key=lambda row: row["group_id"])
     updates = [row for row in trace if "groups" in row]
@@ -255,12 +290,13 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
         version = update["version_after"]
     for problem, row in zip(task.sample(total), groups):
         length = problem["completion_length"]
-        answer = [LABELS.index(token) + FIRST_CONTENT_ID for token in problem["answer_tokens"]]
+        answer = [labels.index(token) + FIRST_CONTENT_ID for token in problem["answer_tokens"]]
         if any(row[k] != problem[k] for k in ("prompt", "completion_length", "bucket")):
             raise RuntimeError("trace disagrees with the seeded prompt schedule")
         for sequence, reward, logp in zip(row["tokens"], row["rewards"], row["behavior_logprobs"], strict=True):
             completion = sequence[PROMPT_TOKENS:]
-            expected = sum(a == b for a, b in zip(completion, answer, strict=True)) / length
+            correct = sum(a == b for a, b in zip(completion, answer, strict=True))
+            expected = float(correct == length) if getattr(task, "reward_kind", None) == "exact_match" else correct / length
             if len(logp) != length or abs(reward - expected) > 1e-7:
                 raise RuntimeError("trace reward or behavior logprob disagrees with the full answer")
     evals = _jsonl(output / "eval.jsonl")
@@ -271,9 +307,9 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
     for row in evals:
         row["actor_completed_tokens"] = sum(GROUP_SIZE * group["completion_length"] for group in groups
                                             if group["generated_s"] <= row["time_s"])
-    targets = {bucket: _target(evals, bucket, threshold) for bucket in BUCKETS}
+    targets = {bucket: _target(evals, bucket, threshold) for bucket in evals[0]["accuracy"]}
     by_bucket = {}
-    for bucket in BUCKETS:
+    for bucket in dict.fromkeys(row["bucket"] for row in groups):
         rows = [row for row in groups if row["bucket"] == bucket]
         consumed = [row for row in rows if row["status"] == "consumed"]
         post_swap = [row for row in consumed if row["switches"] and row["loss_tokens"]]
@@ -285,9 +321,9 @@ def _measure(output, task, seed, total, window, version_aware, threshold):
                 row["loss_tokens"] // row["completion_length"]
                 * (row["completion_length"] - row["switches"][0]["after_tokens"]) for row in post_swap),
         }
-    return {"seed": seed, "arm": "version_aware" if version_aware else f"fifo-{window}", "window": window,
+    return {"seed": seed, "arm": prefix_arm or ("version_aware" if version_aware else f"fifo-{window}"), "window": window,
             "initial_accuracy": evals[0]["accuracy"], "final_accuracy": evals[-1]["accuracy"],
-            "best_accuracy": {bucket: max(row["accuracy"][bucket] for row in evals) for bucket in BUCKETS},
+            "best_accuracy": {bucket: max(row["accuracy"][bucket] for row in evals) for bucket in targets},
             "target": targets, "wall_s": evals[-1]["time_s"], "generated_tokens": generated_tokens,
             "updates": len(updates), "publications": version, "no_op_updates": len(updates) - version,
             "by_bucket": by_bucket,
@@ -326,6 +362,40 @@ def _pairs(runs, windows):
     return comparisons
 
 
+def _prefix_pairs(runs):
+    keyed = {(row["seed"], row["arm"]): row for row in runs}
+    pairs = []
+    for seed, arm in keyed:
+        if arm != "share_prompt" or (seed, "recompute") not in keyed:
+            continue
+        baseline, shared = keyed[seed, "recompute"], keyed[seed, arm]
+        if (baseline["generated_tokens"] != shared["generated_tokens"]
+                or baseline["initial_accuracy"] != shared["initial_accuracy"]):
+            raise RuntimeError("paired arms do not match initial accuracy or generated token budget")
+        a, b = baseline["target"]["all"], shared["target"]["all"]
+        row = {"seed": seed, "baseline": a, "shared": b, "time_saved_s": None,
+               "time_saved_fraction": None, "training_time_saved_s": None,
+               "training_time_saved_fraction": None, "actor_completed_tokens_saved": None}
+        if a is not None and b is not None:
+            row.update(time_saved_s=a["time_s"] - b["time_s"],
+                       time_saved_fraction=1 - b["time_s"] / a["time_s"],
+                       training_time_saved_s=a["training_time_s"] - b["training_time_s"],
+                       training_time_saved_fraction=1 - b["training_time_s"] / a["training_time_s"],
+                       actor_completed_tokens_saved=a["actor_completed_tokens"] - b["actor_completed_tokens"])
+        pairs.append(row)
+    hits = [row for row in pairs if row["time_saved_s"] is not None]
+    medians = {f"median_{key}": statistics.median(row[key] for row in hits) if hits else None for key in (
+        "time_saved_s", "time_saved_fraction", "training_time_saved_s",
+        "training_time_saved_fraction", "actor_completed_tokens_saved",
+    )}
+    return {"recompute": {"pairs": pairs, "paired_hits": len(hits),
+                          "baseline_hits": sum(row["baseline"] is not None for row in pairs),
+                          "shared_hits": sum(row["shared"] is not None for row in pairs),
+                          "shared_faster": sum(row["time_saved_s"] > 0 for row in hits),
+                          "shared_training_faster": sum(row["training_time_saved_s"] > 0 for row in hits),
+                          **medians}}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
@@ -335,31 +405,52 @@ def main():
     parser.add_argument("--threshold", type=float, required=True)
     parser.add_argument("--lr", type=float, required=True)
     parser.add_argument("--eval-every", type=int, default=48)
-    parser.add_argument("--fifo-windows", type=int, nargs="+", required=True)
-    parser.add_argument("--version-window", type=int, required=True)
+    parser.add_argument("--fifo-windows", type=int, nargs="+", default=[2])
+    parser.add_argument("--version-window", type=int, default=2)
+    parser.add_argument("--checkpoint", type=Path,
+                        help="arithmetic warm-start fixture for the FIFO prefix comparison")
     args = parser.parse_args()
+    prefix = args.checkpoint is not None
+    minimum_target = 0.0 if prefix else 0.5
     if (args.groups < 2 * args.eval_every or args.groups % GROUPS_PER_UPDATE or args.groups >= 100_000
-            or args.eval_every < GROUPS_PER_UPDATE or not 0.5 < args.threshold <= 1 or args.lr <= 0
+            or args.eval_every < GROUPS_PER_UPDATE or not minimum_target < args.threshold <= 1 or args.lr <= 0
             or min(args.seeds) < 0 or len(set(args.seeds)) != len(args.seeds)
             or min(*args.fifo_windows, args.version_window) < 1
             or len(set(args.fifo_windows)) != len(args.fifo_windows)):
         parser.error("require distinct nonnegative seeds, even group budget, valid threshold, and positive unique windows")
+    if prefix and (args.fifo_windows != [2] or args.version_window != 2 or not args.checkpoint.is_dir()):
+        parser.error("the prefix comparison requires a checkpoint directory and FIFO window 2")
     _threads()
     output = args.out.resolve()
     output.mkdir(parents=True)
     fixture = output / "model"
-    parameters = save_fixture(fixture)
-    task_type = DevelopmentSequenceTask if args.development else SequenceTask
-    config = Config(task="sequence", algo="grpo", model=str(fixture), dtype="float32", group_size=GROUP_SIZE,
+    if prefix:
+        from experiments import kv_arithmetic_task as arithmetic
+
+        args.checkpoint = str(args.checkpoint.resolve())
+        shutil.copytree(args.checkpoint, fixture)
+        task_type = arithmetic.DevelopmentArithmeticTask if args.development else arithmetic.ArithmeticTask
+        labels, evaluate_task = arithmetic.LABELS, arithmetic.evaluate
+        n_examples, n_eval = arithmetic.TRAIN_EXAMPLES, arithmetic.HELDOUT_EXAMPLES
+    else:
+        save_fixture(fixture)
+        task_type = DevelopmentSequenceTask if args.development else SequenceTask
+        labels, evaluate_task = LABELS, evaluate
+        n_examples, n_eval = TRAIN_EXAMPLES, HELDOUT_EXAMPLES
+    config = Config(task="arithmetic" if prefix else "sequence", algo="grpo", model=str(fixture),
+                    dtype="float32", group_size=GROUP_SIZE,
                     n_prompts=GROUPS_PER_UPDATE, micro_batch=GROUP_SIZE, lr=args.lr,
-                    n_examples=TRAIN_EXAMPLES, eval_n=HELDOUT_EXAMPLES, device="cpu", max_staleness=MAX_LAG)
+                    n_examples=n_examples, eval_n=n_eval, device="cpu", max_staleness=MAX_LAG)
     initial_policy = make_policy(config, None)
+    parameters = sum(parameter.numel() for parameter in initial_policy.model.parameters())
     initial_weights = _ChangedWeights(mp.get_context("spawn"), initial_policy.model)
     initial_digest = initial_weights.digest
     del initial_weights, initial_policy
     queue_size = max(*args.fifo_windows, args.version_window)
     sources = ("experiments/kv_sequence.py", "experiments/kv_batch_dispatch.py",
                "experiments/kv_sequence_task.py", "experiments/kv_online.py", "experiments/shared_prefix.py")
+    if prefix:
+        sources += ("experiments/kv_arithmetic_task.py",)
     protocol = {"stage": "development" if args.development else "main", "args": {**vars(args), "out": str(output)},
                 "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
                 "source_sha256": {path: hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in sources},
@@ -378,22 +469,36 @@ def main():
                         "timed at the second consecutive post-initial hit at distinct update counts",
                 "wall_clock": "actor startup, training, periodic and final eval, trace writes; initial eval untimed",
                 "arms": "all use shared prefix and at most one in-flight switch; FIFO uses arrival order"}
+    if prefix:
+        protocol.update(benchmark="prefix", task="arithmetic", action_labels=labels,
+                        reward_kind=task_type.reward_kind,
+                        train_reward="exact match of all answer digits" if task_type.reward_kind == "exact_match"
+                        else "fraction of correct answer positions across the entire completion",
+                        arms="recompute: per-completion prompt prefill and suffix-only dense learner scoring; "
+                             "share_prompt: actor prefill and differentiable learner prefix reuse; both use FIFO",
+                        rollout_horizon=arithmetic.COMPLETION_LENGTH,
+                        swap_check="every four generated tokens, outside the three-token rollout horizon",
+                        training_clock="all actors ready and released through a start gate, through evaluation",
+                        accuracy_metric="all: exact match of every answer digit")
     heldout = task_type(config.n_examples, config.eval_n, args.seeds[0]).eval_data
     (output / "heldout.json").write_text(json.dumps(heldout, indent=2) + "\n")
     (output / "protocol.json").write_text(json.dumps(protocol, indent=2) + "\n")
-    arms = [(window, False) for window in args.fifo_windows] + [(args.version_window, True)]
+    arms = [(2, False, mode) for mode in PREFIX_ARMS] if prefix else (
+        [(window, False, "share_prompt") for window in args.fifo_windows]
+        + [(args.version_window, True, "share_prompt")])
     runs = []
     for index, seed in enumerate(args.seeds):
-        for window, aware in (arms if index % 2 == 0 else arms[::-1]):
-            arm = "version_aware" if aware else f"fifo-{window}"
+        for window, aware, mode in (arms if index % 2 == 0 else arms[::-1]):
+            arm = mode if prefix else ("version_aware" if aware else f"fifo-{window}")
             path = output / f"{seed}-{arm}"
             path.mkdir()
             _run(config, task_type, seed, args.groups, window, queue_size, aware, args.eval_every,
-                 initial_digest, path)
+                 initial_digest, path, mode=mode, labels=labels, evaluate_task=evaluate_task, ready_timing=prefix)
             row = _measure(path, task_type(config.n_examples, config.eval_n, seed), seed, args.groups,
-                           window, aware, args.threshold)
+                           window, aware, args.threshold, prefix_arm=mode if prefix else None, labels=labels)
             runs.append(row)
-            report = {"protocol": protocol, "runs": runs, "comparisons": _pairs(runs, args.fifo_windows)}
+            comparisons = _prefix_pairs(runs) if prefix else _pairs(runs, args.fifo_windows)
+            report = {"protocol": protocol, "runs": runs, "comparisons": comparisons}
             (output / "summary.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
             print(json.dumps(row, allow_nan=False), flush=True)
 
