@@ -3,7 +3,7 @@ import torch
 import torch.nn.functional as F
 
 
-def shared_prefix_logprobs(model, batch, prompt_tokens, first_content_id):
+def shared_prefix_logprobs(model, batch, prompt_tokens, first_content_id, *, action_count=None):
     """Score each completion, keeping all branches connected to the prefix graph.
 
     Each row starts with the same unpadded prompt. Prompt positions and any
@@ -24,8 +24,9 @@ def shared_prefix_logprobs(model, batch, prompt_tokens, first_content_id):
     else:
         logits = first_logits
 
-    targets = (states[:, prompt_tokens:] - first_content_id).clamp_min(0)
+    end = first_content_id + action_count if action_count is not None else None
+    targets = (states[:, prompt_tokens:] - first_content_id).masked_fill(batch.mask[:, prompt_tokens:] == 0, 0)
     logprobs = -F.cross_entropy(
-        logits[:, :, first_content_id:].transpose(1, 2), targets, reduction="none",
+        logits[:, :, first_content_id:end].transpose(1, 2), targets, reduction="none",
     )
     return F.pad(logprobs, (prompt_tokens, 0)) * batch.mask

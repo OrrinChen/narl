@@ -71,7 +71,8 @@ class _PublishedWeights:
 
 
 @torch.no_grad()
-def _generate(policy, task, problem, steps, weights, mode, generator, *, share_initial=False):
+def _generate(policy, task, problem, steps, weights, mode, generator, *, share_initial=False,
+              reward_index=-1, action_count=None):
     model = policy.model
     prompt = _prompt(policy, task, problem)
     prompt_mask = torch.ones_like(prompt)
@@ -90,8 +91,9 @@ def _generate(policy, task, problem, steps, weights, mode, generator, *, share_i
     logits = out.logits[:, -1].expand(GROUP_SIZE, -1)
     initial_prefill_ms = (perf_counter() - prefill_start) * 1000
     samples, logprobs, versions, switches = [], [], [], []
+    action_end = FIRST_CONTENT_ID + action_count if action_count is not None else None
     for position in range(steps):
-        distribution = logits[:, FIRST_CONTENT_ID:].log_softmax(dim=-1)
+        distribution = logits[:, FIRST_CONTENT_ID:action_end].log_softmax(dim=-1)
         action = torch.multinomial(distribution.exp(), 1, generator=generator)
         logprobs.append(distribution.gather(1, action))
         token = action + FIRST_CONTENT_ID
@@ -133,7 +135,7 @@ def _generate(policy, task, problem, steps, weights, mode, generator, *, share_i
     completion = torch.cat(samples, dim=1)
     states = torch.cat((history, completion), dim=1)
     answer = policy.tok.convert_tokens_to_ids(problem["answer"])
-    rewards = completion[:, -1].eq(answer).float()
+    rewards = completion[:, reward_index].eq(answer).float()
     return {
         "prompt": problem["prompt"], "tokens": states.tolist(),
         "behavior_logprobs": torch.cat(logprobs, dim=1).tolist(), "rewards": rewards.tolist(),
@@ -144,18 +146,20 @@ def _generate(policy, task, problem, steps, weights, mode, generator, *, share_i
     }
 
 
-def _actor(config, seed, mode, weights, results, total_groups, share_initial):
+def _actor(config, seed, mode, weights, results, total_groups, share_initial,
+           task_type=TokenChoiceTask, lengths=LENGTHS, reward_index=-1, action_count=None):
     _threads()
     policy = make_policy(config, None)
-    task = TokenChoiceTask(n_examples=config.n_examples, n_eval=config.eval_n, seed=seed)
+    task = task_type(n_examples=config.n_examples, n_eval=config.eval_n, seed=seed)
     # Each group receives its own independent reproducible random stream.
     put_ms = []
     for group_id in range(total_groups):
         generator = torch.Generator().manual_seed(seed * 100_000 + group_id)
         problem, = task.sample(1)
         start = perf_counter()
-        payload = _generate(policy, task, problem, LENGTHS[group_id % len(LENGTHS)],
-                            weights, mode, generator, share_initial=share_initial)
+        payload = _generate(policy, task, problem, lengths[group_id % len(lengths)],
+                            weights, mode, generator, share_initial=share_initial,
+                            reward_index=reward_index, action_count=action_count)
         payload.update(group_id=group_id, generation_s=perf_counter() - start,
                        generated_at=perf_counter())
         results.put(payload)
@@ -165,10 +169,13 @@ def _actor(config, seed, mode, weights, results, total_groups, share_initial):
     results.join_thread()
 
 
-def _batch(payload):
+def _batch(payload, *, credit_tokens=None):
     trajectories = []
     for ids, behavior, reward in zip(payload["tokens"], payload["behavior_logprobs"],
                                      payload["rewards"]):
+        if credit_tokens is not None:
+            ids = ids[:PROMPT_TOKENS + credit_tokens]
+            behavior = behavior[:credit_tokens]
         states = torch.tensor(ids)
         old_logp = F.pad(torch.tensor(behavior), (PROMPT_TOKENS, 0))
         mask = torch.zeros_like(old_logp)
@@ -179,30 +186,34 @@ def _batch(payload):
     return Batch.from_groups([trajectories])
 
 
-def _scoring(policy, *, share_learner=False):
+def _scoring(policy, *, share_learner=False, action_count=None):
     """Use the same content-only categorical support as the actor."""
     if share_learner:
         def logprobs(batch):
-            return shared_prefix_logprobs(policy.model, batch, PROMPT_TOKENS, FIRST_CONTENT_ID)
+            return shared_prefix_logprobs(policy.model, batch, PROMPT_TOKENS, FIRST_CONTENT_ID,
+                                          action_count=action_count)
         policy.logprobs = logprobs
         return
 
     def logprobs(batch):
-        logits = policy.model(batch.states, use_cache=False).logits[:, :-1, FIRST_CONTENT_ID:]
-        labels = (batch.states[:, 1:] - FIRST_CONTENT_ID).clamp_min(0)
+        end = FIRST_CONTENT_ID + action_count if action_count is not None else None
+        logits = policy.model(batch.states, use_cache=False).logits[:, :-1, FIRST_CONTENT_ID:end]
+        labels = (batch.states[:, 1:] - FIRST_CONTENT_ID).masked_fill(batch.mask[:, 1:] == 0, 0)
         result = -F.cross_entropy(logits.transpose(1, 2), labels, reduction="none")
         return F.pad(result, (1, 0)) * batch.mask
     policy.logprobs = logprobs
 
 
 @torch.no_grad()
-def _evaluate(policy, task):
+def _evaluate(policy, task, *, length=EVAL_LENGTH, reward_index=-1, action_count=None):
     prompts = torch.cat([_prompt(policy, task, row) for row in task.eval_data])
+    end = FIRST_CONTENT_ID + action_count if action_count is not None else policy.model.config.vocab_size
     generated = policy.model.generate(
         input_ids=prompts, attention_mask=torch.ones_like(prompts), do_sample=False,
-        suppress_tokens=list(range(FIRST_CONTENT_ID)), max_new_tokens=EVAL_LENGTH,
+        suppress_tokens=[*range(FIRST_CONTENT_ID), *range(end, policy.model.config.vocab_size)],
+        max_new_tokens=length,
     )
-    predicted = generated[:, -1]
+    predicted = generated[:, prompts.size(1):][:, reward_index]
     answers = torch.tensor([policy.tok.convert_tokens_to_ids(row["answer"]) for row in task.eval_data])
     return float(predicted.eq(answers).float().mean())
 
@@ -211,20 +222,23 @@ def _write_line(handle, row):
     handle.write(json.dumps(row, allow_nan=False) + "\n")
 
 
-def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial, share_learner):
+def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial, share_learner,
+         *, task_type=TokenChoiceTask, lengths=LENGTHS, reward_index=-1,
+         eval_length=EVAL_LENGTH, eval_every=EVAL_EVERY, credit_tokens=None, action_count=None):
     ctx = mp.get_context("spawn")
     policy = make_policy(config, None)
-    _scoring(policy, share_learner=share_learner)
-    task = TokenChoiceTask(n_examples=config.n_examples, n_eval=config.eval_n, seed=seed)
+    _scoring(policy, share_learner=share_learner, action_count=action_count)
+    task = task_type(n_examples=config.n_examples, n_eval=config.eval_n, seed=seed)
     optimizer = torch.optim.AdamW(policy.parameters(), lr=config.lr)
     weights = _PublishedWeights(ctx, policy.model)
     results = ctx.Queue(maxsize=QUEUE_CAPACITY)
     actor = ctx.Process(target=_actor, args=(config, seed, mode, weights, results, total_groups,
-                                             share_initial))
+                                             share_initial, task_type, lengths, reward_index, action_count))
     seen = updates = generated_tokens = loss_tokens = accepted_tokens = 0
     dropped = switched = zero_groups = 0
     lags = {}
-    first_eval = _evaluate(policy, task)
+    first_eval = _evaluate(policy, task, length=eval_length, reward_index=reward_index,
+                           action_count=action_count)
     started = perf_counter()
     actor.start()
     if stress_delay_s:
@@ -233,7 +247,8 @@ def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial
         sleep(stress_delay_s)
     try:
         with (output / "groups.jsonl").open("w") as groups, (output / "eval.jsonl").open("w") as evaluations:
-            _write_line(evaluations, {"update": 0, "time_s": 0, "loss_tokens": 0, "reward": first_eval})
+            _write_line(evaluations, {"update": 0, "time_s": 0, "loss_tokens": 0,
+                                      "generated_tokens": 0, "reward": first_eval})
             while True:
                 try:
                     payload = results.get(timeout=30)
@@ -253,7 +268,8 @@ def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial
                 if lag < 0:
                     raise RuntimeError("rollout references an unpublished version")
                 accepted = lag <= config.max_staleness
-                wait_s = perf_counter() - payload.pop("generated_at")
+                generated_at = payload.pop("generated_at")
+                wait_s = perf_counter() - generated_at
                 publish_ms = 0.0
                 update_ms = 0.0
                 update = None
@@ -261,7 +277,7 @@ def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial
                 signal_tokens = 0
                 if accepted:
                     start_update = perf_counter()
-                    batch = _batch(payload)
+                    batch = _batch(payload, credit_tokens=credit_tokens)
                     advantage = grpo(batch, policy)
                     signal_tokens = int((advantage != 0).sum())
                     zero_groups += signal_tokens == 0
@@ -280,21 +296,26 @@ def _run(config, seed, mode, total_groups, output, stress_delay_s, share_initial
                 _write_line(groups, {
                     **payload, "learner_version": learner_version, "lag": lag,
                     "status": "consumed" if accepted else "stale", "update": update,
+                    "generated_at_s": generated_at - started,
                     "queue_s_including_backpressure": wait_s, "publish_ms": publish_ms,
                     "update_ms": update_ms,
                     "loss_tokens": signal_tokens, "diagnostics": diagnostics,
                 })
-                if accepted and updates % EVAL_EVERY == 0:
-                    reward = _evaluate(policy, task)
+                if accepted and updates % eval_every == 0:
+                    reward = _evaluate(policy, task, length=eval_length, reward_index=reward_index,
+                                       action_count=action_count)
                     _write_line(evaluations, {"update": updates, "time_s": perf_counter() - started,
-                                              "loss_tokens": loss_tokens, "reward": reward})
+                                              "loss_tokens": loss_tokens, "generated_tokens": generated_tokens,
+                                              "reward": reward})
             actor.join(timeout=5)
             if actor.exitcode != 0 or seen != total_groups:
                 raise RuntimeError(f"actor exit={actor.exitcode}, groups={seen}/{total_groups}")
-            final_reward = _evaluate(policy, task)
+            final_reward = _evaluate(policy, task, length=eval_length, reward_index=reward_index,
+                                     action_count=action_count)
             elapsed = perf_counter() - started
             _write_line(evaluations, {"update": updates, "time_s": elapsed,
-                                      "loss_tokens": loss_tokens, "reward": final_reward})
+                                      "loss_tokens": loss_tokens, "generated_tokens": generated_tokens,
+                                      "reward": final_reward})
             (output / "actor_queue.json").write_text(json.dumps(put_ms) + "\n")
     finally:
         if actor.is_alive():
