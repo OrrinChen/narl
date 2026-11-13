@@ -26,6 +26,39 @@ The replay uses the initial tiny decoder and its snapshot after 12 synchronous G
 
 `summary.json` records alignment checks, KL against per-completion recomputation, and timing medians and ranges. `timings.csv` contains each measured repetition. `inputs.json`, the model snapshots, and the snapshot-training configuration and CSV record the workload and weights. Recovery-to-first-logits timing includes recompute and branch copying, with in-memory weight loading recorded separately. The replay measures fixed-history conditional distributions and CPU latency on the tiny model.
 
+## CPU regrouping and online validation
+
+```bash
+OMP_NUM_THREADS=1 .venv/bin/python -m experiments.regroup --out runs/regroup-repro
+.venv/bin/python tests/test_narl_kv_online.py
+.venv/bin/python -m experiments.kv_online --out runs/online-repro
+.venv/bin/python -m experiments.audit_kv_online --run runs/online-repro --out runs/online-repro/audit.json
+```
+
+Regrouping compares the same completions under two group assignments at a fixed learner snapshot. It saves checkpoint hashes, sampled tokens and log probabilities, group assignments, and gradient diagnostics.
+
+The online arm uses a 19,424-parameter Llama with FP32 weights, one actor and one learner, one PyTorch intra-op and inter-op thread per process, and the same fixed initial model in each run. The synthetic token-choice split uses the first 16 of 80 prompts for evaluation. Training prompts are selected from the remaining 64 in the same seeded order in both arms. All training prompts are 128 tokens after adding deterministic filler. Groups have eight completions and alternate 16, 24, and 32 generated tokens. Reward uses the last token. Evaluation greedily generates 16 tokens for each held-out prompt. The queue holds two complete groups with producer backpressure, the actor can read one published snapshot, and publication follows each admitted batch. The learner checks lag against the oldest behavior version in the group. Each arm processes 96 generated groups per seed with the same token budget, including dropped groups.
+
+The actor samples freely and checks for a newer snapshot every four tokens. At most one in-flight swap per group is allowed. Both arms rebuild the history under the new snapshot and differ in whether they share the prompt prefill. Their chronological schedules and realized swaps can differ. The clipped loss uses the probabilities recorded at sampling time, including those for old-weight tokens. The saved per-token versions and group traces feed the audit and throughput report.
+
+Separate stress and sensitivity runs reuse the online entry point:
+
+```bash
+.venv/bin/python -m experiments.kv_online --out runs/stress-repro --groups 18 --seeds 0 --stress-delay-s 4
+.venv/bin/python -m experiments.kv_online --out runs/sensitivity-repro --groups 48 --seeds 0 --max-lag 2
+```
+
+## Rebuild the figures and CPU profile
+
+Run the plotting modules with a Python environment that includes Matplotlib. Pass an unused output file to the profiling command.
+
+```bash
+.venv/bin/python -m experiments.kv_profile --run runs/kv-replay-repro --out runs/kv-replay-repro/profile.json
+python3 -m experiments.plot_kv_replay --summary runs/kv-replay-repro/summary.json --out runs/kv-replay-repro/replay.png
+python3 -m experiments.plot_regroup --run runs/regroup-repro --out runs/regroup-repro/regroup.png
+python3 -m experiments.plot_kv_online --run runs/online-repro --out runs/online-repro/online.png
+```
+
 ---
 
 # nanoRL
