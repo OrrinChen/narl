@@ -126,6 +126,8 @@ FIFO 按完成到达顺序取样，超龄组被拒收，单个剩余组不足以
 
 两臂均 5/5 达标，十次运行的长短题最终均为 100%。同轮配对比较中，版本感知调度只有 2/5 更快，达标耗时中位差为 **慢 0.004 s（0.057%）**，仍未达 4/5 门槛。要求两个评估点对应不同权重版本时，所有达标结果相同。达标时完整生成 token 的配对中位差为零，其中两个种子分别少生成 4,232 和 4,408 个。墙钟包含 actor 启动，首组到达时间跨运行波动为 3.18–5.37 s，因此耗时使用复跑内的配对结果，旧轮只用来对照过期数量。[复跑汇总](runs/sequence-changed-5seed/summary.json) · [独立审计](runs/sequence-changed-5seed/audit.json)
 
+调度实验在此收尾。后续实验以按实际权重变化升版的 FIFO 为基线。版本感知调度保留为有界滞后的参考实现。若后续任务在达标前持续丢弃长样本，并出现对应的学习差异，再用该负载复验调度。
+
 ## Profiling、部署与验收
 
 - **CPU profiling。** 384-token 回放中，SDPA 占恢复回放 CPU 时间的 85.2%（逐条）和 60.3%（共享）。在线共享路径的 KV 复制中位数约 0.024 ms，actor 拉取权重约 0.20 ms，learner 更新约 15–16 ms。各阶段可重叠。Apple M2 的 PyTorch 检测到 0 个 CUDA 设备，CUDA 微基准未触发。[CPU profile](runs/kv-replay-release/profile.json) · [在线阶段数据](runs/online-release/audit.json)
