@@ -134,8 +134,12 @@ def _generate(policy, task, problem, steps, weights, mode, generator, *, share_i
 
     completion = torch.cat(samples, dim=1)
     states = torch.cat((history, completion), dim=1)
-    answer = policy.tok.convert_tokens_to_ids(problem["answer"])
-    rewards = completion[:, reward_index].eq(answer).float()
+    if "answer_tokens" in problem:
+        answer = policy.tok.convert_tokens_to_ids(problem["answer_tokens"])
+        rewards = completion.eq(torch.tensor(answer)).float().mean(dim=1)
+    else:
+        answer = policy.tok.convert_tokens_to_ids(problem["answer"])
+        rewards = completion[:, reward_index].eq(answer).float()
     return {
         "prompt": problem["prompt"], "tokens": states.tolist(),
         "behavior_logprobs": torch.cat(logprobs, dim=1).tolist(), "rewards": rewards.tolist(),
@@ -169,7 +173,7 @@ def _actor(config, seed, mode, weights, results, total_groups, share_initial,
     results.join_thread()
 
 
-def _batch(payload, *, credit_tokens=None):
+def _trajectories(payload, *, credit_tokens=None):
     trajectories = []
     for ids, behavior, reward in zip(payload["tokens"], payload["behavior_logprobs"],
                                      payload["rewards"]):
@@ -183,7 +187,11 @@ def _batch(payload, *, credit_tokens=None):
         rewards = torch.zeros_like(old_logp)
         rewards[-1] = reward
         trajectories.append(Trajectory(states, states.clone(), old_logp, rewards, mask))
-    return Batch.from_groups([trajectories])
+    return trajectories
+
+
+def _batch(payload, *, credit_tokens=None):
+    return Batch.from_groups([_trajectories(payload, credit_tokens=credit_tokens)])
 
 
 def _scoring(policy, *, share_learner=False, action_count=None):
