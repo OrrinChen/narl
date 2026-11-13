@@ -123,6 +123,33 @@ TOKENIZERS_PARALLELISM=false` for the timed comparison. The formal FIFO window
 was selected on development seeds 120 and 121 by comparing windows 1 through 4.
 See the run protocol and results for the target and timing definitions.
 
+## CPU prefix comparison on two-digit addition
+
+Both arms use a common arithmetic checkpoint, FIFO with two in-flight groups,
+two complete groups per update, and a one-version lag limit. The actor and
+learner share the prompt within each rollout group in one arm. The dense arm
+processes each prompt separately and projects only the logits used by the loss.
+The learner grades all three answer digits by exact match.
+
+The comparison reports time from actor launch and from the point when all
+actors are ready. Both clocks include the subsequent held-out evaluations.
+The run records the selected checkpoint hash, exact-match curves, fixed
+generation budget, per-group traces, and the final published snapshots.
+Three-digit answers finish before the first in-flight weight-swap check.
+
+```bash
+.venv/bin/python -m experiments.kv_arithmetic_task --out runs/arithmetic-sft-repro \
+  --sft-steps 1380 --sft-eval-every 60
+.venv/bin/python -m experiments.kv_arithmetic_task --out runs/arithmetic-pilot-repro \
+  --model runs/arithmetic-sft-repro/sft-1380 --grpo-groups 768 --eval-every 96 --grpo-lr .0001
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 TOKENIZERS_PARALLELISM=false \
+  .venv/bin/python -m experiments.kv_sequence --out runs/arithmetic-prefix-repro \
+  --checkpoint runs/arithmetic-sft-repro/sft-1380 --seeds 0 1 2 3 4 \
+  --groups 768 --eval-every 96 --threshold .70 --lr .0001
+.venv/bin/python -m experiments.audit_kv_sequence --run runs/arithmetic-prefix-repro \
+  --out runs/arithmetic-prefix-repro/audit.json
+```
+
 ## Rebuild the figures and CPU profile
 
 Run the plotting modules with a Python environment that includes Matplotlib. Pass an unused output file to the profiling command.
