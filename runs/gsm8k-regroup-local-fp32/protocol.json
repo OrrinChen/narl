@@ -1,0 +1,74 @@
+{
+  "train_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "test_sha256": "3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "seed": 8401,
+  "group_size": 4,
+  "max_new_tokens": 128,
+  "replay_selection": "explicit",
+  "replay_prompt_ids": [
+    1907,
+    1514,
+    2138,
+    6869
+  ],
+  "snapshot_training_prompt_ids": [
+    596,
+    7089,
+    2228,
+    5,
+    5695,
+    1520,
+    427,
+    7016
+  ],
+  "heldout_prompt_ids": [
+    426,
+    799,
+    419,
+    629,
+    927,
+    771,
+    765,
+    533
+  ],
+  "old_adapter_sha256": "d88d34f01696380d10c30a046fd56caa6de279b2f72b9e5d16a45705c6c89410",
+  "fresh_adapter_sha256": "d873c7ef93297c60a8243f1e0651cbfe53a86898475514ba82d1bdfa0e6a8c0c",
+  "snapshot_sft_losses": [
+    0.6359971165657043,
+    0.6050165891647339,
+    1.4011636972427368,
+    0.6465351581573486,
+    0.8061819672584534,
+    0.6265624761581421,
+    0.7068496346473694,
+    1.1101632118225098
+  ],
+  "device": "mps",
+  "dtype": "bfloat16",
+  "lora_rank": 4,
+  "lora_targets": [
+    "q_proj",
+    "v_proj"
+  ],
+  "lora_layers": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "training_attention": "eager",
+  "generation_attention": "sdpa",
+  "lr": 0.0001,
+  "threads": 4,
+  "torch": "2.8.0",
+  "sampling_seeds": {
+    "old": 8401,
+    "fresh_a": 8402,
+    "fresh_b": 8403
+  },
+  "budget": "one optimizer step per replay prompt; two groups of matched completions",
+  "learner_device": "cpu",
+  "learner_dtype": "float32"
+}

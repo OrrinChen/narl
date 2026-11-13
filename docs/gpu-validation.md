@@ -62,6 +62,46 @@ claim. Report the vLLM actor result and the PyTorch learner result separately.
 
 ## Learning under policy-version mixing
 
+### Reproduce the local pilot
+
+The local experiment uses Qwen2.5-0.5B-Instruct, PyTorch 2.8.0, and a
+LoRA adapter. It derives two weight snapshots using supervised updates on
+disjoint official training questions. Both replay arms start from the newer
+snapshot and receive the same sampled completions and behavior logprobs in
+the same update order. Only the within-prompt group assignment changes.
+
+```bash
+uv pip install --python .venv/bin/python peft==0.17.1 accelerate==1.10.1
+data=runs/gsm8k-data
+source=https://raw.githubusercontent.com/openai/grade-school-math/3101c7d5072418e28b9008a6636bde82a006892c/grade_school_math/data
+mkdir -p "$data"
+curl -fsSL "$source/train.jsonl" -o "$data/train.jsonl"
+curl -fsSL "$source/test.jsonl" -o "$data/test.jsonl"
+
+.venv/bin/python -m experiments.gsm8k_signal --train "$data/train.jsonl" \
+  --out runs/gsm8k-signal-repro --prompts 13
+
+out=runs/gsm8k-regroup-local-repro
+PYTORCH_ENABLE_MPS_FALLBACK=1 TOKENIZERS_PARALLELISM=false \
+  .venv/bin/python -m experiments.gsm8k_regroup \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --out "$out" \
+  --replay-prompt-ids 1907 1514 2138 6869 --sft-prompts 8 --heldout-prompts 8 \
+  --group-size 4 --max-new-tokens 128 --lora-last-layers 4 \
+  --device mps --learner-device cpu
+.venv/bin/python -m experiments.audit_gsm8k_regroup \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --run "$out" --out "$out/audit.json"
+```
+
+The local run used MPS BF16 for snapshot preparation, rollout and evaluation,
+and CPU FP32 for GRPO. To replay the exact same sampled answers and adapters,
+add `--replay-from runs/gsm8k-regroup-local-fp32` with a new
+output directory. Use `--device cpu` for a fresh run without an MPS device.
+The four local replay prompts were selected for reward variation during a
+training-split screening run. The eight test prompts are drawn independently
+of rewards. [Model revision](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/tree/7ae557604adf67be50417f59c2c2f167def9a775) · [GSM8K dataset](https://github.com/openai/grade-school-math)
+
+### Larger fixed-rollout and online runs
+
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer
 verifier. Freeze 256–512 training prompts and a development set from the
 GSM8K train split. Freeze a separate set of 128–256 official test prompts.

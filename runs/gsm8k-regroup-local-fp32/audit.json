@@ -1,0 +1,88 @@
+{
+  "initial_correct": 0,
+  "heldout_count": 8,
+  "cohorts": {
+    "old": {
+      "tokens": 236,
+      "truncated": 1,
+      "tagged": 9,
+      "samples": 16,
+      "correct": 2,
+      "mixed_reward_groups": 2
+    },
+    "fresh_a": {
+      "tokens": 456,
+      "truncated": 2,
+      "tagged": 4,
+      "samples": 16,
+      "correct": 2,
+      "mixed_reward_groups": 2
+    },
+    "fresh_b": {
+      "tokens": 186,
+      "truncated": 0,
+      "tagged": 11,
+      "samples": 16,
+      "correct": 5,
+      "mixed_reward_groups": 2
+    }
+  },
+  "arms": {
+    "homogeneous": {
+      "consumed_tokens": 692,
+      "mixed_reward_groups": 4,
+      "groups": 8,
+      "nonzero_advantage_tokens": 345,
+      "nonzero_gradient_updates": 3,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "mixed": {
+      "consumed_tokens": 692,
+      "mixed_reward_groups": 4,
+      "groups": 8,
+      "nonzero_advantage_tokens": 341,
+      "nonzero_gradient_updates": 3,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "same_version_homogeneous": {
+      "consumed_tokens": 642,
+      "mixed_reward_groups": 4,
+      "groups": 8,
+      "nonzero_advantage_tokens": 281,
+      "nonzero_gradient_updates": 3,
+      "correct": 0,
+      "accuracy": 0.0
+    },
+    "same_version_mixed": {
+      "consumed_tokens": 642,
+      "mixed_reward_groups": 5,
+      "groups": 8,
+      "nonzero_advantage_tokens": 563,
+      "nonzero_gradient_updates": 3,
+      "correct": 0,
+      "accuracy": 0.0
+    }
+  },
+  "mixed_vs_homogeneous": {
+    "baseline_correct": 0,
+    "candidate_correct": 0,
+    "wins": 0,
+    "losses": 0,
+    "accuracy_delta": 0.0,
+    "changed_advantages": 8,
+    "mean_absolute_advantage_change": 0.12497500499900019,
+    "completion_count": 32
+  },
+  "same_version_shuffle_control": {
+    "baseline_correct": 0,
+    "candidate_correct": 0,
+    "wins": 0,
+    "losses": 0,
+    "accuracy_delta": 0.0,
+    "changed_advantages": 20,
+    "mean_absolute_advantage_change": 0.295696936218588,
+    "completion_count": 32
+  }
+}

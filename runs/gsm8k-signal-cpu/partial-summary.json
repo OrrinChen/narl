@@ -1,0 +1,41 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "train_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "device": "Apple M2 CPU",
+  "dtype": "float32",
+  "threads": 4,
+  "torch": "2.8.0",
+  "transformers": "4.57.6",
+  "seed": 7301,
+  "requested_prompts": 16,
+  "completed_prompts": 13,
+  "stop_reason": "stopped during sustained local memory pressure",
+  "group_size": 4,
+  "max_new_tokens": 128,
+  "prompt_ids": [
+    2758,
+    5025,
+    1907,
+    4063,
+    2047,
+    2098,
+    5053,
+    5955,
+    1514,
+    2138,
+    6869,
+    1428,
+    7149
+  ],
+  "samples": 52,
+  "correct": 6,
+  "tagged": 22,
+  "truncated": 2,
+  "mixed_reward_prompt_ids": [
+    1907,
+    1514,
+    2138,
+    6869
+  ]
+}

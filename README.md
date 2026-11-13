@@ -2,7 +2,16 @@
 
 Narl studies weight updates, KV-cache recomputation, and group composition in asynchronous GRPO. It extends [nanoRL at `793e9b5`](https://github.com/alex000kim/nanoRL/tree/793e9b5b3d176ebb40161d8ba8d2125fe5153473) under its original MIT license. The upstream instructions follow the Narl quickstart.
 
-See [the results report](RESULTS.md) for the measured CPU comparisons, source revisions, and local run artifacts.
+## Key results on Apple M2
+
+- **KV recovery after a weight swap.** Replayed the same token history on a 19K-parameter Llama with retained KV, per-completion rebuild, and shared-prompt rebuild. With 384-token prompts, 16 cached suffix tokens, and eight completions per group, sharing cut median recovery-to-first-logit latency from **49.2 to 10.0 ms**. The maximum logit difference from per-completion rebuild was **1.19e-7**. At 32 prompt tokens, shared rebuild took **2.67 ms** versus **1.93 ms** for per-completion rebuild. [Three-way replay](RESULTS.md#a-权重切换后重算-kv)
+- **Policy versioning.** Traced most long rollout expiries in Narl's FIFO runner to optimizer steps that advanced the version without changing the weights. Publishing a new version only when parameter bytes changed reduced expired long groups from **234 to 19 out of 1,272**, across five paired seeds with a one-version lag limit. [Snapshot-version rerun](RESULTS.md#h-权重实际变化才升版)
+
+In the online token-choice experiment with a 19K-parameter Llama, 128-token prompts, and 16-, 24-, or 32-token outputs, sharing raised useful training-token throughput by a paired median **45.6%**. In the separate two-digit addition experiment with a 113K-parameter Llama, padded 128-token prompts, and three-token answers, the paired median reduction in time to 70% held-out accuracy was **60.9%** from actor readiness and **42.3%** from actor launch. The fixed-weight length sweep covers 28 shapes. At a 128-token prompt, actor speedup fell from **2.99×** to **1.06×** as outputs grew from 3 to 128 tokens. [Online throughput](runs/online-prefix-5seed/summary.json) · [Time to accuracy](RESULTS.md#i-两位数加法上的共享前缀) · [Length sweep](runs/prefix-length-cpu-final/speedup.png)
+
+The GSM8K pilot measures how regrouping fixed Qwen2.5-0.5B-Instruct rollouts changes the GRPO signal, with a same-version shuffle control. [Pilot results](RESULTS.md#k-gsm8k-上的版本混组试跑)
+
+Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline
 

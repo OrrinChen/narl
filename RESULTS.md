@@ -1,6 +1,6 @@
-# Narl CPU 实验报告
+# Narl 实验报告
 
-在 Apple M2（8 GiB）上，以 19,424 参数的 FP32 Llama 和合成任务测量权重切换时的 KV 重算、同样本重分组、异步吞吐、达标时间和 rollout 调度。上游为 nanoRL `793e9b5`，保留 MIT 许可。实验 A、C 的源码为 `de59470`，实验 B 为 `139b90c`。运行配置、快照哈希、随机种子、模型和软件版本随原始结果保存。环境为 Python 3.11.15、PyTorch 2.8.0、Transformers 4.57.6。[复跑入口](README.md) · [完整依赖版本](runs/requirements-cpu-resolved.txt) · [主机记录](runs/cpu-host.txt)
+在 Apple M2（8 GiB）上测量权重切换时的 KV 重算、同样本重分组、异步吞吐、达标时间和 rollout 调度。CPU 实验使用 19,424 或 113,088 参数的 FP32 Llama，GSM8K 试跑使用 Qwen2.5-0.5B-Instruct。上游为 nanoRL `793e9b5`，保留 MIT 许可。实验 A、C 的源码为 `de59470`，实验 B 为 `139b90c`。运行配置、快照哈希、随机种子、模型和软件版本随原始结果保存。环境为 Python 3.11.15、PyTorch 2.8.0、Transformers 4.57.6。[复跑入口](README.md) · [完整依赖版本](runs/requirements-cpu-resolved.txt) · [主机记录](runs/cpu-host.txt)
 
 ## A. 权重切换后重算 KV
 
@@ -164,7 +164,20 @@ FIFO 按完成到达顺序取样，超龄组被拒收，单个剩余组不足以
 
 固定 128-token 前缀时，输出越长，初始 prefill 占生成时间的比例越小，生成端加速趋近 1×。短前缀的几个点接近持平，8/16 和 16/16 的训练端耗时略有回退。28 点的生成 logits、训练 logprob 和 embedding 梯度最大绝对误差分别为 `1.79e-7`、`4.77e-7` 和 `1.19e-7`。[完整曲线](runs/prefix-length-cpu-final/speedup.png) · [实验协议](runs/prefix-length-cpu-final/protocol.json) · [逐点结果](runs/prefix-length-cpu-final/summary.json) · [原始计时](runs/prefix-length-cpu-final/timings.csv)
 
-实验 A 的 32-token 回退发生在换权重后恢复 KV，测量区间与本节的固定权重生成不同。实验 D 的 45.6% 来自 128-token 输入、16/24/32-token 输出的在线训练吞吐。实验 I 的 60.9% 来自 128-token 输入、3-token 输出的达标墙钟，起点为 actor 就绪。CUDA 固定历史对照、vLLM 基线与 GSM8K 混组设计见[复跑方案](docs/gpu-validation.md)。
+实验 A 的 32-token 回退发生在换权重后恢复 KV，测量区间与本节的固定权重生成不同。实验 D 的 45.6% 来自 128-token 输入、16/24/32-token 输出的在线训练吞吐。实验 I 的 60.9% 来自 128-token 输入、3-token 输出的达标墙钟，起点为 actor 就绪。CUDA 固定历史对照与 vLLM 基线见[复跑方案](docs/gpu-validation.md)。
+
+## K. GSM8K 上的版本混组试跑
+
+先在 Apple M2 CPU 上用 FP32 Qwen2.5-0.5B-Instruct 从 GSM8K 官方训练集随机抽题，每题采 4 条，最多生成 128 token。用 `<answer>` 内的数值计分。受本机内存压力影响，计划的 16 题完成了 13 题。52 条答案中 6 条得分，22 条有完整答案标签，2 条生成达到上限。13 组中有 4 组同时出现对错答案，可以产生非零 GRPO advantage。[筛选汇总](runs/gsm8k-signal-cpu/partial-summary.json) · [生成记录](runs/gsm8k-signal-cpu/groups.jsonl)
+
+在同一台机器上用 MPS BF16 生成这 4 道训练题的答案，用 CPU FP32 做 GRPO 更新。旧快照为原模型加零输出 LoRA，新快照在另外 8 道训练题上做监督更新，LoRA 仅覆盖最后 4 层的 Q、V 投影。每题从旧快照采 4 条，从新快照独立采两批各 4 条。旧新对照的两臂均从同一新快照起步，每题用相同 8 条 completion 和逐 token 行为 logprob 做一步更新。一臂按版本分两组，另一臂每组各含 2 条旧样本和 2 条新样本。另用新快照的两批独立样本重复这组操作，测同版本随机重分组的影响。评估使用固定抽样的 8 道官方测试题。[复跑命令](docs/gpu-validation.md#reproduce-the-local-pilot)
+
+| 配对对照 | 每臂训练 token | advantage 改变的答案 | 平均绝对 advantage 变化 | 有非零 advantage 的 token |
+| --- | ---: | ---: | ---: | ---: |
+| 按版本分组 → 新旧混组 | 692 | 8/32 | 0.125 | 345 → 341 |
+| 同版本分组 → 同版本打乱 | 642 | 20/32 | 0.296 | 281 → 563 |
+
+四臂各有 3 步非零梯度。起始检查点及四臂的最终留出成绩均为 **0/8**。首轮 MPS BF16 反传出现非有限梯度，表中训练结果来自同一组已保存样本和 adapter 的 CPU FP32 复跑。这个单种子试跑测到了分组对训练信号的影响。要判断学习效果，需要先在独立开发集获得非零起始分数，再扩大训练与留出预算。在线过期样本的独立效应仍待测量。[独立审计](runs/gsm8k-regroup-local-fp32/audit.json) · [协议](runs/gsm8k-regroup-local-fp32/protocol.json) · [训练与评估记录](runs/gsm8k-regroup-local-fp32/summary.json) · [原始样本](runs/gsm8k-regroup-local-fp32/samples.jsonl)
 
 ## Profiling、部署与验收
 
