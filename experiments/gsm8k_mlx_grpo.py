@@ -37,7 +37,7 @@ class MlxGrpoLearner:
         }
         return loss, stats
 
-    def step(self, prompt_ids, samples, advantages):
+    def step(self, prompt_ids, samples, advantages, *, auxiliary=None):
         """Apply one clipped-GRPO step to the canonical sample order."""
         advantages = [float(value) for value in advantages]
         if not prompt_ids or not samples or len(samples) != len(advantages):
@@ -72,6 +72,23 @@ class MlxGrpoLearner:
             for name, value in batch_stats.items():
                 stats[name] += float(value.item())
 
+        auxiliary_nll = None
+        if auxiliary is not None:
+            aux_prompt, target, weight = auxiliary
+            ids = mx.array([aux_prompt + target[:-1]])
+            actions = mx.array([target])
+
+            def numeric_loss(model):
+                logits = self.suffix_logits(model, ids, len(target)).astype(mx.float32)
+                return weight * nn.losses.cross_entropy(logits, actions, reduction="mean")
+
+            aux_loss, aux_grad = nn.value_and_grad(self.model, numeric_loss)(self.model)
+            gradients = aux_grad if gradients is None else tree_map(lambda a, b: a + b, gradients, aux_grad)
+            mx.eval(aux_loss, gradients)
+            auxiliary_nll = float(aux_loss.item()) / weight
+            if not isfinite(auxiliary_nll):
+                raise RuntimeError("nonfinite gold-answer loss")
+
         means = {name: round(value / max(scored_tokens, 1), 4) for name, value in stats.items()}
         norm = 0.0
         if gradients is not None:
@@ -81,5 +98,8 @@ class MlxGrpoLearner:
                 raise RuntimeError("nonfinite MLX GRPO update")
             self.optimizer.update(self.model, clipped)
             mx.eval(self.model.trainable_parameters(), self.optimizer.state)
-        return {"loss": total_loss, "pg": total_loss, "gnorm": norm,
-                "skipped": len(samples) - len(active), **means}
+        result = {"loss": total_loss, "pg": total_loss, "gnorm": norm,
+                  "skipped": len(samples) - len(active), **means}
+        if auxiliary_nll is not None:
+            result["aux_nll"] = auxiliary_nll
+        return result

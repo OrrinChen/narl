@@ -13,6 +13,8 @@ On GSM8K, LoRA SFT raised tagged exact-match accuracy from 3/24 to 9/24 on a sep
 
 The rolling GSM8K experiment started from two adjacent GRPO checkpoints and generated 6,144 tokens per arm in each of five paired seeds. Every pairwise comparison of fresh, one-version-stale, and mixed-version groups had two wins, two losses, and one tie on 32 held-out questions. [Online lag results](RESULTS.md#m-gsm8k-在线滞后一版)
 
+On the same GRPO rollout budget, adding 30–40 supervised answer tokens per seed reduced held-out gold-digit NLL in all five paired seeds. The median reduction versus plain GRPO was 3.01% across 64 fixed test questions. Greedy exact-match results varied by seed. [Held-out loss results](RESULTS.md#n-gsm8k-留出答案损失)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline

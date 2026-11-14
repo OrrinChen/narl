@@ -189,6 +189,36 @@ group consumes no learner tokens. Report realized updates and consumed tokens
 alongside accuracy. All arms evaluate the same 32 previously uninspected
 official test questions.
 
+### Reproduce the gold-answer loss comparison
+
+Both learners replay the full fresh arm from the rolling lag experiment. They
+start at the same version 2 adapter and use the same clipped GRPO objective,
+rollouts, group schedule, and AdamW learning rate. The candidate adds a
+weighted cross-entropy gradient on the gold digits for each training question
+before gradient clipping and the optimizer step. The extra labels are counted
+separately. Those digits also produce a supervised update when the rollout
+group has uniform rewards and the GRPO gradient would be zero.
+
+```bash
+data=runs/gsm8k-data
+source_run=runs/gsm8k-online-lag-5seed
+out=runs/gsm8k-loss-repro
+tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775"
+
+TOKENIZERS_PARALLELISM=false .venv/bin/python -m experiments.gsm8k_loss \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --source "$source_run" \
+  --out "$out" --lr 0.0006
+.venv/bin/python -m experiments.audit_gsm8k_loss \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --source "$source_run" \
+  --run "$out" --tokenizer "$tokenizer" --verify-loss 0 --verify-training --out "$out/audit.json"
+```
+
+Evaluation averages gold-digit negative log-likelihood per token across 64
+fresh held-out questions. The same question prompt and forced opening answer
+tag are used for all checkpoints. Reference rationales, tags, and EOS do not
+contribute target tokens. A fixed 24-question subset is also decoded greedily
+using the standard reasoning prompt and exact match.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer

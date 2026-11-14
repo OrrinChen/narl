@@ -14,6 +14,32 @@ from train import Config, optimize
 @skipUnless(all(find_spec(package) for package in ("mlx", "mlx_lm", "peft")),
             "MLX experiment dependencies are optional")
 class MlxGrpoTest(TestCase):
+    def test_gold_answer_auxiliary_updates_a_uniform_reward_group(self):
+        import mlx.core as mx
+        import mlx.nn as nn
+
+        from experiments.gsm8k_mlx_grpo import MlxGrpoLearner
+
+        class Tiny(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.args = SimpleNamespace(tie_word_embeddings=False)
+                self.lm_head = nn.Linear(3, 3, bias=False)
+                self.lm_head.weight = mx.zeros((3, 3))
+
+            def model(self, inputs):
+                return mx.eye(3)[inputs]
+
+        model = Tiny()
+        learner = MlxGrpoLearner(model, lr=0.01)
+        sample = {"token_ids": [1], "behavior_logprobs": [-1.1]}
+        self.assertEqual(learner.step([0], [sample, sample], [0, 0])["gnorm"], 0)
+        result = learner.step([0], [sample, sample], [0, 0], auxiliary=([0], [2], 0.1))
+        self.assertEqual(result["pg"], 0)
+        self.assertEqual(result["skipped"], 2)
+        self.assertGreater(result["gnorm"], 0)
+        self.assertGreater(model.lm_head.weight[2, 0].item(), 0)
+
     def test_mixed_lengths_clipping_and_zero_advantage_match_torch(self):
         import mlx.core as mx
         import mlx.nn as nn
