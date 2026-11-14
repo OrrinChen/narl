@@ -219,6 +219,39 @@ tag are used for all checkpoints. Reference rationales, tags, and EOS do not
 contribute target tokens. A fixed 24-question subset is also decoded greedily
 using the standard reasoning prompt and exact match.
 
+### Reproduce the free-generation accuracy comparison
+
+The control uses the five archived plain GRPO checkpoints from the answer-loss
+experiment. The candidate starts from each paired GRPO checkpoint and adds
+supervised training on full worked solutions from the official training split.
+Each pair shares exactly 6,144 rollout tokens. The extra supervised examples,
+tokens, and optimizer steps are recorded separately. Both arms use the same
+reasoning prompt, unforced greedy decoding, 256-token cap, and numeric
+exact-match checker.
+
+```bash
+data=runs/gsm8k-data
+source_run=runs/gsm8k-online-lag-5seed
+baseline=runs/gsm8k-loss-lr6e4
+out=runs/gsm8k-accuracy-repro
+tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775"
+
+TOKENIZERS_PARALLELISM=false .venv/bin/python -m experiments.gsm8k_accuracy \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --source "$source_run" \
+  --baseline "$baseline" --out "$out"
+.venv/bin/python -m experiments.audit_gsm8k_accuracy \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" --source "$source_run" \
+  --baseline "$baseline" --run "$out" --tokenizer "$tokenizer" --out "$out/audit.json"
+```
+
+The development stage compares 48, 128, and 256 supervised examples on two
+paired seeds and 48 separate training-split questions. Confirmation uses five
+paired seeds and 96 previously unscored official test questions. The gate
+requires at least four seeds to improve, a median paired gain of at least five
+percentage points, and a positive lower 95% question-block bootstrap bound.
+Add `--verify-training` to replay the candidate optimizer steps or
+`--verify-batches 0` to regenerate every test completion.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer

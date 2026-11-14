@@ -15,6 +15,8 @@ The rolling GSM8K experiment started from two adjacent GRPO checkpoints and gene
 
 On the same GRPO rollout budget, adding 30–40 supervised answer tokens per seed reduced held-out gold-digit NLL in all five paired seeds. The median reduction versus plain GRPO was 3.01% across 64 fixed test questions. Greedy exact-match results varied by seed. [Held-out loss results](RESULTS.md#n-gsm8k-留出答案损失)
 
+On 96 fresh GSM8K test questions, adding 256 supervised worked solutions after GRPO raised free-generation exact match in all five paired seeds. The median gain was 10.42 percentage points at the same 6,144 rollout tokens per arm. [Free-generation results](RESULTS.md#o-gsm8k-自由生成准确率)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline

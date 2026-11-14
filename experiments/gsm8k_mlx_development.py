@@ -117,7 +117,7 @@ def train_step(model, tokenizer, example, loss_and_grad, optimizer):
         raise RuntimeError("Nonfinite supervised loss or gradient")
     optimizer.update(model, grads)
     mx.eval(model.trainable_parameters(), optimizer.state)
-    return {"loss": loss.item(), "gradient_norm": norm.item()}
+    return {"loss": loss.item(), "gradient_norm": norm.item(), "supervised_tokens": len(answer)}
 
 
 def memory_mib():
