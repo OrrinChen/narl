@@ -1,0 +1,16 @@
+{
+  "accounting": {
+    "generated_tokens": 6144,
+    "supervised_tokens": 0,
+    "generation_prompt_tokens": 5918,
+    "learner_input_tokens": 1233,
+    "nonzero_advantage_tokens": 617,
+    "consumed_tokens": 6144,
+    "updates": 2,
+    "groups": 17
+  },
+  "training_elapsed_s": 240.10103683290072,
+  "start_sha256": "2c6a2883a67adfb9e2f5bb2ff2f5c14dcab8203847b0f3522b1790f021f56dd2",
+  "final_sha256": "f3226813d080c4045ad2f9db9b560234d72b3e0b02f62580577bf237437ea26e",
+  "groups": 17
+}

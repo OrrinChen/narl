@@ -1,0 +1,699 @@
+development start: 27/48
+seed 0 GRPO 0: 512/32768, v0, rewards [0, 0]
+seed 0 GRPO 1: 998/32768, v0, rewards [0, 0]
+seed 0 GRPO 2: 1471/32768, v0, rewards [0, 0]
+seed 0 GRPO 3: 1771/32768, v1, rewards [1, 0]
+seed 0 GRPO 4: 2139/32768, v1, rewards [0, 0]
+seed 0 GRPO 5: 2406/32768, v1, rewards [0, 0]
+seed 0 GRPO 6: 2763/32768, v1, rewards [0, 0]
+seed 0 GRPO 7: 3079/32768, v1, rewards [0, 0]
+seed 0 GRPO 8: 3419/32768, v1, rewards [1, 1]
+seed 0 GRPO 9: 3891/32768, v1, rewards [0, 0]
+seed 0 GRPO 10: 4270/32768, v1, rewards [1, 1]
+seed 0 GRPO 11: 4782/32768, v1, rewards [0, 0]
+seed 0 GRPO 12: 5099/32768, v2, rewards [0, 1]
+seed 0 GRPO 13: 5604/32768, v2, rewards [0, 0]
+seed 0 GRPO 14: 5696/32768, v2, rewards [0, 0]
+seed 0 GRPO 15: 6033/32768, v2, rewards [0, 0]
+seed 0 GRPO 16: 6144/32768, v2, rewards [0, 0]
+seed 0 GRPO 17: 6485/32768, v2, rewards [0, 0]
+seed 0 GRPO 18: 6997/32768, v2, rewards [0, 0]
+seed 0 GRPO 19: 7422/32768, v3, rewards [0, 1]
+seed 0 GRPO 20: 7881/32768, v3, rewards [0, 0]
+seed 0 GRPO 21: 8271/32768, v3, rewards [0, 0]
+seed 0 GRPO 22: 8783/32768, v3, rewards [0, 0]
+seed 0 GRPO 23: 9005/32768, v4, rewards [1, 0]
+seed 0 GRPO 24: 9517/32768, v4, rewards [0, 0]
+seed 0 GRPO 25: 9937/32768, v4, rewards [0, 0]
+seed 0 GRPO 26: 10325/32768, v4, rewards [0, 0]
+seed 0 GRPO 27: 10678/32768, v4, rewards [0, 0]
+seed 0 GRPO 28: 11121/32768, v4, rewards [0, 0]
+seed 0 GRPO 29: 11633/32768, v4, rewards [0, 0]
+seed 0 GRPO 30: 12022/32768, v4, rewards [0, 0]
+seed 0 GRPO 31: 12534/32768, v4, rewards [0, 0]
+seed 0 GRPO 32: 12883/32768, v4, rewards [0, 0]
+seed 0 GRPO 33: 13163/32768, v5, rewards [0, 1]
+seed 0 GRPO 34: 13614/32768, v6, rewards [1, 0]
+seed 0 GRPO 35: 13949/32768, v6, rewards [0, 0]
+seed 0 GRPO 36: 14366/32768, v6, rewards [0, 0]
+seed 0 GRPO 37: 14760/32768, v6, rewards [0, 0]
+seed 0 GRPO 38: 15203/32768, v6, rewards [0, 0]
+seed 0 GRPO 39: 15375/32768, v7, rewards [1, 0]
+seed 0 GRPO 40: 15651/32768, v7, rewards [0, 0]
+seed 0 GRPO 41: 16119/32768, v7, rewards [0, 0]
+seed 0 GRPO 42: 16376/32768, v8, rewards [1, 0]
+seed 0 GRPO 43: 16618/32768, v8, rewards [0, 0]
+seed 0 GRPO 44: 17114/32768, v8, rewards [0, 0]
+seed 0 GRPO 45: 17479/32768, v8, rewards [0, 0]
+seed 0 GRPO 46: 17901/32768, v8, rewards [0, 0]
+seed 0 GRPO 47: 18413/32768, v8, rewards [0, 0]
+seed 0 GRPO 48: 18686/32768, v8, rewards [0, 0]
+seed 0 GRPO 49: 19132/32768, v8, rewards [0, 0]
+seed 0 GRPO 50: 19394/32768, v9, rewards [0, 1]
+seed 0 GRPO 51: 19720/32768, v9, rewards [0, 0]
+seed 0 GRPO 52: 20222/32768, v9, rewards [0, 0]
+seed 0 GRPO 53: 20674/32768, v9, rewards [0, 0]
+seed 0 GRPO 54: 21054/32768, v9, rewards [0, 0]
+seed 0 GRPO 55: 21522/32768, v9, rewards [0, 0]
+seed 0 GRPO 56: 21875/32768, v9, rewards [0, 0]
+seed 0 GRPO 57: 22342/32768, v9, rewards [0, 0]
+seed 0 GRPO 58: 22819/32768, v9, rewards [0, 0]
+seed 0 GRPO 59: 23331/32768, v9, rewards [0, 0]
+seed 0 GRPO 60: 23520/32768, v10, rewards [1, 0]
+seed 0 GRPO 61: 23928/32768, v10, rewards [0, 0]
+seed 0 GRPO 62: 24086/32768, v10, rewards [0, 0]
+seed 0 GRPO 63: 24567/32768, v10, rewards [0, 0]
+seed 0 GRPO 64: 24938/32768, v10, rewards [0, 0]
+seed 0 GRPO 65: 25450/32768, v10, rewards [0, 0]
+seed 0 GRPO 66: 25715/32768, v10, rewards [0, 0]
+seed 0 GRPO 67: 26170/32768, v10, rewards [0, 0]
+seed 0 GRPO 68: 26493/32768, v11, rewards [0, 1]
+seed 0 GRPO 69: 26842/32768, v11, rewards [0, 0]
+seed 0 GRPO 70: 27189/32768, v11, rewards [1, 1]
+seed 0 GRPO 71: 27701/32768, v11, rewards [0, 0]
+seed 0 GRPO 72: 28032/32768, v12, rewards [1, 0]
+seed 0 GRPO 73: 28359/32768, v13, rewards [1, 0]
+seed 0 GRPO 74: 28871/32768, v13, rewards [0, 0]
+seed 0 GRPO 75: 29274/32768, v14, rewards [1, 0]
+seed 0 GRPO 76: 29761/32768, v15, rewards [1, 0]
+seed 0 GRPO 77: 30119/32768, v16, rewards [0, 1]
+seed 0 GRPO 78: 30563/32768, v16, rewards [0, 0]
+seed 0 GRPO 79: 30830/32768, v16, rewards [1, 1]
+seed 0 GRPO 80: 31342/32768, v16, rewards [0, 0]
+seed 0 GRPO 81: 31806/32768, v16, rewards [0, 0]
+seed 0 GRPO 82: 32299/32768, v16, rewards [0, 0]
+seed 0 GRPO 83: 32481/32768, v17, rewards [0, 1]
+seed 0 GRPO 84: 32639/32768, v17, rewards [0, 0]
+seed 0 GRPO 85: 32768/32768, v17, rewards [0, 0]
+seed 0 grpo_sft 0: 97/26624 labels
+seed 0 grpo_sft 16: 1578/26624 labels
+seed 0 grpo_sft 32: 2881/26624 labels
+seed 0 grpo_sft 48: 4454/26624 labels
+seed 0 grpo_sft 64: 6078/26624 labels
+seed 0 grpo_sft 80: 7359/26624 labels
+seed 0 grpo_sft 96: 9208/26624 labels
+seed 0 grpo_sft 112: 10765/26624 labels
+seed 0 grpo_sft 128: 12394/26624 labels
+seed 0 grpo_sft 144: 13963/26624 labels
+seed 0 grpo_sft 160: 15596/26624 labels
+seed 0 grpo_sft 176: 17184/26624 labels
+seed 0 grpo_sft 192: 18619/26624 labels
+seed 0 grpo_sft 208: 20041/26624 labels
+seed 0 grpo_sft 224: 21452/26624 labels
+seed 0 grpo_sft 240: 23010/26624 labels
+seed 0 grpo_sft 256: 24553/26624 labels
+seed 0 grpo_sft 272: 26256/26624 labels
+seed 0 grpo_sft 278: 26624/26624 labels
+seed 0 sft 0: 97/32768 labels
+seed 0 sft 16: 1578/32768 labels
+seed 0 sft 32: 2881/32768 labels
+seed 0 sft 48: 4454/32768 labels
+seed 0 sft 64: 6078/32768 labels
+seed 0 sft 80: 7359/32768 labels
+seed 0 sft 96: 9208/32768 labels
+seed 0 sft 112: 10765/32768 labels
+seed 0 sft 128: 12394/32768 labels
+seed 0 sft 144: 13963/32768 labels
+seed 0 sft 160: 15596/32768 labels
+seed 0 sft 176: 17184/32768 labels
+seed 0 sft 192: 18619/32768 labels
+seed 0 sft 208: 20041/32768 labels
+seed 0 sft 224: 21452/32768 labels
+seed 0 sft 240: 23010/32768 labels
+seed 0 sft 256: 24553/32768 labels
+seed 0 sft 272: 26256/32768 labels
+seed 0 sft 288: 27472/32768 labels
+seed 0 sft 304: 29034/32768 labels
+seed 0 sft 320: 30746/32768 labels
+seed 0 sft 336: 32467/32768 labels
+seed 0 sft 340: 32768/32768 labels
+development 0 sft: 28/48
+development 0 grpo: 25/48
+development 0 grpo_sft: 24/48
+seed 1 GRPO 0: 431/32768, v0, rewards [0, 0]
+seed 1 GRPO 1: 772/32768, v1, rewards [1, 0]
+seed 1 GRPO 2: 1053/32768, v2, rewards [1, 0]
+seed 1 GRPO 3: 1448/32768, v3, rewards [1, 0]
+seed 1 GRPO 4: 1869/32768, v3, rewards [0, 0]
+seed 1 GRPO 5: 2208/32768, v4, rewards [1, 0]
+seed 1 GRPO 6: 2720/32768, v4, rewards [0, 0]
+seed 1 GRPO 7: 3040/32768, v4, rewards [0, 0]
+seed 1 GRPO 8: 3476/32768, v4, rewards [0, 0]
+seed 1 GRPO 9: 3932/32768, v4, rewards [0, 0]
+seed 1 GRPO 10: 4279/32768, v4, rewards [0, 0]
+seed 1 GRPO 11: 4661/32768, v4, rewards [0, 0]
+seed 1 GRPO 12: 5151/32768, v5, rewards [0, 1]
+seed 1 GRPO 13: 5510/32768, v6, rewards [0, 1]
+seed 1 GRPO 14: 6022/32768, v6, rewards [0, 0]
+seed 1 GRPO 15: 6144/32768, v6, rewards [0, 0]
+seed 1 GRPO 16: 6528/32768, v6, rewards [0, 0]
+seed 1 GRPO 17: 6965/32768, v6, rewards [0, 0]
+seed 1 GRPO 18: 7365/32768, v6, rewards [0, 0]
+seed 1 GRPO 19: 7640/32768, v6, rewards [0, 0]
+seed 1 GRPO 20: 8011/32768, v6, rewards [0, 0]
+seed 1 GRPO 21: 8379/32768, v6, rewards [0, 0]
+seed 1 GRPO 22: 8699/32768, v6, rewards [1, 1]
+seed 1 GRPO 23: 9176/32768, v6, rewards [0, 0]
+seed 1 GRPO 24: 9464/32768, v6, rewards [0, 0]
+seed 1 GRPO 25: 9800/32768, v6, rewards [0, 0]
+seed 1 GRPO 26: 10312/32768, v6, rewards [0, 0]
+seed 1 GRPO 27: 10632/32768, v6, rewards [0, 0]
+seed 1 GRPO 28: 11019/32768, v6, rewards [0, 0]
+seed 1 GRPO 29: 11531/32768, v6, rewards [0, 0]
+seed 1 GRPO 30: 12005/32768, v6, rewards [1, 1]
+seed 1 GRPO 31: 12224/32768, v7, rewards [0, 1]
+seed 1 GRPO 32: 12699/32768, v7, rewards [0, 0]
+seed 1 GRPO 33: 13146/32768, v8, rewards [1, 0]
+seed 1 GRPO 34: 13579/32768, v8, rewards [0, 0]
+seed 1 GRPO 35: 14085/32768, v8, rewards [0, 0]
+seed 1 GRPO 36: 14597/32768, v8, rewards [0, 0]
+seed 1 GRPO 37: 14990/32768, v8, rewards [0, 0]
+seed 1 GRPO 38: 15441/32768, v8, rewards [0, 0]
+seed 1 GRPO 39: 15953/32768, v8, rewards [0, 0]
+seed 1 GRPO 40: 16268/32768, v8, rewards [0, 0]
+seed 1 GRPO 41: 16715/32768, v8, rewards [0, 0]
+seed 1 GRPO 42: 17227/32768, v8, rewards [0, 0]
+seed 1 GRPO 43: 17660/32768, v8, rewards [0, 0]
+seed 1 GRPO 44: 18130/32768, v8, rewards [0, 0]
+seed 1 GRPO 45: 18460/32768, v8, rewards [0, 0]
+seed 1 GRPO 46: 18972/32768, v8, rewards [0, 0]
+seed 1 GRPO 47: 19484/32768, v8, rewards [0, 0]
+seed 1 GRPO 48: 19996/32768, v8, rewards [0, 0]
+seed 1 GRPO 49: 20458/32768, v8, rewards [0, 0]
+seed 1 GRPO 50: 20772/32768, v9, rewards [1, 0]
+seed 1 GRPO 51: 21284/32768, v9, rewards [0, 0]
+seed 1 GRPO 52: 21791/32768, v10, rewards [1, 0]
+seed 1 GRPO 53: 21930/32768, v10, rewards [0, 0]
+seed 1 GRPO 54: 22303/32768, v10, rewards [0, 0]
+seed 1 GRPO 55: 22737/32768, v10, rewards [0, 0]
+seed 1 GRPO 56: 23249/32768, v10, rewards [0, 0]
+seed 1 GRPO 57: 23638/32768, v10, rewards [0, 0]
+seed 1 GRPO 58: 24019/32768, v11, rewards [1, 0]
+seed 1 GRPO 59: 24465/32768, v11, rewards [0, 0]
+seed 1 GRPO 60: 24914/32768, v12, rewards [0, 1]
+seed 1 GRPO 61: 25394/32768, v12, rewards [0, 0]
+seed 1 GRPO 62: 25679/32768, v13, rewards [0, 1]
+seed 1 GRPO 63: 25984/32768, v14, rewards [0, 1]
+seed 1 GRPO 64: 26366/32768, v14, rewards [0, 0]
+seed 1 GRPO 65: 26735/32768, v14, rewards [0, 0]
+seed 1 GRPO 66: 27247/32768, v14, rewards [0, 0]
+seed 1 GRPO 67: 27711/32768, v14, rewards [0, 0]
+seed 1 GRPO 68: 28223/32768, v14, rewards [0, 0]
+seed 1 GRPO 69: 28648/32768, v14, rewards [0, 0]
+seed 1 GRPO 70: 29077/32768, v14, rewards [0, 0]
+seed 1 GRPO 71: 29474/32768, v14, rewards [0, 0]
+seed 1 GRPO 72: 29852/32768, v15, rewards [0, 1]
+seed 1 GRPO 73: 30315/32768, v15, rewards [0, 0]
+seed 1 GRPO 74: 30787/32768, v15, rewards [0, 0]
+seed 1 GRPO 75: 31137/32768, v15, rewards [0, 0]
+seed 1 GRPO 76: 31604/32768, v15, rewards [0, 0]
+seed 1 GRPO 77: 32028/32768, v15, rewards [0, 0]
+seed 1 GRPO 78: 32478/32768, v15, rewards [0, 0]
+seed 1 GRPO 79: 32742/32768, v15, rewards [0, 0]
+seed 1 GRPO 80: 32768/32768, v15, rewards [0, 0]
+seed 1 grpo_sft 0: 152/26624 labels
+seed 1 grpo_sft 16: 1710/26624 labels
+seed 1 grpo_sft 32: 3576/26624 labels
+seed 1 grpo_sft 48: 5004/26624 labels
+seed 1 grpo_sft 64: 7026/26624 labels
+seed 1 grpo_sft 80: 8578/26624 labels
+seed 1 grpo_sft 96: 10462/26624 labels
+seed 1 grpo_sft 112: 11763/26624 labels
+seed 1 grpo_sft 128: 13412/26624 labels
+seed 1 grpo_sft 144: 15014/26624 labels
+seed 1 grpo_sft 160: 16439/26624 labels
+seed 1 grpo_sft 176: 17987/26624 labels
+seed 1 grpo_sft 192: 19549/26624 labels
+seed 1 grpo_sft 208: 20787/26624 labels
+seed 1 grpo_sft 224: 22301/26624 labels
+seed 1 grpo_sft 240: 23937/26624 labels
+seed 1 grpo_sft 256: 25204/26624 labels
+seed 1 grpo_sft 272: 26549/26624 labels
+seed 1 grpo_sft 273: 26624/26624 labels
+seed 1 sft 0: 152/32768 labels
+seed 1 sft 16: 1710/32768 labels
+seed 1 sft 32: 3576/32768 labels
+seed 1 sft 48: 5004/32768 labels
+seed 1 sft 64: 7026/32768 labels
+seed 1 sft 80: 8578/32768 labels
+seed 1 sft 96: 10462/32768 labels
+seed 1 sft 112: 11763/32768 labels
+seed 1 sft 128: 13412/32768 labels
+seed 1 sft 144: 15014/32768 labels
+seed 1 sft 160: 16439/32768 labels
+seed 1 sft 176: 17987/32768 labels
+seed 1 sft 192: 19549/32768 labels
+seed 1 sft 208: 20787/32768 labels
+seed 1 sft 224: 22301/32768 labels
+seed 1 sft 240: 23937/32768 labels
+seed 1 sft 256: 25204/32768 labels
+seed 1 sft 272: 26549/32768 labels
+seed 1 sft 288: 27911/32768 labels
+seed 1 sft 304: 29585/32768 labels
+seed 1 sft 320: 30928/32768 labels
+seed 1 sft 336: 32366/32768 labels
+seed 1 sft 341: 32768/32768 labels
+development 1 sft: 30/48
+development 1 grpo: 18/48
+development 1 grpo_sft: 26/48
+test 0 sft: 34/96
+test 0 grpo: 23/96
+test 0 grpo_sft: 32/96
+test 1 sft: 34/96
+test 1 grpo: 25/96
+test 1 grpo_sft: 30/96
+seed 2 GRPO 0: 323/32768, v1, rewards [0, 1]
+seed 2 GRPO 1: 649/32768, v1, rewards [0, 0]
+seed 2 GRPO 2: 888/32768, v2, rewards [1, 0]
+seed 2 GRPO 3: 1285/32768, v2, rewards [0, 0]
+seed 2 GRPO 4: 1708/32768, v2, rewards [0, 0]
+seed 2 GRPO 5: 2006/32768, v2, rewards [0, 0]
+seed 2 GRPO 6: 2330/32768, v3, rewards [1, 0]
+seed 2 GRPO 7: 2525/32768, v3, rewards [0, 0]
+seed 2 GRPO 8: 3025/32768, v3, rewards [0, 0]
+seed 2 GRPO 9: 3327/32768, v3, rewards [0, 0]
+seed 2 GRPO 10: 3839/32768, v3, rewards [0, 0]
+seed 2 GRPO 11: 4351/32768, v3, rewards [0, 0]
+seed 2 GRPO 12: 4734/32768, v3, rewards [0, 0]
+seed 2 GRPO 13: 5160/32768, v3, rewards [0, 0]
+seed 2 GRPO 14: 5549/32768, v3, rewards [0, 0]
+seed 2 GRPO 15: 5910/32768, v3, rewards [0, 0]
+seed 2 GRPO 16: 6143/32768, v4, rewards [1, 0]
+seed 2 GRPO 17: 6144/32768, v4, rewards [0]
+seed 2 GRPO 18: 6395/32768, v4, rewards [0, 0]
+seed 2 GRPO 19: 6597/32768, v4, rewards [1, 1]
+seed 2 GRPO 20: 7096/32768, v4, rewards [0, 0]
+seed 2 GRPO 21: 7608/32768, v4, rewards [0, 0]
+seed 2 GRPO 22: 7960/32768, v5, rewards [1, 0]
+seed 2 GRPO 23: 8472/32768, v5, rewards [0, 0]
+seed 2 GRPO 24: 8813/32768, v6, rewards [0, 1]
+seed 2 GRPO 25: 9273/32768, v6, rewards [0, 0]
+seed 2 GRPO 26: 9624/32768, v6, rewards [0, 0]
+seed 2 GRPO 27: 9934/32768, v7, rewards [0, 1]
+seed 2 GRPO 28: 10446/32768, v7, rewards [0, 0]
+seed 2 GRPO 29: 10814/32768, v7, rewards [0, 0]
+seed 2 GRPO 30: 11211/32768, v8, rewards [1, 0]
+seed 2 GRPO 31: 11703/32768, v9, rewards [0, 1]
+seed 2 GRPO 32: 12215/32768, v9, rewards [0, 0]
+seed 2 GRPO 33: 12727/32768, v9, rewards [0, 0]
+seed 2 GRPO 34: 13239/32768, v9, rewards [0, 0]
+seed 2 GRPO 35: 13691/32768, v9, rewards [0, 0]
+seed 2 GRPO 36: 14184/32768, v9, rewards [0, 0]
+seed 2 GRPO 37: 14696/32768, v9, rewards [0, 0]
+seed 2 GRPO 38: 15028/32768, v10, rewards [1, 0]
+seed 2 GRPO 39: 15540/32768, v10, rewards [0, 0]
+seed 2 GRPO 40: 15694/32768, v10, rewards [1, 1]
+seed 2 GRPO 41: 16033/32768, v11, rewards [0, 1]
+seed 2 GRPO 42: 16545/32768, v11, rewards [0, 0]
+seed 2 GRPO 43: 16958/32768, v11, rewards [0, 0]
+seed 2 GRPO 44: 17111/32768, v11, rewards [0, 0]
+seed 2 GRPO 45: 17493/32768, v12, rewards [0, 1]
+seed 2 GRPO 46: 17720/32768, v12, rewards [1, 1]
+seed 2 GRPO 47: 18065/32768, v12, rewards [0, 0]
+seed 2 GRPO 48: 18509/32768, v12, rewards [0, 0]
+seed 2 GRPO 49: 18861/32768, v12, rewards [0, 0]
+seed 2 GRPO 50: 19090/32768, v12, rewards [0, 0]
+seed 2 GRPO 51: 19556/32768, v12, rewards [0, 0]
+seed 2 GRPO 52: 19860/32768, v12, rewards [1, 1]
+seed 2 GRPO 53: 20262/32768, v12, rewards [1, 1]
+seed 2 GRPO 54: 20668/32768, v12, rewards [0, 0]
+seed 2 GRPO 55: 21058/32768, v12, rewards [0, 0]
+seed 2 GRPO 56: 21496/32768, v12, rewards [0, 0]
+seed 2 GRPO 57: 21807/32768, v13, rewards [1, 0]
+seed 2 GRPO 58: 22221/32768, v13, rewards [0, 0]
+seed 2 GRPO 59: 22733/32768, v13, rewards [0, 0]
+seed 2 GRPO 60: 23181/32768, v13, rewards [0, 0]
+seed 2 GRPO 61: 23665/32768, v13, rewards [0, 0]
+seed 2 GRPO 62: 24103/32768, v13, rewards [0, 0]
+seed 2 GRPO 63: 24391/32768, v14, rewards [0, 1]
+seed 2 GRPO 64: 24745/32768, v14, rewards [0, 0]
+seed 2 GRPO 65: 25057/32768, v14, rewards [0, 0]
+seed 2 GRPO 66: 25569/32768, v14, rewards [0, 0]
+seed 2 GRPO 67: 25877/32768, v15, rewards [0, 1]
+seed 2 GRPO 68: 26325/32768, v15, rewards [0, 0]
+seed 2 GRPO 69: 26723/32768, v15, rewards [0, 0]
+seed 2 GRPO 70: 27235/32768, v15, rewards [0, 0]
+seed 2 GRPO 71: 27747/32768, v15, rewards [0, 0]
+seed 2 GRPO 72: 28018/32768, v16, rewards [0, 1]
+seed 2 GRPO 73: 28224/32768, v16, rewards [0, 0]
+seed 2 GRPO 74: 28519/32768, v16, rewards [0, 0]
+seed 2 GRPO 75: 29031/32768, v16, rewards [0, 0]
+seed 2 GRPO 76: 29312/32768, v16, rewards [0, 0]
+seed 2 GRPO 77: 29687/32768, v16, rewards [0, 0]
+seed 2 GRPO 78: 30024/32768, v17, rewards [0, 1]
+seed 2 GRPO 79: 30433/32768, v17, rewards [0, 0]
+seed 2 GRPO 80: 30890/32768, v17, rewards [1, 1]
+seed 2 GRPO 81: 31168/32768, v18, rewards [1, 0]
+seed 2 GRPO 82: 31471/32768, v19, rewards [1, 0]
+seed 2 GRPO 83: 31943/32768, v19, rewards [0, 0]
+seed 2 GRPO 84: 32408/32768, v19, rewards [0, 0]
+seed 2 GRPO 85: 32646/32768, v19, rewards [0, 0]
+seed 2 GRPO 86: 32768/32768, v19, rewards [0, 0]
+seed 2 grpo_sft 0: 130/26624 labels
+seed 2 grpo_sft 16: 1472/26624 labels
+seed 2 grpo_sft 32: 3338/26624 labels
+seed 2 grpo_sft 48: 4762/26624 labels
+seed 2 grpo_sft 64: 6058/26624 labels
+seed 2 grpo_sft 80: 7674/26624 labels
+seed 2 grpo_sft 96: 9334/26624 labels
+seed 2 grpo_sft 112: 10959/26624 labels
+seed 2 grpo_sft 128: 12407/26624 labels
+seed 2 grpo_sft 144: 14098/26624 labels
+seed 2 grpo_sft 160: 15628/26624 labels
+seed 2 grpo_sft 176: 17282/26624 labels
+seed 2 grpo_sft 192: 18768/26624 labels
+seed 2 grpo_sft 208: 20428/26624 labels
+seed 2 grpo_sft 224: 22084/26624 labels
+seed 2 grpo_sft 240: 23554/26624 labels
+seed 2 grpo_sft 256: 25114/26624 labels
+seed 2 grpo_sft 272: 26606/26624 labels
+seed 2 grpo_sft 273: 26624/26624 labels
+seed 2 sft 0: 130/32768 labels
+seed 2 sft 16: 1472/32768 labels
+seed 2 sft 32: 3338/32768 labels
+seed 2 sft 48: 4762/32768 labels
+seed 2 sft 64: 6058/32768 labels
+seed 2 sft 80: 7674/32768 labels
+seed 2 sft 96: 9334/32768 labels
+seed 2 sft 112: 10959/32768 labels
+seed 2 sft 128: 12407/32768 labels
+seed 2 sft 144: 14098/32768 labels
+seed 2 sft 160: 15628/32768 labels
+seed 2 sft 176: 17282/32768 labels
+seed 2 sft 192: 18768/32768 labels
+seed 2 sft 208: 20428/32768 labels
+seed 2 sft 224: 22084/32768 labels
+seed 2 sft 240: 23554/32768 labels
+seed 2 sft 256: 25114/32768 labels
+seed 2 sft 272: 26606/32768 labels
+seed 2 sft 288: 28234/32768 labels
+seed 2 sft 304: 29816/32768 labels
+seed 2 sft 320: 31368/32768 labels
+seed 2 sft 336: 32729/32768 labels
+seed 2 sft 337: 32768/32768 labels
+test 2 sft: 28/96
+test 2 grpo: 24/96
+test 2 grpo_sft: 33/96
+seed 3 GRPO 0: 357/32768, v1, rewards [0, 1]
+seed 3 GRPO 1: 858/32768, v1, rewards [0, 0]
+seed 3 GRPO 2: 1140/32768, v1, rewards [0, 0]
+seed 3 GRPO 3: 1598/32768, v2, rewards [0, 1]
+seed 3 GRPO 4: 1874/32768, v3, rewards [1, 0]
+seed 3 GRPO 5: 2197/32768, v3, rewards [0, 0]
+seed 3 GRPO 6: 2654/32768, v3, rewards [0, 0]
+seed 3 GRPO 7: 2988/32768, v3, rewards [1, 1]
+seed 3 GRPO 8: 3379/32768, v3, rewards [0, 0]
+seed 3 GRPO 9: 3676/32768, v4, rewards [1, 0]
+seed 3 GRPO 10: 4128/32768, v4, rewards [0, 0]
+seed 3 GRPO 11: 4640/32768, v4, rewards [0, 0]
+seed 3 GRPO 12: 5016/32768, v4, rewards [1, 1]
+seed 3 GRPO 13: 5428/32768, v5, rewards [1, 0]
+seed 3 GRPO 14: 5818/32768, v6, rewards [1, 0]
+seed 3 GRPO 15: 6144/32768, v6, rewards [0, 0]
+seed 3 GRPO 16: 6656/32768, v6, rewards [0, 0]
+seed 3 GRPO 17: 7044/32768, v6, rewards [0, 0]
+seed 3 GRPO 18: 7388/32768, v6, rewards [1, 1]
+seed 3 GRPO 19: 7632/32768, v6, rewards [1, 1]
+seed 3 GRPO 20: 8089/32768, v6, rewards [0, 0]
+seed 3 GRPO 21: 8450/32768, v7, rewards [1, 0]
+seed 3 GRPO 22: 8839/32768, v8, rewards [0, 1]
+seed 3 GRPO 23: 9283/32768, v8, rewards [1, 1]
+seed 3 GRPO 24: 9619/32768, v8, rewards [0, 0]
+seed 3 GRPO 25: 10131/32768, v8, rewards [0, 0]
+seed 3 GRPO 26: 10584/32768, v8, rewards [0, 0]
+seed 3 GRPO 27: 11069/32768, v8, rewards [0, 0]
+seed 3 GRPO 28: 11373/32768, v8, rewards [1, 1]
+seed 3 GRPO 29: 11738/32768, v8, rewards [0, 0]
+seed 3 GRPO 30: 12025/32768, v9, rewards [1, 0]
+seed 3 GRPO 31: 12469/32768, v9, rewards [0, 0]
+seed 3 GRPO 32: 12782/32768, v10, rewards [0, 1]
+seed 3 GRPO 33: 13216/32768, v10, rewards [0, 0]
+seed 3 GRPO 34: 13635/32768, v11, rewards [1, 0]
+seed 3 GRPO 35: 14147/32768, v11, rewards [0, 0]
+seed 3 GRPO 36: 14518/32768, v12, rewards [1, 0]
+seed 3 GRPO 37: 14976/32768, v12, rewards [0, 0]
+seed 3 GRPO 38: 15482/32768, v12, rewards [0, 0]
+seed 3 GRPO 39: 15921/32768, v13, rewards [0, 1]
+seed 3 GRPO 40: 16433/32768, v13, rewards [0, 0]
+seed 3 GRPO 41: 16925/32768, v14, rewards [0, 1]
+seed 3 GRPO 42: 17378/32768, v14, rewards [0, 0]
+seed 3 GRPO 43: 17690/32768, v14, rewards [0, 0]
+seed 3 GRPO 44: 18074/32768, v15, rewards [0, 1]
+seed 3 GRPO 45: 18581/32768, v16, rewards [0, 1]
+seed 3 GRPO 46: 18998/32768, v16, rewards [0, 0]
+seed 3 GRPO 47: 19437/32768, v16, rewards [0, 0]
+seed 3 GRPO 48: 19733/32768, v16, rewards [0, 0]
+seed 3 GRPO 49: 20113/32768, v16, rewards [0, 0]
+seed 3 GRPO 50: 20625/32768, v16, rewards [0, 0]
+seed 3 GRPO 51: 21066/32768, v16, rewards [0, 0]
+seed 3 GRPO 52: 21312/32768, v16, rewards [0, 0]
+seed 3 GRPO 53: 21759/32768, v17, rewards [0, 1]
+seed 3 GRPO 54: 21940/32768, v17, rewards [1, 1]
+seed 3 GRPO 55: 22227/32768, v18, rewards [1, 0]
+seed 3 GRPO 56: 22651/32768, v18, rewards [0, 0]
+seed 3 GRPO 57: 22972/32768, v18, rewards [0, 0]
+seed 3 GRPO 58: 23350/32768, v18, rewards [0, 0]
+seed 3 GRPO 59: 23669/32768, v19, rewards [1, 0]
+seed 3 GRPO 60: 24175/32768, v19, rewards [0, 0]
+seed 3 GRPO 61: 24565/32768, v20, rewards [1, 0]
+seed 3 GRPO 62: 24933/32768, v21, rewards [1, 0]
+seed 3 GRPO 63: 25362/32768, v22, rewards [0, 1]
+seed 3 GRPO 64: 25825/32768, v22, rewards [0, 0]
+seed 3 GRPO 65: 26337/32768, v22, rewards [0, 0]
+seed 3 GRPO 66: 26732/32768, v22, rewards [0, 0]
+seed 3 GRPO 67: 27146/32768, v23, rewards [0, 1]
+seed 3 GRPO 68: 27539/32768, v23, rewards [0, 0]
+seed 3 GRPO 69: 28036/32768, v23, rewards [0, 0]
+seed 3 GRPO 70: 28511/32768, v23, rewards [0, 0]
+seed 3 GRPO 71: 28700/32768, v23, rewards [0, 0]
+seed 3 GRPO 72: 29047/32768, v23, rewards [0, 0]
+seed 3 GRPO 73: 29522/32768, v23, rewards [0, 0]
+seed 3 GRPO 74: 30034/32768, v23, rewards [0, 0]
+seed 3 GRPO 75: 30546/32768, v23, rewards [0, 0]
+seed 3 GRPO 76: 31058/32768, v23, rewards [0, 0]
+seed 3 GRPO 77: 31376/32768, v24, rewards [0, 1]
+seed 3 GRPO 78: 31757/32768, v24, rewards [0, 0]
+seed 3 GRPO 79: 32106/32768, v24, rewards [0, 0]
+seed 3 GRPO 80: 32389/32768, v24, rewards [0, 0]
+seed 3 GRPO 81: 32768/32768, v24, rewards [0, 0]
+seed 3 grpo_sft 0: 113/26624 labels
+seed 3 grpo_sft 16: 1601/26624 labels
+seed 3 grpo_sft 32: 3305/26624 labels
+seed 3 grpo_sft 48: 4843/26624 labels
+seed 3 grpo_sft 64: 6318/26624 labels
+seed 3 grpo_sft 80: 7682/26624 labels
+seed 3 grpo_sft 96: 9335/26624 labels
+seed 3 grpo_sft 112: 10689/26624 labels
+seed 3 grpo_sft 128: 12195/26624 labels
+seed 3 grpo_sft 144: 13408/26624 labels
+seed 3 grpo_sft 160: 14710/26624 labels
+seed 3 grpo_sft 176: 16109/26624 labels
+seed 3 grpo_sft 192: 17740/26624 labels
+seed 3 grpo_sft 208: 19386/26624 labels
+seed 3 grpo_sft 224: 20747/26624 labels
+seed 3 grpo_sft 240: 22117/26624 labels
+seed 3 grpo_sft 256: 23542/26624 labels
+seed 3 grpo_sft 272: 24858/26624 labels
+seed 3 grpo_sft 288: 26357/26624 labels
+seed 3 grpo_sft 291: 26624/26624 labels
+seed 3 sft 0: 113/32768 labels
+seed 3 sft 16: 1601/32768 labels
+seed 3 sft 32: 3305/32768 labels
+seed 3 sft 48: 4843/32768 labels
+seed 3 sft 64: 6318/32768 labels
+seed 3 sft 80: 7682/32768 labels
+seed 3 sft 96: 9335/32768 labels
+seed 3 sft 112: 10689/32768 labels
+seed 3 sft 128: 12195/32768 labels
+seed 3 sft 144: 13408/32768 labels
+seed 3 sft 160: 14710/32768 labels
+seed 3 sft 176: 16109/32768 labels
+seed 3 sft 192: 17740/32768 labels
+seed 3 sft 208: 19386/32768 labels
+seed 3 sft 224: 20747/32768 labels
+seed 3 sft 240: 22117/32768 labels
+seed 3 sft 256: 23542/32768 labels
+seed 3 sft 272: 24858/32768 labels
+seed 3 sft 288: 26357/32768 labels
+seed 3 sft 304: 27862/32768 labels
+seed 3 sft 320: 29354/32768 labels
+seed 3 sft 336: 30878/32768 labels
+seed 3 sft 352: 32454/32768 labels
+seed 3 sft 355: 32768/32768 labels
+test 3 sft: 32/96
+test 3 grpo: 25/96
+test 3 grpo_sft: 34/96
+seed 4 GRPO 0: 512/32768, v0, rewards [0, 0]
+seed 4 GRPO 1: 881/32768, v0, rewards [0, 0]
+seed 4 GRPO 2: 1105/32768, v0, rewards [1, 1]
+seed 4 GRPO 3: 1617/32768, v0, rewards [0, 0]
+seed 4 GRPO 4: 2125/32768, v0, rewards [0, 0]
+seed 4 GRPO 5: 2441/32768, v0, rewards [0, 0]
+seed 4 GRPO 6: 2641/32768, v1, rewards [0, 1]
+seed 4 GRPO 7: 3047/32768, v2, rewards [0, 1]
+seed 4 GRPO 8: 3440/32768, v2, rewards [0, 0]
+seed 4 GRPO 9: 3882/32768, v2, rewards [0, 0]
+seed 4 GRPO 10: 4281/32768, v2, rewards [0, 0]
+seed 4 GRPO 11: 4613/32768, v2, rewards [0, 0]
+seed 4 GRPO 12: 5025/32768, v3, rewards [0, 1]
+seed 4 GRPO 13: 5216/32768, v3, rewards [0, 0]
+seed 4 GRPO 14: 5536/32768, v4, rewards [0, 1]
+seed 4 GRPO 15: 5930/32768, v5, rewards [1, 0]
+seed 4 GRPO 16: 6144/32768, v6, rewards [1, 0]
+seed 4 GRPO 17: 6349/32768, v6, rewards [0, 0]
+seed 4 GRPO 18: 6560/32768, v6, rewards [0, 0]
+seed 4 GRPO 19: 6798/32768, v6, rewards [0, 0]
+seed 4 GRPO 20: 7310/32768, v6, rewards [0, 0]
+seed 4 GRPO 21: 7680/32768, v6, rewards [0, 0]
+seed 4 GRPO 22: 8010/32768, v7, rewards [0, 1]
+seed 4 GRPO 23: 8319/32768, v7, rewards [0, 0]
+seed 4 GRPO 24: 8831/32768, v7, rewards [0, 0]
+seed 4 GRPO 25: 8853/32768, v7, rewards [0, 0]
+seed 4 GRPO 26: 9365/32768, v7, rewards [0, 0]
+seed 4 GRPO 27: 9736/32768, v7, rewards [0, 0]
+seed 4 GRPO 28: 9860/32768, v7, rewards [0, 0]
+seed 4 GRPO 29: 9880/32768, v7, rewards [0, 0]
+seed 4 GRPO 30: 10146/32768, v7, rewards [0, 0]
+seed 4 GRPO 31: 10569/32768, v8, rewards [0, 1]
+seed 4 GRPO 32: 10833/32768, v8, rewards [0, 0]
+seed 4 GRPO 33: 11228/32768, v8, rewards [0, 0]
+seed 4 GRPO 34: 11447/32768, v9, rewards [0, 1]
+seed 4 GRPO 35: 11577/32768, v9, rewards [0, 0]
+seed 4 GRPO 36: 11967/32768, v9, rewards [0, 0]
+seed 4 GRPO 37: 12254/32768, v9, rewards [0, 0]
+seed 4 GRPO 38: 12522/32768, v9, rewards [0, 0]
+seed 4 GRPO 39: 12877/32768, v9, rewards [0, 0]
+seed 4 GRPO 40: 12964/32768, v9, rewards [0, 0]
+seed 4 GRPO 41: 13180/32768, v9, rewards [1, 1]
+seed 4 GRPO 42: 13551/32768, v10, rewards [1, 0]
+seed 4 GRPO 43: 13951/32768, v10, rewards [0, 0]
+seed 4 GRPO 44: 14216/32768, v10, rewards [0, 0]
+seed 4 GRPO 45: 14235/32768, v10, rewards [0, 0]
+seed 4 GRPO 46: 14509/32768, v10, rewards [0, 0]
+seed 4 GRPO 47: 14748/32768, v11, rewards [0, 1]
+seed 4 GRPO 48: 14816/32768, v11, rewards [0, 0]
+seed 4 GRPO 49: 14926/32768, v11, rewards [0, 0]
+seed 4 GRPO 50: 14988/32768, v11, rewards [0, 0]
+seed 4 GRPO 51: 15218/32768, v11, rewards [0, 0]
+seed 4 GRPO 52: 15646/32768, v11, rewards [0, 0]
+seed 4 GRPO 53: 15664/32768, v11, rewards [0, 0]
+seed 4 GRPO 54: 15733/32768, v11, rewards [0, 0]
+seed 4 GRPO 55: 15906/32768, v11, rewards [0, 0]
+seed 4 GRPO 56: 16418/32768, v11, rewards [0, 0]
+seed 4 GRPO 57: 16682/32768, v11, rewards [0, 0]
+seed 4 GRPO 58: 16892/32768, v11, rewards [0, 0]
+seed 4 GRPO 59: 16910/32768, v11, rewards [0, 0]
+seed 4 GRPO 60: 17199/32768, v11, rewards [0, 0]
+seed 4 GRPO 61: 17484/32768, v11, rewards [0, 0]
+seed 4 GRPO 62: 17895/32768, v11, rewards [0, 0]
+seed 4 GRPO 63: 17987/32768, v11, rewards [0, 0]
+seed 4 GRPO 64: 18304/32768, v11, rewards [0, 0]
+seed 4 GRPO 65: 18353/32768, v12, rewards [0, 1]
+seed 4 GRPO 66: 18485/32768, v12, rewards [0, 0]
+seed 4 GRPO 67: 18528/32768, v12, rewards [0, 0]
+seed 4 GRPO 68: 18546/32768, v12, rewards [0, 0]
+seed 4 GRPO 69: 18562/32768, v12, rewards [0, 0]
+seed 4 GRPO 70: 18762/32768, v12, rewards [1, 1]
+seed 4 GRPO 71: 19038/32768, v12, rewards [0, 0]
+seed 4 GRPO 72: 19248/32768, v12, rewards [0, 0]
+seed 4 GRPO 73: 19537/32768, v12, rewards [0, 0]
+seed 4 GRPO 74: 19566/32768, v12, rewards [0, 0]
+seed 4 GRPO 75: 19839/32768, v12, rewards [0, 0]
+seed 4 GRPO 76: 20301/32768, v12, rewards [0, 0]
+seed 4 GRPO 77: 20566/32768, v12, rewards [0, 0]
+seed 4 GRPO 78: 20804/32768, v13, rewards [0, 1]
+seed 4 GRPO 79: 20979/32768, v13, rewards [0, 0]
+seed 4 GRPO 80: 21062/32768, v13, rewards [0, 0]
+seed 4 GRPO 81: 21344/32768, v13, rewards [0, 0]
+seed 4 GRPO 82: 21610/32768, v13, rewards [0, 0]
+seed 4 GRPO 83: 21684/32768, v13, rewards [0, 0]
+seed 4 GRPO 84: 21705/32768, v13, rewards [0, 0]
+seed 4 GRPO 85: 22130/32768, v13, rewards [0, 0]
+seed 4 GRPO 86: 22539/32768, v13, rewards [0, 0]
+seed 4 GRPO 87: 22968/32768, v13, rewards [0, 0]
+seed 4 GRPO 88: 23045/32768, v13, rewards [0, 0]
+seed 4 GRPO 89: 23310/32768, v13, rewards [0, 0]
+seed 4 GRPO 90: 23795/32768, v14, rewards [0, 1]
+seed 4 GRPO 91: 24114/32768, v14, rewards [0, 0]
+seed 4 GRPO 92: 24313/32768, v14, rewards [0, 0]
+seed 4 GRPO 93: 24578/32768, v14, rewards [0, 0]
+seed 4 GRPO 94: 25090/32768, v14, rewards [0, 0]
+seed 4 GRPO 95: 25419/32768, v14, rewards [0, 0]
+seed 4 GRPO 96: 25437/32768, v15, rewards [1, 0]
+seed 4 GRPO 97: 25703/32768, v16, rewards [1, 0]
+seed 4 GRPO 98: 25978/32768, v16, rewards [0, 0]
+seed 4 GRPO 99: 26037/32768, v16, rewards [0, 0]
+seed 4 GRPO 100: 26238/32768, v16, rewards [0, 0]
+seed 4 GRPO 101: 26681/32768, v16, rewards [0, 0]
+seed 4 GRPO 102: 27077/32768, v16, rewards [0, 0]
+seed 4 GRPO 103: 27115/32768, v16, rewards [0, 0]
+seed 4 GRPO 104: 27279/32768, v16, rewards [0, 0]
+seed 4 GRPO 105: 27298/32768, v16, rewards [0, 0]
+seed 4 GRPO 106: 27541/32768, v16, rewards [0, 0]
+seed 4 GRPO 107: 27559/32768, v16, rewards [0, 0]
+seed 4 GRPO 108: 27673/32768, v16, rewards [0, 0]
+seed 4 GRPO 109: 27701/32768, v16, rewards [0, 0]
+seed 4 GRPO 110: 27967/32768, v16, rewards [0, 0]
+seed 4 GRPO 111: 27985/32768, v16, rewards [0, 0]
+seed 4 GRPO 112: 28396/32768, v16, rewards [0, 0]
+seed 4 GRPO 113: 28661/32768, v16, rewards [0, 0]
+seed 4 GRPO 114: 28926/32768, v16, rewards [0, 0]
+seed 4 GRPO 115: 29118/32768, v16, rewards [0, 0]
+seed 4 GRPO 116: 29500/32768, v16, rewards [0, 0]
+seed 4 GRPO 117: 29731/32768, v16, rewards [0, 0]
+seed 4 GRPO 118: 29966/32768, v16, rewards [0, 0]
+seed 4 GRPO 119: 30439/32768, v16, rewards [0, 0]
+seed 4 GRPO 120: 30457/32768, v16, rewards [0, 0]
+seed 4 GRPO 121: 30474/32768, v16, rewards [0, 0]
+seed 4 GRPO 122: 30718/32768, v16, rewards [0, 0]
+seed 4 GRPO 123: 30982/32768, v16, rewards [0, 0]
+seed 4 GRPO 124: 31006/32768, v16, rewards [0, 0]
+seed 4 GRPO 125: 31518/32768, v16, rewards [0, 0]
+seed 4 GRPO 126: 31952/32768, v16, rewards [0, 0]
+seed 4 GRPO 127: 31983/32768, v16, rewards [0, 0]
+seed 4 GRPO 128: 32495/32768, v16, rewards [0, 0]
+seed 4 GRPO 129: 32531/32768, v16, rewards [0, 0]
+seed 4 GRPO 130: 32768/32768, v16, rewards [0, 0]
+seed 4 grpo_sft 0: 98/26624 labels
+seed 4 grpo_sft 16: 1570/26624 labels
+seed 4 grpo_sft 32: 3127/26624 labels
+seed 4 grpo_sft 48: 4807/26624 labels
+seed 4 grpo_sft 64: 6427/26624 labels
+seed 4 grpo_sft 80: 8069/26624 labels
+seed 4 grpo_sft 96: 9617/26624 labels
+seed 4 grpo_sft 112: 11339/26624 labels
+seed 4 grpo_sft 128: 12615/26624 labels
+seed 4 grpo_sft 144: 14113/26624 labels
+seed 4 grpo_sft 160: 15985/26624 labels
+seed 4 grpo_sft 176: 17516/26624 labels
+seed 4 grpo_sft 192: 18908/26624 labels
+seed 4 grpo_sft 208: 20496/26624 labels
+seed 4 grpo_sft 224: 21901/26624 labels
+seed 4 grpo_sft 240: 23737/26624 labels
+seed 4 grpo_sft 256: 25396/26624 labels
+seed 4 grpo_sft 268: 26624/26624 labels
+seed 4 sft 0: 98/32768 labels
+seed 4 sft 16: 1570/32768 labels
+seed 4 sft 32: 3127/32768 labels
+seed 4 sft 48: 4807/32768 labels
+seed 4 sft 64: 6427/32768 labels
+seed 4 sft 80: 8069/32768 labels
+seed 4 sft 96: 9617/32768 labels
+seed 4 sft 112: 11339/32768 labels
+seed 4 sft 128: 12615/32768 labels
+seed 4 sft 144: 14113/32768 labels
+seed 4 sft 160: 15985/32768 labels
+seed 4 sft 176: 17516/32768 labels
+seed 4 sft 192: 18908/32768 labels
+seed 4 sft 208: 20496/32768 labels
+seed 4 sft 224: 21901/32768 labels
+seed 4 sft 240: 23737/32768 labels
+seed 4 sft 256: 25396/32768 labels
+seed 4 sft 272: 26932/32768 labels
+seed 4 sft 288: 28459/32768 labels
+seed 4 sft 304: 29599/32768 labels
+seed 4 sft 320: 31245/32768 labels
+seed 4 sft 335: 32768/32768 labels
+test 4 sft: 35/96
+test 4 grpo: 13/96
+test 4 grpo_sft: 36/96

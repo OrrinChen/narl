@@ -17,6 +17,8 @@ On the same GRPO rollout budget, adding 30–40 supervised answer tokens per see
 
 On 96 fresh GSM8K test questions, adding 256 supervised worked solutions after GRPO raised free-generation exact match in all five paired seeds. The median gain was 10.42 percentage points at the same 6,144 rollout tokens per arm. [Free-generation results](RESULTS.md#o-gsm8k-自由生成准确率)
 
+An equal-response-token ablation then compared SFT alone, GRPO alone, and GRPO followed by SFT from the same pre-GRPO initialization. Each arm received 32,768 additional completion or supervised-label tokens per seed. On another 96 fresh test questions, SFT scored **34, 34, 28, 32, 35**, GRPO **23, 25, 24, 25, 13**, and GRPO then SFT **32, 30, 33, 34, 36**. The mixed recipe beat SFT in three seeds and lost in two; its median paired gain was **1.04 pp**, with a question-block 95% interval of **−5.21 to +6.25 pp**. This fixed recipe did not establish an additional GRPO benefit over SFT. Response tokens match; FLOPs do not. [Attribution ablation](RESULTS.md#p-gsm8k-同新增响应-token-预算对照)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline

@@ -293,6 +293,11 @@ separately. Shared initialization and evaluation costs are outside the
 incremental training budget. Use a fresh output directory for a new protocol;
 completed arm checkpoints are reused on restart.
 
+Add `--verify-training` to the audit command to replay every GRPO and SFT
+optimizer update and compare parameter bytes. Add `--verify-batches 1` to
+regenerate the first full greedy batch for every seed and arm, or use
+`--verify-batches 0` to regenerate all held-out completions.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer

@@ -1,0 +1,6 @@
+model replay seed 0: {'grpo_optimizer_batches': 86, 'grpo_groups': 86, 'sft_optimizer_steps': 620, 'replayed_seeds': 1, 'redecoded_questions': 36, 'redecoded_arms': 3}
+model replay seed 1: {'grpo_optimizer_batches': 167, 'grpo_groups': 167, 'sft_optimizer_steps': 1236, 'replayed_seeds': 2, 'redecoded_questions': 72, 'redecoded_arms': 6}
+model replay seed 2: {'grpo_optimizer_batches': 253, 'grpo_groups': 254, 'sft_optimizer_steps': 1848, 'replayed_seeds': 3, 'redecoded_questions': 108, 'redecoded_arms': 9}
+model replay seed 3: {'grpo_optimizer_batches': 335, 'grpo_groups': 336, 'sft_optimizer_steps': 2496, 'replayed_seeds': 4, 'redecoded_questions': 144, 'redecoded_arms': 12}
+model replay seed 4: {'grpo_optimizer_batches': 466, 'grpo_groups': 467, 'sft_optimizer_steps': 3101, 'replayed_seeds': 5, 'redecoded_questions': 180, 'redecoded_arms': 15}
+Audited three arms and five paired seeds at 32768 response tokens per arm on 96 new held-out questions.
