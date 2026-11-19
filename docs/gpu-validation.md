@@ -252,6 +252,47 @@ percentage points, and a positive lower 95% question-block bootstrap bound.
 Add `--verify-training` to replay the candidate optimizer steps or
 `--verify-batches 0` to regenerate every test completion.
 
+### Reproduce the equal response-token ablation
+
+This comparison starts all three arms at the same 80-example SFT adapter,
+before any GRPO update in this project. Each seed receives 32,768 additional
+response tokens: SFT uses all of them as worked-solution labels, GRPO uses all
+of them for on-policy completions, and GRPO then SFT uses 6,144 completion
+tokens followed by 26,624 supervised labels. Emitted EOS tokens count; generated
+answers with uniform group rewards still count. Only the final supervised
+target is shortened to spend the exact remaining budget.
+
+GRPO and GRPO then SFT share the actual first 6,144-token training trajectory.
+GRPO continues with its existing AdamW state; the SFT stage starts a new AdamW.
+The GRPO and SFT learning rates, 0.0006 and 0.0005, come from earlier independent
+development work. The new 48-question development evaluation is diagnostic;
+it does not select a winning recipe or prevent a negative result from being
+reported. Confirmation uses five paired seeds and 96 new official test
+questions, excluding all 233 previously inspected test questions.
+
+```bash
+data=runs/gsm8k-data
+out=runs/gsm8k-budget-repro
+tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775"
+
+HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false .venv/bin/python -m experiments.gsm8k_budget \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" \
+  --qualification runs/gsm8k-dev-mlx-final --previous runs/gsm8k-accuracy-v1 --out "$out"
+.venv/bin/python -m experiments.audit_gsm8k_budget \
+  --train "$data/train.jsonl" --test "$data/test.jsonl" \
+  --qualification runs/gsm8k-dev-mlx-final --previous runs/gsm8k-accuracy-v1 \
+  --run "$out" --tokenizer "$tokenizer" --out "$out/audit.json"
+```
+
+The primary contrast is GRPO then SFT against SFT alone; the two other pairwise
+comparisons are secondary. Reports retain per-seed question pairs, bootstrap
+intervals, and exact seed-level sign permutations. Equal response tokens do
+not imply equal FLOPs or equal supervision. Prompt tokens, learner input
+tokens, nonzero-advantage tokens, updates, and training wall time are recorded
+separately. Shared initialization and evaluation costs are outside the
+incremental training budget. Use a fresh output directory for a new protocol;
+completed arm checkpoints are reused on restart.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer
