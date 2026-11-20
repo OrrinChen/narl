@@ -298,6 +298,36 @@ optimizer update and compare parameter bytes. Add `--verify-batches 1` to
 regenerate the first full greedy batch for every seed and arm, or use
 `--verify-batches 0` to regenerate all held-out completions.
 
+### Diagnose GRPO-only drift on the development split
+
+This diagnostic preserves the published equal-budget results. It first replays
+seed 4's original sampled trajectory at learning rates 0.0006 and 0.0001, then
+runs one new on-policy seed at 0.0001 with the same 32,768-token budget. The
+low-rate fixed-trajectory replay is off-policy; the new online run samples
+from its own changing weights. No new official test completions are scored.
+
+```bash
+out=runs/gsm8k-grpo-diagnosis-repro
+tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775"
+
+HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false .venv/bin/python -m experiments.gsm8k_grpo_diagnosis \
+  --source runs/gsm8k-budget-5seed --train runs/gsm8k-data/train.jsonl --out "$out"
+.venv/bin/python -m experiments.audit_gsm8k_grpo_diagnosis \
+  --source runs/gsm8k-budget-5seed --train runs/gsm8k-data/train.jsonl \
+  --run "$out" --tokenizer "$tokenizer" --verify-online-training --out "$out/audit.json"
+.venv/bin/python -m unittest tests.test_gsm8k_grpo_diagnosis
+```
+
+Localization uses the first 24 questions of the original 48-question training
+development split. Full endpoints use all 48. Fixed probes measure full-vocabulary
+KL at the first generation position on 12 prompts and the joint probability of
+emitting the opening `<answer>` tag. These are diagnostic measurements; they add
+no KL penalty to training and do not measure full-trajectory KL. Before/after
+selected-token logprob measurements use the same full-sequence scoring path.
+The script stops after the predeclared replay pair and one online control.
+The archived `plot.py` uses Matplotlib to regenerate the figure from saved
+replay summaries.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer

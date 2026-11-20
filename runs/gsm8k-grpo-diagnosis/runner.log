@@ -1,0 +1,111 @@
+{'0': {'correct': 23, 'count': 96, 'truncated': 39, 'tagged': 64, 'median_tokens': 234.5, 'pure_answer': 0}, '1': {'correct': 25, 'count': 96, 'truncated': 44, 'tagged': 50, 'median_tokens': 247.0, 'pure_answer': 0}, '2': {'correct': 24, 'count': 96, 'truncated': 36, 'tagged': 56, 'median_tokens': 228.5, 'pure_answer': 0}, '3': {'correct': 25, 'count': 96, 'truncated': 47, 'tagged': 51, 'median_tokens': 251.5, 'pure_answer': 0}, '4': {'correct': 13, 'count': 96, 'truncated': 9, 'tagged': 96, 'median_tokens': 9.5, 'pure_answer': 74}}
+initial full development {'correct': 27, 'count': 48, 'truncated': 14, 'tagged': 37, 'median_tokens': 195.5, 'pure_answer': 0}
+replay-high update 0 {'correct': 12, 'count': 24, 'truncated': 9, 'tagged': 17, 'median_tokens': 201.5, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.0, 'first_token_ref_kl_median': 0.0, 'answer_opening_probability_mean': 0.0016686174688705553, 'answer_opening_probability_median': 0.0014894269406795502}
+replay-high update 6 {'correct': 14, 'count': 24, 'truncated': 6, 'tagged': 22, 'median_tokens': 190.5, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.1912129611397783, 'first_token_ref_kl_median': 0.18918152898550034, 'answer_opening_probability_mean': 0.14867221905539432, 'answer_opening_probability_median': 0.14298966526985168}
+replay-high update 10 {'correct': 10, 'count': 24, 'truncated': 4, 'tagged': 24, 'median_tokens': 174.5, 'pure_answer': 5} {'first_token_ref_kl_mean': 1.0418140639861424, 'first_token_ref_kl_median': 1.014000803232193, 'answer_opening_probability_mean': 0.5787571047743162, 'answer_opening_probability_median': 0.5750998556613922}
+replay-high update 11 {'correct': 9, 'count': 24, 'truncated': 6, 'tagged': 24, 'median_tokens': 182.0, 'pure_answer': 6} {'first_token_ref_kl_mean': 1.4702993830045064, 'first_token_ref_kl_median': 1.4426010251045227, 'answer_opening_probability_mean': 0.6981179813543955, 'answer_opening_probability_median': 0.7023333609104156}
+replay-high update 12 {'correct': 5, 'count': 24, 'truncated': 4, 'tagged': 24, 'median_tokens': 77.0, 'pure_answer': 12} {'first_token_ref_kl_mean': 1.8627700408299763, 'first_token_ref_kl_median': 1.8930208683013916, 'answer_opening_probability_mean': 0.7749836345513662, 'answer_opening_probability_median': 0.7809629738330841}
+replay-high update 13 {'correct': 3, 'count': 24, 'truncated': 0, 'tagged': 24, 'median_tokens': 10.0, 'pure_answer': 16} {'first_token_ref_kl_mean': 2.0979566474755607, 'first_token_ref_kl_median': 2.1395925283432007, 'answer_opening_probability_mean': 0.80887670814991, 'answer_opening_probability_median': 0.813675582408905}
+replay-high update 15 {'correct': 3, 'count': 24, 'truncated': 0, 'tagged': 24, 'median_tokens': 10.0, 'pure_answer': 17} {'first_token_ref_kl_mean': 2.355041801929474, 'first_token_ref_kl_median': 2.3764307498931885, 'answer_opening_probability_mean': 0.8359311918417612, 'answer_opening_probability_median': 0.8364269137382507}
+replay-high update 16 {'correct': 4, 'count': 24, 'truncated': 3, 'tagged': 24, 'median_tokens': 11.5, 'pure_answer': 13} {'first_token_ref_kl_mean': 2.4488800267378488, 'first_token_ref_kl_median': 2.4391157627105713, 'answer_opening_probability_mean': 0.8429657568534216, 'answer_opening_probability_median': 0.8423413932323456}
+replay-high full development {'correct': 8, 'count': 48, 'truncated': 7, 'tagged': 48, 'median_tokens': 10.0, 'pure_answer': 28}
+replay-low update 0 {'correct': 12, 'count': 24, 'truncated': 9, 'tagged': 17, 'median_tokens': 201.5, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.0, 'first_token_ref_kl_median': 0.0, 'answer_opening_probability_mean': 0.0016686174688705553, 'answer_opening_probability_median': 0.0014894269406795502}
+replay-low update 6 {'correct': 12, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 191.0, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.002915048855356872, 'first_token_ref_kl_median': 0.002299582352861762, 'answer_opening_probability_mean': 0.004128554719500244, 'answer_opening_probability_median': 0.003715243423357606}
+replay-low update 10 {'correct': 12, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 191.5, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.0052628567985569434, 'first_token_ref_kl_median': 0.005004939856007695, 'answer_opening_probability_mean': 0.006389703116534899, 'answer_opening_probability_median': 0.0057097317185252905}
+replay-low update 11 {'correct': 13, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 191.5, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.005545945110497996, 'first_token_ref_kl_median': 0.004497106187045574, 'answer_opening_probability_mean': 0.006463145788681383, 'answer_opening_probability_median': 0.006015770835801959}
+replay-low update 12 {'correct': 12, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 186.0, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.005523027454425271, 'first_token_ref_kl_median': 0.0052522337064146996, 'answer_opening_probability_mean': 0.0066930238002290325, 'answer_opening_probability_median': 0.00608797837048769}
+replay-low update 13 {'correct': 12, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 186.0, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.0061371997580863535, 'first_token_ref_kl_median': 0.005699729081243277, 'answer_opening_probability_mean': 0.00726562940205137, 'answer_opening_probability_median': 0.006188314640894532}
+replay-low update 15 {'correct': 14, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 196.0, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.008743417623918504, 'first_token_ref_kl_median': 0.007744264788925648, 'answer_opening_probability_mean': 0.009235865970064575, 'answer_opening_probability_median': 0.008863198570907116}
+replay-low update 16 {'correct': 13, 'count': 24, 'truncated': 5, 'tagged': 20, 'median_tokens': 191.5, 'pure_answer': 0} {'first_token_ref_kl_mean': 0.009638741437811404, 'first_token_ref_kl_median': 0.009469408774748445, 'answer_opening_probability_mean': 0.010561840463196859, 'answer_opening_probability_median': 0.00963470246642828}
+replay-low full development {'correct': 26, 'count': 48, 'truncated': 11, 'tagged': 39, 'median_tokens': 186.0, 'pure_answer': 0}
+seed 4 GRPO 0: 512/32768, v0, rewards [0, 0]
+seed 4 GRPO 1: 881/32768, v0, rewards [0, 0]
+seed 4 GRPO 2: 1105/32768, v0, rewards [1, 1]
+seed 4 GRPO 3: 1617/32768, v0, rewards [0, 0]
+seed 4 GRPO 4: 2125/32768, v0, rewards [0, 0]
+seed 4 GRPO 5: 2441/32768, v0, rewards [0, 0]
+seed 4 GRPO 6: 2641/32768, v1, rewards [0, 1]
+seed 4 GRPO 7: 3047/32768, v2, rewards [0, 1]
+seed 4 GRPO 8: 3481/32768, v2, rewards [0, 0]
+seed 4 GRPO 9: 3876/32768, v2, rewards [0, 0]
+seed 4 GRPO 10: 4221/32768, v2, rewards [0, 0]
+seed 4 GRPO 11: 4479/32768, v2, rewards [0, 0]
+seed 4 GRPO 12: 4779/32768, v3, rewards [0, 1]
+seed 4 GRPO 13: 4970/32768, v3, rewards [0, 0]
+seed 4 GRPO 14: 5315/32768, v4, rewards [0, 1]
+seed 4 GRPO 15: 5827/32768, v4, rewards [0, 0]
+seed 4 GRPO 16: 6144/32768, v4, rewards [0, 0]
+seed 4 GRPO 17: 6484/32768, v4, rewards [0, 0]
+seed 4 GRPO 18: 6873/32768, v5, rewards [0, 1]
+seed 4 GRPO 19: 7302/32768, v5, rewards [0, 0]
+seed 4 GRPO 20: 7602/32768, v5, rewards [0, 0]
+seed 4 GRPO 21: 8114/32768, v5, rewards [0, 0]
+seed 4 GRPO 22: 8473/32768, v5, rewards [0, 0]
+seed 4 GRPO 23: 8846/32768, v5, rewards [0, 0]
+seed 4 GRPO 24: 9358/32768, v5, rewards [0, 0]
+seed 4 GRPO 25: 9853/32768, v5, rewards [0, 0]
+seed 4 GRPO 26: 10306/32768, v5, rewards [0, 0]
+seed 4 GRPO 27: 10742/32768, v5, rewards [0, 0]
+seed 4 GRPO 28: 11246/32768, v5, rewards [0, 0]
+seed 4 GRPO 29: 11654/32768, v5, rewards [0, 0]
+seed 4 GRPO 30: 12158/32768, v5, rewards [0, 0]
+seed 4 GRPO 31: 12485/32768, v6, rewards [0, 1]
+seed 4 GRPO 32: 12997/32768, v6, rewards [0, 0]
+seed 4 GRPO 33: 13303/32768, v6, rewards [0, 0]
+seed 4 GRPO 34: 13694/32768, v7, rewards [0, 1]
+seed 4 GRPO 35: 14120/32768, v8, rewards [0, 1]
+seed 4 GRPO 36: 14632/32768, v8, rewards [0, 0]
+seed 4 GRPO 37: 15144/32768, v8, rewards [0, 0]
+seed 4 GRPO 38: 15656/32768, v8, rewards [0, 0]
+seed 4 GRPO 39: 15935/32768, v8, rewards [0, 0]
+seed 4 GRPO 40: 16291/32768, v8, rewards [0, 0]
+seed 4 GRPO 41: 16510/32768, v9, rewards [0, 1]
+seed 4 GRPO 42: 16854/32768, v10, rewards [1, 0]
+seed 4 GRPO 43: 17261/32768, v10, rewards [0, 0]
+seed 4 GRPO 44: 17428/32768, v11, rewards [0, 1]
+seed 4 GRPO 45: 17769/32768, v12, rewards [0, 1]
+seed 4 GRPO 46: 18074/32768, v12, rewards [1, 1]
+seed 4 GRPO 47: 18462/32768, v13, rewards [1, 0]
+seed 4 GRPO 48: 18797/32768, v13, rewards [0, 0]
+seed 4 GRPO 49: 19309/32768, v13, rewards [0, 0]
+seed 4 GRPO 50: 19657/32768, v13, rewards [0, 0]
+seed 4 GRPO 51: 20126/32768, v13, rewards [0, 0]
+seed 4 GRPO 52: 20554/32768, v13, rewards [0, 0]
+seed 4 GRPO 53: 21066/32768, v13, rewards [0, 0]
+seed 4 GRPO 54: 21575/32768, v13, rewards [0, 0]
+seed 4 GRPO 55: 21884/32768, v14, rewards [1, 0]
+seed 4 GRPO 56: 22019/32768, v14, rewards [0, 0]
+seed 4 GRPO 57: 22463/32768, v14, rewards [0, 0]
+seed 4 GRPO 58: 22975/32768, v14, rewards [0, 0]
+seed 4 GRPO 59: 23379/32768, v15, rewards [1, 0]
+seed 4 GRPO 60: 23841/32768, v16, rewards [1, 0]
+seed 4 GRPO 61: 24108/32768, v16, rewards [0, 0]
+seed 4 GRPO 62: 24357/32768, v17, rewards [1, 0]
+seed 4 GRPO 63: 24578/32768, v17, rewards [0, 0]
+seed 4 GRPO 64: 24907/32768, v17, rewards [0, 0]
+seed 4 GRPO 65: 25251/32768, v17, rewards [0, 0]
+seed 4 GRPO 66: 25704/32768, v18, rewards [1, 0]
+seed 4 GRPO 67: 26068/32768, v19, rewards [0, 1]
+seed 4 GRPO 68: 26397/32768, v19, rewards [0, 0]
+seed 4 GRPO 69: 26631/32768, v19, rewards [0, 0]
+seed 4 GRPO 70: 26768/32768, v20, rewards [1, 0]
+seed 4 GRPO 71: 27076/32768, v20, rewards [0, 0]
+seed 4 GRPO 72: 27433/32768, v20, rewards [0, 0]
+seed 4 GRPO 73: 27945/32768, v20, rewards [0, 0]
+seed 4 GRPO 74: 28105/32768, v20, rewards [0, 0]
+seed 4 GRPO 75: 28394/32768, v21, rewards [1, 0]
+seed 4 GRPO 76: 28698/32768, v21, rewards [0, 0]
+seed 4 GRPO 77: 28986/32768, v21, rewards [0, 0]
+seed 4 GRPO 78: 29382/32768, v21, rewards [0, 0]
+seed 4 GRPO 79: 29772/32768, v21, rewards [1, 1]
+seed 4 GRPO 80: 30119/32768, v22, rewards [1, 0]
+seed 4 GRPO 81: 30631/32768, v22, rewards [0, 0]
+seed 4 GRPO 82: 30865/32768, v22, rewards [0, 0]
+seed 4 GRPO 83: 31071/32768, v22, rewards [0, 0]
+seed 4 GRPO 84: 31374/32768, v22, rewards [0, 0]
+seed 4 GRPO 85: 31879/32768, v22, rewards [0, 0]
+seed 4 GRPO 86: 31997/32768, v23, rewards [0, 1]
+seed 4 GRPO 87: 32426/32768, v23, rewards [0, 0]
+seed 4 GRPO 88: 32768/32768, v23, rewards [0, 0]
+on-policy low prefix {'correct': 29, 'count': 48, 'truncated': 8, 'tagged': 42, 'median_tokens': 181.0, 'pure_answer': 0}
+on-policy low final {'correct': 24, 'count': 48, 'truncated': 12, 'tagged': 38, 'median_tokens': 178.5, 'pure_answer': 0}

@@ -153,8 +153,8 @@ def check_protocol(run, qualification_path, previous_path, train, test):
     return protocol
 
 
-def check_grpo_trace(run, seed, protocol, train, tokenizer):
-    folder = run / f"seed-{seed}" / "grpo"
+def check_grpo_trace(run, seed, protocol, train, tokenizer, *, folder=None):
+    folder = folder if folder is not None else run / f"seed-{seed}" / "grpo"
     rows = read_rows(folder / "trace.jsonl")
     require(rows, f"seed {seed}: missing GRPO trajectory")
     budget, boundary = protocol["total_tokens"], protocol["combo_rollout_tokens"]

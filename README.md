@@ -19,6 +19,8 @@ On 96 fresh GSM8K test questions, adding 256 supervised worked solutions after G
 
 An equal-response-token ablation then compared SFT alone, GRPO alone, and GRPO followed by SFT from the same pre-GRPO initialization. Each arm received 32,768 additional completion or supervised-label tokens per seed. On another 96 fresh test questions, SFT scored **34, 34, 28, 32, 35**, GRPO **23, 25, 24, 25, 13**, and GRPO then SFT **32, 30, 33, 34, 36**. The mixed recipe beat SFT in three seeds and lost in two; its median paired gain was **1.04 pp**, with a question-block 95% interval of **−5.21 to +6.25 pp**. This fixed recipe did not establish an additional GRPO benefit over SFT. Response tokens match; FLOPs do not. [Attribution ablation](RESULTS.md#p-gsm8k-同新增响应-token-预算对照)
 
+A development-only diagnosis then found learning-rate-sensitive drift in the worst GRPO seed. Replaying its identical sampled data at `6e-4` scored **8/48**, versus **26/48** at `1e-4`; a new on-policy `1e-4` run at the same 32,768-token budget scored **24/48**, against **27/48** at initialization. Lowering the rate reduced collapse without establishing a learning gain. The earlier official-test results remain unchanged and describe fixed recipes, rather than GRPO's best attainable performance. [GRPO drift diagnosis](RESULTS.md#q-grpo-only-退化诊断)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline
