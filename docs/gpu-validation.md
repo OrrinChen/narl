@@ -391,10 +391,14 @@ intact. This supplementary policy was recorded after partial old-screen
 observations and before any new qualification scoring.
 
 ```bash
+tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775"
 .venv/bin/python -m experiments.gsm8k_stable_confirmation \
   --base runs/gsm8k-stable-v1 --source runs/gsm8k-budget-5seed \
   --policy runs/gsm8k-stable-confirmation/conditional-policy.json \
   --out runs/gsm8k-stable-confirmation
+.venv/bin/python -m experiments.audit_gsm8k_stable_confirmation \
+  --base runs/gsm8k-stable-v1 --run runs/gsm8k-stable-confirmation \
+  --tokenizer "$tokenizer" --verify-training --out runs/gsm8k-stable-confirmation/audit.json
 ```
 
 The confirmation command returns a metadata-only waiting/ineligible status
