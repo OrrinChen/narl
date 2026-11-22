@@ -362,9 +362,14 @@ total development cost. Historical SFT training times are not paired timing
 controls for the new runs.
 
 ```bash
+tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775"
 HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false .venv/bin/python -m experiments.gsm8k_stable \
   --source runs/gsm8k-budget-5seed --train runs/gsm8k-data/train.jsonl \
   --test runs/gsm8k-data/test.jsonl --out runs/gsm8k-stable-repro
+.venv/bin/python -m experiments.audit_gsm8k_stable \
+  --source runs/gsm8k-budget-5seed --run runs/gsm8k-stable-repro \
+  --train runs/gsm8k-data/train.jsonl --test runs/gsm8k-data/test.jsonl \
+  --tokenizer "$tokenizer" --verify-training --out runs/gsm8k-stable-repro/audit.json
 .venv/bin/python -m unittest tests.test_gsm8k_mlx_grpo tests.test_gsm8k_stable
 ```
 
