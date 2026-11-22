@@ -328,6 +328,52 @@ The script stops after the predeclared replay pair and one online control.
 The archived `plot.py` uses Matplotlib to regenerate the figure from saved
 replay summaries.
 
+### Tune and qualify frozen-policy group accumulation
+
+The stable-GRPO runner keeps one policy snapshot fixed while collecting several
+two-completion prompt groups. Advantages are normalized within each prompt;
+gradients are averaged over all complete sequences, including zero-signal
+groups, before one global norm clip and one AdamW update. The final smaller
+batch is flushed, and an incomplete final group is charged but not trained.
+
+Round one screens learning rates `1e-4` and `3e-4` with four or eight groups
+per update on seeds 0 and 4 and the existing 48 development questions. A
+predeclared second round, used only if the first fails qualification, covers
+`3e-5 / 8`, `1e-4 / 16`, and `3e-4 / 16`. Screening requires both seeds to
+avoid a score decrease and at least one to improve. Rank eligible recipes by
+mean gain, worst-seed gain, lower learning rate, and larger group batch.
+
+Before training, two sets of 128 previously untrained and uninspected
+training-split questions are reserved. All new training schedules exclude
+both sets. Freeze one screening winner before scoring its qualification set
+over five seeds. Qualification requires at least four seeds to improve on
+the common initialization, none to decrease, a positive paired median, and a
+positive lower 95% question-block bootstrap bound. This is an operational
+development gate, not a seed-level significance claim. A second recipe uses
+the untouched second set if the first qualification set has been scored.
+
+Only after qualification does the script freeze the formal recipe and score
+192 new official test questions, excluding all 329 previously inspected test
+questions. It reuses the five audited SFT-only endpoints from the equal-budget
+study. Every formal arm has 32,768 additional response tokens: generated
+completions for GRPO or supervised targets for SFT. Search cost is reported
+separately; response-token equality does not establish equal FLOPs or equal
+total development cost. Historical SFT training times are not paired timing
+controls for the new runs.
+
+```bash
+HF_HUB_OFFLINE=1 TOKENIZERS_PARALLELISM=false .venv/bin/python -m experiments.gsm8k_stable \
+  --source runs/gsm8k-budget-5seed --train runs/gsm8k-data/train.jsonl \
+  --test runs/gsm8k-data/test.jsonl --out runs/gsm8k-stable-repro
+.venv/bin/python -m unittest tests.test_gsm8k_mlx_grpo tests.test_gsm8k_stable
+```
+
+The frozen plan, group and optimizer traces, selections, qualification gates,
+and conditional formal evaluations are stored under the output directory.
+Completed training cases and evaluation records are reused on restart. If
+both prescribed rounds fail, the script records the failure without scoring
+the new official test set.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer

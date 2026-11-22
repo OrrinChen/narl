@@ -39,38 +39,53 @@ class MlxGrpoLearner:
 
     def step(self, prompt_ids, samples, advantages, *, auxiliary=None):
         """Apply one clipped-GRPO step to the canonical sample order."""
-        advantages = [float(value) for value in advantages]
-        if not prompt_ids or not samples or len(samples) != len(advantages):
-            raise ValueError("provide one advantage per completion and a nonempty prompt")
+        return self.step_groups([(prompt_ids, samples, advantages)], auxiliary=auxiliary)
 
-        active = [(sample, value) for sample, value in zip(samples, advantages, strict=True) if value != 0.0]
+    def step_groups(self, groups, *, auxiliary=None):
+        """Average all completions across frozen-policy groups, then update once.
+
+        Advantages must already be computed within each prompt's group. Zero-signal
+        groups stay in the denominator; microbatches never mix prompt lengths.
+        """
+        prepared = []
+        for prompt_ids, samples, advantages in groups:
+            values = [float(value) for value in advantages]
+            if not prompt_ids or not samples or len(samples) != len(values):
+                raise ValueError("provide one advantage per completion and a nonempty prompt")
+            prepared.append((prompt_ids, samples, values))
+        if not prepared:
+            raise ValueError("provide at least one prompt group")
+        sequence_count = sum(len(samples) for _, samples, _ in prepared)
         stats = dict.fromkeys(("ratio", "clipfrac", "akl", "entropy"), 0.0)
-        total_loss, scored_tokens, gradients = 0.0, 0, None
-        for start in range(0, len(active), self.micro_batch):
-            chunk = active[start:start + self.micro_batch]
-            lengths = [len(sample["token_ids"]) for sample, _ in chunk]
-            width = max(lengths)
-            actions, behavior_logp, mask, values = [], [], [], []
-            for (sample, value), length in zip(chunk, lengths, strict=True):
-                if not length or len(sample["behavior_logprobs"]) != length:
-                    raise ValueError("expected one behavior logprob per completion token")
-                padding = width - length
-                actions.append(sample["token_ids"] + [0] * padding)
-                behavior_logp.append(sample["behavior_logprobs"] + [0.0] * padding)
-                mask.append([True] * length + [False] * padding)
-                values.append([value])
-            inputs = [prompt_ids + row[:-1] for row in actions]
-            (loss, batch_stats), grad = self.value_and_grad(
-                mx.array(inputs), mx.array(actions), mx.array(behavior_logp, mx.float32),
-                mx.array(mask), mx.array(values, mx.float32), len(samples),
-            )
-            gradients = grad if gradients is None else tree_map(lambda left, right: left + right, gradients, grad)
-            # Evaluate after each microbatch to release saved forward activations.
-            mx.eval(loss, batch_stats, gradients)
-            total_loss += float(loss.item())
-            scored_tokens += sum(lengths)
-            for name, value in batch_stats.items():
-                stats[name] += float(value.item())
+        total_loss, scored_tokens, active_count, gradients = 0.0, 0, 0, None
+        for prompt_ids, samples, advantages in prepared:
+            active = [(sample, value) for sample, value in zip(samples, advantages, strict=True) if value != 0.0]
+            active_count += len(active)
+            for start in range(0, len(active), self.micro_batch):
+                chunk = active[start:start + self.micro_batch]
+                lengths = [len(sample["token_ids"]) for sample, _ in chunk]
+                width = max(lengths)
+                actions, behavior_logp, mask, values = [], [], [], []
+                for (sample, value), length in zip(chunk, lengths, strict=True):
+                    if not length or len(sample["behavior_logprobs"]) != length:
+                        raise ValueError("expected one behavior logprob per completion token")
+                    padding = width - length
+                    actions.append(sample["token_ids"] + [0] * padding)
+                    behavior_logp.append(sample["behavior_logprobs"] + [0.0] * padding)
+                    mask.append([True] * length + [False] * padding)
+                    values.append([value])
+                inputs = [prompt_ids + row[:-1] for row in actions]
+                (loss, batch_stats), grad = self.value_and_grad(
+                    mx.array(inputs), mx.array(actions), mx.array(behavior_logp, mx.float32),
+                    mx.array(mask), mx.array(values, mx.float32), sequence_count,
+                )
+                gradients = grad if gradients is None else tree_map(lambda left, right: left + right, gradients, grad)
+                # Evaluate after each microbatch to release saved forward activations.
+                mx.eval(loss, batch_stats, gradients)
+                total_loss += float(loss.item())
+                scored_tokens += sum(lengths)
+                for name, value in batch_stats.items():
+                    stats[name] += float(value.item())
 
         auxiliary_nll = None
         if auxiliary is not None:
@@ -99,7 +114,7 @@ class MlxGrpoLearner:
             self.optimizer.update(self.model, clipped)
             mx.eval(self.model.trainable_parameters(), self.optimizer.state)
         result = {"loss": total_loss, "pg": total_loss, "gnorm": norm,
-                  "skipped": len(samples) - len(active), **means}
+                  "skipped": sequence_count - active_count, **means}
         if auxiliary_nll is not None:
             result["aux_nll"] = auxiliary_nll
         return result
