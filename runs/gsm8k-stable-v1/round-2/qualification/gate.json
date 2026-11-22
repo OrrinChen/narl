@@ -1,0 +1,81 @@
+{
+  "passed": false,
+  "statistics": {
+    "per_seed": {
+      "0": {
+        "baseline_correct": 46,
+        "candidate_correct": 50,
+        "wins": 7,
+        "losses": 3,
+        "accuracy_delta": 0.03125,
+        "identical_greedy_token_outputs": 51,
+        "exact_mcnemar_p": 0.34375
+      },
+      "1": {
+        "baseline_correct": 46,
+        "candidate_correct": 50,
+        "wins": 6,
+        "losses": 2,
+        "accuracy_delta": 0.03125,
+        "identical_greedy_token_outputs": 50,
+        "exact_mcnemar_p": 0.2890625
+      },
+      "2": {
+        "baseline_correct": 46,
+        "candidate_correct": 48,
+        "wins": 8,
+        "losses": 6,
+        "accuracy_delta": 0.015625,
+        "identical_greedy_token_outputs": 51,
+        "exact_mcnemar_p": 0.79052734375
+      },
+      "3": {
+        "baseline_correct": 46,
+        "candidate_correct": 45,
+        "wins": 8,
+        "losses": 9,
+        "accuracy_delta": -0.0078125,
+        "identical_greedy_token_outputs": 54,
+        "exact_mcnemar_p": 1.0
+      },
+      "4": {
+        "baseline_correct": 46,
+        "candidate_correct": 44,
+        "wins": 6,
+        "losses": 8,
+        "accuracy_delta": -0.015625,
+        "identical_greedy_token_outputs": 54,
+        "exact_mcnemar_p": 0.79052734375
+      }
+    },
+    "positive_seeds": 3,
+    "tied_seeds": 0,
+    "negative_seeds": 2,
+    "median_accuracy_gain": 0.015625,
+    "min_accuracy_gain": -0.015625,
+    "max_accuracy_gain": 0.03125,
+    "exact_seed_sign_flip_p": 0.375,
+    "bootstrap": {
+      "seed": 80161,
+      "replicates": 10000,
+      "question_block_median_95": [
+        -0.03125,
+        0.0546875
+      ],
+      "question_block_mean_95": [
+        -0.0265625,
+        0.05
+      ],
+      "crossed_seed_question_median_95": [
+        -0.046875,
+        0.0625
+      ],
+      "crossed_seed_question_mean_95": [
+        -0.0359375,
+        0.05625
+      ]
+    }
+  },
+  "selected": "lr-0.0001-groups-16",
+  "qualification_index": 0
+}

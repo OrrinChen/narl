@@ -1,0 +1,216 @@
+lr-0.0001-groups-4 0 1771/32768 v1 active groups 1
+lr-0.0001-groups-4 0 3090/32768 v2 active groups 1
+lr-0.0001-groups-4 0 4748/32768 v3 active groups 1
+lr-0.0001-groups-4 0 6065/32768 v4 active groups 2
+lr-0.0001-groups-4 0 7611/32768 v5 active groups 2
+lr-0.0001-groups-4 0 9357/32768 v5 active groups 0
+lr-0.0001-groups-4 0 11093/32768 v5 active groups 0
+lr-0.0001-groups-4 0 12985/32768 v5 active groups 0
+lr-0.0001-groups-4 0 14591/32768 v6 active groups 3
+lr-0.0001-groups-4 0 16237/32768 v7 active groups 1
+lr-0.0001-groups-4 0 17456/32768 v8 active groups 2
+lr-0.0001-groups-4 0 19228/32768 v8 active groups 0
+lr-0.0001-groups-4 0 20740/32768 v8 active groups 0
+lr-0.0001-groups-4 0 22590/32768 v9 active groups 1
+lr-0.0001-groups-4 0 23810/32768 v10 active groups 2
+lr-0.0001-groups-4 0 25507/32768 v11 active groups 2
+lr-0.0001-groups-4 0 27292/32768 v11 active groups 0
+lr-0.0001-groups-4 0 28835/32768 v12 active groups 2
+lr-0.0001-groups-4 0 30363/32768 v13 active groups 2
+lr-0.0001-groups-4 0 31960/32768 v14 active groups 1
+lr-0.0001-groups-4 0 32768/32768 v14 active groups 0
+screen lr-0.0001-groups-4 0 {'correct': 26, 'count': 48, 'truncated': 15, 'tagged': 37, 'median_tokens': 198.0, 'pure_answer': 0}
+lr-0.0001-groups-4 4 1617/32768 v0 active groups 0
+lr-0.0001-groups-4 4 3044/32768 v1 active groups 2
+lr-0.0001-groups-4 4 4659/32768 v1 active groups 0
+lr-0.0001-groups-4 4 6073/32768 v2 active groups 1
+lr-0.0001-groups-4 4 7646/32768 v3 active groups 2
+lr-0.0001-groups-4 4 9283/32768 v4 active groups 1
+lr-0.0001-groups-4 4 11228/32768 v4 active groups 0
+lr-0.0001-groups-4 4 12924/32768 v5 active groups 1
+lr-0.0001-groups-4 4 14559/32768 v6 active groups 2
+lr-0.0001-groups-4 4 16318/32768 v7 active groups 1
+lr-0.0001-groups-4 4 17703/32768 v8 active groups 2
+lr-0.0001-groups-4 4 18769/32768 v9 active groups 3
+lr-0.0001-groups-4 4 20470/32768 v9 active groups 0
+lr-0.0001-groups-4 4 22130/32768 v9 active groups 0
+lr-0.0001-groups-4 4 23663/32768 v9 active groups 0
+lr-0.0001-groups-4 4 24952/32768 v10 active groups 1
+lr-0.0001-groups-4 4 26466/32768 v11 active groups 2
+lr-0.0001-groups-4 4 27630/32768 v12 active groups 1
+lr-0.0001-groups-4 4 29149/32768 v13 active groups 1
+lr-0.0001-groups-4 4 30647/32768 v14 active groups 1
+lr-0.0001-groups-4 4 31996/32768 v14 active groups 0
+lr-0.0001-groups-4 4 32768/32768 v14 active groups 0
+screen lr-0.0001-groups-4 4 {'correct': 25, 'count': 48, 'truncated': 10, 'tagged': 40, 'median_tokens': 176.5, 'pure_answer': 0}
+lr-0.0001-groups-8 0 3341/32768 v1 active groups 1
+lr-0.0001-groups-8 0 6241/32768 v2 active groups 5
+lr-0.0001-groups-8 0 9603/32768 v3 active groups 3
+lr-0.0001-groups-8 0 13150/32768 v4 active groups 1
+lr-0.0001-groups-8 0 16224/32768 v5 active groups 4
+lr-0.0001-groups-8 0 19278/32768 v6 active groups 1
+lr-0.0001-groups-8 0 22472/32768 v7 active groups 1
+lr-0.0001-groups-8 0 25093/32768 v8 active groups 2
+lr-0.0001-groups-8 0 28538/32768 v8 active groups 0
+lr-0.0001-groups-8 0 31662/32768 v9 active groups 4
+lr-0.0001-groups-8 0 32768/32768 v9 active groups 0
+screen lr-0.0001-groups-8 0 {'correct': 26, 'count': 48, 'truncated': 14, 'tagged': 37, 'median_tokens': 195.5, 'pure_answer': 0}
+lr-0.0001-groups-8 4 3044/32768 v1 active groups 2
+lr-0.0001-groups-8 4 6219/32768 v2 active groups 2
+lr-0.0001-groups-8 4 9153/32768 v3 active groups 2
+lr-0.0001-groups-8 4 12666/32768 v4 active groups 3
+lr-0.0001-groups-8 4 15876/32768 v5 active groups 2
+lr-0.0001-groups-8 4 18551/32768 v6 active groups 4
+lr-0.0001-groups-8 4 22158/32768 v7 active groups 1
+lr-0.0001-groups-8 4 25133/32768 v8 active groups 3
+lr-0.0001-groups-8 4 27744/32768 v9 active groups 3
+lr-0.0001-groups-8 4 30509/32768 v10 active groups 3
+lr-0.0001-groups-8 4 32768/32768 v11 active groups 1
+screen lr-0.0001-groups-8 4 {'correct': 29, 'count': 48, 'truncated': 12, 'tagged': 40, 'median_tokens': 195.5, 'pure_answer': 0}
+lr-0.0003-groups-4 0 1771/32768 v1 active groups 1
+lr-0.0003-groups-4 0 3362/32768 v1 active groups 0
+lr-0.0003-groups-4 0 5108/32768 v1 active groups 0
+lr-0.0003-groups-4 0 6292/32768 v2 active groups 1
+lr-0.0003-groups-4 0 7814/32768 v3 active groups 2
+lr-0.0003-groups-4 0 9443/32768 v3 active groups 0
+lr-0.0003-groups-4 0 11086/32768 v3 active groups 0
+lr-0.0003-groups-4 0 12970/32768 v3 active groups 0
+lr-0.0003-groups-4 0 14553/32768 v4 active groups 3
+lr-0.0003-groups-4 0 15904/32768 v5 active groups 1
+lr-0.0003-groups-4 0 17265/32768 v6 active groups 1
+lr-0.0003-groups-4 0 19096/32768 v6 active groups 0
+lr-0.0003-groups-4 0 20808/32768 v6 active groups 0
+lr-0.0003-groups-4 0 22520/32768 v7 active groups 1
+lr-0.0003-groups-4 0 23838/32768 v8 active groups 3
+lr-0.0003-groups-4 0 25357/32768 v9 active groups 1
+lr-0.0003-groups-4 0 27293/32768 v9 active groups 0
+lr-0.0003-groups-4 0 28831/32768 v10 active groups 1
+lr-0.0003-groups-4 0 30412/32768 v11 active groups 1
+lr-0.0003-groups-4 0 32131/32768 v12 active groups 2
+lr-0.0003-groups-4 0 32768/32768 v13 active groups 1
+screen lr-0.0003-groups-4 0 {'correct': 27, 'count': 48, 'truncated': 14, 'tagged': 36, 'median_tokens': 196.0, 'pure_answer': 0}
+lr-0.0003-groups-4 4 1617/32768 v0 active groups 0
+lr-0.0003-groups-4 4 3044/32768 v1 active groups 2
+lr-0.0003-groups-4 4 4852/32768 v1 active groups 0
+lr-0.0003-groups-4 4 6290/32768 v2 active groups 2
+lr-0.0003-groups-4 4 7584/32768 v2 active groups 0
+lr-0.0003-groups-4 4 9198/32768 v3 active groups 1
+lr-0.0003-groups-4 4 11077/32768 v4 active groups 1
+lr-0.0003-groups-4 4 12829/32768 v4 active groups 0
+lr-0.0003-groups-4 4 14365/32768 v5 active groups 2
+lr-0.0003-groups-4 4 15895/32768 v5 active groups 0
+lr-0.0003-groups-4 4 17190/32768 v6 active groups 2
+lr-0.0003-groups-4 4 18295/32768 v7 active groups 4
+lr-0.0003-groups-4 4 20008/32768 v7 active groups 0
+lr-0.0003-groups-4 4 21720/32768 v7 active groups 0
+lr-0.0003-groups-4 4 23264/32768 v7 active groups 0
+lr-0.0003-groups-4 4 24699/32768 v8 active groups 1
+lr-0.0003-groups-4 4 25992/32768 v9 active groups 1
+lr-0.0003-groups-4 4 27259/32768 v10 active groups 2
+lr-0.0003-groups-4 4 28694/32768 v11 active groups 1
+lr-0.0003-groups-4 4 30132/32768 v12 active groups 1
+lr-0.0003-groups-4 4 31474/32768 v13 active groups 2
+lr-0.0003-groups-4 4 32768/32768 v14 active groups 1
+screen lr-0.0003-groups-4 4 {'correct': 27, 'count': 48, 'truncated': 13, 'tagged': 36, 'median_tokens': 172.0, 'pure_answer': 0}
+lr-0.0003-groups-8 0 3341/32768 v1 active groups 1
+lr-0.0003-groups-8 0 6456/32768 v2 active groups 4
+lr-0.0003-groups-8 0 9610/32768 v3 active groups 2
+lr-0.0003-groups-8 0 13111/32768 v4 active groups 1
+lr-0.0003-groups-8 0 15938/32768 v5 active groups 2
+lr-0.0003-groups-8 0 18843/32768 v6 active groups 2
+lr-0.0003-groups-8 0 21692/32768 v6 active groups 0
+lr-0.0003-groups-8 0 24714/32768 v7 active groups 2
+lr-0.0003-groups-8 0 27765/32768 v8 active groups 1
+lr-0.0003-groups-8 0 30851/32768 v9 active groups 5
+lr-0.0003-groups-8 0 32768/32768 v9 active groups 0
+screen lr-0.0003-groups-8 0 {'correct': 26, 'count': 48, 'truncated': 13, 'tagged': 36, 'median_tokens': 184.0, 'pure_answer': 0}
+lr-0.0003-groups-8 4 3044/32768 v1 active groups 2
+lr-0.0003-groups-8 4 6181/32768 v2 active groups 2
+lr-0.0003-groups-8 4 9270/32768 v3 active groups 1
+lr-0.0003-groups-8 4 12551/32768 v4 active groups 3
+lr-0.0003-groups-8 4 15647/32768 v5 active groups 4
+lr-0.0003-groups-8 4 18201/32768 v6 active groups 4
+lr-0.0003-groups-8 4 21526/32768 v7 active groups 1
+lr-0.0003-groups-8 4 24559/32768 v7 active groups 0
+lr-0.0003-groups-8 4 27269/32768 v8 active groups 3
+lr-0.0003-groups-8 4 30208/32768 v9 active groups 2
+lr-0.0003-groups-8 4 32768/32768 v10 active groups 4
+screen lr-0.0003-groups-8 4 {'correct': 27, 'count': 48, 'truncated': 12, 'tagged': 37, 'median_tokens': 173.0, 'pure_answer': 0}
+selected 1 {'selected': None, 'qualification_index': None, 'screen_sha256': '358f4b13de91da682d5a17468f0a12c1182df2602b02828a3a62fbfe0d3f9ee7'}
+lr-3e-05-groups-8 0 3341/32768 v1 active groups 1
+lr-3e-05-groups-8 0 6494/32768 v2 active groups 2
+lr-3e-05-groups-8 0 9829/32768 v3 active groups 1
+lr-3e-05-groups-8 0 13290/32768 v3 active groups 0
+lr-3e-05-groups-8 0 16516/32768 v4 active groups 4
+lr-3e-05-groups-8 0 19708/32768 v5 active groups 1
+lr-3e-05-groups-8 0 23154/32768 v6 active groups 1
+lr-3e-05-groups-8 0 25890/32768 v6 active groups 0
+lr-3e-05-groups-8 0 29090/32768 v7 active groups 1
+lr-3e-05-groups-8 0 32018/32768 v8 active groups 3
+lr-3e-05-groups-8 0 32768/32768 v8 active groups 0
+screen lr-3e-05-groups-8 0 {'correct': 29, 'count': 48, 'truncated': 12, 'tagged': 40, 'median_tokens': 195.5, 'pure_answer': 0}
+lr-3e-05-groups-8 4 3044/32768 v1 active groups 2
+lr-3e-05-groups-8 4 6087/32768 v2 active groups 3
+lr-3e-05-groups-8 4 9230/32768 v3 active groups 2
+lr-3e-05-groups-8 4 12727/32768 v4 active groups 2
+lr-3e-05-groups-8 4 15838/32768 v5 active groups 3
+lr-3e-05-groups-8 4 18346/32768 v6 active groups 4
+lr-3e-05-groups-8 4 21727/32768 v6 active groups 0
+lr-3e-05-groups-8 4 24508/32768 v7 active groups 3
+lr-3e-05-groups-8 4 27290/32768 v8 active groups 2
+lr-3e-05-groups-8 4 30211/32768 v9 active groups 2
+lr-3e-05-groups-8 4 32768/32768 v9 active groups 0
+screen lr-3e-05-groups-8 4 {'correct': 26, 'count': 48, 'truncated': 13, 'tagged': 38, 'median_tokens': 194.0, 'pure_answer': 0}
+lr-0.0001-groups-16 0 6281/32768 v1 active groups 4
+lr-0.0001-groups-16 0 13019/32768 v2 active groups 3
+lr-0.0001-groups-16 0 19320/32768 v3 active groups 4
+lr-0.0001-groups-16 0 25767/32768 v4 active groups 5
+lr-0.0001-groups-16 0 32292/32768 v5 active groups 5
+lr-0.0001-groups-16 0 32768/32768 v5 active groups 0
+screen lr-0.0001-groups-16 0 {'correct': 27, 'count': 48, 'truncated': 10, 'tagged': 40, 'median_tokens': 195.0, 'pure_answer': 0}
+lr-0.0001-groups-16 4 6238/32768 v1 active groups 4
+lr-0.0001-groups-16 4 12596/32768 v2 active groups 6
+lr-0.0001-groups-16 4 18528/32768 v3 active groups 9
+lr-0.0001-groups-16 4 24790/32768 v4 active groups 5
+lr-0.0001-groups-16 4 30344/32768 v5 active groups 7
+lr-0.0001-groups-16 4 32768/32768 v6 active groups 1
+screen lr-0.0001-groups-16 4 {'correct': 29, 'count': 48, 'truncated': 13, 'tagged': 36, 'median_tokens': 196.0, 'pure_answer': 0}
+lr-0.0003-groups-16 0 6281/32768 v1 active groups 4
+lr-0.0003-groups-16 0 13227/32768 v2 active groups 3
+lr-0.0003-groups-16 0 19468/32768 v3 active groups 4
+lr-0.0003-groups-16 0 25558/32768 v4 active groups 5
+lr-0.0003-groups-16 0 31941/32768 v5 active groups 5
+lr-0.0003-groups-16 0 32768/32768 v5 active groups 0
+screen lr-0.0003-groups-16 0 {'correct': 25, 'count': 48, 'truncated': 12, 'tagged': 36, 'median_tokens': 184.0, 'pure_answer': 0}
+lr-0.0003-groups-16 4 6238/32768 v1 active groups 4
+lr-0.0003-groups-16 4 12800/32768 v2 active groups 4
+lr-0.0003-groups-16 4 18228/32768 v3 active groups 8
+lr-0.0003-groups-16 4 24462/32768 v4 active groups 3
+lr-0.0003-groups-16 4 30227/32768 v5 active groups 4
+lr-0.0003-groups-16 4 32768/32768 v6 active groups 2
+screen lr-0.0003-groups-16 4 {'correct': 26, 'count': 48, 'truncated': 12, 'tagged': 37, 'median_tokens': 184.0, 'pure_answer': 0}
+selected 2 {'selected': 'lr-0.0001-groups-16', 'qualification_index': 0, 'screen_sha256': '3ce389f92f23f07501c13d1ab227fd99682ab4f662ad3461553a8b47b04e1682'}
+qualification 2 0 50 46
+lr-0.0001-groups-16 1 6081/32768 v1 active groups 6
+lr-0.0001-groups-16 1 11401/32768 v2 active groups 7
+lr-0.0001-groups-16 1 17673/32768 v3 active groups 3
+lr-0.0001-groups-16 1 23608/32768 v4 active groups 4
+lr-0.0001-groups-16 1 30626/32768 v5 active groups 2
+lr-0.0001-groups-16 1 32768/32768 v5 active groups 0
+qualification 2 1 50 46
+lr-0.0001-groups-16 2 6058/32768 v1 active groups 1
+lr-0.0001-groups-16 2 12062/32768 v2 active groups 7
+lr-0.0001-groups-16 2 17918/32768 v3 active groups 4
+lr-0.0001-groups-16 2 23845/32768 v4 active groups 2
+lr-0.0001-groups-16 2 29755/32768 v5 active groups 8
+lr-0.0001-groups-16 2 32768/32768 v6 active groups 4
+qualification 2 2 48 46
+lr-0.0001-groups-16 3 5446/32768 v1 active groups 6
+lr-0.0001-groups-16 3 11744/32768 v2 active groups 4
+lr-0.0001-groups-16 3 18413/32768 v3 active groups 4
+lr-0.0001-groups-16 3 24519/32768 v4 active groups 8
+lr-0.0001-groups-16 3 31073/32768 v5 active groups 4
+lr-0.0001-groups-16 3 32768/32768 v5 active groups 0
+qualification 2 3 45 46
+qualification 2 4 44 46
+development gate 2 {'passed': False, 'statistics': {'per_seed': {'0': {'baseline_correct': 46, 'candidate_correct': 50, 'wins': 7, 'losses': 3, 'accuracy_delta': 0.03125, 'identical_greedy_token_outputs': 51, 'exact_mcnemar_p': 0.34375}, '1': {'baseline_correct': 46, 'candidate_correct': 50, 'wins': 6, 'losses': 2, 'accuracy_delta': 0.03125, 'identical_greedy_token_outputs': 50, 'exact_mcnemar_p': 0.2890625}, '2': {'baseline_correct': 46, 'candidate_correct': 48, 'wins': 8, 'losses': 6, 'accuracy_delta': 0.015625, 'identical_greedy_token_outputs': 51, 'exact_mcnemar_p': 0.79052734375}, '3': {'baseline_correct': 46, 'candidate_correct': 45, 'wins': 8, 'losses': 9, 'accuracy_delta': -0.0078125, 'identical_greedy_token_outputs': 54, 'exact_mcnemar_p': 1.0}, '4': {'baseline_correct': 46, 'candidate_correct': 44, 'wins': 6, 'losses': 8, 'accuracy_delta': -0.015625, 'identical_greedy_token_outputs': 54, 'exact_mcnemar_p': 0.79052734375}}, 'positive_seeds': 3, 'tied_seeds': 0, 'negative_seeds': 2, 'median_accuracy_gain': 0.015625, 'min_accuracy_gain': -0.015625, 'max_accuracy_gain': 0.03125, 'exact_seed_sign_flip_p': 0.375, 'bootstrap': {'seed': 80161, 'replicates': 10000, 'question_block_median_95': [-0.03125, 0.0546875], 'question_block_mean_95': [-0.0265625, 0.05], 'crossed_seed_question_median_95': [-0.046875, 0.0625], 'crossed_seed_question_mean_95': [-0.0359375, 0.05625]}}, 'selected': 'lr-0.0001-groups-16', 'qualification_index': 0}

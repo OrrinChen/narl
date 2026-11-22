@@ -1,0 +1,18 @@
+replayed lr-0.0001-groups-16/seed-0 {'groups': 81, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-16/seed-1 {'groups': 86, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-16/seed-2 {'groups': 88, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-16/seed-3 {'groups': 85, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-16/seed-4 {'groups': 87, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-4/seed-0 {'groups': 82, 'learner_batches': 21, 'changed_weights': 14, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-4/seed-4 {'groups': 87, 'learner_batches': 22, 'changed_weights': 14, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-8/seed-0 {'groups': 83, 'learner_batches': 11, 'changed_weights': 9, 'every_batch_hash_matches': True}
+replayed lr-0.0001-groups-8/seed-4 {'groups': 86, 'learner_batches': 11, 'changed_weights': 11, 'every_batch_hash_matches': True}
+replayed lr-0.0003-groups-16/seed-0 {'groups': 82, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed lr-0.0003-groups-16/seed-4 {'groups': 87, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed lr-0.0003-groups-4/seed-0 {'groups': 82, 'learner_batches': 21, 'changed_weights': 13, 'every_batch_hash_matches': True}
+replayed lr-0.0003-groups-4/seed-4 {'groups': 88, 'learner_batches': 22, 'changed_weights': 14, 'every_batch_hash_matches': True}
+replayed lr-0.0003-groups-8/seed-0 {'groups': 85, 'learner_batches': 11, 'changed_weights': 9, 'every_batch_hash_matches': True}
+replayed lr-0.0003-groups-8/seed-4 {'groups': 87, 'learner_batches': 11, 'changed_weights': 10, 'every_batch_hash_matches': True}
+replayed lr-3e-05-groups-8/seed-0 {'groups': 82, 'learner_batches': 11, 'changed_weights': 8, 'every_batch_hash_matches': True}
+replayed lr-3e-05-groups-8/seed-4 {'groups': 87, 'learner_batches': 11, 'changed_weights': 9, 'every_batch_hash_matches': True}
+Audited stable GRPO study: development_gate_failed ; completed cases: 17

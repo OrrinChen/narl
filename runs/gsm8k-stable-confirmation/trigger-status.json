@@ -1,0 +1,7 @@
+{
+  "triggered": false,
+  "reason": "Original strict screening selected a candidate; supplement is ineligible.",
+  "base_selected": "lr-0.0001-groups-16",
+  "base_selection_sha256": "e885b576c4b5761617d87e2f35a75061b78f9039c6e1cc87f7a4bd468c88deea",
+  "supplementary_qualification_evaluated": false
+}

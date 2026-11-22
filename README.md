@@ -21,6 +21,8 @@ An equal-response-token ablation then compared SFT alone, GRPO alone, and GRPO f
 
 A development-only diagnosis then found learning-rate-sensitive drift in the worst GRPO seed. Replaying its identical sampled data at `6e-4` scored **8/48**, versus **26/48** at `1e-4`; a new on-policy `1e-4` run at the same 32,768-token budget scored **24/48**, against **27/48** at initialization. Lowering the rate reduced collapse without establishing a learning gain. The earlier official-test results remain unchanged and describe fixed recipes, rather than GRPO's best attainable performance. [GRPO drift diagnosis](RESULTS.md#q-grpo-only-退化诊断)
 
+A subsequent development study added frozen-policy gradient accumulation across prompt groups and screened seven learning-rate/batch recipes. The selected `1e-4 / 16 groups` recipe scored **50, 50, 48, 45, 44 / 128** on new development questions, against **46/128** at initialization. Its median paired gain was **+1.56 pp**, with a question-block 95% interval of **−3.13 to +5.47 pp**. Three seeds improved and two declined, so the stability gate failed. The new 192-question official holdout remains unscored; this round did not establish a GRPO gain over SFT. Search used 557,056 generated response tokens across 17 endpoints, separately from the proposed per-arm comparison budget. [Accumulation and qualification results](RESULTS.md#r-grpo-学习率与跨题组梯度累积)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline

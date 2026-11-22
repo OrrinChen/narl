@@ -1,0 +1,17 @@
+{
+  "triggered": false,
+  "reason": "Q1 has two declining seeds; direction conditions failed, so confidence-only replication is ineligible.",
+  "q1_gate_sha256": "464d3dd7d7763bddce252ece9ec943c84215fbaa4000976a6e4e35255ed1a777",
+  "policy_sha256": "a8edcd10cae0b205b0e7eb3411002b18a4e8301f254776fcb67b67daa52f0b2c",
+  "q1_correct": [
+    50,
+    50,
+    48,
+    45,
+    44
+  ],
+  "q1_initial_correct": 46,
+  "q2_evaluated": false,
+  "official_test_scored": false,
+  "new_training_tokens": 0
+}

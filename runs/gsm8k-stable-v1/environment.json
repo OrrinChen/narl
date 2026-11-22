@@ -1,0 +1,12 @@
+{
+  "machine": "arm64",
+  "system": "Darwin",
+  "packages": {
+    "mlx": "0.29.2",
+    "mlx-lm": "0.29.1",
+    "torch": "2.8.0",
+    "transformers": "4.57.6",
+    "numpy": "1.26.4"
+  },
+  "source_mlx_versions_match": true
+}
