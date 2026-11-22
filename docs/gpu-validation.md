@@ -379,6 +379,27 @@ Completed training cases and evaluation records are reused on restart. If
 both prescribed rounds fail, the script records the failure without scoring
 the new official test set.
 
+A separately frozen conditional supplement addresses premature rejection by
+the two-seed, 48-question screening heuristic. It is eligible only if both
+original rounds select no candidate, both reserved qualification sets remain
+unscored, and the original strict-failure audit is complete. It selects one
+existing recipe with positive paired mean gain, reuses screening seeds 0/4,
+and trains seeds 1/2/3. The two untouched qualification sets are combined into
+256 questions. The final five-seed qualification gate is unchanged, and a
+failed supplementary qualification has no retry. The original study remains
+intact. This supplementary policy was recorded after partial old-screen
+observations and before any new qualification scoring.
+
+```bash
+.venv/bin/python -m experiments.gsm8k_stable_confirmation \
+  --base runs/gsm8k-stable-v1 --source runs/gsm8k-budget-5seed \
+  --policy runs/gsm8k-stable-confirmation/conditional-policy.json \
+  --out runs/gsm8k-stable-confirmation
+```
+
+The confirmation command returns a metadata-only waiting/ineligible status
+while its trigger conditions are unmet; it does not load model weights.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer
