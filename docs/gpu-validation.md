@@ -404,6 +404,19 @@ tokenizer="$HOME/.cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snap
 The confirmation command returns a metadata-only waiting/ineligible status
 while its trigger conditions are unmet; it does not load model weights.
 
+A separate fixed-model replication policy is frozen in
+`runs/gsm8k-stable-replication/conditional-policy.json`. It was declared after
+Q1 scores for seeds 0/1/2 were observed (50/50/48 against 46 out of 128),
+before the remaining Q1 scores or its gate, and before any Q2 scoring. It
+applies only if Q1 has at least four improving seeds, no declining seed, and
+a positive median, but fails its confidence bound. The original Q1 failure
+is retained. The same five trained endpoints are evaluated once on the
+unused second 128-question development set. Q2 must pass the original full
+gate and the pooled 256-question lower bound must also be positive before
+the untouched official test can be scored. No parameters, checkpoints,
+training seeds, or further qualification sets may be selected. This is an
+explicit supplementary extension, not a pass of the original Q1 protocol.
+
 ### Larger fixed-rollout and online runs
 
 Use Qwen2.5-1.5B-Instruct with a LoRA pilot and the existing numeric answer
