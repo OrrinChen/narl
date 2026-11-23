@@ -1,0 +1,662 @@
+{
+  "run": "gsm8k-stable-v1",
+  "candidate": "lr-0.0001-groups-16",
+  "train_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "study": "Archived-output diagnostics for five previously trained seeds. The fallback accepts a naturally ended untagged answer if its final numeric literal matches. It changes only the retrospective scores.",
+  "training": {
+    "per_seed": [
+      {
+        "seed": 0,
+        "samples": 162,
+        "generated_tokens": 32768,
+        "nonzero_advantage_tokens": 7165,
+        "reward_one": 25,
+        "truncated": 66,
+        "reward_zero_no_tag_truncated": 58,
+        "both_zero": 58,
+        "reward_zero_tagged_wrong_ended": 64,
+        "reward_zero_no_tag_ended": 8,
+        "mixed": 21,
+        "positive_shorter": 11,
+        "reward_zero_tagged_wrong_truncated": 7,
+        "both_one": 2,
+        "fallback_recovered": 3,
+        "optimizer_batches": 6,
+        "changed_weight_batches": 5,
+        "active_batches": 5
+      },
+      {
+        "seed": 1,
+        "samples": 172,
+        "generated_tokens": 32768,
+        "nonzero_advantage_tokens": 7712,
+        "reward_one": 32,
+        "truncated": 54,
+        "reward_zero_no_tag_truncated": 50,
+        "reward_zero_tagged_wrong_ended": 76,
+        "both_zero": 59,
+        "mixed": 22,
+        "positive_shorter": 14,
+        "reward_zero_no_tag_ended": 10,
+        "fallback_recovered": 4,
+        "both_one": 5,
+        "reward_zero_tagged_wrong_truncated": 4,
+        "optimizer_batches": 6,
+        "changed_weight_batches": 5,
+        "active_batches": 5
+      },
+      {
+        "seed": 2,
+        "samples": 176,
+        "generated_tokens": 32768,
+        "nonzero_advantage_tokens": 9333,
+        "reward_one": 36,
+        "truncated": 41,
+        "reward_zero_tagged_wrong_ended": 92,
+        "mixed": 26,
+        "positive_shorter": 18,
+        "reward_zero_no_tag_truncated": 37,
+        "both_zero": 57,
+        "both_one": 5,
+        "reward_zero_no_tag_ended": 8,
+        "fallback_recovered": 1,
+        "reward_zero_tagged_wrong_truncated": 3,
+        "optimizer_batches": 6,
+        "changed_weight_batches": 6,
+        "active_batches": 6
+      },
+      {
+        "seed": 3,
+        "samples": 170,
+        "generated_tokens": 32768,
+        "nonzero_advantage_tokens": 8849,
+        "reward_one": 36,
+        "truncated": 65,
+        "reward_zero_tagged_wrong_ended": 64,
+        "mixed": 26,
+        "positive_shorter": 20,
+        "reward_zero_no_tag_truncated": 58,
+        "both_zero": 54,
+        "both_one": 5,
+        "reward_zero_no_tag_ended": 5,
+        "fallback_recovered": 2,
+        "reward_zero_tagged_wrong_truncated": 7,
+        "optimizer_batches": 6,
+        "changed_weight_batches": 5,
+        "active_batches": 5
+      },
+      {
+        "seed": 4,
+        "samples": 174,
+        "generated_tokens": 32768,
+        "nonzero_advantage_tokens": 10988,
+        "reward_one": 36,
+        "truncated": 61,
+        "reward_zero_no_tag_truncated": 54,
+        "both_zero": 53,
+        "reward_zero_tagged_wrong_ended": 71,
+        "both_one": 2,
+        "reward_zero_tagged_wrong_truncated": 7,
+        "reward_zero_no_tag_ended": 6,
+        "fallback_recovered": 2,
+        "mixed": 32,
+        "positive_shorter": 21,
+        "optimizer_batches": 6,
+        "changed_weight_batches": 6,
+        "active_batches": 6
+      }
+    ],
+    "totals": {
+      "samples": 854,
+      "generated_tokens": 163840,
+      "nonzero_advantage_tokens": 44047,
+      "reward_one": 165,
+      "truncated": 287,
+      "reward_zero_no_tag_truncated": 257,
+      "both_zero": 281,
+      "reward_zero_tagged_wrong_ended": 367,
+      "reward_zero_no_tag_ended": 37,
+      "mixed": 127,
+      "positive_shorter": 84,
+      "reward_zero_tagged_wrong_truncated": 28,
+      "both_one": 19,
+      "fallback_recovered": 12,
+      "optimizer_batches": 30,
+      "changed_weight_batches": 27,
+      "active_batches": 27
+    },
+    "positive_flags": {
+      "nonempty_suffix": 18,
+      "suffix_at_least_20_chars": 9,
+      "multiple_tags": 9
+    },
+    "fallback_group_transitions": {
+      "both_zero_to_both_zero": 274,
+      "mixed_to_mixed": 122,
+      "both_one_to_both_one": 19,
+      "mixed_to_both_one": 5,
+      "both_zero_to_mixed": 7
+    },
+    "examples": {
+      "untagged_ended_correct_tail": [
+        {
+          "sample_id": "0:fresh:10:0",
+          "prompt_id": 2536,
+          "gold": "900",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "ending": "0\nStep 3: Round the total amount of money to the nearest whole number.\nSince $900 is already a whole dollar amount, we do not need to round.\nThe answer is $900."
+        },
+        {
+          "sample_id": "0:fresh:19:1",
+          "prompt_id": 5611,
+          "gold": "58",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "ending": "eople in each type of vehicle to get the total number of people who went on the hike:\n12 people + 36 people + 10 people = 58 people\nTherefore, the answer is 58."
+        },
+        {
+          "sample_id": "0:fresh:49:1",
+          "prompt_id": 7305,
+          "gold": "40",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": "own now as cats did two years ago, then\nthe number of cats before he bought them is ×\nonce the number of dogs.\n.\nTherefore, the answer is 20 cats × 2 = 40 cats."
+        },
+        {
+          "sample_id": "1:fresh:7:0",
+          "prompt_id": 5784,
+          "gold": "20",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": "The ruler costs $1\nThe total cost: $25 + $4 + $1 = $30\nJay paid with a fifty-dollar bill, so the change he should receive is:\n$50 - $30 = $20\nThe answer is $20."
+        },
+        {
+          "sample_id": "1:fresh:28:1",
+          "prompt_id": 4806,
+          "gold": "30",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "ending": "re's no additional pair for one of the people), so the project will take her 15 * 2 = 30 minutes.\nTherefore, the total time spent on this project is 30 minutes."
+        },
+        {
+          "sample_id": "1:fresh:56:0",
+          "prompt_id": 5136,
+          "gold": "22",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": "hibiscus plant, so it has 4 * 4 = 16 flowers.\nNow, we add the number of flowers on all three hibiscus plants: 2 + 4 + 16 = 22\n=> Mario has 22 total blossoms. زن"
+        },
+        {
+          "sample_id": "1:fresh:70:1",
+          "prompt_id": 6266,
+          "gold": "284",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": "ts sold on Saturday and the number of tickets sold on Sunday.\n   - Difference: 362 - 78 = 284\n5. The answer is 284 raffle tickets.\nTherefore, the answer is 284."
+        },
+        {
+          "sample_id": "2:fresh:19:1",
+          "prompt_id": 2476,
+          "gold": "2000",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "ending": "y the daily earnings by 5 to get the daily earnings\n3. Finally, multiply the daily earnings by 5 to get the total earnings in 5 days\nThe answer is 2000 dollars."
+        },
+        {
+          "sample_id": "3:fresh:20:0",
+          "prompt_id": 4959,
+          "gold": "31",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": "number of questions desired = 35 multiple-choice + 15 problem-solving\nTotal number of questions desired = 50\nMeryll still needs to write 50 - 19 = 31 questions."
+        },
+        {
+          "sample_id": "3:fresh:74:1",
+          "prompt_id": 6449,
+          "gold": "7",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": " by Shelby = 2 goals\nAverage goals per game by Judah = 1 goal\nAverage total goals per game by Carter, Shelby, and Judah = 4 + 2 + 1 = 7 goals\n<number>7</number>"
+        },
+        {
+          "sample_id": "4:fresh:6:0",
+          "prompt_id": 4584,
+          "gold": "15",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "ending": " friend caught.\n5. So, they caught 10 (Keith’s catch) + 5 (Blaine’s catch) = 15 fish altogether\nThe number they caught together is 15.\n<solution>\n15\n</solution>"
+        },
+        {
+          "sample_id": "4:fresh:57:0",
+          "prompt_id": 3682,
+          "gold": "2",
+          "reward": 0,
+          "advantage": 0.0,
+          "ending": "ls she has, we divide the money left by $10:\nNumber of $10 bills = Money left / $10\nNumber of $10 bills = $20 / $10\nNumber of $10 bills = 2\nSo, the answer is 2."
+        }
+      ],
+      "positive_nonmath_suffix": [
+        {
+          "sample_id": "0:fresh:60:0",
+          "prompt_id": 1526,
+          "gold": "110",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "tail": "Task: Solve the math problem using the steps below, using 22 as the initial number of sharks on Newport beach, and Murphy Island beach having three times as many sharks as Dana Point beach:  \nDana Point: four times the n",
+          "token_count": 256
+        },
+        {
+          "sample_id": "2:fresh:72:0",
+          "prompt_id": 3932,
+          "gold": "6",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "tail": "紧接着显示结果的方法取决于 Qwen 的输入如何处理结果，如果CQ/响应代码中涉及额外的结果输出项，或者 Qwen 需要产生新条目出来接管尾的输入、",
+          "token_count": 256
+        }
+      ],
+      "spaced_currency_changes_score": [
+        {
+          "sample_id": "3:fresh:66:0",
+          "prompt_id": 2780,
+          "gold": "32",
+          "reward": 0,
+          "advantage": 0.0,
+          "payload": "$24. 00 + $8. 00 = $32. 00"
+        }
+      ]
+    },
+    "tag_payload_review": {
+      "multiple_numeric_literals": [
+        {
+          "sample_id": "0:fresh:42:0",
+          "prompt_id": 7262,
+          "gold": "150",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "$ 132 + $ 18 = $ 150"
+        },
+        {
+          "sample_id": "0:fresh:56:1",
+          "prompt_id": 4632,
+          "gold": "4",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "10, 3.33, 3.33"
+        },
+        {
+          "sample_id": "1:fresh:2:1",
+          "prompt_id": 3640,
+          "gold": "4",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "last_tag_payload": "Arthur will have to buy 333 high-capacity comic books, as 2,000 cards at 5 cents each are worth 1,000 pounds, which is 333 comics, because 333 * $6 = $2,000.\nHis leftover amount will be 2000. dollars.\n<answer>2000"
+        },
+        {
+          "sample_id": "1:fresh:20:1",
+          "prompt_id": 426,
+          "gold": "247",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "last_tag_payload": "50 + 4x"
+        },
+        {
+          "sample_id": "1:fresh:23:1",
+          "prompt_id": 402,
+          "gold": "192000000",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "and on a new line.\n<answer>2·3.5/12·60-60人才3.5*120=470"
+        },
+        {
+          "sample_id": "1:fresh:45:1",
+          "prompt_id": 1245,
+          "gold": "54",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": ". AS.\nYesterday's $\\left=color{recipeorum}>{1000}$ / $\\left(color{recipeorum}>{10}$"
+        },
+        {
+          "sample_id": "1:fresh:63:1",
+          "prompt_id": 6280,
+          "gold": "50",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "12/15"
+        },
+        {
+          "sample_id": "1:fresh:68:0",
+          "prompt_id": 5891,
+          "gold": "15",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "6 9"
+        },
+        {
+          "sample_id": "1:fresh:72:0",
+          "prompt_id": 5752,
+          "gold": "300",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "last_tag_payload": "9x+30"
+        },
+        {
+          "sample_id": "2:fresh:47:0",
+          "prompt_id": 5129,
+          "gold": "96",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "Karlee is left with 24 grapes and 8.4 strawberries, which rounds down to 24 strawberries and 82 fruits in total."
+        },
+        {
+          "sample_id": "2:fresh:77:1",
+          "prompt_id": 775,
+          "gold": "37",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "last_tag_payload": ".42857 (1/7) or 4 + 8/7"
+        },
+        {
+          "sample_id": "3:fresh:55:1",
+          "prompt_id": 6183,
+          "gold": "6",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "4/3"
+        },
+        {
+          "sample_id": "3:fresh:58:0",
+          "prompt_id": 2036,
+          "gold": "2",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "12\n- he has already taken out 6 x 3 = 18 pills\n- a day ago on the first day of his special pill prescription, he were supposed to have had 18\n1"
+        },
+        {
+          "sample_id": "3:fresh:66:0",
+          "prompt_id": 2780,
+          "gold": "32",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "$24. 00 + $8. 00 = $32. 00"
+        },
+        {
+          "sample_id": "3:fresh:66:1",
+          "prompt_id": 2780,
+          "gold": "32",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "She'd received 4$ as payment since she got her original $2 in payment for both types of items. She was asked to put down another $12.00 as payment, and after these charges, she has $7.00 left."
+        },
+        {
+          "sample_id": "3:fresh:72:0",
+          "prompt_id": 2456,
+          "gold": "97",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "format.\n<answer> 72 * 3\n+ 74 * 3\n- 437"
+        },
+        {
+          "sample_id": "3:fresh:77:1",
+          "prompt_id": 2610,
+          "gold": "552",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "276顿\n 23\n 23\n 69\n 8"
+        },
+        {
+          "sample_id": "4:fresh:17:0",
+          "prompt_id": 1755,
+          "gold": "5",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "1.5 hours + 150 miles = 151.5 hours"
+        },
+        {
+          "sample_id": "4:fresh:17:1",
+          "prompt_id": 1755,
+          "gold": "5",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "7 hours, 43 minutes"
+        },
+        {
+          "sample_id": "4:fresh:26:1",
+          "prompt_id": 2900,
+          "gold": "114",
+          "reward": 0,
+          "advantage": 0.0,
+          "last_tag_payload": "46</answer\n<answer>46"
+        },
+        {
+          "sample_id": "4:fresh:45:0",
+          "prompt_id": 5878,
+          "gold": "7",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "last_tag_payload": "5. 5"
+        },
+        {
+          "sample_id": "4:fresh:46:1",
+          "prompt_id": 1895,
+          "gold": "180",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "40 + 50 + 25 + 65= 180"
+        },
+        {
+          "sample_id": "4:fresh:61:0",
+          "prompt_id": 1214,
+          "gold": "10",
+          "reward": 0,
+          "advantage": -0.7070068120956421,
+          "last_tag_payload": "2 dogs + 1 chicken = 3 animal legs"
+        }
+      ],
+      "reward_one_with_letters_or_percent": [
+        {
+          "sample_id": "0:fresh:77:1",
+          "prompt_id": 6896,
+          "gold": "48",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "R48"
+        },
+        {
+          "sample_id": "1:fresh:28:0",
+          "prompt_id": 4806,
+          "gold": "30",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "30 minutes"
+        },
+        {
+          "sample_id": "2:fresh:43:1",
+          "prompt_id": 5613,
+          "gold": "4000",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "4000 pictures"
+        },
+        {
+          "sample_id": "2:fresh:80:1",
+          "prompt_id": 93,
+          "gold": "14000",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "DOLLARS $14000"
+        },
+        {
+          "sample_id": "2:fresh:81:0",
+          "prompt_id": 1378,
+          "gold": "70",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "\", we leave it as just the number.\n<answer>70"
+        },
+        {
+          "sample_id": "3:fresh:7:0",
+          "prompt_id": 1772,
+          "gold": "6",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "6hours"
+        },
+        {
+          "sample_id": "3:fresh:48:1",
+          "prompt_id": 5276,
+          "gold": "32",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "<answer>32"
+        },
+        {
+          "sample_id": "4:fresh:48:1",
+          "prompt_id": 1529,
+          "gold": "900",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "format.\n<answer>900"
+        },
+        {
+          "sample_id": "4:fresh:74:1",
+          "prompt_id": 3204,
+          "gold": "6",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "\" matches the result of the calculations above, and it is equivalent to \"\"\n<answer>6"
+        },
+        {
+          "sample_id": "4:fresh:79:1",
+          "prompt_id": 1535,
+          "gold": "150",
+          "reward": 1,
+          "advantage": 0.7070068120956421,
+          "last_tag_payload": "150 pages"
+        }
+      ],
+      "simple_fractions": [
+        {
+          "sample_id": "1:fresh:63:1",
+          "prompt_id": 6280,
+          "gold": "50",
+          "reward": 0,
+          "advantage": 0.0,
+          "payload": "12/15",
+          "exact_fraction_equals_gold": false
+        },
+        {
+          "sample_id": "3:fresh:55:1",
+          "prompt_id": 6183,
+          "gold": "6",
+          "reward": 0,
+          "advantage": 0.0,
+          "payload": "4/3",
+          "exact_fraction_equals_gold": false
+        }
+      ],
+      "scope": "Lexical flags for reviewing number selection, fractions and units. The scorer checks no arithmetic derivation or unit equivalence."
+    },
+    "loss": {
+      "active_groups": 127,
+      "positive_median_length": 157,
+      "negative_median_length": 187,
+      "positive_shorter": 84,
+      "same_length": 1,
+      "median_pairwise_positive_to_negative_per_token_weight_at_ratio_one": 1.1657142857142857,
+      "ratio_weight_explanation": "In a mixed G2, absolute advantage matches. For sequence-normalized loss, positive/negative per-token coefficient at ratio=1 equals negative length/positive length. This proxy excludes token gradients, Adam, and probability ratios.",
+      "active_tokens": 44047,
+      "active_batches": 27,
+      "active_preupdate_token_weighted_ratio": 0.9999710195927081,
+      "active_preupdate_token_weighted_clipfrac": 0.015233146411787411,
+      "active_preclip_gnorm_min_median_max": [
+        0.015782155096530914,
+        0.047572214156389236,
+        0.07491454482078552
+      ],
+      "above_norm_clip_one": 0,
+      "active_batch_abs_loss_mean": 0.00024960776446042237,
+      "scope": "Ratio and clipfrac come from stored, rounded pre-update diagnostics on nonzero-advantage tokens; clipfrac counts values outside the PPO interval. gnorm is the batch-level pre-clip norm. None measures out-of-sample accuracy or actual post-update probabilities."
+    }
+  },
+  "qualification": [
+    {
+      "seed": 0,
+      "questions": 128,
+      "initial": 46,
+      "trained": 50,
+      "initial_fallback": 46,
+      "trained_fallback": 51,
+      "official_flips_by_failed_output": {
+        "gained_wrong_tag_value_ended": 4,
+        "gained_no_complete_tag_truncated": 3,
+        "lost_wrong_tag_value_ended": 1,
+        "lost_no_complete_tag_ended": 1,
+        "lost_wrong_tag_value_truncated": 1
+      }
+    },
+    {
+      "seed": 1,
+      "questions": 128,
+      "initial": 46,
+      "trained": 50,
+      "initial_fallback": 46,
+      "trained_fallback": 50,
+      "official_flips_by_failed_output": {
+        "lost_no_complete_tag_truncated": 1,
+        "lost_wrong_tag_value_ended": 1,
+        "gained_wrong_tag_value_ended": 4,
+        "gained_no_complete_tag_truncated": 2
+      }
+    },
+    {
+      "seed": 2,
+      "questions": 128,
+      "initial": 46,
+      "trained": 48,
+      "initial_fallback": 46,
+      "trained_fallback": 49,
+      "official_flips_by_failed_output": {
+        "lost_wrong_tag_value_ended": 3,
+        "lost_wrong_tag_value_truncated": 1,
+        "gained_no_complete_tag_truncated": 2,
+        "lost_no_complete_tag_truncated": 1,
+        "lost_no_complete_tag_ended": 1,
+        "gained_wrong_tag_value_ended": 6
+      }
+    },
+    {
+      "seed": 3,
+      "questions": 128,
+      "initial": 46,
+      "trained": 45,
+      "initial_fallback": 46,
+      "trained_fallback": 46,
+      "official_flips_by_failed_output": {
+        "gained_wrong_tag_value_truncated": 1,
+        "lost_wrong_tag_value_ended": 8,
+        "gained_wrong_tag_value_ended": 6,
+        "lost_no_complete_tag_ended": 1,
+        "gained_no_complete_tag_truncated": 1
+      }
+    },
+    {
+      "seed": 4,
+      "questions": 128,
+      "initial": 46,
+      "trained": 44,
+      "initial_fallback": 46,
+      "trained_fallback": 44,
+      "official_flips_by_failed_output": {
+        "lost_wrong_tag_value_ended": 6,
+        "lost_wrong_tag_value_truncated": 1,
+        "gained_no_complete_tag_truncated": 1,
+        "gained_wrong_tag_value_ended": 4,
+        "lost_no_complete_tag_truncated": 1,
+        "gained_wrong_tag_value_truncated": 1
+      }
+    }
+  ],
+  "official_score_mismatches": 0
+}

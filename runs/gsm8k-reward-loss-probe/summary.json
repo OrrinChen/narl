@@ -1,0 +1,205 @@
+{
+  "scope": "Retrospective fixed-rollout replay on the previously used 128 train-split development questions; original strict evaluation for every arm. Question intervals are descriptive for this previously inspected set.",
+  "correct": {
+    "baseline": [
+      50,
+      50,
+      48,
+      45,
+      44
+    ],
+    "reward": [
+      52,
+      49,
+      49,
+      47,
+      52
+    ],
+    "loss": [
+      47,
+      47,
+      47,
+      46,
+      51
+    ]
+  },
+  "relative_to_original": {
+    "loss": {
+      "per_seed": {
+        "0": {
+          "baseline_correct": 50,
+          "candidate_correct": 47,
+          "wins": 5,
+          "losses": 8,
+          "accuracy_delta": -0.0234375,
+          "identical_greedy_token_outputs": 60,
+          "exact_mcnemar_p": 0.5810546875
+        },
+        "1": {
+          "baseline_correct": 50,
+          "candidate_correct": 47,
+          "wins": 2,
+          "losses": 5,
+          "accuracy_delta": -0.0234375,
+          "identical_greedy_token_outputs": 66,
+          "exact_mcnemar_p": 0.453125
+        },
+        "2": {
+          "baseline_correct": 48,
+          "candidate_correct": 47,
+          "wins": 4,
+          "losses": 5,
+          "accuracy_delta": -0.0078125,
+          "identical_greedy_token_outputs": 58,
+          "exact_mcnemar_p": 1.0
+        },
+        "3": {
+          "baseline_correct": 45,
+          "candidate_correct": 46,
+          "wins": 9,
+          "losses": 8,
+          "accuracy_delta": 0.0078125,
+          "identical_greedy_token_outputs": 65,
+          "exact_mcnemar_p": 1.0
+        },
+        "4": {
+          "baseline_correct": 44,
+          "candidate_correct": 51,
+          "wins": 11,
+          "losses": 4,
+          "accuracy_delta": 0.0546875,
+          "identical_greedy_token_outputs": 53,
+          "exact_mcnemar_p": 0.11846923828125
+        }
+      },
+      "positive_seeds": 2,
+      "tied_seeds": 0,
+      "negative_seeds": 3,
+      "median_accuracy_gain": -0.0078125,
+      "min_accuracy_gain": -0.0234375,
+      "max_accuracy_gain": 0.0546875,
+      "exact_seed_sign_flip_p": 1.0,
+      "bootstrap": {
+        "seed": 80161,
+        "replicates": 10000,
+        "question_block_median_95": [
+          -0.03125,
+          0.03125
+        ],
+        "question_block_mean_95": [
+          -0.0171875,
+          0.021875
+        ],
+        "crossed_seed_question_median_95": [
+          -0.0546875,
+          0.0625
+        ],
+        "crossed_seed_question_mean_95": [
+          -0.0359375,
+          0.0421875
+        ]
+      },
+      "mean_difference_pp": 0.15625
+    },
+    "reward": {
+      "per_seed": {
+        "0": {
+          "baseline_correct": 50,
+          "candidate_correct": 52,
+          "wins": 6,
+          "losses": 4,
+          "accuracy_delta": 0.015625,
+          "identical_greedy_token_outputs": 65,
+          "exact_mcnemar_p": 0.75390625
+        },
+        "1": {
+          "baseline_correct": 50,
+          "candidate_correct": 49,
+          "wins": 3,
+          "losses": 4,
+          "accuracy_delta": -0.0078125,
+          "identical_greedy_token_outputs": 64,
+          "exact_mcnemar_p": 1.0
+        },
+        "2": {
+          "baseline_correct": 48,
+          "candidate_correct": 49,
+          "wins": 4,
+          "losses": 3,
+          "accuracy_delta": 0.0078125,
+          "identical_greedy_token_outputs": 56,
+          "exact_mcnemar_p": 1.0
+        },
+        "3": {
+          "baseline_correct": 45,
+          "candidate_correct": 47,
+          "wins": 9,
+          "losses": 7,
+          "accuracy_delta": 0.015625,
+          "identical_greedy_token_outputs": 63,
+          "exact_mcnemar_p": 0.803619384765625
+        },
+        "4": {
+          "baseline_correct": 44,
+          "candidate_correct": 52,
+          "wins": 15,
+          "losses": 7,
+          "accuracy_delta": 0.0625,
+          "identical_greedy_token_outputs": 44,
+          "exact_mcnemar_p": 0.13380050659179688
+        }
+      },
+      "positive_seeds": 4,
+      "tied_seeds": 0,
+      "negative_seeds": 1,
+      "median_accuracy_gain": 0.015625,
+      "min_accuracy_gain": -0.0078125,
+      "max_accuracy_gain": 0.0625,
+      "exact_seed_sign_flip_p": 0.1875,
+      "bootstrap": {
+        "seed": 80161,
+        "replicates": 10000,
+        "question_block_median_95": [
+          -0.015625,
+          0.046875
+        ],
+        "question_block_mean_95": [
+          -0.0046875,
+          0.04375
+        ],
+        "crossed_seed_question_median_95": [
+          -0.023632812499999822,
+          0.078125
+        ],
+        "crossed_seed_question_mean_95": [
+          -0.0171875,
+          0.0609375
+        ]
+      },
+      "mean_difference_pp": 1.875
+    }
+  },
+  "score_checks": {
+    "cached_original_answer_rows": 640,
+    "new_answer_rows": 1280,
+    "original_replay_batch_hashes_matched": 30,
+    "all_saved_token_ids_redecoded_and_rewards_recomputed": true
+  },
+  "record_sha256": {
+    "0/baseline": "9f7818c706b8f1fd54f5766f82c2380f022b1f2a8581af0efb9ecede10437fe5",
+    "0/reward": "de12f38324945a81d6842c0b75e6f8eebd650858a3bd5e8951aa76f3006ed464",
+    "0/loss": "5c6a7c63e61df65a8e81f1851c1ece6975ec878ceb946d7a4800b98d9e1ed71d",
+    "1/baseline": "67d555812210b35644b6f7b0a6087ddd7b152fa3dd8d6d5ae5c6a34ec4ea7831",
+    "1/reward": "f47c7afd9f3978f9e9bd56f3fc7f2ece76552bb3752324356b076957fe8c2ba4",
+    "1/loss": "7e563964378879664802cc40c8cb57c2998a3da6dd18d6bc1139346595e19ce6",
+    "2/baseline": "1eef74137e91cc583ff87d0d0678023520525eb99d015f99cae9ec1d1334d0ce",
+    "2/reward": "f4f5799621c806b8258aca16b8f569a43cf48f47ce0615f49a2e261749128ac5",
+    "2/loss": "60b1a87da11d4204e675956fe69f94f926dc688ca01dd51b8afa96bb5df71c8c",
+    "3/baseline": "dbc11b8457ea777a8dee57e09ad8b9c1b7e018379a78553ad6a6155c4dc9d232",
+    "3/reward": "526cf9cb7d18a92688a607321ff1331a458b4b34c41990a3a9df76ff4ce4f3f1",
+    "3/loss": "5ad609d83547744dca43837eb980ffb10141899a7e364383452f1430b2cfd6b4",
+    "4/baseline": "637a43780904a4420c7315a9b273b4c8ba62f1bf086828c7622884c3b345e3e4",
+    "4/reward": "7ab1615b4850d0b455e49b672d89480c4825026b2d5b2a8bd27d3d00f0bd2b52",
+    "4/loss": "9c56229a8ad0edb7f9cb7b8488e6e5176bc581d86bb0340dc3ef4e4b1bfe35c0"
+  }
+}

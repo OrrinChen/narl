@@ -1,0 +1,1038 @@
+{
+  "recipe": "lr-0.0001-groups-16",
+  "common_start_sha256": "2c6a2883a67adfb9e2f5bb2ff2f5c14dcab8203847b0f3522b1790f021f56dd2",
+  "measurement": "mean token log probability of sampled correct completion minus that of paired incorrect completion, nats per token",
+  "comparison": "first accumulation batch only, with other-seed comparison excluding every prompt in the training batch; other-seed pairs can recur across updated models",
+  "per_seed": {
+    "0": {
+      "adapter_sha256": "c40bdcc3996e8bec85122fd955bb023b9849bcdf17e12f8a6f53200a03b8ff71",
+      "pairs": [
+        {
+          "source_seed": 0,
+          "group_index": 3,
+          "prompt_id": 4372,
+          "own_batch": true,
+          "before": 0.4689490275199461,
+          "after": 0.4764401877321809,
+          "delta": 0.007491160212234782
+        },
+        {
+          "source_seed": 0,
+          "group_index": 10,
+          "prompt_id": 2536,
+          "own_batch": true,
+          "before": -0.12112734284387588,
+          "after": -0.12441483040817647,
+          "delta": -0.003287487564300584
+        },
+        {
+          "source_seed": 0,
+          "group_index": 12,
+          "prompt_id": 1804,
+          "own_batch": true,
+          "before": 0.012114508643018773,
+          "after": 0.01932732733583109,
+          "delta": 0.007212818692812317
+        },
+        {
+          "source_seed": 0,
+          "group_index": 14,
+          "prompt_id": 2679,
+          "own_batch": true,
+          "before": 0.49410652845136577,
+          "after": 0.49593636412774367,
+          "delta": 0.0018298356763779
+        },
+        {
+          "source_seed": 1,
+          "group_index": 1,
+          "prompt_id": 5684,
+          "own_batch": false,
+          "before": 0.4598451928142861,
+          "after": 0.4626867979635924,
+          "delta": 0.0028416051493063144
+        },
+        {
+          "source_seed": 1,
+          "group_index": 2,
+          "prompt_id": 3640,
+          "own_batch": false,
+          "before": 0.5387805482644714,
+          "after": 0.5347542040580221,
+          "delta": -0.004026344206449317
+        },
+        {
+          "source_seed": 1,
+          "group_index": 11,
+          "prompt_id": 6675,
+          "own_batch": false,
+          "before": 0.050105305946841594,
+          "after": 0.0511567479088193,
+          "delta": 0.001051441961977706
+        },
+        {
+          "source_seed": 1,
+          "group_index": 12,
+          "prompt_id": 5183,
+          "own_batch": false,
+          "before": 0.3126699545393429,
+          "after": 0.31382765000584734,
+          "delta": 0.0011576954665044603
+        },
+        {
+          "source_seed": 1,
+          "group_index": 13,
+          "prompt_id": 5836,
+          "own_batch": false,
+          "before": 0.2279795374382626,
+          "after": 0.22868135977875104,
+          "delta": 0.0007018223404884338
+        },
+        {
+          "source_seed": 1,
+          "group_index": 15,
+          "prompt_id": 6340,
+          "own_batch": false,
+          "before": 1.2418893118008505,
+          "after": 1.2416553743907714,
+          "delta": -0.00023393741007904367
+        },
+        {
+          "source_seed": 2,
+          "group_index": 0,
+          "prompt_id": 3972,
+          "own_batch": false,
+          "before": 0.24318337750273328,
+          "after": 0.2456528845703806,
+          "delta": 0.002469507067647314
+        },
+        {
+          "source_seed": 3,
+          "group_index": 0,
+          "prompt_id": 5658,
+          "own_batch": false,
+          "before": 1.9101130336129108,
+          "after": 1.9150200051786657,
+          "delta": 0.004906971565754814
+        },
+        {
+          "source_seed": 3,
+          "group_index": 2,
+          "prompt_id": 3040,
+          "own_batch": false,
+          "before": 0.05774181090271718,
+          "after": 0.05738608187020011,
+          "delta": -0.00035572903251707144
+        },
+        {
+          "source_seed": 3,
+          "group_index": 3,
+          "prompt_id": 5813,
+          "own_batch": false,
+          "before": 3.573341753228573,
+          "after": 3.5769497277793914,
+          "delta": 0.0036079745508184047
+        },
+        {
+          "source_seed": 3,
+          "group_index": 4,
+          "prompt_id": 6765,
+          "own_batch": false,
+          "before": 1.2028533290801882,
+          "after": 1.200840904938048,
+          "delta": -0.002012424142140201
+        },
+        {
+          "source_seed": 3,
+          "group_index": 7,
+          "prompt_id": 1772,
+          "own_batch": false,
+          "before": 0.0410801868746119,
+          "after": 0.039259733503030136,
+          "delta": -0.001820453371581765
+        },
+        {
+          "source_seed": 3,
+          "group_index": 9,
+          "prompt_id": 5454,
+          "own_batch": false,
+          "before": 0.28106679986063243,
+          "after": 0.2717747840871736,
+          "delta": -0.00929201577345884
+        },
+        {
+          "source_seed": 4,
+          "group_index": 6,
+          "prompt_id": 4584,
+          "own_batch": false,
+          "before": 0.2744187283683483,
+          "after": 0.27497759847022035,
+          "delta": 0.0005588701018720554
+        },
+        {
+          "source_seed": 4,
+          "group_index": 7,
+          "prompt_id": 6671,
+          "own_batch": false,
+          "before": 0.4933587275634525,
+          "after": 0.4898912799625627,
+          "delta": -0.0034674476008897948
+        },
+        {
+          "source_seed": 4,
+          "group_index": 12,
+          "prompt_id": 6565,
+          "own_batch": false,
+          "before": 3.872651261772428,
+          "after": 3.870783843653543,
+          "delta": -0.0018674181188851335
+        },
+        {
+          "source_seed": 4,
+          "group_index": 14,
+          "prompt_id": 1072,
+          "own_batch": false,
+          "before": 0.3102616047445065,
+          "after": 0.3118161177023864,
+          "delta": 0.0015545129578798944
+        }
+      ],
+      "own": {
+        "count": 4,
+        "positive": 3,
+        "mean": 0.003311581754281104,
+        "median": 0.004521327184595109
+      },
+      "other": {
+        "count": 17,
+        "positive": 9,
+        "mean": -0.0002485510878677511,
+        "median": 0.0005588701018720554
+      }
+    },
+    "1": {
+      "adapter_sha256": "30eefca3acd4e9b22978d4b8b85c79fc065308f2b9f24c9c2989620d258ee313",
+      "pairs": [
+        {
+          "source_seed": 0,
+          "group_index": 3,
+          "prompt_id": 4372,
+          "own_batch": false,
+          "before": 0.4689490275199461,
+          "after": 0.46865553975980656,
+          "delta": -0.0002934877601395436
+        },
+        {
+          "source_seed": 0,
+          "group_index": 10,
+          "prompt_id": 2536,
+          "own_batch": false,
+          "before": -0.12112734284387588,
+          "after": -0.12200511195078612,
+          "delta": -0.0008777691069102311
+        },
+        {
+          "source_seed": 0,
+          "group_index": 12,
+          "prompt_id": 1804,
+          "own_batch": false,
+          "before": 0.012114508643018773,
+          "after": 0.008623670965657526,
+          "delta": -0.003490837677361247
+        },
+        {
+          "source_seed": 0,
+          "group_index": 14,
+          "prompt_id": 2679,
+          "own_batch": false,
+          "before": 0.49410652845136577,
+          "after": 0.4971947327736886,
+          "delta": 0.0030882043223228184
+        },
+        {
+          "source_seed": 1,
+          "group_index": 1,
+          "prompt_id": 5684,
+          "own_batch": true,
+          "before": 0.4598451928142861,
+          "after": 0.4622573142443901,
+          "delta": 0.0024121214301039973
+        },
+        {
+          "source_seed": 1,
+          "group_index": 2,
+          "prompt_id": 3640,
+          "own_batch": true,
+          "before": 0.5387805482644714,
+          "after": 0.5505739411387996,
+          "delta": 0.011793392874328235
+        },
+        {
+          "source_seed": 1,
+          "group_index": 11,
+          "prompt_id": 6675,
+          "own_batch": true,
+          "before": 0.050105305946841594,
+          "after": 0.056212477323387855,
+          "delta": 0.006107171376546261
+        },
+        {
+          "source_seed": 1,
+          "group_index": 12,
+          "prompt_id": 5183,
+          "own_batch": true,
+          "before": 0.3126699545393429,
+          "after": 0.314065417516431,
+          "delta": 0.0013954629770881466
+        },
+        {
+          "source_seed": 1,
+          "group_index": 13,
+          "prompt_id": 5836,
+          "own_batch": true,
+          "before": 0.2279795374382626,
+          "after": 0.23407986286011606,
+          "delta": 0.006100325421853459
+        },
+        {
+          "source_seed": 1,
+          "group_index": 15,
+          "prompt_id": 6340,
+          "own_batch": true,
+          "before": 1.2418893118008505,
+          "after": 1.2443383177098934,
+          "delta": 0.002449005909042956
+        },
+        {
+          "source_seed": 2,
+          "group_index": 0,
+          "prompt_id": 3972,
+          "own_batch": false,
+          "before": 0.24318337750273328,
+          "after": 0.2388421234641716,
+          "delta": -0.0043412540385616705
+        },
+        {
+          "source_seed": 3,
+          "group_index": 0,
+          "prompt_id": 5658,
+          "own_batch": false,
+          "before": 1.9101130336129108,
+          "after": 1.91703254286414,
+          "delta": 0.0069195092512290834
+        },
+        {
+          "source_seed": 3,
+          "group_index": 2,
+          "prompt_id": 3040,
+          "own_batch": false,
+          "before": 0.05774181090271718,
+          "after": 0.05538747509034542,
+          "delta": -0.002354335812371766
+        },
+        {
+          "source_seed": 3,
+          "group_index": 3,
+          "prompt_id": 5813,
+          "own_batch": false,
+          "before": 3.573341753228573,
+          "after": 3.574376028157392,
+          "delta": 0.0010342749288190234
+        },
+        {
+          "source_seed": 3,
+          "group_index": 4,
+          "prompt_id": 6765,
+          "own_batch": false,
+          "before": 1.2028533290801882,
+          "after": 1.2003587482382805,
+          "delta": -0.0024945808419076787
+        },
+        {
+          "source_seed": 3,
+          "group_index": 7,
+          "prompt_id": 1772,
+          "own_batch": false,
+          "before": 0.0410801868746119,
+          "after": 0.03955410384905422,
+          "delta": -0.0015260830255576785
+        },
+        {
+          "source_seed": 3,
+          "group_index": 9,
+          "prompt_id": 5454,
+          "own_batch": false,
+          "before": 0.28106679986063243,
+          "after": 0.2769941040177464,
+          "delta": -0.004072695842886054
+        },
+        {
+          "source_seed": 4,
+          "group_index": 6,
+          "prompt_id": 4584,
+          "own_batch": false,
+          "before": 0.2744187283683483,
+          "after": 0.2674559866805469,
+          "delta": -0.0069627416878014214
+        },
+        {
+          "source_seed": 4,
+          "group_index": 7,
+          "prompt_id": 6671,
+          "own_batch": false,
+          "before": 0.4933587275634525,
+          "after": 0.488071084662769,
+          "delta": -0.005287642900683509
+        },
+        {
+          "source_seed": 4,
+          "group_index": 12,
+          "prompt_id": 6565,
+          "own_batch": false,
+          "before": 3.872651261772428,
+          "after": 3.8687736955923695,
+          "delta": -0.0038775661800585226
+        },
+        {
+          "source_seed": 4,
+          "group_index": 14,
+          "prompt_id": 1072,
+          "own_batch": false,
+          "before": 0.3102616047445065,
+          "after": 0.310320444951085,
+          "delta": 5.88402065785365e-05
+        }
+      ],
+      "own": {
+        "count": 6,
+        "positive": 6,
+        "mean": 0.005042913331493842,
+        "median": 0.004274665665448207
+      },
+      "other": {
+        "count": 15,
+        "positive": 4,
+        "mean": -0.0016318777443526573,
+        "median": -0.002354335812371766
+      }
+    },
+    "2": {
+      "adapter_sha256": "870c7ac965699131df4a587731fb10c11893ea30c0966a29feffec0d8d2249f2",
+      "pairs": [
+        {
+          "source_seed": 0,
+          "group_index": 3,
+          "prompt_id": 4372,
+          "own_batch": false,
+          "before": 0.4689490275199461,
+          "after": 0.47112858002279,
+          "delta": 0.0021795525028439067
+        },
+        {
+          "source_seed": 0,
+          "group_index": 10,
+          "prompt_id": 2536,
+          "own_batch": false,
+          "before": -0.12112734284387588,
+          "after": -0.12689185091761312,
+          "delta": -0.00576450807373724
+        },
+        {
+          "source_seed": 0,
+          "group_index": 12,
+          "prompt_id": 1804,
+          "own_batch": false,
+          "before": 0.012114508643018773,
+          "after": 0.010253205305819857,
+          "delta": -0.0018613033371989163
+        },
+        {
+          "source_seed": 0,
+          "group_index": 14,
+          "prompt_id": 2679,
+          "own_batch": false,
+          "before": 0.49410652845136577,
+          "after": 0.4941356505117109,
+          "delta": 2.9122060345110334e-05
+        },
+        {
+          "source_seed": 1,
+          "group_index": 1,
+          "prompt_id": 5684,
+          "own_batch": false,
+          "before": 0.4598451928142861,
+          "after": 0.4617931737528219,
+          "delta": 0.0019479809385358204
+        },
+        {
+          "source_seed": 1,
+          "group_index": 2,
+          "prompt_id": 3640,
+          "own_batch": false,
+          "before": 0.5387805482644714,
+          "after": 0.5356310588143737,
+          "delta": -0.003149489450097742
+        },
+        {
+          "source_seed": 1,
+          "group_index": 11,
+          "prompt_id": 6675,
+          "own_batch": false,
+          "before": 0.050105305946841594,
+          "after": 0.05243411585062496,
+          "delta": 0.0023288099037833687
+        },
+        {
+          "source_seed": 1,
+          "group_index": 12,
+          "prompt_id": 5183,
+          "own_batch": false,
+          "before": 0.3126699545393429,
+          "after": 0.31155508507245755,
+          "delta": -0.0011148694668853265
+        },
+        {
+          "source_seed": 1,
+          "group_index": 13,
+          "prompt_id": 5836,
+          "own_batch": false,
+          "before": 0.2279795374382626,
+          "after": 0.2300635379823771,
+          "delta": 0.002084000544114506
+        },
+        {
+          "source_seed": 1,
+          "group_index": 15,
+          "prompt_id": 6340,
+          "own_batch": false,
+          "before": 1.2418893118008505,
+          "after": 1.2404255334007361,
+          "delta": -0.0014637784001143572
+        },
+        {
+          "source_seed": 2,
+          "group_index": 0,
+          "prompt_id": 3972,
+          "own_batch": true,
+          "before": 0.24318337750273328,
+          "after": 0.24893727475497385,
+          "delta": 0.00575389725224057
+        },
+        {
+          "source_seed": 3,
+          "group_index": 0,
+          "prompt_id": 5658,
+          "own_batch": false,
+          "before": 1.9101130336129108,
+          "after": 1.912827372875169,
+          "delta": 0.0027143392622581697
+        },
+        {
+          "source_seed": 3,
+          "group_index": 2,
+          "prompt_id": 3040,
+          "own_batch": false,
+          "before": 0.05774181090271718,
+          "after": 0.053299372415188395,
+          "delta": -0.004442438487528788
+        },
+        {
+          "source_seed": 3,
+          "group_index": 3,
+          "prompt_id": 5813,
+          "own_batch": false,
+          "before": 3.573341753228573,
+          "after": 3.5774419391054217,
+          "delta": 0.004100185876848794
+        },
+        {
+          "source_seed": 3,
+          "group_index": 4,
+          "prompt_id": 6765,
+          "own_batch": false,
+          "before": 1.2028533290801882,
+          "after": 1.1991525871968518,
+          "delta": -0.003700741883336356
+        },
+        {
+          "source_seed": 3,
+          "group_index": 7,
+          "prompt_id": 1772,
+          "own_batch": false,
+          "before": 0.0410801868746119,
+          "after": 0.041803855828072445,
+          "delta": 0.0007236689534605434
+        },
+        {
+          "source_seed": 3,
+          "group_index": 9,
+          "prompt_id": 5454,
+          "own_batch": false,
+          "before": 0.28106679986063243,
+          "after": 0.2757404932419518,
+          "delta": -0.00532630661868061
+        },
+        {
+          "source_seed": 4,
+          "group_index": 6,
+          "prompt_id": 4584,
+          "own_batch": false,
+          "before": 0.2744187283683483,
+          "after": 0.27159666551839917,
+          "delta": -0.002822062849949125
+        },
+        {
+          "source_seed": 4,
+          "group_index": 7,
+          "prompt_id": 6671,
+          "own_batch": false,
+          "before": 0.4933587275634525,
+          "after": 0.49008395816927974,
+          "delta": -0.0032747693941727607
+        },
+        {
+          "source_seed": 4,
+          "group_index": 12,
+          "prompt_id": 6565,
+          "own_batch": false,
+          "before": 3.872651261772428,
+          "after": 3.869529145423855,
+          "delta": -0.0031221163485728454
+        },
+        {
+          "source_seed": 4,
+          "group_index": 14,
+          "prompt_id": 1072,
+          "own_batch": false,
+          "before": 0.3102616047445065,
+          "after": 0.3102051559019128,
+          "delta": -5.644884259370375e-05
+        }
+      ],
+      "own": {
+        "count": 1,
+        "positive": 1,
+        "mean": 0.00575389725224057,
+        "median": 0.00575389725224057
+      },
+      "other": {
+        "count": 20,
+        "positive": 8,
+        "mean": -0.0009995586555338776,
+        "median": -0.0012893239334998419
+      }
+    },
+    "3": {
+      "adapter_sha256": "05172f74cacdc1005b37e66fab9ab63d5084f6d56efc996835be5cfa7257e962",
+      "pairs": [
+        {
+          "source_seed": 0,
+          "group_index": 3,
+          "prompt_id": 4372,
+          "own_batch": false,
+          "before": 0.4689490275199461,
+          "after": 0.4763952238987069,
+          "delta": 0.0074461963787608165
+        },
+        {
+          "source_seed": 0,
+          "group_index": 10,
+          "prompt_id": 2536,
+          "own_batch": false,
+          "before": -0.12112734284387588,
+          "after": -0.11960771443129259,
+          "delta": 0.001519628412583296
+        },
+        {
+          "source_seed": 0,
+          "group_index": 12,
+          "prompt_id": 1804,
+          "own_batch": false,
+          "before": 0.012114508643018773,
+          "after": 0.01158347329539322,
+          "delta": -0.0005310353476255525
+        },
+        {
+          "source_seed": 0,
+          "group_index": 14,
+          "prompt_id": 2679,
+          "own_batch": false,
+          "before": 0.49410652845136577,
+          "after": 0.492334694247092,
+          "delta": -0.0017718342042737922
+        },
+        {
+          "source_seed": 1,
+          "group_index": 1,
+          "prompt_id": 5684,
+          "own_batch": false,
+          "before": 0.4598451928142861,
+          "after": 0.4649902863935991,
+          "delta": 0.005145093579312976
+        },
+        {
+          "source_seed": 1,
+          "group_index": 2,
+          "prompt_id": 3640,
+          "own_batch": false,
+          "before": 0.5387805482644714,
+          "after": 0.5409973924526116,
+          "delta": 0.0022168441881401657
+        },
+        {
+          "source_seed": 1,
+          "group_index": 11,
+          "prompt_id": 6675,
+          "own_batch": false,
+          "before": 0.050105305946841594,
+          "after": 0.0487382218283432,
+          "delta": -0.0013670841184983962
+        },
+        {
+          "source_seed": 1,
+          "group_index": 12,
+          "prompt_id": 5183,
+          "own_batch": false,
+          "before": 0.3126699545393429,
+          "after": 0.3123525972770348,
+          "delta": -0.00031735726230808226
+        },
+        {
+          "source_seed": 1,
+          "group_index": 13,
+          "prompt_id": 5836,
+          "own_batch": false,
+          "before": 0.2279795374382626,
+          "after": 0.22899493236433377,
+          "delta": 0.001015394926071167
+        },
+        {
+          "source_seed": 1,
+          "group_index": 15,
+          "prompt_id": 6340,
+          "own_batch": false,
+          "before": 1.2418893118008505,
+          "after": 1.2472903489299951,
+          "delta": 0.005401037129144637
+        },
+        {
+          "source_seed": 2,
+          "group_index": 0,
+          "prompt_id": 3972,
+          "own_batch": false,
+          "before": 0.24318337750273328,
+          "after": 0.23700812892069995,
+          "delta": -0.0061752485820333325
+        },
+        {
+          "source_seed": 3,
+          "group_index": 0,
+          "prompt_id": 5658,
+          "own_batch": true,
+          "before": 1.9101130336129108,
+          "after": 1.9200609346003379,
+          "delta": 0.009947900987427039
+        },
+        {
+          "source_seed": 3,
+          "group_index": 2,
+          "prompt_id": 3040,
+          "own_batch": true,
+          "before": 0.05774181090271718,
+          "after": 0.055601913909077316,
+          "delta": -0.002139896993639867
+        },
+        {
+          "source_seed": 3,
+          "group_index": 3,
+          "prompt_id": 5813,
+          "own_batch": true,
+          "before": 3.573341753228573,
+          "after": 3.5781956823111254,
+          "delta": 0.004853929082552444
+        },
+        {
+          "source_seed": 3,
+          "group_index": 4,
+          "prompt_id": 6765,
+          "own_batch": true,
+          "before": 1.2028533290801882,
+          "after": 1.2053640762569497,
+          "delta": 0.002510747176761585
+        },
+        {
+          "source_seed": 3,
+          "group_index": 7,
+          "prompt_id": 1772,
+          "own_batch": true,
+          "before": 0.0410801868746119,
+          "after": 0.04490843134013911,
+          "delta": 0.0038282444655272085
+        },
+        {
+          "source_seed": 3,
+          "group_index": 9,
+          "prompt_id": 5454,
+          "own_batch": true,
+          "before": 0.28106679986063243,
+          "after": 0.2793990111405076,
+          "delta": -0.001667788720124852
+        },
+        {
+          "source_seed": 4,
+          "group_index": 6,
+          "prompt_id": 4584,
+          "own_batch": false,
+          "before": 0.2744187283683483,
+          "after": 0.26758783836412053,
+          "delta": -0.006830890004227763
+        },
+        {
+          "source_seed": 4,
+          "group_index": 7,
+          "prompt_id": 6671,
+          "own_batch": false,
+          "before": 0.4933587275634525,
+          "after": 0.4913723181785401,
+          "delta": -0.001986409384912402
+        },
+        {
+          "source_seed": 4,
+          "group_index": 12,
+          "prompt_id": 6565,
+          "own_batch": false,
+          "before": 3.872651261772428,
+          "after": 3.867562581620046,
+          "delta": -0.0050886801523821745
+        },
+        {
+          "source_seed": 4,
+          "group_index": 14,
+          "prompt_id": 1072,
+          "own_batch": false,
+          "before": 0.3102616047445065,
+          "after": 0.3136663313834898,
+          "delta": 0.0034047266389833353
+        }
+      ],
+      "own": {
+        "count": 6,
+        "positive": 4,
+        "mean": 0.0028888559997505927,
+        "median": 0.003169495821144397
+      },
+      "other": {
+        "count": 15,
+        "positive": 7,
+        "mean": 0.0001386921464489932,
+        "median": -0.00031735726230808226
+      }
+    },
+    "4": {
+      "adapter_sha256": "f276e24330d61df2bcf49513eea22ed8c40efef06ce202a63a8357b56a12d383",
+      "pairs": [
+        {
+          "source_seed": 0,
+          "group_index": 3,
+          "prompt_id": 4372,
+          "own_batch": false,
+          "before": 0.4689490275199461,
+          "after": 0.4689951885340512,
+          "delta": 4.616101410509499e-05
+        },
+        {
+          "source_seed": 0,
+          "group_index": 10,
+          "prompt_id": 2536,
+          "own_batch": false,
+          "before": -0.12112734284387588,
+          "after": -0.12213275631602738,
+          "delta": -0.0010054134721514951
+        },
+        {
+          "source_seed": 0,
+          "group_index": 12,
+          "prompt_id": 1804,
+          "own_batch": false,
+          "before": 0.012114508643018773,
+          "after": 0.01341247595408046,
+          "delta": 0.0012979673110616874
+        },
+        {
+          "source_seed": 0,
+          "group_index": 14,
+          "prompt_id": 2679,
+          "own_batch": false,
+          "before": 0.49410652845136577,
+          "after": 0.4971932745748951,
+          "delta": 0.003086746123529327
+        },
+        {
+          "source_seed": 1,
+          "group_index": 1,
+          "prompt_id": 5684,
+          "own_batch": false,
+          "before": 0.4598451928142861,
+          "after": 0.46363386922068406,
+          "delta": 0.0037886764063979617
+        },
+        {
+          "source_seed": 1,
+          "group_index": 2,
+          "prompt_id": 3640,
+          "own_batch": false,
+          "before": 0.5387805482644714,
+          "after": 0.539706551068731,
+          "delta": 0.0009260028042595847
+        },
+        {
+          "source_seed": 1,
+          "group_index": 11,
+          "prompt_id": 6675,
+          "own_batch": false,
+          "before": 0.050105305946841594,
+          "after": 0.05004183317766808,
+          "delta": -6.347276917351152e-05
+        },
+        {
+          "source_seed": 1,
+          "group_index": 12,
+          "prompt_id": 5183,
+          "own_batch": false,
+          "before": 0.3126699545393429,
+          "after": 0.31440284661169327,
+          "delta": 0.0017328920723503893
+        },
+        {
+          "source_seed": 1,
+          "group_index": 13,
+          "prompt_id": 5836,
+          "own_batch": false,
+          "before": 0.2279795374382626,
+          "after": 0.23119156198068103,
+          "delta": 0.0032120245424184235
+        },
+        {
+          "source_seed": 1,
+          "group_index": 15,
+          "prompt_id": 6340,
+          "own_batch": false,
+          "before": 1.2418893118008505,
+          "after": 1.244353607419741,
+          "delta": 0.0024642956188904996
+        },
+        {
+          "source_seed": 2,
+          "group_index": 0,
+          "prompt_id": 3972,
+          "own_batch": false,
+          "before": 0.24318337750273328,
+          "after": 0.23914414410003876,
+          "delta": -0.00403923340269452
+        },
+        {
+          "source_seed": 3,
+          "group_index": 0,
+          "prompt_id": 5658,
+          "own_batch": false,
+          "before": 1.9101130336129108,
+          "after": 1.9099726729115247,
+          "delta": -0.0001403607013861219
+        },
+        {
+          "source_seed": 3,
+          "group_index": 2,
+          "prompt_id": 3040,
+          "own_batch": false,
+          "before": 0.05774181090271718,
+          "after": 0.05704223562515748,
+          "delta": -0.0006995752775597053
+        },
+        {
+          "source_seed": 3,
+          "group_index": 3,
+          "prompt_id": 5813,
+          "own_batch": false,
+          "before": 3.573341753228573,
+          "after": 3.5739045699395366,
+          "delta": 0.0005628167109636983
+        },
+        {
+          "source_seed": 3,
+          "group_index": 4,
+          "prompt_id": 6765,
+          "own_batch": false,
+          "before": 1.2028533290801882,
+          "after": 1.194050032898759,
+          "delta": -0.008803296181429054
+        },
+        {
+          "source_seed": 3,
+          "group_index": 7,
+          "prompt_id": 1772,
+          "own_batch": false,
+          "before": 0.0410801868746119,
+          "after": 0.03966688455601608,
+          "delta": -0.0014133023185958216
+        },
+        {
+          "source_seed": 3,
+          "group_index": 9,
+          "prompt_id": 5454,
+          "own_batch": false,
+          "before": 0.28106679986063243,
+          "after": 0.27524505883387707,
+          "delta": -0.005821741026755367
+        },
+        {
+          "source_seed": 4,
+          "group_index": 6,
+          "prompt_id": 4584,
+          "own_batch": true,
+          "before": 0.2744187283683483,
+          "after": 0.2818002998459285,
+          "delta": 0.007381571477580229
+        },
+        {
+          "source_seed": 4,
+          "group_index": 7,
+          "prompt_id": 6671,
+          "own_batch": true,
+          "before": 0.4933587275634525,
+          "after": 0.4941448028406564,
+          "delta": 0.0007860752772039237
+        },
+        {
+          "source_seed": 4,
+          "group_index": 12,
+          "prompt_id": 6565,
+          "own_batch": true,
+          "before": 3.872651261772428,
+          "after": 3.873476657505546,
+          "delta": 0.0008253957331181283
+        },
+        {
+          "source_seed": 4,
+          "group_index": 14,
+          "prompt_id": 1072,
+          "own_batch": true,
+          "before": 0.3102616047445065,
+          "after": 0.31241964509015835,
+          "delta": 0.002158040345651868
+        }
+      ],
+      "own": {
+        "count": 4,
+        "positive": 4,
+        "mean": 0.0027877707083885372,
+        "median": 0.0014917180393849983
+      },
+      "other": {
+        "count": 17,
+        "positive": 9,
+        "mean": -0.0002864007379864077,
+        "median": 4.616101410509499e-05
+      }
+    }
+  }
+}

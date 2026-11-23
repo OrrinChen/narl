@@ -1,0 +1,28 @@
+{
+  "purpose": "Exploratory mechanism diagnosis on already inspected data",
+  "source": "gsm8k-stable-v1",
+  "source_plan_sha256": "a7d39ea61203f04ab2216f9a8e5abf82e160c5d3d9a55d3311a9cfa10d8adab0",
+  "selected": "lr-0.0001-groups-16",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "source_Q1_correct": [
+    50,
+    50,
+    48,
+    45,
+    44
+  ],
+  "source_Q1_initial_correct": 46,
+  "first_update_probe": "Preserve actual first-batch weight hash per seed. Measure the correct-minus-incorrect mean-token log-probability margin on original mixed groups, and independently sampled other-seed first-batch mixed groups excluding training prompts.",
+  "replay_arms": {
+    "reward": "Same original loss, add positive reward for natural-stop untagged answers when last numeric value matches gold. This is a deliberately permissive parser heuristic.",
+    "loss": "Same original correctness rewards, replace equal sequence weighting with equal token weighting across all complete samples in an accumulation batch."
+  },
+  "controls": "Use original stored answers, behavior log-probabilities, same six update batches per seed, common starting adapter, same LR, optimizer and strict original greedy evaluation on used Q1. Compute both separate contrasts against archived original model for the same seed.",
+  "scope": "Frozen traces become off-policy after changes. No new online training or unopened development or official evaluation. Report all five seeds without selecting a variant."
+}
