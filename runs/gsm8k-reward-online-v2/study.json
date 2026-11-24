@@ -1,0 +1,21 @@
+{
+  "base_plan_sha256": "a7d39ea61203f04ab2216f9a8e5abf82e160c5d3d9a55d3311a9cfa10d8adab0",
+  "source_head": "5b6120f",
+  "development": "Previously inspected Q1 128. Strict greedy numeric accuracy. No training on either qualification set.",
+  "order": [
+    "parsed_outcome",
+    "verified_steps",
+    "verified_format"
+  ],
+  "progression": "Run the parsed-outcome repair with all five seeds. If Q1 fails, use verified intermediate steps, then if needed a format tie-breaker. A development candidate can be discarded as soon as a negative seed makes the gate impossible. Any Q1 passer requires all five full training runs.",
+  "independent_confirmation": "The first passing Q1 recipe in the fixed order is the only one eligible for the previously reserved Q2. Freeze its five model hashes prior to any Q2 score. Evaluate the start, the five strict controls and these five candidates on the same 128 Q2 questions.",
+  "qualification": "At least four strictly positive paired seeds vs initialization, none negative, positive median, and question-block bootstrap median 95% lower bound > 0. Same rule on Q1 and Q2. Also report gains against strict unchanged reward; they answer a different question.",
+  "scope": "All runs use only the training split of GSM8K. Q1 and Q2 were excluded from actual training. Official 192 untouched. All training is fresh on-policy, 32768 generated response tokens per seed, 1e-4, G2, 16 groups accumulated.",
+  "candidate_notes": {
+    "parsed_outcome": "Binary final answer accuracy with conservative recognition of explicit natural or tagged numeric conclusions, including supported currency, fraction, typographic unit, and checked explanation representations.",
+    "verified_steps": "Same binary outcome for correct answers. Wrong or unfinished answers can receive at most 0.4 according to the fraction of unique exact binary arithmetic steps matched to this training reference. This accesses reference rationales, without teacher-forced target tokens.",
+    "verified_format": "Same reference-step credit. Award 1.0 or 0.8 to correct answers depending on whether a unique final strict tag ends naturally; a complete, formatted wrong answer can receive an extra 0.05. With G2 small nonzero score differences still yield large normalized advantages."
+  },
+  "supersedes": "gsm8k-reward-online-v1",
+  "scorer_freeze": "One superseded 6238-token pilot stopped before any candidate Q1 scores. Base scorer regression fixtures and revised parser fixed before evaluation on the separate third set of old training answers."
+}

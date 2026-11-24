@@ -142,7 +142,7 @@ def check_plan(source_path, run, train, test):
     return plan
 
 
-def check_case(folder, plan, train, tokenizer, lr, accumulation, seed):
+def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, training_sample_validator=None):
     report = read_json(folder / "training.json")
     rows, updates = read_rows(folder / "trace.jsonl"), read_rows(folder / "updates.jsonl")
     require(rows and report["lr"] == lr and report["accumulation_groups"] == accumulation and report["seed"] == seed,
@@ -169,7 +169,11 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed):
             require(sample["id"] == name and sample["behavior_version"] == version
                     and sample["behavior_sha256"] == current and sample["token_cap"] == cap,
                     f"{label}/slot {slot}: wrong source policy or generation cap")
-            lengths.append(validate_sample(sample, float(train[row["prompt_id"]]["value"]), cap, name, tokenizer))
+            example = train[row["prompt_id"]]
+            if training_sample_validator is None:
+                lengths.append(validate_sample(sample, float(example["value"]), cap, name, tokenizer))
+            else:
+                lengths.append(training_sample_validator(sample, example, cap, name, tokenizer))
         complete = len(samples) == 2
         values = normalized_advantages(samples) if complete else [0.0]
         require(len(row["advantages"]) == len(values) and
@@ -217,7 +221,7 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed):
     return report, rows, updates
 
 
-def replay_cases(cases, source_path, plan, tokenizer_path):
+def replay_cases(cases, source_path, plan, tokenizer_path, *, before_update=None):
     from importlib.metadata import version
 
     import numpy as np
@@ -231,13 +235,15 @@ def replay_cases(cases, source_path, plan, tokenizer_path):
     source = plan["source_protocol"]
     require((version("mlx"), version("mlx-lm")) == (source["mlx"], source["mlx_lm"]), "training replay MLX versions changed")
     torch.set_num_threads(1)
-    model, _ = load_mlx_model(tokenizer_path, len(source["qualification_protocol"]["lora_layers"]), 92333)
+    model, tokenizer = load_mlx_model(tokenizer_path, len(source["qualification_protocol"]["lora_layers"]), 92333)
     start = load_file(source_path / "start-adapter.safetensors")
     checked = {}
     for key, (report, rows, updates) in cases.items():
         set_adapter(model, start)
         learner = MlxGrpoLearner(model, report["lr"])
         for update in updates:
+            if before_update is not None:
+                before_update(model, tokenizer, key, rows, update)
             groups = []
             for index in update["group_indices"]:
                 row = rows[index]

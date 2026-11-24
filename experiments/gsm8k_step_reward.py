@@ -6,7 +6,7 @@ from functools import lru_cache
 import re
 from operator import add, mul, sub, truediv
 
-from experiments.gsm8k_training_reward import score_training_reward as outcome_reward
+from experiments.gsm8k_training_reward_v2 import score_training_reward as outcome_reward
 
 
 OPERATIONS = {"+": add, "-": sub, "*": mul, "/": truediv}
