@@ -144,6 +144,7 @@ def activation(runs):
     states = {}
     for name in ("gsm8k-reward-online-v2", "gsm8k-reward-composite-v1"):
         root = runs / name
+        require((root / "status.json").is_file(), f"Awaiting completed precursor study: {name}")
         status = read_json(root / "status.json")
         require(status["stable"] is False, "the previous study confirmed a stable candidate")
         for recipe in read_json(root / "study.json")["order"]:
@@ -165,18 +166,20 @@ def activation(runs):
 
 
 def evaluate_fixed(runs, out, protocol, panels, endpoints):
+    statuses = activation(runs)
+    from importlib.metadata import version
     from safetensors.torch import load_file
     import torch
     from experiments.gsm8k_budget import evaluate
     from experiments.gsm8k_mlx_development import load_mlx_model, set_adapter
     from experiments.gsm8k_signal import read_split
 
-    statuses = activation(runs)
     protocol_hash = digest(out / "protocol.json")
     activation_path = out / "activation.json"
     record(activation_path, {"protocol_sha256": protocol_hash, "source_status_sha256": statuses})
     plan = read_json(runs / "gsm8k-stable-v1/plan.json")
     source = plan["source_protocol"]
+    require((version("mlx"), version("mlx-lm")) == (source["mlx"], source["mlx_lm"]), "MLX versions changed")
     require(source["eval_batch"] == 12 and source["eval_max_new_tokens"] == 256, "evaluation settings changed")
     train = read_split(runs / "gsm8k-data/train.jsonl", TRAIN_SHA256)
     gold = [(row["question"], float(row["value"])) for row in train]

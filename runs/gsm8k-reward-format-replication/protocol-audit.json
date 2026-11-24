@@ -1,0 +1,26 @@
+{
+  "audit_passed": true,
+  "protocol_sha256": "4db00758919349b22e5becc58ddb8bf59254cf8490fc2e7edf8a492509c59ef4",
+  "excluded_count": 5095,
+  "eligible_pool_size": 2378,
+  "panel_sizes": {
+    "A": 256,
+    "B": 256
+  },
+  "checkpoint_sha256": {
+    "initial": "2c6a2883a67adfb9e2f5bb2ff2f5c14dcab8203847b0f3522b1790f021f56dd2",
+    "seed-0": "87063f0e2199a7bd9e6abcef0550d5e8ade2c9f63559710b9b46b0f785cb2640",
+    "strict-seed-0": "53f185f64f90376737dc30f92a8fbf8b52fe82ee8c9f9b1e8deb6a3e9eef5753",
+    "seed-1": "0e14ccd7cd7260ae0c1931c7cfe7f71ac8f5c40b06af6e909d0dbba304592c95",
+    "strict-seed-1": "cfeaa70cc551e713441c9f0d59ffea26973ae65187583b7643260c8e2920eafe",
+    "seed-2": "2da52f842cc2cdb5a419fc6aa1ae1799d181b6e08f0eac4f4806625dc115a59a",
+    "strict-seed-2": "d1b499899d78ddfdf6c2350cf584c3d9cd6911a1172a7763dc3eff3413190cf3",
+    "seed-3": "4095be178bb93854361fd9d3e81208f77a0eec641bb36977a901b9117729053b",
+    "strict-seed-3": "839ee7a4669a9e7f0f829f9c5fce8a9abb55428aebe3c5db6e11cde524aa9dec",
+    "seed-4": "955cc5b950749b51ee1459d0b81af914d11fb4b7d3f928b93cf4c9e410f0cfd2",
+    "strict-seed-4": "70e8f2a2c6714db41cff9be2260b74e9523090b7b3e570167c6d0a94a489364f"
+  },
+  "new_training_tokens": 0,
+  "official_test_scored": false,
+  "stage": "protocol_only"
+}
