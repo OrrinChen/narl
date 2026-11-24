@@ -1,0 +1,137 @@
+{
+  "study_sha256": "ffd7949b9266582e34900fdf7df7c7c071be504eb03981460893bb0d9d72a727",
+  "status": {
+    "selected": null,
+    "q2_scored": false,
+    "stable": false
+  },
+  "candidates": {
+    "parsed_outcome": {
+      "audit_sha256": "ec11997246a07a92e66cfcc9e8a51fcc1d16fd3fe1e23abf85132a8af1cae5d8",
+      "stage": "q1_failed",
+      "q1_common_initial": 46,
+      "q1_scores": {
+        "0": 48,
+        "1": 44,
+        "2": 52,
+        "3": 51,
+        "4": 55
+      },
+      "strict_q1_scores": {
+        "0": 50,
+        "1": 50,
+        "2": 48,
+        "3": 45,
+        "4": 44
+      },
+      "q1_passed": false,
+      "runs": 5,
+      "online_generated_response_tokens": 163840,
+      "nonzero_advantage_tokens": 37921,
+      "complete_groups": 426,
+      "groups_with_nonzero_advantages": 109,
+      "optimizer_batches_replayed": 29,
+      "post_divergence_generation_probes": 5,
+      "elapsed_training_s": 2452.755137207918,
+      "q1_statistics": {
+        "median_delta_pp": 3.90625,
+        "question_block_95_pp": [
+          -1.5625,
+          8.59375
+        ]
+      },
+      "q1_vs_strict": {
+        "median_delta_pp": 3.125,
+        "question_block_95_pp": [
+          -1.5625,
+          7.03125
+        ]
+      }
+    },
+    "verified_steps": {
+      "audit_sha256": "d9821057753a2f77019308f5a02dde54b50d6162e46b32106ccf7a0148f7d8c2",
+      "stage": "q1_failed",
+      "q1_common_initial": 46,
+      "q1_scores": {
+        "0": 52,
+        "1": 46,
+        "2": 48,
+        "3": 46,
+        "4": 47
+      },
+      "strict_q1_scores": {
+        "0": 50,
+        "1": 50,
+        "2": 48,
+        "3": 45,
+        "4": 44
+      },
+      "q1_passed": false,
+      "runs": 5,
+      "online_generated_response_tokens": 163840,
+      "nonzero_advantage_tokens": 65768,
+      "complete_groups": 425,
+      "groups_with_nonzero_advantages": 175,
+      "optimizer_batches_replayed": 30,
+      "post_divergence_generation_probes": 5,
+      "elapsed_training_s": 2686.723915168317,
+      "q1_statistics": {
+        "median_delta_pp": 0.78125,
+        "question_block_95_pp": [
+          -3.125,
+          5.46875
+        ]
+      },
+      "q1_vs_strict": {
+        "median_delta_pp": 0.78125,
+        "question_block_95_pp": [
+          -2.34375,
+          3.125
+        ]
+      }
+    },
+    "verified_format": {
+      "audit_sha256": "df37c32983a29eb4621707d0c5d0da9e51a73c08dee5f1e1231772623e09a628",
+      "stage": "q1_failed",
+      "q1_common_initial": 46,
+      "q1_scores": {
+        "0": 52,
+        "1": 48,
+        "2": 48,
+        "3": 49,
+        "4": 52
+      },
+      "strict_q1_scores": {
+        "0": 50,
+        "1": 50,
+        "2": 48,
+        "3": 45,
+        "4": 44
+      },
+      "q1_passed": false,
+      "runs": 5,
+      "online_generated_response_tokens": 163840,
+      "nonzero_advantage_tokens": 97567,
+      "complete_groups": 430,
+      "groups_with_nonzero_advantages": 266,
+      "optimizer_batches_replayed": 30,
+      "post_divergence_generation_probes": 5,
+      "elapsed_training_s": 1841.4288510000333,
+      "q1_statistics": {
+        "median_delta_pp": 2.34375,
+        "question_block_95_pp": [
+          0.0,
+          7.03125
+        ]
+      },
+      "q1_vs_strict": {
+        "median_delta_pp": 1.5625,
+        "question_block_95_pp": [
+          -1.5625,
+          5.46875
+        ]
+      }
+    }
+  },
+  "total_online_generation_tokens": 491520
+}

@@ -1,0 +1,6 @@
+replayed 0 {'groups': 80, 'learner_batches': 5, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed 1 {'groups': 86, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed 2 {'groups': 88, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed 3 {'groups': 86, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed 4 {'groups': 86, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+Audited q1_failed completed seeds ['0', '1', '2', '3', '4']

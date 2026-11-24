@@ -1,0 +1,47 @@
+{
+  "train_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "test_sha256": "3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "seed": 8401,
+  "group_size": 2,
+  "max_new_tokens": 48,
+  "replay_prompt_ids": [
+    596,
+    7085
+  ],
+  "snapshot_training_prompt_ids": [
+    2225,
+    5,
+    5692,
+    1519
+  ],
+  "heldout_prompt_ids": [
+    106,
+    426
+  ],
+  "old_adapter_sha256": "96552f76f92f33eeaa0188378b6a591571b0ef32777e651d895edfb639b10b9c",
+  "fresh_adapter_sha256": "6cfe92a9b54b50bfc1c207cc240b69bea817bef209f3e94c4435924a8e1eac97",
+  "snapshot_sft_losses": [
+    0.828125,
+    0.6328125,
+    0.5859375,
+    1.171875
+  ],
+  "device": "mps",
+  "dtype": "bfloat16",
+  "lora_rank": 4,
+  "lora_targets": [
+    "q_proj",
+    "v_proj"
+  ],
+  "lr": 0.0001,
+  "threads": 4,
+  "torch": "2.8.0",
+  "sampling_seeds": {
+    "old": 8401,
+    "fresh_a": 8402,
+    "fresh_b": 8403
+  },
+  "budget": "one optimizer step per replay prompt; two groups of matched completions"
+}

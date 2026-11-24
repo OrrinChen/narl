@@ -1,0 +1,50 @@
+q1 initial 46 / 128
+lr-0.0001-groups-16 4 6238/32768 v1 active groups 6
+lr-0.0001-groups-16 4 12585/32768 v2 active groups 12
+lr-0.0001-groups-16 4 18527/32768 v3 active groups 11
+lr-0.0001-groups-16 4 25222/32768 v4 active groups 8
+lr-0.0001-groups-16 4 30688/32768 v5 active groups 12
+lr-0.0001-groups-16 4 32768/32768 v6 active groups 3
+q1 seed-4 52 / 128
+q1 strict-seed-4 44 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 0 6281/32768 v1 active groups 9
+lr-0.0001-groups-16 0 13436/32768 v2 active groups 8
+lr-0.0001-groups-16 0 19395/32768 v3 active groups 8
+q1 initial 46 / 128
+lr-0.0001-groups-16 0 6281/32768 v1 active groups 9
+lr-0.0001-groups-16 0 13436/32768 v2 active groups 8
+lr-0.0001-groups-16 0 19395/32768 v3 active groups 8
+lr-0.0001-groups-16 0 25801/32768 v4 active groups 11
+lr-0.0001-groups-16 0 32212/32768 v5 active groups 10
+lr-0.0001-groups-16 0 32768/32768 v6 active groups 2
+q1 seed-0 52 / 128
+q1 strict-seed-0 50 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 3 5446/32768 v1 active groups 10
+lr-0.0001-groups-16 3 11084/32768 v2 active groups 11
+lr-0.0001-groups-16 3 17247/32768 v3 active groups 8
+lr-0.0001-groups-16 3 22964/32768 v4 active groups 14
+lr-0.0001-groups-16 3 29633/32768 v5 active groups 11
+lr-0.0001-groups-16 3 32768/32768 v6 active groups 3
+q1 seed-3 49 / 128
+q1 strict-seed-3 45 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 1 6081/32768 v1 active groups 10
+lr-0.0001-groups-16 1 11582/32768 v2 active groups 9
+lr-0.0001-groups-16 1 17340/32768 v3 active groups 10
+lr-0.0001-groups-16 1 23263/32768 v4 active groups 12
+lr-0.0001-groups-16 1 29794/32768 v5 active groups 11
+lr-0.0001-groups-16 1 32768/32768 v6 active groups 4
+q1 seed-1 48 / 128
+q1 strict-seed-1 50 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 2 6058/32768 v1 active groups 12
+lr-0.0001-groups-16 2 12386/32768 v2 active groups 9
+lr-0.0001-groups-16 2 18885/32768 v3 active groups 9
+lr-0.0001-groups-16 2 24993/32768 v4 active groups 10
+lr-0.0001-groups-16 2 30527/32768 v5 active groups 12
+lr-0.0001-groups-16 2 32768/32768 v6 active groups 1
+q1 seed-2 48 / 128
+q1 strict-seed-2 48 / 128
+q1 passed False
