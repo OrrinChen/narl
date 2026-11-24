@@ -448,6 +448,19 @@ HF_HUB_OFFLINE=1 .venv/bin/python -m experiments.gsm8k_reward_loss_ablation \
 HF_HUB_OFFLINE=1 .venv/bin/python -m experiments.gsm8k_reward_study --out runs/reproduce-reward-online
 ```
 
+### 固定格式奖励模型在两批新题上的复核
+
+格式奖励在 Q1 五个种子全部提升，但区间下界刚好等于零。得知这个结果后、查看新题分数前，另行锁定共同起点、五个格式奖励端点和五个原严格奖励端点的权重哈希。两项前序研究都结束且未确认稳定收益后才触发复核。剔除 5,095 个历史使用或预留的训练集题号后，从 2,378 个互不重复的可选题面中按固定随机种子抽出两组各 256 题。两组互不重叠，亦与原确认集 Q2、补充确认集 Q3 隔离。五个种子按相同顺序在每组的同一批题上贪心生成。冻结时规定两个面板分别通过原门槛才算复现。[锁定的权重与题号](runs/gsm8k-reward-format-replication/protocol.json) · [独立题目与权重核验](runs/gsm8k-reward-format-replication/protocol-audit.json)
+
+| 新题面板 | 共同起点，答对 / 256 | 格式奖励，种子 0–4 | 原严格奖励，种子 0–4 | 格式相对起点，中位差及 95% 区间（百分点） | 格式相对原严格奖励，中位差及 95% 区间（百分点） |
+| --- | ---: | --- | --- | --- | --- |
+| A | 103 | 103、98、103、97、104 | 101、101、102、98、102 | 0.00 [−3.53, +2.73] | +0.39 [−1.95, +1.95] |
+| B | 90 | 90、92、93、96、92 | 94、97、98、92、92 | +0.78 [−1.56, +3.52] | −1.56 [−2.73, +0.78] |
+
+**两组均未通过。** A 组一升、两平、两降。B 组四升一平，95% 区间仍跨零。种子 3 在 A 组少答对 6 题，在 B 组多答对 6 题。相对旧严格奖励的配对中位差在两组方向也不同。训练时的格式偏好提高了原开发集的点估计，在这两批新题上没有复现稳定的准确率增益。[A 组逐种子配对结果](runs/gsm8k-reward-format-replication/A/gate.json) · [B 组逐种子配对结果](runs/gsm8k-reward-format-replication/B/gate.json)
+
+复核没有新增训练。11 份固定模型共产生 5,632 条答卷、1,186,854 个评估响应 token。独立审计重新解码全部答卷、按原严格规则判分、核对模型和题目身份，并重算按题目跨种子配对的区间。原确认集 Q2、Q3 和新预留的 192 道官方测试题均未评分。完整训练与复核支持保留已查实的终值解析修复；在这个模型、每题两次采样和每种子 32,768 个生成 token 的条件下，已测试的训练奖励尚不足以建立稳定学习增益。[复核审计](runs/gsm8k-reward-format-replication/audit.json) · [两组复核状态](runs/gsm8k-reward-format-replication/summary.json)
+
 ## Profiling、部署与验收
 
 - **CPU profiling。** 384-token 回放中，SDPA 占恢复回放 CPU 时间的 85.2%（逐条）和 60.3%（共享）。在线共享路径的 KV 复制中位数约 0.024 ms，actor 拉取权重约 0.20 ms，learner 更新约 15–16 ms。各阶段可重叠。Apple M2 的 PyTorch 检测到 0 个 CUDA 设备，CUDA 微基准未触发。[CPU profile](runs/kv-replay-release/profile.json) · [在线阶段数据](runs/online-release/audit.json)
