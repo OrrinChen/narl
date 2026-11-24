@@ -2,12 +2,12 @@
 
 import argparse
 import fcntl
-from importlib import import_module
 from pathlib import Path
 
 from safetensors.torch import load_file
 import torch
 
+from experiments.audit_gsm8k_reward_online import OUTCOME_V3, validate_recipe, validate_selection, validate_study
 from experiments.audit_gsm8k_stable import comparison
 from experiments.audit_kv_online import read_json, require
 from experiments.gsm8k_budget import evaluate
@@ -18,8 +18,6 @@ from experiments.gsm8k_signal import TRAIN_SHA256, read_split
 from experiments.gsm8k_stable import SEEDS, digest, load_endpoint, train_case
 
 
-MODULES = {"parsed_outcome": "experiments.gsm8k_training_reward",
-           "verified_steps": "experiments.gsm8k_step_reward", "verified_format": "experiments.gsm8k_step_reward"}
 STRICT_RECIPE = "lr-0.0001-groups-16"
 
 
@@ -28,19 +26,10 @@ def bind(args):
     base = read_json(args.base / "plan.json")
     audit = read_json(args.base / "audit.json")
     recipe = config["reward_recipe"]
-    v2 = "parser_base_sha256" in config
-    outcome_name = "experiments.gsm8k_training_reward_v2" if v2 else MODULES["parsed_outcome"]
-    expected_module = outcome_name if recipe == "parsed_outcome" else MODULES[recipe]
-    require(config["score_module"] == expected_module, "unregistered reward scorer")
-    module = import_module(config["score_module"])
-    module_hash = digest(Path(module.__file__))
-    require(module_hash == config["reward_module_sha256"], "training reward implementation changed")
-    if v2:
-        legacy = import_module(MODULES["parsed_outcome"])
-        require(digest(Path(legacy.__file__)) == config["parser_base_sha256"], "base reward parser changed")
-    if v2 or recipe != "parsed_outcome":
-        outcome = import_module(outcome_name)
-        require(digest(Path(outcome.__file__)) == config["outcome_module_sha256"], "underlying outcome scorer changed")
+    scorer = validate_recipe(config)
+    study_path = args.out.parent / "study.json"
+    if config["score_module"] == OUTCOME_V3 or study_path.exists():
+        validate_study(config, study_path)
     require(config["base_plan_sha256"] == digest(args.base / "plan.json") == audit["plan_sha256"]
             and audit["audit_passed"] and not audit["partial"], "frozen base study or its audit changed")
     require(config["seeds"] == base["seeds"] == SEEDS and config["budget"] == base["token_budget"] == 32768
@@ -51,7 +40,7 @@ def bind(args):
     require(digest(args.source / "protocol.json") == base["source_protocol_sha256"],
             "starting study differs from original protocol")
     binding = {"protocol_sha256": digest(args.protocol), "base_plan_sha256": config["base_plan_sha256"],
-               "reward_recipe": recipe, "reward_module_sha256": module_hash,
+               "reward_recipe": recipe, "reward_module_sha256": config["reward_module_sha256"],
                "start_sha256": base["source_protocol"]["start_sha256"]}
     path = args.out / "binding.json"
     if path.exists():
@@ -62,9 +51,7 @@ def bind(args):
         save_summary(path, binding)
 
     def reward(sample, example):
-        if recipe == "verified_format":
-            return module.score_format_reward(sample, example)
-        return module.score_training_reward(sample, example["value"] if recipe == "parsed_outcome" else example)
+        return scorer(sample, example["value"] if recipe == "parsed_outcome" else example)
 
     return config, base, audit, binding, reward
 
@@ -105,6 +92,7 @@ def run(args):
         previous = gate(args, plan, binding, "q1")
         require(previous and previous["passed"] and previous == read_json(args.out / "q1/gate.json"),
                 "Q2 requires the complete passing Q1 gate for these endpoints")
+        validate_selection(args.out, binding["reward_recipe"], previous)
     train = read_split(args.train, TRAIN_SHA256)
     protocol = plan["source_protocol"]
     ids = plan["qualification_prompt_ids"][int(split == "q2")]

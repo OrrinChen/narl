@@ -1,0 +1,388 @@
+{
+  "scope": "Offline rescoring. No candidate training or held-out inference was run.",
+  "cohort_rule": "Include all samples from both five-seed training archives. Exclude all prompt IDs used by either training cohort or previously reviewed parser sets from the old development archives. Deduplicate exact (prompt_id, completion) within the archival comparison.",
+  "train_data_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "parser_review_sha256": "348bb17dc53e2e826df68b0bddca80b03d845318e299477c679359b66824db56",
+  "code_sha256": {
+    "gsm8k_training_reward.py": "6852996e0d9ea9e621533403367e452c3c92457b1fbd3e435e3f0b24cfa59cf8",
+    "gsm8k_training_reward_v2.py": "b7302ca3718d055798dacb4c9c23727e77c8c9ac2e24b6566b25099ca56fbbd9",
+    "gsm8k_training_reward_v3.py": "80233de471f3a461e7a5bfb53dfb77921175e92768f255c482198e546990feec",
+    "audit_gsm8k_terminal_extension.py": "c5762064e06d1ebf1143d99333011dd4511d8f1e5d9637354105ef7db3ebd0af"
+  },
+  "cohorts": {
+    "old": {
+      "source_sha256": {
+        "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl": "c9a7d354dab977ddfff55c562779957e9054beed47ee36a928c2140c0edca401",
+        "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl": "7d4fe72dfabcecc3e9ea89f94786f5c324861376ac0ce2544229a52c5d3e6bac",
+        "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl": "5d87265231feb8431b32e5dcd6461fc6c362b38707340c0749f431c1ebfdfe0f",
+        "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl": "0b271b90b1e4dc95aebcae8a9f678343029706e77963a8d37bd2147577f59561",
+        "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl": "ae8aa6ba6ddc4ab520c2ca6b5f4ff7e7fe7eee558a3b41fd2a7d6273c47d38e8"
+      },
+      "v2_v3_counts": {
+        "0/0": 681,
+        "1/1": 173
+      },
+      "changes": [],
+      "preference_transitions": {
+        "same_tie": 302,
+        "same_active": 125
+      },
+      "seeds": {
+        "0": {
+          "v2_v3_counts": {
+            "0/0": 135,
+            "1/1": 27
+          },
+          "preference_transitions": {
+            "same_tie": 62,
+            "same_active": 19
+          },
+          "matched_all_rewards": true
+        },
+        "1": {
+          "v2_v3_counts": {
+            "0/0": 137,
+            "1/1": 35
+          },
+          "preference_transitions": {
+            "same_tie": 63,
+            "same_active": 23
+          },
+          "matched_all_rewards": true
+        },
+        "2": {
+          "v2_v3_counts": {
+            "0/0": 141,
+            "1/1": 35
+          },
+          "preference_transitions": {
+            "same_active": 23,
+            "same_tie": 65
+          },
+          "matched_all_rewards": true
+        },
+        "3": {
+          "v2_v3_counts": {
+            "0/0": 132,
+            "1/1": 38
+          },
+          "preference_transitions": {
+            "same_active": 28,
+            "same_tie": 57
+          },
+          "matched_all_rewards": true
+        },
+        "4": {
+          "v2_v3_counts": {
+            "0/0": 136,
+            "1/1": 38
+          },
+          "preference_transitions": {
+            "same_tie": 55,
+            "same_active": 32
+          },
+          "matched_all_rewards": true
+        }
+      }
+    },
+    "parsed_online": {
+      "source_sha256": {
+        "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-0/trace.jsonl": "d63e453db445169a9f834d36cd384a53fb0297c019db699f0d85f915e46faf46",
+        "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl": "2c5af9cb200d7cabd3206b1a06b4de7b71a532d95987c00c6378eb59ee1efc25",
+        "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-2/trace.jsonl": "889e7eaf20088a3d1c34dfc7a3a4595f3858512157e91faf253a7f7e1d04b66f",
+        "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-3/trace.jsonl": "2dade3a9b4b4dc8ab55705aa7eb10daabd26d81548c58caddf21dd90e87549b3",
+        "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl": "349bd89217cdc413d834d4f371b5ad4e234fb4422516324681cffc01b8124166"
+      },
+      "v2_v3_counts": {
+        "0/0": 690,
+        "1/1": 159,
+        "0/1": 3
+      },
+      "changes": [
+        {
+          "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-0/trace.jsonl",
+          "locator": "group-72/slot-1",
+          "prompt_id": 5771,
+          "sample_id": "0:fresh:72:1",
+          "gold": "100",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_tag_claim",
+          "completion_sha256": "9518be5f06776323e410d172e4cdb67dc05fa81f35129c1d8f4351d9d2331397",
+          "ending": " get the total for shirts and pants with the “+” symbol. The total cost is $60\n60+40= \\$100\nStep 4: The，“#” symbol marks the answer of the math problem that they formed.loads This is the total cost for James.\n<answer>#100</answer>"
+        },
+        {
+          "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-2/trace.jsonl",
+          "locator": "group-52/slot-0",
+          "prompt_id": 4079,
+          "sample_id": "2:fresh:52:0",
+          "gold": "35",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_tag_claim",
+          "completion_sha256": "ed49d3a151d53316ce8c72e32b8719df6af983618578a26681313ab69b14c152",
+          "ending": "lly, to find out how much money Clare has left, we start with the amount she had bought, which was $47 - there was $12 in the funds she had, therefore Clare has $47-12$ dollars left after her purchases.\n<answer>$47-12=35$</answer>"
+        },
+        {
+          "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+          "locator": "group-47/slot-0",
+          "prompt_id": 855,
+          "sample_id": "4:fresh:47:0",
+          "gold": "1700",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_answer_clause",
+          "completion_sha256": "a2cdfeeba884ce4e25662bce07f18e3b78083b639fb14da192cf918ed7abaa47",
+          "ending": "amounts together plus the $800 she still has in her purse.\n$400 (roulette) + $500 (blackjack) + $800 (still in the purse) = $1700\nNoemi began with $1700. When showing this calculation as a math problem, the correct answer is 1700."
+        }
+      ],
+      "preference_transitions": {
+        "same_tie": 316,
+        "same_active": 107,
+        "deactivated": 2,
+        "activated": 1
+      },
+      "seeds": {
+        "0": {
+          "v2_v3_counts": {
+            "0/0": 132,
+            "1/1": 27,
+            "0/1": 1
+          },
+          "preference_transitions": {
+            "same_tie": 61,
+            "same_active": 18,
+            "deactivated": 1
+          },
+          "matched_all_rewards": false
+        },
+        "1": {
+          "v2_v3_counts": {
+            "0/0": 143,
+            "1/1": 29
+          },
+          "preference_transitions": {
+            "same_tie": 65,
+            "same_active": 21
+          },
+          "matched_all_rewards": true
+        },
+        "2": {
+          "v2_v3_counts": {
+            "0/0": 138,
+            "1/1": 37,
+            "0/1": 1
+          },
+          "preference_transitions": {
+            "same_active": 20,
+            "same_tie": 67,
+            "deactivated": 1
+          },
+          "matched_all_rewards": false
+        },
+        "3": {
+          "v2_v3_counts": {
+            "0/0": 134,
+            "1/1": 38
+          },
+          "preference_transitions": {
+            "same_active": 28,
+            "same_tie": 58
+          },
+          "matched_all_rewards": true
+        },
+        "4": {
+          "v2_v3_counts": {
+            "0/0": 143,
+            "1/1": 28,
+            "0/1": 1
+          },
+          "preference_transitions": {
+            "same_tie": 65,
+            "same_active": 20,
+            "activated": 1
+          },
+          "matched_all_rewards": false
+        }
+      }
+    },
+    "archival_check": {
+      "source_sha256": {
+        "runs/gsm8k-dev-mlx-256/development.json": "52047c08aa5b3e4a9035a1cfa688a04b903a85ac0efc1c549bf6cb0a8bd04fdc",
+        "runs/gsm8k-dev-mlx-final/development.json": "fb98667d22bf6de50391937f3e864adfe6a09e31ed866dd0f8a8d4707baf783a",
+        "runs/gsm8k-budget-5seed/development.json": "822be991e2c6e34bab559feef294b7bef94bea28c80ae7d84423ab111ffbb5c6",
+        "runs/gsm8k-accuracy-v1/development.json": "7c806b0c7b17f869f7d680dc1084bc4a61fcc00d40b2a166c6f12689f4603e3f"
+      },
+      "v2_v3_counts": {
+        "0/0": 429,
+        "1/1": 342,
+        "0/1": 12
+      },
+      "changes": [
+        {
+          "source": "runs/gsm8k-dev-mlx-256/development.json",
+          "locator": "/conditions/reasoning-256/rows/5",
+          "prompt_id": 3160,
+          "sample_id": null,
+          "gold": "60",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "87fa93b7beb916fc87ee198f08a80b81a38cb1f1b745b479833a4a606426eafc",
+          "ending": "the total number of tabs in two browsers is:\n     \\[\n     2 \\text{ browsers} \\times 30 \\text{ tabs per browser} = 60 \\text{ tabs}\n     \\]\n\nThus, the total number of tabs James opened in all the browsers together is \\(\\boxed{60}\\)."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-256/development.json",
+          "locator": "/conditions/reasoning-256/rows/17",
+          "prompt_id": 4032,
+          "sample_id": null,
+          "gold": "21",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "898f3c4b79aa329d87520f6cb5698cf908a3cd7f66f792bc3430279963607fb1",
+          "ending": "Total number of scientists - Number of scientists from Europe - Number of scientists from Canada.\n   - Number of scientists from the USA = \\(70 - 35 - 14 = 21\\).\n\nTherefore, the number of scientists from the USA is \\(\\boxed{21}\\)."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-256/development.json",
+          "locator": "/conditions/reasoning-256/rows/19",
+          "prompt_id": 1864,
+          "sample_id": null,
+          "gold": "55",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "2394a0e5a24a39dd03d8ac92838efd4ba98aea88376133e433e19e68ad782fed",
+          "ending": "rs old in 5 years, we subtract 5 from 60 to find Raven's current age.\n   - Raven's current age = \\(60 - 5 = 55\\) years old.\n\n4. **Write the final answer:**\n   - Raven is currently 55 years old.\n\nThe final answer is \\(\\boxed{55}\\)."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-256/development.json",
+          "locator": "/conditions/reasoning-256/rows/21",
+          "prompt_id": 6011,
+          "sample_id": null,
+          "gold": "4",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "60e3e17e40f67555bf0870e2c9243f95c9aec2302eeb9ac871bf01d552daef25",
+          "ending": " need to divide the total number of sweet treats by the number of students:\n- There are 20 students in the class.\n\n\\[ \\frac{80}{20} = 4 \\]\n\nTherefore, each student will receive 4 sweet treats.\n\nThe final answer is:\n\\[ \\boxed{4} \\]"
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-final/development.json",
+          "locator": "/conditions/reasoning-256/rows/5",
+          "prompt_id": 3160,
+          "sample_id": null,
+          "gold": "60",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "669a48d36342c3ecfedf7c4c5de63aeec4a634b6c60be29140fb5f022ed8e2b6",
+          "ending": " - James has two browsers.\n   - Each browser has 30 tabs.\n   - Therefore, the total number of tabs in two browsers is \\(2 \\times 30 = 60\\).\n\nSo, the total number of tabs James opened in all the browsers together is \\(\\boxed{60}\\)."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-final/development.json",
+          "locator": "/conditions/reasoning-256/rows/11",
+          "prompt_id": 6852,
+          "sample_id": null,
+          "gold": "20",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "adc2aeba1c8a1131a50f6d8cea9c1ec8d6e5c1fd3c6963a85a8ea1443dc9941a",
+          "ending": "re expensive lens.\n   - Amount saved = $220 - $240 = -$20.\n   - Since the result is negative, it means Mark saves $20 by buying the cheaper lens.\n\nTherefore, the amount of money Mark saves by buying the cheaper lens is \\boxed{20}."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-final/development.json",
+          "locator": "/checkpoints/16/rows/0",
+          "prompt_id": 5805,
+          "sample_id": null,
+          "gold": "513",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_answer_clause",
+          "completion_sha256": "c0bd81ad6f8a2fcf22b973d878a7efeb6cbef7e776baa340df511233b60429ff",
+          "ending": "ation after the increase is 855.\n   - 40% of 855 is calculated as 0.40 * 855 = 342.\n   - Population after movement = 855 - 342 = 513.\n\n3. The current population is 513.\n\nTherefore, the current population is 513. The answer is 513."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-final/development.json",
+          "locator": "/checkpoints/16/rows/5",
+          "prompt_id": 3160,
+          "sample_id": null,
+          "gold": "60",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "2440d2c541a2bf5fec80005605c42fe69d992002f23928d1aac8325b9581d7ea",
+          "ending": " - James has two browsers.\n   - Each browser has 30 tabs.\n   - Therefore, the total number of tabs in two browsers is \\(2 \\times 30 = 60\\).\n\nSo, the total number of tabs James opened in all the browsers together is \\(\\boxed{60}\\)."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-final/development.json",
+          "locator": "/checkpoints/16/rows/20",
+          "prompt_id": 4634,
+          "sample_id": null,
+          "gold": "9724",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "557a57c6bea1fcd59fe42842fd73c11f16fa960db822dea42ca40d1f9d20c324",
+          "ending": "nnies collected by Cassandra and James to find the total number of pennies donated to charity:\n\\[ \\text{Total pennies donated} = 5000 + 4724 = 9724 \\]\n\nTherefore, the total number of pennies donated to charity is \\(\\boxed{9724}\\)."
+        },
+        {
+          "source": "runs/gsm8k-dev-mlx-final/development.json",
+          "locator": "/checkpoints/40/rows/5",
+          "prompt_id": 3160,
+          "sample_id": null,
+          "gold": "60",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "428aaeb0a47beb0acd9022d43f42c23975010231f0b0b2919739e2610a70d5f5",
+          "ending": " - James has two browsers.\n   - Each browser has 30 tabs.\n   - Therefore, the total number of tabs in two browsers is \\(2 \\times 30 = 60\\).\n\nSo, the total number of tabs James opened in all the browsers together is \\(\\boxed{60}\\)."
+        },
+        {
+          "source": "runs/gsm8k-budget-5seed/development.json",
+          "locator": "/seeds/1/grpo/rows/31",
+          "prompt_id": 664,
+          "sample_id": null,
+          "gold": "12",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_box",
+          "completion_sha256": "277bed3b3d009a12b03aeeda38ffe647c39768577e09ab003f196c6048354b3b",
+          "ending": "es 2.5 = 10 \\text{ years}\n\\]\nNext, we calculate the number of years a fish can live:\n\\[\n\\text{Fish' lifespan} = \\text{Dogs' lifespan} + 2 = 10 + 2 = 12 \\text{ years}\n\\]\nTherefore, the number of years a fish can live is \\boxed{12}."
+        },
+        {
+          "source": "runs/gsm8k-accuracy-v1/development.json",
+          "locator": "/seeds/0/candidates/48/evaluation/rows/0",
+          "prompt_id": 6885,
+          "sample_id": null,
+          "gold": "24000",
+          "v2": 0,
+          "v3": 1,
+          "reason": "terminal_answer_clause",
+          "completion_sha256": "5182ee9f2a5a2128c02ea101a90f1d1c5d84acc3963cc35638fe15d20f9b1825",
+          "ending": "Farrah ordered 4 boxes, and each box contains 20 matchboxes. So, the total number of matchboxes is 4*20=80. Each matchbox has 300 sticks, so the total number of match sticks is 80*300=24000. Therefore, the answer is 24000."
+        }
+      ],
+      "raw_records": 936,
+      "removed_prior_prompt": 8,
+      "unique_samples": 783,
+      "unique_prompts": 119
+    }
+  },
+  "seed_1_conditional_inference": {
+    "v2_v3_counts": {
+      "0/0": 143,
+      "1/1": 29
+    },
+    "trace_sha256": "2c5af9cb200d7cabd3206b1a06b4de7b71a532d95987c00c6378eb59ee1efc25",
+    "complete_groups": 86,
+    "v2_endpoint_sha256": "ff92fed879c5b44e2b7e9b7ab25e9a1f1ce2116f69d47faefb5272dc13445680",
+    "v2_previously_reported_q1_correct": 44,
+    "v2_previously_reported_q1_count": 128,
+    "v2_score_source": "Published v2 seed-1 result supplied for this fixed run; this trace audit does not open development answers.",
+    "v3_q1_measured": false,
+    "basis": "Every reward on this v2 trajectory exactly equals the binary v3 reward. With the same deterministic runtime, initial state, sampling stream and optimizer, the same batch therefore produces the same update inductively. Replacing the binary reward alone would reproduce the v2 endpoint and its 44/128 score. No such inference is made for a changed reward stream, steps, or format bonuses."
+  },
+  "manual_review": "All 15 newly positive outputs in the fixed terminal-form probe were read against the training gold. All explicitly declared the matching final numeric value; this does not certify the derivation. The final implementation reproduced the same changed output strings. Recall over all unrecognized outputs was not exhaustively audited."
+}

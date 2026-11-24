@@ -18,6 +18,8 @@ SCORERS = {
     "verified_steps": ("experiments.gsm8k_step_reward", "score_training_reward"),
     "verified_format": ("experiments.gsm8k_step_reward", "score_format_reward"),
 }
+OUTCOME_V2 = "experiments.gsm8k_training_reward_v2"
+OUTCOME_V3 = "experiments.gsm8k_training_reward_v3"
 
 
 def behavior(sample):
@@ -50,23 +52,44 @@ def check_source(base, source, plan):
 
 def validate_recipe(protocol):
     recipe = protocol["reward_recipe"]
+    require(recipe in SCORERS, "unregistered reward recipe")
     module_name, func = SCORERS[recipe]
     outcome_name = SCORERS["parsed_outcome"][0]
+    v3 = protocol["score_module"] == OUTCOME_V3
+    if v3:
+        require(recipe == "parsed_outcome" and "parser_base_sha256" in protocol,
+                "v3 requires a binary outcome recipe and its base parser hash")
     if "parser_base_sha256" in protocol:
         base_parser = import_module(outcome_name)
         require(protocol["parser_base_sha256"] == digest(Path(base_parser.__file__)), "base outcome parser changed")
-        outcome_name = "experiments.gsm8k_training_reward_v2"
+        outcome_name = OUTCOME_V2
         if recipe == "parsed_outcome":
-            module_name = outcome_name
+            module_name = OUTCOME_V3 if v3 else outcome_name
     require(protocol["score_module"] == module_name, "unregistered reward module")
     module = import_module(module_name)
-    require(protocol["reward_module_sha256"] == digest(Path(module.__file__)), "reward module differs from freeze")
+    require(protocol.get("reward_module_sha256") == digest(Path(module.__file__)), "reward module differs from freeze")
     if recipe != "parsed_outcome" or "parser_base_sha256" in protocol:
         parsed = import_module(outcome_name)
-        require(protocol["outcome_module_sha256"] == digest(Path(parsed.__file__)), "underlying outcome scorer changed")
-        if recipe != "parsed_outcome":
+        require(protocol.get("outcome_module_sha256") == digest(Path(parsed.__file__)), "underlying outcome scorer changed")
+        if v3:
+            require(module.v2_reward is parsed.score_training_reward, "v3 is using a different outcome parser")
+        elif recipe != "parsed_outcome":
             require(module.outcome_reward is parsed.score_training_reward, "step scorer is using a different outcome parser")
     return getattr(module, func)
+
+
+def validate_study(protocol, path):
+    """A standalone v3 binary protocol must opt in through a separate frozen study."""
+    study = read_json(path)
+    require(protocol["study_sha256"] == digest(path) and study["base_plan_sha256"] == protocol["base_plan_sha256"],
+            "changed study or base plan")
+    if protocol["score_module"] == OUTCOME_V3:
+        require(study.get("score_module") == OUTCOME_V3 and study["order"] == ["parsed_outcome"],
+                "v3 requires its own frozen binary outcome study")
+    else:
+        require(study.get("score_module") != OUTCOME_V3 and study["order"] == list(SCORERS),
+                "changed study progression or order")
+    return study
 
 
 def check_training(folder, base, plan, train, tokenizer, seed, scorer, recipe):
@@ -208,13 +231,16 @@ def check_stop(folder, recipe, scores, case_keys):
     return expected
 
 
+def validate_selection(run, recipe, q1):
+    expected = {"reward_recipe": recipe, "protocol_sha256": q1["protocol_sha256"],
+                "q1_gate_sha256": digest(run / "q1/gate.json"), "endpoint_sha256": q1["endpoint_sha256"],
+                "study_sha256": digest(run.parent / "study.json")}
+    require(read_json(run.parent / "selection.json") == expected, "Q2 is not bound to the frozen Q1 winner")
+
+
 def check_selection(run, protocol, study, results, base, plan, gold, tokenizer):
     root = run.parent
-    q1 = results["q1"]
-    expected = {"reward_recipe": protocol["reward_recipe"], "protocol_sha256": q1["protocol_sha256"],
-                "q1_gate_sha256": digest(run / "q1/gate.json"), "endpoint_sha256": q1["endpoint_sha256"],
-                "study_sha256": digest(root / "study.json")}
-    require(read_json(root / "selection.json") == expected, "Q2 is not bound to the frozen Q1 winner")
+    validate_selection(run, protocol["reward_recipe"], results["q1"])
     for recipe in study["order"][:study["order"].index(protocol["reward_recipe"])]:
         previous = root / recipe
         binding = read_json(previous / "binding.json")
@@ -241,10 +267,7 @@ def audit(args):
     plan = read_json(args.base / "plan.json")
     check_source(args.base, args.source, plan)
     protocol = read_json(args.protocol)
-    study_path = args.run.parent / "study.json"
-    study = read_json(study_path)
-    require(protocol["study_sha256"] == digest(study_path) and study["order"] == list(SCORERS)
-            and study["base_plan_sha256"] == digest(args.base / "plan.json"), "changed study progression or order")
+    study = validate_study(protocol, args.run.parent / "study.json")
     scorer = validate_recipe(protocol)
     require(protocol["seeds"] == SEEDS and protocol["budget"] == 32768 and protocol["lr"] == 1e-4
             and protocol["accumulation_groups"] == 16 and protocol["base_plan_sha256"] == digest(args.base / "plan.json"),
