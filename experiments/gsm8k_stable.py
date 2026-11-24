@@ -2,6 +2,7 @@
 
 import argparse
 from hashlib import sha256
+from math import isfinite
 from pathlib import Path
 from random import Random
 from statistics import mean, median
@@ -106,7 +107,9 @@ def pair_stats(initial, evaluations, count):
     return result
 
 
-def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, folder, *, training_reward=None):
+def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, folder, *, training_reward=None,
+               training_group_reward=None):
+    require(training_reward is None or training_group_reward is None, "choose one training reward callback")
     folder.mkdir(parents=True, exist_ok=True)
     if (folder / "training.json").exists():
         return read_json(folder / "training.json")
@@ -120,7 +123,15 @@ def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, fol
         for index, prompt_id in enumerate(plan["train_prompt_ids"][str(seed)]):
             prompt_ids, samples = rollouts(model, tokenizer, train[prompt_id], plan["source_protocol"], seed, "fresh", index,
                                            plan["token_budget"] - generated, current, current, version_)
-            if training_reward is not None:
+            if training_group_reward is not None:
+                for sample in samples:
+                    sample["strict_reward"] = sample["reward"]
+                scores = list(training_group_reward(samples, train[prompt_id]))
+                require(len(scores) == len(samples), "expected one score and reason per generated completion")
+                for sample, (score, reason) in zip(samples, scores, strict=True):
+                    require(isfinite(score) and isinstance(reason, str) and reason, "invalid group reward or reason")
+                    sample["reward"], sample["reward_reason"] = score, reason
+            elif training_reward is not None:
                 for sample in samples:
                     sample["strict_reward"] = sample["reward"]
                     sample["reward"], sample["reward_reason"] = training_reward(sample, train[prompt_id])

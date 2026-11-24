@@ -142,7 +142,8 @@ def check_plan(source_path, run, train, test):
     return plan
 
 
-def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, training_sample_validator=None):
+def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, training_sample_validator=None,
+               training_group_reward=None):
     report = read_json(folder / "training.json")
     rows, updates = read_rows(folder / "trace.jsonl"), read_rows(folder / "updates.jsonl")
     require(rows and report["lr"] == lr and report["accumulation_groups"] == accumulation and report["seed"] == seed,
@@ -163,17 +164,29 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, traini
         samples = row["samples"]
         require(len(samples) == min(2, remaining), f"{label}: incomplete or excessive generation slots")
         lengths = []
+        example = train[row["prompt_id"]]
+        if training_group_reward is not None:
+            # Recreate the strict inputs from before the online training reward was assigned.
+            strict_samples = [{**sample, "reward": sample["strict_reward"]} for sample in samples]
+            for sample in strict_samples:
+                del sample["reward_reason"]
         for slot, sample in enumerate(samples):
             cap = min(256, remaining - sum(lengths) - (len(samples) - slot - 1))
             name = f"{seed}:fresh:{index}:{slot}"
             require(sample["id"] == name and sample["behavior_version"] == version
                     and sample["behavior_sha256"] == current and sample["token_cap"] == cap,
                     f"{label}/slot {slot}: wrong source policy or generation cap")
-            example = train[row["prompt_id"]]
             if training_sample_validator is None:
-                lengths.append(validate_sample(sample, float(example["value"]), cap, name, tokenizer))
+                strict = sample if training_group_reward is None else strict_samples[slot]
+                lengths.append(validate_sample(strict, float(example["value"]), cap, name, tokenizer))
             else:
                 lengths.append(training_sample_validator(sample, example, cap, name, tokenizer))
+        if training_group_reward is not None:
+            expected = list(training_group_reward(strict_samples, example))
+            require(len(expected) == len(samples), f"{label}: group scorer returned the wrong number of rewards")
+            for slot, ((score, reason), sample) in enumerate(zip(expected, samples, strict=True)):
+                require(isfinite(score) and score == sample["reward"] and isinstance(reason, str) and reason
+                        and reason == sample["reward_reason"], f"{label}/slot {slot}: group reward or reason changed")
         complete = len(samples) == 2
         values = normalized_advantages(samples) if complete else [0.0]
         require(len(row["advantages"]) == len(values) and
