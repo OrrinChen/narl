@@ -221,10 +221,22 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, traini
     return report, rows, updates
 
 
+def replay_advantages(samples):
+    """Use the original binary replay path; fractional rewards need torch's float32 std reduction."""
+    import numpy as np
+    values = [sample["reward"] for sample in samples]
+    if all(value in (0, 1) for value in values):
+        rewards = np.asarray(values, dtype=np.float32)
+        return ((rewards - rewards.mean()) / (rewards.std(ddof=1) + np.float32(1e-4))).tolist()
+    import torch
+    rewards = torch.tensor([values], dtype=torch.float32)
+    centered = rewards - rewards.mean(dim=1, keepdim=True)
+    return (centered / (rewards.std(dim=1, correction=1, keepdim=True) + 1e-4))[0].tolist()
+
+
 def replay_cases(cases, source_path, plan, tokenizer_path, *, before_update=None):
     from importlib.metadata import version
 
-    import numpy as np
     from safetensors.torch import load_file
     import torch
 
@@ -241,14 +253,21 @@ def replay_cases(cases, source_path, plan, tokenizer_path, *, before_update=None
     for key, (report, rows, updates) in cases.items():
         set_adapter(model, start)
         learner = MlxGrpoLearner(model, report["lr"])
+        fractional_groups, max_double_delta = 0, 0.0
         for update in updates:
             if before_update is not None:
                 before_update(model, tokenizer, key, rows, update)
             groups = []
             for index in update["group_indices"]:
                 row = rows[index]
-                rewards = np.asarray([sample["reward"] for sample in row["samples"]], dtype=np.float32)
-                values = ((rewards - rewards.mean()) / (rewards.std(ddof=1) + np.float32(1e-4))).tolist()
+                values = replay_advantages(row["samples"])
+                require(values == row["advantages"], f"{key}/group {index}: reconstructed float32 advantages differ")
+                if any(s["reward"] not in (0, 1) for s in row["samples"]):
+                    fractional_groups += 1
+                    reference = normalized_advantages(row["samples"])
+                    max_double_delta = max(max_double_delta, *(abs(a - b) for a, b in zip(values, reference, strict=True)))
+                    require(all(isclose(a, b, rel_tol=1e-6, abs_tol=1e-7) for a, b in zip(values, reference, strict=True)),
+                            f"{key}/group {index}: float32 advantages disagree with independent double-precision check")
                 groups.append((row["prompt_ids"], row["samples"], values))
             actual = learner.step_groups(groups)
             expected = update["diagnostics"]
@@ -260,6 +279,11 @@ def replay_cases(cases, source_path, plan, tokenizer_path, *, before_update=None
         require(tensor_digest(adapter_snapshot(model)) == report["final_sha256"], f"{key}: replay endpoint changed")
         checked[key] = {"groups": len(rows), "learner_batches": len(updates),
                         "changed_weights": report["accounting"]["changed_weights"], "every_batch_hash_matches": True}
+        if fractional_groups:
+            checked[key]["fractional_advantage_check"] = {
+                "groups": fractional_groups, "matches_archived_float32": True,
+                "max_abs_delta_vs_float64": max_double_delta, "float64_rtol": 1e-6, "float64_atol": 1e-7,
+            }
         print("replayed", key, checked[key], flush=True)
     return checked
 

@@ -14,6 +14,19 @@ import torch
 @skipUnless(all(find_spec(package) for package in ("mlx", "mlx_lm", "peft")),
             "MLX experiment dependencies are optional")
 class StableGrpoBatchTest(TestCase):
+    def test_audit_reproduces_fractional_advantage_bits(self):
+        from experiments.audit_gsm8k_stable import replay_advantages
+        from experiments.gsm8k_online_lag import advantages
+
+        # Matching one or two of three reference operations gives these step rewards.
+        # NumPy's float32 std can differ from torch's by one ULP for this G2.
+        for scores in ((0.4 / 3, 0.4 * 2 / 3), (1, 0), (0.05, 0.05)):
+            samples = [{"reward": score, "token_ids": [7], "behavior_logprobs": [-1.0], "truncated": False}
+                       for score in scores]
+            expected, _ = advantages([3], samples)
+            actual = torch.tensor(replay_advantages(samples), dtype=torch.float32)
+            self.assertTrue(torch.equal(actual.view(torch.int32), torch.tensor(expected).view(torch.int32)))
+
     def test_frozen_batches_zero_signal_and_budget_tails(self):
         from experiments import gsm8k_stable as runner
 

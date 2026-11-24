@@ -1,0 +1,29 @@
+{
+  "scope": "counterfactual scoring of original 854 already available training samples, not a learning metric",
+  "counts": {
+    "strict": {
+      "groups": 427,
+      "different_reward_groups": 127,
+      "both_strict_zero_differentiated": 0,
+      "train_reward_positive_but_parsed_wrong": 3
+    },
+    "parsed_outcome": {
+      "groups": 427,
+      "different_reward_groups": 125,
+      "both_strict_zero_differentiated": 6,
+      "train_reward_positive_but_parsed_wrong": 0
+    },
+    "verified_steps": {
+      "groups": 427,
+      "different_reward_groups": 191,
+      "both_strict_zero_differentiated": 71,
+      "train_reward_positive_but_parsed_wrong": 118
+    },
+    "verified_format": {
+      "groups": 427,
+      "different_reward_groups": 282,
+      "both_strict_zero_differentiated": 154,
+      "train_reward_positive_but_parsed_wrong": 345
+    }
+  }
+}
