@@ -1,0 +1,10 @@
+.......lr-0.0001-groups-2 0 16/32768 v1 active groups 1
+lr-0.0001-groups-2 0 20/32768 v2 active groups 1
+lr-0.0001-groups-2 0 16/32768 v1 active groups 1
+lr-0.0001-groups-2 0 9/32768 v1 active groups 1
+lr-0.0001-groups-2 0 16/32768 v0 active groups 0
+....
+----------------------------------------------------------------------
+Ran 11 tests in 2.744s
+
+OK

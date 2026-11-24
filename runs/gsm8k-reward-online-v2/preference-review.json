@@ -1,0 +1,736 @@
+{
+  "purpose": "Describe whether two new preference signals point toward real mathematical progress. Model-assisted qualitative review of archived completions by a single reader. No fresh sampling or development/test scoring.",
+  "source_training_sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+  "trace_sha256": {
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl": "c9a7d354dab977ddfff55c562779957e9054beed47ee36a928c2140c0edca401",
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl": "7d4fe72dfabcecc3e9ea89f94786f5c324861376ac0ce2544229a52c5d3e6bac",
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl": "5d87265231feb8431b32e5dcd6461fc6c362b38707340c0749f431c1ebfdfe0f",
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl": "0b271b90b1e4dc95aebcae8a9f678343029706e77963a8d37bd2147577f59561",
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl": "ae8aa6ba6ddc4ab520c2ca6b5f4ff7e7fe7eee558a3b41fd2a7d6273c47d38e8"
+  },
+  "scorer_sha256": {
+    "experiments/gsm8k_training_reward.py": "6852996e0d9ea9e621533403367e452c3c92457b1fbd3e435e3f0b24cfa59cf8",
+    "experiments/gsm8k_training_reward_v2.py": "b7302ca3718d055798dacb4c9c23727e77c8c9ac2e24b6566b25099ca56fbbd9",
+    "experiments/gsm8k_step_reward.py": "2a8ef9537a469a4c65693ff6200ab4426580dcf33dd012938bb6e2d54a130331"
+  },
+  "eligibility": {
+    "step": "Both archived strict rewards and both repaired v2 binary outcomes equal zero; verified_steps scores differ.",
+    "format": "Scores tie under verified_steps and differ under verified_format, including pairs where both are correct."
+  },
+  "selection": "Within each stratum, sort the eligible unique prompt IDs and uniformly draw eight without replacement using Python Random(20261124) for step, Random(20261125) for format. Exclude the selected step IDs from the format pool. When a prompt has several eligible groups keep the first in sorted seed/file and original group order. No group was replaced after inspection.",
+  "blinding": "Before inspecting texts, a separate Random(19483) shuffled the combined 16 cases and assigned A/B by sample([0,1],2). Judgments were recorded from question, gold rationale and A/B texts without displayed scores, seed, stratum or IDs; text itself can reveal formatting. Unmasked scores were joined after judgments.",
+  "rubric": "Compare task-relevant relationships, correctly interpreted intermediate quantities and progress toward the correct solution. Ignore tag compliance by itself. If both solve the mathematics equally, or different partial errors do not support a confident ordering, assign unclear. Wrong but plausible or well formatted final guesses receive no special preference.",
+  "eligible_groups_and_unique_prompts": {
+    "step": {
+      "groups": 65,
+      "unique_prompts": 65
+    },
+    "format": {
+      "groups": 91,
+      "unique_prompts": 89
+    }
+  },
+  "outcome_counts": {
+    "step": {
+      "aligned": 6,
+      "unclear": 0,
+      "opposed": 2
+    },
+    "format": {
+      "aligned": 1,
+      "unclear": 5,
+      "opposed": 2
+    }
+  },
+  "cases": [
+    {
+      "case": "P01",
+      "stratum": "step",
+      "prompt_id": 4819,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "group_index": 16,
+      "question": "Nick is asking all his co-workers to chip in for a birthday gift for Sandra that costs $100. The boss agrees to contribute $15, and Todd volunteers to contribute twice as much since he always has to one-up everyone. If the remaining 5 employees (counting Nick) each pay an equal amount, how much do they each pay?",
+      "reference_answer": "11",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "1:fresh:16:0",
+          "slot": 0,
+          "sha256": "724db3a3d1a5dea3f202a01c3ebc9db137b41425dfced41a7182b5b7bc9e257a",
+          "tokens": 172,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.2,
+          "format": 0.25,
+          "verified_format_reason": "answer_tag/steps=1/2/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "1:fresh:16:1",
+          "slot": 1,
+          "sha256": "32ec106cab79958f587136653b71324efdfeced428da7c20a439cf55b231a17f",
+          "tokens": 153,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "malformed_tag/steps=0/2"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "A",
+      "agreement": "aligned",
+      "manual_reason": "A correctly computes Todd's $30 contribution before double-counting Nick and dividing the wrong amount. B mostly repeats the unrelated pens example."
+    },
+    {
+      "case": "P02",
+      "stratum": "step",
+      "prompt_id": 251,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "group_index": 36,
+      "question": "One pie costs $4 for a piece. Each pie is having 3 pieces. During one hour the bakery can make 12 pies. Creating one pie costs the bakery $0.5. Considering the bakery would be able to sell all pie pieces, how much money would it make?",
+      "reference_answer": "138",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "2:fresh:36:0",
+          "slot": 0,
+          "sha256": "589bedcfbd56ce4d8202c46b6f90a7ad0ac9d73afc2dc51c58c435ee4d4cabf9",
+          "tokens": 237,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "answer_tag/steps=0/4"
+        },
+        {
+          "masked_label": "B",
+          "id": "2:fresh:36:1",
+          "slot": 1,
+          "sha256": "9c66fcc3e7d85bb2f40654bf4c5de40abe6500951a5405396d09cbe014dc1fc2",
+          "tokens": 227,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.1,
+          "format": 0.15000000000000002,
+          "verified_format_reason": "answer_tag/steps=1/4/complete"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "B",
+      "agreement": "aligned",
+      "manual_reason": "B obtains 36 pie pieces from 12 pies of 3 pieces each. A confuses prices with piece counts and never establishes a relevant total."
+    },
+    {
+      "case": "P03",
+      "stratum": "format",
+      "prompt_id": 301,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "group_index": 41,
+      "question": "240 sixth-grade students were asked about the number of novels they read per month. 1/6 of students read three or more novels, 35% of students read two novels, 5/12 of students read one novel, and the rest of the students do not read anything. Calculate the number of students who do not read novels.",
+      "reference_answer": "16",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "1:fresh:41:0",
+          "slot": 0,
+          "sha256": "c8e9ed30d1c08734d52db15793fcfbf47d29dceb82b2ef4b25d8b6f48e4bda66",
+          "tokens": 211,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/0/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "1:fresh:41:1",
+          "slot": 1,
+          "sha256": "d714793504cd6e3b9602706d9038c7388270b3f55aaf957d407538d3278c37f6",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/0"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "unclear",
+      "agreement": "unclear",
+      "manual_reason": "A describes the appropriate complement method but changes the fractions. B preserves two inputs but constructs an invalid population equation. Neither obtains a required subgroup count."
+    },
+    {
+      "case": "P04",
+      "stratum": "format",
+      "prompt_id": 5791,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "group_index": 0,
+      "question": "Elroy decides to enter a walk-a-thon and wants to make sure he ties last year's winner's cash collection. Last year, walkers earned $4 a mile. This year walkers earn $2.75 a mile. If last year's winner collected $44, how many more miles will Elroy walk than last year's winner to collect the same amount of money?",
+      "reference_answer": "5",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "1:fresh:0:0",
+          "slot": 0,
+          "sha256": "bc2146ee70a47494e213fd31dcc9cd5c793ea95d3d2d721dcd3dbb6e557993df",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/3"
+        },
+        {
+          "masked_label": "B",
+          "id": "1:fresh:0:1",
+          "slot": 1,
+          "sha256": "b549bf9c56899aafd5e857c8024aecf445f98cac966927bca13913f6d68e8107",
+          "tokens": 175,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/3/complete"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "unclear",
+      "agreement": "unclear",
+      "manual_reason": "A mentions comparing distances but never finds either distance. B subtracts the rates and treats the difference as a loss. Neither obtains 11 or 16 miles or an equivalent correct relationship."
+    },
+    {
+      "case": "P05",
+      "stratum": "step",
+      "prompt_id": 2781,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "group_index": 83,
+      "question": "When Patrick, Manu, and Amy participate in a race they realize that Patrick finishes the race in 60 seconds. Manu took 12 more seconds to finish the race. If Amy is twice as fast as Manu, how long did it take her to finish the race?",
+      "reference_answer": "36",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "4:fresh:83:0",
+          "slot": 0,
+          "sha256": "53b8ec6372092e2c1c75d9543fe574b0ab370ea8a1b1d0c12eb418e601723da7",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/1"
+        },
+        {
+          "masked_label": "B",
+          "id": "4:fresh:83:1",
+          "slot": 1,
+          "sha256": "fea5ce67e72d59e313fcd3975fcc01d467ce91fb1342f5560fcaca31c25f0af2",
+          "tokens": 96,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.4,
+          "format": 0.45,
+          "verified_format_reason": "answer_tag/steps=1/1/complete"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "B",
+      "agreement": "aligned",
+      "manual_reason": "A recognizes the need to halve Manu's time but changes 60 seconds to 0.6 and never computes Manu's time. B correctly obtains the usable intermediate 72 seconds before misapplying twice as fast."
+    },
+    {
+      "case": "P06",
+      "stratum": "format",
+      "prompt_id": 4823,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "group_index": 17,
+      "question": "As firefighters, Doug, Kai, and Eli have been putting out a lot of fires over the week. Doug has put out 20 fires for the week and Kai has put out 3 times more than Doug. Meanwhile, Eli has put out half the number of fires Kai was able to. How many fires have they put out for the entire week?",
+      "reference_answer": "110",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "2:fresh:17:1",
+          "slot": 1,
+          "sha256": "6f3240027c5d454f952d4c763c7bc48dec43bfc1821c80b54393c0c6292ce854",
+          "tokens": 228,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 1,
+          "outcome": 1,
+          "steps": 1.0,
+          "format": 1.0,
+          "verified_format_reason": "answer_tag"
+        },
+        {
+          "masked_label": "B",
+          "id": "2:fresh:17:0",
+          "slot": 0,
+          "sha256": "ed1b76e9193c38f5a935d8e7af255fcb7e0ad84991294d0d987aaf74cac24b2d",
+          "tokens": 193,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 1,
+          "outcome": 1,
+          "steps": 1.0,
+          "format": 0.8,
+          "verified_format_reason": "answer_tag"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "unclear",
+      "agreement": "unclear",
+      "manual_reason": "Both compute 60, 30 and 110 fires using the correct relationships. They differ in tagging of intermediate quantities, with no mathematical winner."
+    },
+    {
+      "case": "P07",
+      "stratum": "step",
+      "prompt_id": 704,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "group_index": 25,
+      "question": "Sabrina gave 10 cookies to her brother. Her mother gave Sabrina half the number of cookies she gave her brother. Then Sabrina gave two-thirds of her cookies to her sister. If Sabrina had 20 cookies at the start, how many cookies are left with her?",
+      "reference_answer": "5",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "2:fresh:25:0",
+          "slot": 0,
+          "sha256": "d817ac16a69cf2cb04b4e88e9c8ca4fa5d10d7dda650ac552ba05a780f9c5a51",
+          "tokens": 243,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/4/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "2:fresh:25:1",
+          "slot": 1,
+          "sha256": "14f421fb32a9426cdb2e4db7d5376866c1a1d3dd8dd7a0629ef94e2f0c386e8e",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.2,
+          "format": 0.2,
+          "verified_format_reason": "truncated_untagged/steps=2/4"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "B",
+      "agreement": "aligned",
+      "manual_reason": "B obtains the valid initial remainder of 10 and the mother's gift of 5 before applying two-thirds to the wrong subtotal. A adds the gift to the brother instead of subtracting it."
+    },
+    {
+      "case": "P08",
+      "stratum": "format",
+      "prompt_id": 5256,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "group_index": 43,
+      "question": "Alice wants 1000 folded paper cranes. She folds half by herself, and a friend folds a fifth of the remaining paper cranes for her. How many paper cranes does Alice still need to fold?",
+      "reference_answer": "400",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "3:fresh:43:1",
+          "slot": 1,
+          "sha256": "dddcda7366f4704779d6a44d9128c4e9d1739ea4e8a55a901d209e84e9d57dc8",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/3"
+        },
+        {
+          "masked_label": "B",
+          "id": "3:fresh:43:0",
+          "slot": 0,
+          "sha256": "5cae5379941102a9f19ccabfd92b0be69b7a3d83edbe9435a9138dfe2071b627",
+          "tokens": 121,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/3/complete"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "A",
+      "agreement": "opposed",
+      "manual_reason": "Both find 500 cranes. A identifies the remaining pool and the one-fifth operation but uses 1000 as its operand. B repeatedly halves and omits the one-fifth step entirely."
+    },
+    {
+      "case": "P09",
+      "stratum": "format",
+      "prompt_id": 507,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "group_index": 7,
+      "question": "James buys steaks for buy one get one free.  The price is $15 per pound and he buys 20 pounds.  How much did he pay for the steaks?",
+      "reference_answer": "150",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "0:fresh:7:1",
+          "slot": 1,
+          "sha256": "b88b5d1c65f28ff1b1bcf19ca602817a8ded81a1dd2fadc59fa021c96230018e",
+          "tokens": 132,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/2/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "0:fresh:7:0",
+          "slot": 0,
+          "sha256": "102a31bfe7ac92a82fc5d8a83eaca3b39e46285bf1b9c9c0e9d24ce0ebac8350",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/2"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "unclear",
+      "agreement": "unclear",
+      "manual_reason": "A mentions 10 at $15 but contradicts itself on the number free and the total. B computes the valid pre-discount $300, then applies a one-third discount factor. Neither consistently identifies half of 20 pounds as chargeable."
+    },
+    {
+      "case": "P10",
+      "stratum": "step",
+      "prompt_id": 4798,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "group_index": 49,
+      "question": "This morning, farmer Rita's workers collected 30,000 gallons of milk and chilled it in a storage tank. They then spent the next 4 hours pumping milk at a rate of 2,880 gallons/hour from the storage tank into a milk tanker. For the next 7 hours, the workers added more milk into the storage tank, at a rate of 1,500 gallons per hour. How many gallons of milk were left in the storage tank?",
+      "reference_answer": "28980",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "1:fresh:49:1",
+          "slot": 1,
+          "sha256": "13a783cccb58792f867883849ddc2073f2bec9aca8c01924f514301300942b8f",
+          "tokens": 206,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.1,
+          "format": 0.15000000000000002,
+          "verified_format_reason": "answer_tag/steps=1/4/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "1:fresh:49:0",
+          "slot": 0,
+          "sha256": "0e32000960cc396f15d701f66f72f5388d5296bd3fd1b01ecaec64f52f2acf18",
+          "tokens": 254,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "answer_tag/steps=0/4"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "B",
+      "agreement": "opposed",
+      "manual_reason": "Both reach 18,480 gallons. B recognizes that the final 10,500 gallons must be added and misses the result by 50. A subtracts the added milk."
+    },
+    {
+      "case": "P11",
+      "stratum": "step",
+      "prompt_id": 5490,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "group_index": 85,
+      "question": "Junior has 16 rabbits. On Monday, he bought 6 toys for his rabbits. On Wednesday, he bought twice as many toys as he did Monday. On Friday, he bought four times as many toys as he did on Monday, and on the next day he bought half as many toys as he did on Wednesday. If he split all the toys evenly between the rabbits, how many toys would each rabbit have?",
+      "reference_answer": "3",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "1:fresh:85:0",
+          "slot": 0,
+          "sha256": "4217fc4bce4dc99bea92a164c830a343e13fcfc28f1c5d72e6552fe73b43cf14",
+          "tokens": 169,
+          "token_cap": 169,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.1,
+          "format": 0.1,
+          "verified_format_reason": "truncated_untagged/steps=1/4"
+        },
+        {
+          "masked_label": "B",
+          "id": "1:fresh:85:1",
+          "slot": 1,
+          "sha256": "e947a3d4f4a1b23611f8aa204b2bb149785cfb02f5ccc687d1eb10b059e0d5aa",
+          "tokens": 1,
+          "token_cap": 1,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/4"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "A",
+      "agreement": "aligned",
+      "manual_reason": "A gets Wednesday's 12 and Friday's 24 toys although it mishandles the later days. B ends immediately after the word Let."
+    },
+    {
+      "case": "P12",
+      "stratum": "format",
+      "prompt_id": 6043,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "group_index": 69,
+      "question": "Carlos has some gold quarters. If he spends them in a store, they are worth the regular amount. If he melts them down, he can get $100 per ounce. Each quarter weighs 1/5 of an ounce. How many times more money would he get from melting them down instead of spending them in a store?",
+      "reference_answer": "80",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "1:fresh:69:1",
+          "slot": 1,
+          "sha256": "5eeae648879d12d0c664544dc200dace6096cb30194d66dfbbf8b72b9842cd28",
+          "tokens": 219,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/1/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "1:fresh:69:0",
+          "slot": 0,
+          "sha256": "5b11c5dbf23b3da2f36353cc3361db89b6fd05c0ea00d0771e26095de1c849bf",
+          "tokens": 240,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "explicit_conclusion/steps=0/1"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "unclear",
+      "agreement": "unclear",
+      "manual_reason": "A changes the weight of a quarter to 1/20 ounce. B correctly multiplies 3 by 1/5 but then introduces gallons and unrelated quantities. Neither forms the required melt/spend ratio from consistent quantities."
+    },
+    {
+      "case": "P13",
+      "stratum": "step",
+      "prompt_id": 1785,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "group_index": 43,
+      "question": "Angeli had 90 assorted candies. One-third of the candies were lollipops and the rest were candy canes. She then shared the lollipops equally among the boys such that each boy received 3. She then shared the candy canes equally among the girls such that each received 2. How many boys and girls were given altogether?",
+      "reference_answer": "40",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "4:fresh:43:1",
+          "slot": 1,
+          "sha256": "025a4fcdcb949e6808de223a59ab7b1818262290ce1213b8dd2ea95a8e8e3573",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/3"
+        },
+        {
+          "masked_label": "B",
+          "id": "4:fresh:43:0",
+          "slot": 0,
+          "sha256": "b997da84a321aafd453d6c5b4774296cb563355bba2da6f961ad315b501113b9",
+          "tokens": 181,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.13333333333333333,
+          "format": 0.13333333333333333,
+          "verified_format_reason": "answer_tag/steps=1/3"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "A",
+      "agreement": "opposed",
+      "manual_reason": "A correctly assigns 30 lollipops and computes 10 boys before mishandling the girls. B obtains 60 and 30 but labels the quantities inconsistently and never derives the 10 boys."
+    },
+    {
+      "case": "P14",
+      "stratum": "step",
+      "prompt_id": 6390,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "group_index": 33,
+      "question": "Ivar owns a stable. He recently has 3 horses and each horse consumes 5 liters of water for drinking and 2 liters for bathing per day. If he added 5 horses, how many liters of water does Ivar need for all the horses for 28 days?",
+      "reference_answer": "1568",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "3:fresh:33:0",
+          "slot": 0,
+          "sha256": "365290f736005fe09f5df453be65284a6352b70d3f998a51f4dc0bc97c89add2",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/5"
+        },
+        {
+          "masked_label": "B",
+          "id": "3:fresh:33:1",
+          "slot": 1,
+          "sha256": "4929bccc0f8db033c748a57673da080a938fcafb2714769e0dc299f8b2c3becb",
+          "tokens": 229,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.08,
+          "format": 0.08,
+          "verified_format_reason": "nonterminal_tag/steps=1/5"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "B",
+      "agreement": "aligned",
+      "manual_reason": "B identifies 7 liters per horse and 8 horses, then multiplies by only 5. A invents 50 liters and never establishes daily use per horse or the new horse count."
+    },
+    {
+      "case": "P15",
+      "stratum": "format",
+      "prompt_id": 2861,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "group_index": 59,
+      "question": "The Giants baseball team is trying to make their league playoff. They have played 20 games and won 12 of them. To make the playoffs, they need to win 2/3 of their games over the season. If there are 10 games left, how many do they have to win to make the playoffs?",
+      "reference_answer": "8",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "2:fresh:59:1",
+          "slot": 1,
+          "sha256": "2defd6a496881acd31eaae3fb6b39f9285a800a17be81de1ab9a996bc4c1bfb9",
+          "tokens": 236,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/2/complete"
+        },
+        {
+          "masked_label": "B",
+          "id": "2:fresh:59:0",
+          "slot": 0,
+          "sha256": "da6c1bca08516c2d923e06b838116ab33670111ed2941e583211921022d1ceab",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/2"
+        }
+      ],
+      "reward_preference": "A",
+      "manual_math_preference": "B",
+      "agreement": "opposed",
+      "manual_reason": "B outlines the correct sequence of taking two-thirds of the season total then subtracting prior wins, although it uses the wrong operands. A instead focuses on two-thirds of the remaining 10 games."
+    },
+    {
+      "case": "P16",
+      "stratum": "format",
+      "prompt_id": 3620,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "group_index": 69,
+      "question": "The gauge on a water tank shows that the tank is 1/3 full of water. To fill the tank, 16 gallons of water are added. How many gallons of water does the tank hold when full?",
+      "reference_answer": "24",
+      "answers": [
+        {
+          "masked_label": "A",
+          "id": "0:fresh:69:0",
+          "slot": 0,
+          "sha256": "639dba3c51e5a9b484203d571a99062c9b1ce29a84494ab7d67432d526212657",
+          "tokens": 256,
+          "token_cap": 256,
+          "truncated": true,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.0,
+          "verified_format_reason": "truncated_untagged/steps=0/1"
+        },
+        {
+          "masked_label": "B",
+          "id": "0:fresh:69:1",
+          "slot": 1,
+          "sha256": "c6bea2a637f86263e55b1a346952b821006930a30b7302f965a90df3e49411b0",
+          "tokens": 69,
+          "token_cap": 256,
+          "truncated": false,
+          "strict": 0,
+          "outcome": 0,
+          "steps": 0.0,
+          "format": 0.05,
+          "verified_format_reason": "answer_tag/steps=0/1/complete"
+        }
+      ],
+      "reward_preference": "B",
+      "manual_math_preference": "B",
+      "agreement": "aligned",
+      "manual_reason": "B writes the correct relationship 2/3 times 24 equals 16 but then claims 18 gallons. A switches between unrelated units and repeats text, with no justified capacity relationship."
+    }
+  ],
+  "limits": "Eight pairs per stratum are qualitative evidence about the signal in these specific generated answers. The reviewer was not independent of the experiment design. Some original runs hit token-budget tails with asymmetric answer caps. The counts are not calibrated rates on new questions, and do not estimate online learning effects."
+}

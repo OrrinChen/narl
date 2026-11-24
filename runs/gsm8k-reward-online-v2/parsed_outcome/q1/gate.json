@@ -1,0 +1,165 @@
+{
+  "passed": false,
+  "selected": "parsed_outcome",
+  "qualification_index": 0,
+  "protocol_sha256": "758681347b63b30987c130a8680110abd395d623c1cf4b526900ba05b1811930",
+  "endpoint_sha256": {
+    "0": "f5f6428f87d8ba1ae3478bab8851cd640285182fd0499c103d6020a9d5e6421f",
+    "1": "ff92fed879c5b44e2b7e9b7ab25e9a1f1ce2116f69d47faefb5272dc13445680",
+    "2": "712fca25e809093e7ab67f6266db89511a166c47d499cf832985f1523832d66f",
+    "3": "bd284ac1174fbe173d9539e17d3523f15cd0ee6dccdde185fc2e37792a845210",
+    "4": "6ff347db7e57ac31f1572313b561eda2c652355363e1d7a07edfb9c3362baefc"
+  },
+  "statistics": {
+    "per_seed": {
+      "0": {
+        "baseline_correct": 46,
+        "candidate_correct": 48,
+        "wins": 8,
+        "losses": 6,
+        "accuracy_delta": 0.015625,
+        "identical_greedy_token_outputs": 43,
+        "exact_mcnemar_p": 0.79052734375
+      },
+      "1": {
+        "baseline_correct": 46,
+        "candidate_correct": 44,
+        "wins": 4,
+        "losses": 6,
+        "accuracy_delta": -0.015625,
+        "identical_greedy_token_outputs": 50,
+        "exact_mcnemar_p": 0.75390625
+      },
+      "2": {
+        "baseline_correct": 46,
+        "candidate_correct": 52,
+        "wins": 9,
+        "losses": 3,
+        "accuracy_delta": 0.046875,
+        "identical_greedy_token_outputs": 47,
+        "exact_mcnemar_p": 0.14599609375
+      },
+      "3": {
+        "baseline_correct": 46,
+        "candidate_correct": 51,
+        "wins": 10,
+        "losses": 5,
+        "accuracy_delta": 0.0390625,
+        "identical_greedy_token_outputs": 48,
+        "exact_mcnemar_p": 0.3017578125
+      },
+      "4": {
+        "baseline_correct": 46,
+        "candidate_correct": 55,
+        "wins": 11,
+        "losses": 2,
+        "accuracy_delta": 0.0703125,
+        "identical_greedy_token_outputs": 46,
+        "exact_mcnemar_p": 0.0224609375
+      }
+    },
+    "positive_seeds": 4,
+    "tied_seeds": 0,
+    "negative_seeds": 1,
+    "median_accuracy_gain": 0.0390625,
+    "min_accuracy_gain": -0.015625,
+    "max_accuracy_gain": 0.0703125,
+    "exact_seed_sign_flip_p": 0.1875,
+    "bootstrap": {
+      "seed": 80161,
+      "replicates": 10000,
+      "question_block_median_95": [
+        -0.015625,
+        0.0859375
+      ],
+      "question_block_mean_95": [
+        -0.0078125,
+        0.0734375
+      ],
+      "crossed_seed_question_median_95": [
+        -0.03125,
+        0.09375
+      ],
+      "crossed_seed_question_mean_95": [
+        -0.01875,
+        0.084375
+      ]
+    }
+  },
+  "vs_strict": {
+    "per_seed": {
+      "0": {
+        "baseline_correct": 50,
+        "candidate_correct": 48,
+        "wins": 3,
+        "losses": 5,
+        "accuracy_delta": -0.015625,
+        "identical_greedy_token_outputs": 61,
+        "exact_mcnemar_p": 0.7265625
+      },
+      "1": {
+        "baseline_correct": 50,
+        "candidate_correct": 44,
+        "wins": 3,
+        "losses": 9,
+        "accuracy_delta": -0.046875,
+        "identical_greedy_token_outputs": 54,
+        "exact_mcnemar_p": 0.14599609375
+      },
+      "2": {
+        "baseline_correct": 48,
+        "candidate_correct": 52,
+        "wins": 7,
+        "losses": 3,
+        "accuracy_delta": 0.03125,
+        "identical_greedy_token_outputs": 62,
+        "exact_mcnemar_p": 0.34375
+      },
+      "3": {
+        "baseline_correct": 45,
+        "candidate_correct": 51,
+        "wins": 11,
+        "losses": 5,
+        "accuracy_delta": 0.046875,
+        "identical_greedy_token_outputs": 67,
+        "exact_mcnemar_p": 0.210113525390625
+      },
+      "4": {
+        "baseline_correct": 44,
+        "candidate_correct": 55,
+        "wins": 15,
+        "losses": 4,
+        "accuracy_delta": 0.0859375,
+        "identical_greedy_token_outputs": 42,
+        "exact_mcnemar_p": 0.0192108154296875
+      }
+    },
+    "positive_seeds": 3,
+    "tied_seeds": 0,
+    "negative_seeds": 2,
+    "median_accuracy_gain": 0.03125,
+    "min_accuracy_gain": -0.046875,
+    "max_accuracy_gain": 0.0859375,
+    "exact_seed_sign_flip_p": 0.5,
+    "bootstrap": {
+      "seed": 80161,
+      "replicates": 10000,
+      "question_block_median_95": [
+        -0.015625,
+        0.0703125
+      ],
+      "question_block_mean_95": [
+        -0.003125,
+        0.046875
+      ],
+      "crossed_seed_question_median_95": [
+        -0.0546875,
+        0.1015625
+      ],
+      "crossed_seed_question_mean_95": [
+        -0.03125,
+        0.0734375
+      ]
+    }
+  }
+}
