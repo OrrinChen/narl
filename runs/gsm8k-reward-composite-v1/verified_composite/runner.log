@@ -1,0 +1,46 @@
+q1 initial 46 / 128
+lr-0.0001-groups-16 1 6081/32768 v1 active groups 9
+lr-0.0001-groups-16 1 11851/32768 v2 active groups 7
+lr-0.0001-groups-16 1 18313/32768 v3 active groups 8
+lr-0.0001-groups-16 1 24443/32768 v4 active groups 8
+lr-0.0001-groups-16 1 31671/32768 v5 active groups 8
+lr-0.0001-groups-16 1 32768/32768 v5 active groups 0
+q1 seed-1 49 / 128
+q1 strict-seed-1 50 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 3 5446/32768 v1 active groups 8
+lr-0.0001-groups-16 3 11736/32768 v2 active groups 8
+lr-0.0001-groups-16 3 18121/32768 v3 active groups 8
+lr-0.0001-groups-16 3 23938/32768 v4 active groups 11
+lr-0.0001-groups-16 3 30484/32768 v5 active groups 9
+lr-0.0001-groups-16 3 32768/32768 v6 active groups 3
+q1 seed-3 48 / 128
+q1 strict-seed-3 45 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 4 6238/32768 v1 active groups 8
+lr-0.0001-groups-16 4 12846/32768 v2 active groups 6
+lr-0.0001-groups-16 4 18848/32768 v3 active groups 12
+lr-0.0001-groups-16 4 24913/32768 v4 active groups 11
+lr-0.0001-groups-16 4 30599/32768 v5 active groups 9
+lr-0.0001-groups-16 4 32768/32768 v6 active groups 3
+q1 seed-4 49 / 128
+q1 strict-seed-4 44 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 0 6281/32768 v1 active groups 8
+lr-0.0001-groups-16 0 13319/32768 v2 active groups 7
+lr-0.0001-groups-16 0 19628/32768 v3 active groups 7
+lr-0.0001-groups-16 0 26325/32768 v4 active groups 5
+lr-0.0001-groups-16 0 32743/32768 v5 active groups 8
+lr-0.0001-groups-16 0 32768/32768 v5 active groups 0
+q1 seed-0 48 / 128
+q1 strict-seed-0 50 / 128
+q1 initial 46 / 128
+lr-0.0001-groups-16 2 6058/32768 v1 active groups 8
+lr-0.0001-groups-16 2 12611/32768 v2 active groups 8
+lr-0.0001-groups-16 2 18998/32768 v3 active groups 8
+lr-0.0001-groups-16 2 25100/32768 v4 active groups 7
+lr-0.0001-groups-16 2 30936/32768 v5 active groups 8
+lr-0.0001-groups-16 2 32768/32768 v6 active groups 2
+q1 seed-2 48 / 128
+q1 strict-seed-2 48 / 128
+q1 passed False

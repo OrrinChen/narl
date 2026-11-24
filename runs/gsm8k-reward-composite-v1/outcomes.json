@@ -1,0 +1,53 @@
+{
+  "study_sha256": "0633f4ae2d68fdfe72cc538c6a40a5c96652e175072927ccc85061caf9a38be0",
+  "status": {
+    "selected": null,
+    "q2_scored": false,
+    "stable": false
+  },
+  "candidates": {
+    "verified_composite": {
+      "audit_sha256": "5a17b884d894c53db3bf8a9d0e8fc972d6a5bee2a4e7833114f58d3c7bb36afd",
+      "stage": "q1_failed",
+      "q1_common_initial": 46,
+      "q1_scores": {
+        "0": 48,
+        "1": 49,
+        "2": 48,
+        "3": 48,
+        "4": 49
+      },
+      "strict_q1_scores": {
+        "0": 50,
+        "1": 50,
+        "2": 48,
+        "3": 45,
+        "4": 44
+      },
+      "q1_passed": false,
+      "runs": 5,
+      "online_generated_response_tokens": 163840,
+      "nonzero_advantage_tokens": 80287,
+      "complete_groups": 424,
+      "groups_with_nonzero_advantages": 212,
+      "optimizer_batches_replayed": 30,
+      "post_divergence_generation_probes": 5,
+      "elapsed_training_s": 1731.1064567477442,
+      "q1_statistics": {
+        "median_delta_pp": 1.5625,
+        "question_block_95_pp": [
+          -2.34375,
+          6.25
+        ]
+      },
+      "q1_vs_strict": {
+        "median_delta_pp": 0.0,
+        "question_block_95_pp": [
+          -2.34375,
+          3.90625
+        ]
+      }
+    }
+  },
+  "total_online_generation_tokens": 163840
+}

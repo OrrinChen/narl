@@ -1,0 +1,7 @@
+{
+  "protocol_sha256": "77caa43ee62b61ed5f94791b93a7d22384d3bd7acce2bcbe00113a91883f2022",
+  "base_plan_sha256": "a7d39ea61203f04ab2216f9a8e5abf82e160c5d3d9a55d3311a9cfa10d8adab0",
+  "reward_recipe": "verified_composite",
+  "reward_module_sha256": "14840a066438c674524b8a65269f02c8563b2265ea9874ed2aea081d4ffcc46c",
+  "start_sha256": "2c6a2883a67adfb9e2f5bb2ff2f5c14dcab8203847b0f3522b1790f021f56dd2"
+}
