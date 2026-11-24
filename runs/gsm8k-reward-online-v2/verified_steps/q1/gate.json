@@ -1,0 +1,165 @@
+{
+  "passed": false,
+  "selected": "verified_steps",
+  "qualification_index": 0,
+  "protocol_sha256": "9cb2b20a670cacc5c2218f1aa97edc36ea5e2e35c2bdf4e0d27dcfa0ae2b99f0",
+  "endpoint_sha256": {
+    "0": "0357d767006ec67c7be21c073573426f57fb71f57c27d513911504e5593ae28e",
+    "1": "323f84db36f5c7594a2ebf73aa2be4299c3b72acfcb463db24391452ddeb0de4",
+    "2": "3b90fa60ce2cdfd3abeb34a42eb806a25faba2c3503490ff1ab4352ae7c4e95e",
+    "3": "28abc52d4f7b401e577f83798341c6fab4968773ceec1ad399b19c08f0fff1e6",
+    "4": "865daf2d8d6608cbdfdc244ee5c75569a0096e31d84b0ac778b934c438e56b5d"
+  },
+  "statistics": {
+    "per_seed": {
+      "0": {
+        "baseline_correct": 46,
+        "candidate_correct": 52,
+        "wins": 7,
+        "losses": 1,
+        "accuracy_delta": 0.046875,
+        "identical_greedy_token_outputs": 56,
+        "exact_mcnemar_p": 0.0703125
+      },
+      "1": {
+        "baseline_correct": 46,
+        "candidate_correct": 46,
+        "wins": 7,
+        "losses": 7,
+        "accuracy_delta": 0.0,
+        "identical_greedy_token_outputs": 46,
+        "exact_mcnemar_p": 1.0
+      },
+      "2": {
+        "baseline_correct": 46,
+        "candidate_correct": 48,
+        "wins": 8,
+        "losses": 6,
+        "accuracy_delta": 0.015625,
+        "identical_greedy_token_outputs": 42,
+        "exact_mcnemar_p": 0.79052734375
+      },
+      "3": {
+        "baseline_correct": 46,
+        "candidate_correct": 46,
+        "wins": 5,
+        "losses": 5,
+        "accuracy_delta": 0.0,
+        "identical_greedy_token_outputs": 45,
+        "exact_mcnemar_p": 1.0
+      },
+      "4": {
+        "baseline_correct": 46,
+        "candidate_correct": 47,
+        "wins": 5,
+        "losses": 4,
+        "accuracy_delta": 0.0078125,
+        "identical_greedy_token_outputs": 53,
+        "exact_mcnemar_p": 1.0
+      }
+    },
+    "positive_seeds": 3,
+    "tied_seeds": 2,
+    "negative_seeds": 0,
+    "median_accuracy_gain": 0.0078125,
+    "min_accuracy_gain": 0.0,
+    "max_accuracy_gain": 0.046875,
+    "exact_seed_sign_flip_p": 0.25,
+    "bootstrap": {
+      "seed": 80161,
+      "replicates": 10000,
+      "question_block_median_95": [
+        -0.03125,
+        0.0546875
+      ],
+      "question_block_mean_95": [
+        -0.021875,
+        0.0515625
+      ],
+      "crossed_seed_question_median_95": [
+        -0.0390625,
+        0.0625
+      ],
+      "crossed_seed_question_mean_95": [
+        -0.0296875,
+        0.05625
+      ]
+    }
+  },
+  "vs_strict": {
+    "per_seed": {
+      "0": {
+        "baseline_correct": 50,
+        "candidate_correct": 52,
+        "wins": 7,
+        "losses": 5,
+        "accuracy_delta": 0.015625,
+        "identical_greedy_token_outputs": 62,
+        "exact_mcnemar_p": 0.7744140625
+      },
+      "1": {
+        "baseline_correct": 50,
+        "candidate_correct": 46,
+        "wins": 4,
+        "losses": 8,
+        "accuracy_delta": -0.03125,
+        "identical_greedy_token_outputs": 53,
+        "exact_mcnemar_p": 0.3876953125
+      },
+      "2": {
+        "baseline_correct": 48,
+        "candidate_correct": 48,
+        "wins": 7,
+        "losses": 7,
+        "accuracy_delta": 0.0,
+        "identical_greedy_token_outputs": 45,
+        "exact_mcnemar_p": 1.0
+      },
+      "3": {
+        "baseline_correct": 45,
+        "candidate_correct": 46,
+        "wins": 8,
+        "losses": 7,
+        "accuracy_delta": 0.0078125,
+        "identical_greedy_token_outputs": 51,
+        "exact_mcnemar_p": 1.0
+      },
+      "4": {
+        "baseline_correct": 44,
+        "candidate_correct": 47,
+        "wins": 9,
+        "losses": 6,
+        "accuracy_delta": 0.0234375,
+        "identical_greedy_token_outputs": 47,
+        "exact_mcnemar_p": 0.60723876953125
+      }
+    },
+    "positive_seeds": 3,
+    "tied_seeds": 1,
+    "negative_seeds": 1,
+    "median_accuracy_gain": 0.0078125,
+    "min_accuracy_gain": -0.03125,
+    "max_accuracy_gain": 0.0234375,
+    "exact_seed_sign_flip_p": 0.875,
+    "bootstrap": {
+      "seed": 80161,
+      "replicates": 10000,
+      "question_block_median_95": [
+        -0.0234375,
+        0.03125
+      ],
+      "question_block_mean_95": [
+        -0.015625,
+        0.0234375
+      ],
+      "crossed_seed_question_median_95": [
+        -0.046875,
+        0.0546875
+      ],
+      "crossed_seed_question_mean_95": [
+        -0.03125,
+        0.0390625
+      ]
+    }
+  }
+}

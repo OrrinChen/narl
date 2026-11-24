@@ -1,0 +1,13 @@
+{
+  "reason": "Interrupted local training process before endpoint; restored optimizer state by replaying only its previously generated prefix. Generated the remaining groups on policy with their original per-group RNG.",
+  "archived_groups": 63,
+  "archived_tokens": 25427,
+  "restored_complete_batches": 3,
+  "pending_groups_before_recovery": 15,
+  "trace_prefix_sha256": "65c154f67939f9772f08b2016c42107d7a8a9602a336beb01d449358025ee002",
+  "updates_prefix_sha256": "074e4e720b54a135ff9b1c545cc4b3411056711d1a1dd40245c5e72f1d75e359",
+  "all_restored_trace_rows_and_updates_equal": true,
+  "newly_generated_tokens_after_prefix": 7341,
+  "training_elapsed_s_scope": "Includes the optimizer replay and newly generated suffix, excludes time originally spent generating the recovered prefix.",
+  "unflushed_partial_group_cost": "Unknown if interrupted before flushing a group. Each completed endpoint contains exactly 32768 training response tokens."
+}
