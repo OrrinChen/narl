@@ -106,7 +106,7 @@ def pair_stats(initial, evaluations, count):
     return result
 
 
-def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, folder):
+def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, folder, *, training_reward=None):
     folder.mkdir(parents=True, exist_ok=True)
     if (folder / "training.json").exists():
         return read_json(folder / "training.json")
@@ -120,6 +120,10 @@ def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, fol
         for index, prompt_id in enumerate(plan["train_prompt_ids"][str(seed)]):
             prompt_ids, samples = rollouts(model, tokenizer, train[prompt_id], plan["source_protocol"], seed, "fresh", index,
                                            plan["token_budget"] - generated, current, current, version_)
+            if training_reward is not None:
+                for sample in samples:
+                    sample["strict_reward"] = sample["reward"]
+                    sample["reward"], sample["reward_reason"] = training_reward(sample, train[prompt_id])
             emitted = sum(len(s["token_ids"]) for s in samples)
             complete = len(samples) == plan["group_size"]
             values, signal = advantages(prompt_ids, samples) if complete else ([0.0] * len(samples), 0)

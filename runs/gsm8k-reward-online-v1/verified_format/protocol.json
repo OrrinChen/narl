@@ -1,0 +1,18 @@
+{
+  "study_sha256": "bd2aa9e9a7add73e178ba5233fed862fd9f564943cb43f1244590baea0794eef",
+  "base_plan_sha256": "a7d39ea61203f04ab2216f9a8e5abf82e160c5d3d9a55d3311a9cfa10d8adab0",
+  "reward_recipe": "verified_format",
+  "score_module": "experiments.gsm8k_step_reward",
+  "reward_module_sha256": "4c0aeeccae5ac80c91f43be82beb3001eadef436942b7f1f00f39449ab897b5b",
+  "outcome_module_sha256": "6852996e0d9ea9e621533403367e452c3c92457b1fbd3e435e3f0b24cfa59cf8",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "lr": 0.0001,
+  "accumulation_groups": 16,
+  "budget": 32768
+}

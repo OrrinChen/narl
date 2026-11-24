@@ -1,0 +1,8 @@
+{
+  "reason": "Independent parser check found two false rejections of correct answers. Superseded before any new model Q1 evaluation.",
+  "logged_groups": 16,
+  "logged_generated_tokens": 6238,
+  "in_flight_tokens": "Any tokens in the interrupted unfinished group were not logged.",
+  "candidate_Q1_answers": 0,
+  "Q2_answers": 0
+}
