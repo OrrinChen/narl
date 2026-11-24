@@ -7,7 +7,7 @@ from pathlib import Path
 from safetensors.torch import load_file
 import torch
 
-from experiments.audit_gsm8k_reward_online import OUTCOME_V3, validate_recipe, validate_selection, validate_study
+from experiments.audit_gsm8k_reward_online import COMPOSITE, OUTCOME_V3, effective_plan, validate_recipe, validate_selection, validate_study
 from experiments.audit_gsm8k_stable import comparison
 from experiments.audit_kv_online import read_json, require
 from experiments.gsm8k_budget import evaluate
@@ -28,8 +28,8 @@ def bind(args):
     recipe = config["reward_recipe"]
     scorer = validate_recipe(config)
     study_path = args.out.parent / "study.json"
-    if config["score_module"] == OUTCOME_V3 or study_path.exists():
-        validate_study(config, study_path)
+    if config["score_module"] == OUTCOME_V3 or recipe == COMPOSITE or study_path.exists():
+        base = effective_plan(base, validate_study(config, study_path))
     require(config["base_plan_sha256"] == digest(args.base / "plan.json") == audit["plan_sha256"]
             and audit["audit_passed"] and not audit["partial"], "frozen base study or its audit changed")
     require(config["seeds"] == base["seeds"] == SEEDS and config["budget"] == base["token_budget"] == 32768
@@ -125,8 +125,9 @@ def run(args):
     for seed in args.seeds:
         folder = args.out / f"models/seed-{seed}"
         if args.stage in ("train", "both"):
+            kwargs = {"training_group_reward" if config["reward_recipe"] == COMPOSITE else "training_reward": reward}
             train_case(model, tokenizer, train, plan, start, config["lr"], config["accumulation_groups"], seed, folder,
-                       training_reward=reward)
+                       **kwargs)
         training = read_json(folder / "training.json")
         require(training["seed"] == seed and training["lr"] == config["lr"]
                 and training["accumulation_groups"] == config["accumulation_groups"]

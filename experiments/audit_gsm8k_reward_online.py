@@ -20,6 +20,8 @@ SCORERS = {
 }
 OUTCOME_V2 = "experiments.gsm8k_training_reward_v2"
 OUTCOME_V3 = "experiments.gsm8k_training_reward_v3"
+COMPOSITE = "verified_composite"
+COMPOSITE_MODULE = "experiments.gsm8k_composite_reward"
 
 
 def behavior(sample):
@@ -52,8 +54,15 @@ def check_source(base, source, plan):
 
 def validate_recipe(protocol):
     recipe = protocol["reward_recipe"]
-    require(recipe in SCORERS, "unregistered reward recipe")
-    module_name, func = SCORERS[recipe]
+    if recipe == COMPOSITE:
+        require(protocol["score_module"] == COMPOSITE_MODULE and "parser_base_sha256" in protocol,
+                "composite group reward requires its registered sources")
+        module_name, func = COMPOSITE_MODULE, "score_group_training_reward"
+        step = import_module(SCORERS["verified_steps"][0])
+        require(protocol.get("step_module_sha256") == digest(Path(step.__file__)), "original step reward changed")
+    else:
+        require(recipe in SCORERS, "unregistered reward recipe")
+        module_name, func = SCORERS[recipe]
     outcome_name = SCORERS["parsed_outcome"][0]
     v3 = protocol["score_module"] == OUTCOME_V3
     if v3:
@@ -83,13 +92,30 @@ def validate_study(protocol, path):
     study = read_json(path)
     require(protocol["study_sha256"] == digest(path) and study["base_plan_sha256"] == protocol["base_plan_sha256"],
             "changed study or base plan")
-    if protocol["score_module"] == OUTCOME_V3:
+    if protocol["reward_recipe"] == COMPOSITE:
+        require(study["order"] == [COMPOSITE] and study.get("score_module") == COMPOSITE_MODULE,
+                "composite reward requires its separate study")
+    elif protocol["score_module"] == OUTCOME_V3:
         require(study.get("score_module") == OUTCOME_V3 and study["order"] == ["parsed_outcome"],
                 "v3 requires its own frozen binary outcome study")
     else:
         require(study.get("score_module") != OUTCOME_V3 and study["order"] == list(SCORERS),
                 "changed study progression or order")
     return study
+
+
+def effective_plan(base, study):
+    if study["order"] != [COMPOSITE]:
+        return base
+    ids = study["confirmation_prompt_ids"]
+    excluded = set(study["excluded_ids"])
+    schedules = {s: items[:study["train_schedule_prefix"]] for s, items in base["train_prompt_ids"].items()}
+    used = set(base["qualification_excluded_prior_train_ids"])
+    for items in [*schedules.values(), *base["qualification_prompt_ids"]]:
+        used.update(items)
+    require(study["train_schedule_prefix"] == 512 and len(ids) == len(set(ids)) == 128
+            and used <= excluded and not excluded.intersection(ids), "supplemental confirmation overlaps prior data")
+    return {**base, "train_prompt_ids": schedules, "qualification_prompt_ids": [base["qualification_prompt_ids"][0], ids]}
 
 
 def check_training(folder, base, plan, train, tokenizer, seed, scorer, recipe):
@@ -99,15 +125,18 @@ def check_training(folder, base, plan, train, tokenizer, seed, scorer, recipe):
         strict.pop("reward_reason")
         n = validate_sample(strict, float(example["value"]), cap, label, tokenizer)
         # Reconstruct the input the runner saw before overwriting "reward".
-        score, reason = scorer(strict, example["value"] if recipe == "parsed_outcome" else example)
-        require(isfinite(score) and isclose(sample["reward"], score, abs_tol=1e-12, rel_tol=0)
-                and sample["reward_reason"] == reason, f"{label}: training reward or reason mismatch")
+        if recipe != COMPOSITE:
+            score, reason = scorer(strict, example["value"] if recipe == "parsed_outcome" else example)
+            require(isfinite(score) and isclose(sample["reward"], score, abs_tol=1e-12, rel_tol=0)
+                    and sample["reward_reason"] == reason, f"{label}: training reward or reason mismatch")
         counts["samples"] += 1
         counts["changed_reward"] += int(sample["reward"] != sample["strict_reward"])
-        reasons[reason] += 1
+        reasons[sample["reward_reason"]] += 1
         return n
 
-    case = check_case(folder, plan, train, tokenizer, 0.0001, 16, seed, training_sample_validator=sample_check)
+    group_kwargs = {"training_group_reward": scorer} if recipe == COMPOSITE else {}
+    case = check_case(folder, plan, train, tokenizer, 0.0001, 16, seed, training_sample_validator=sample_check,
+                      **group_kwargs)
     report, rows, updates = case
     original_folder = base / "models" / ORIGINAL / f"seed-{seed}"
     original_train = read_json(original_folder / "training.json")
@@ -269,6 +298,7 @@ def audit(args):
     protocol = read_json(args.protocol)
     study = validate_study(protocol, args.run.parent / "study.json")
     scorer = validate_recipe(protocol)
+    plan = effective_plan(plan, study)
     require(protocol["seeds"] == SEEDS and protocol["budget"] == 32768 and protocol["lr"] == 1e-4
             and protocol["accumulation_groups"] == 16 and protocol["base_plan_sha256"] == digest(args.base / "plan.json"),
             "unexpected training setup or source plan")

@@ -1,10 +1,33 @@
-.......lr-0.0001-groups-2 0 16/32768 v1 active groups 1
+......lr-0.0001-groups-1 0 2/32768 v1 active groups 1
+.........outcome Q1 seed 4: 48 (initial 46)
+outcome Q1 seed 0: 48 (initial 46)
+outcome Q1 seed 3: 48 (initial 46)
+outcome Q1 seed 1: 48 (initial 46)
+outcome Q1 seed 2: 48 (initial 46)
+steps Q1 seed 4: 45 (initial 46)
+format Q1 seed 4: 48 (initial 46)
+format Q1 seed 0: 48 (initial 46)
+format Q1 seed 3: 48 (initial 46)
+format Q1 seed 1: 48 (initial 46)
+format Q1 seed 2: 48 (initial 46)
+outcome Q1 seed 4: 48 (initial 46)
+outcome Q1 seed 0: 48 (initial 46)
+outcome Q1 seed 3: 48 (initial 46)
+outcome Q1 seed 1: 48 (initial 46)
+outcome Q1 seed 2: 48 (initial 46)
+steps Q1 seed 4: 45 (initial 46)
+format Q1 seed 4: 48 (initial 46)
+format Q1 seed 0: 48 (initial 46)
+format Q1 seed 3: 48 (initial 46)
+format Q1 seed 1: 48 (initial 46)
+format Q1 seed 2: 48 (initial 46)
+..lr-0.0001-groups-2 0 16/32768 v1 active groups 1
 lr-0.0001-groups-2 0 20/32768 v2 active groups 1
 lr-0.0001-groups-2 0 16/32768 v1 active groups 1
 lr-0.0001-groups-2 0 9/32768 v1 active groups 1
 lr-0.0001-groups-2 0 16/32768 v0 active groups 0
-....
+.........
 ----------------------------------------------------------------------
-Ran 11 tests in 2.744s
+Ran 26 tests in 9.071s
 
 OK

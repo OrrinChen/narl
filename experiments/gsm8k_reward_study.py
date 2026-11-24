@@ -41,11 +41,26 @@ def run_stage(folder, stage, seeds):
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True)
 
 
-def study(source, out):
+def study(source, out, prior=None):
     study_path = out / "study.json"
     freeze(study_path, (source / "study.json").read_bytes())
     plan = read(study_path)
     order = plan["order"]
+    if "source_prior_study_sha256" in plan:
+        if prior is None or digest(prior / "study.json") != plan["source_prior_study_sha256"]:
+            raise ValueError("Supplemental reward study requires its registered precursor")
+        status = read(prior / "status.json")
+        if status["stable"]:
+            raise ValueError("Supplemental study did not trigger: the previous candidate was confirmed")
+        for name in read(prior / "study.json")["order"]:
+            previous = prior / name
+            if (previous / "stop.json").is_file():
+                continue
+            decision = read(previous / "q1/gate.json")
+            if decision["passed"]:
+                if status["selected"] != name or not status["q2_scored"] or read(previous / "q2/gate.json")["passed"]:
+                    raise ValueError("Previous confirmation is missing or successful")
+                break
     for recipe in order:
         folder = out / recipe
         folder.mkdir(exist_ok=True)
@@ -90,11 +105,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, default=Path("runs/gsm8k-reward-online-v2"))
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--prior", type=Path, default=Path("runs/gsm8k-reward-online-v2"))
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     with (args.out / ".study.lock").open("a") as handle:
         fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        study(args.source, args.out)
+        study(args.source, args.out, args.prior)
 
 
 if __name__ == "__main__":
