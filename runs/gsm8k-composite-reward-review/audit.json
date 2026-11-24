@@ -1,0 +1,885 @@
+{
+  "summary": {
+    "uncertain": 2,
+    "supports": 12,
+    "opposes": 1
+  },
+  "pairs": [
+    {
+      "id": 71,
+      "simple_ab": [
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.4,
+          "answer_tag/composite=2/2"
+        ],
+        [
+          0.2,
+          "answer_tag/composite=1/2"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "tie",
+        "tie"
+      ],
+      "match": "uncertain",
+      "outcome_v2_ab": [
+        [
+          0,
+          "answer_tag"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "answer_tag"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 290,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/6"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/6"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.0,
+          "truncated_untagged/composite=0/6"
+        ],
+        [
+          0.06666666666666667,
+          "truncated_untagged/composite=1/6"
+        ]
+      ],
+      "winner": "B",
+      "historical_winner": "B",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 1199,
+      "simple_ab": [
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.0,
+          "answer_tag/composite=0/2"
+        ],
+        [
+          0.2,
+          "truncated_untagged/composite=1/2"
+        ]
+      ],
+      "winner": "B",
+      "historical_winner": "B",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "answer_tag"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "answer_tag"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 1696,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/2"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.0,
+          "truncated_untagged/composite=0/2"
+        ],
+        [
+          0.2,
+          "answer_tag/composite=1/2"
+        ]
+      ],
+      "winner": "B",
+      "historical_winner": "B",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 2502,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/2"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.26666666666666666,
+          "truncated_untagged/composite=2/3"
+        ],
+        [
+          0.13333333333333333,
+          "answer_tag/composite=1/3"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "A",
+        "A"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 2742,
+      "simple_ab": [
+        [
+          0.0,
+          "no_final_claim/steps=0/3"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/3"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.1,
+          "no_final_claim/composite=1/4"
+        ],
+        [
+          0.0,
+          "answer_tag/composite=0/4"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "tie",
+        "tie"
+      ],
+      "match": "uncertain",
+      "outcome_v2_ab": [
+        [
+          0,
+          "no_final_claim"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "no_final_claim"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 3058,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/2"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.2,
+          "truncated_untagged/composite=1/2"
+        ],
+        [
+          0.0,
+          "answer_tag/composite=0/2"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "opposes",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 4132,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.0,
+          "truncated_untagged/composite=0/5"
+        ],
+        [
+          0.24,
+          "truncated_untagged/composite=3/5"
+        ]
+      ],
+      "winner": "B",
+      "historical_winner": "B",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 4482,
+      "simple_ab": [
+        [
+          0.0,
+          "ambiguous_payload/steps=0/2"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.0,
+          "ambiguous_payload/composite=0/2"
+        ],
+        [
+          0.2,
+          "truncated_untagged/composite=1/2"
+        ]
+      ],
+      "winner": "B",
+      "historical_winner": "B",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "ambiguous_payload"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "ambiguous_payload"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 4517,
+      "simple_ab": [
+        [
+          0.0,
+          "answer_tag/steps=0/3"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/3"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.16000000000000003,
+          "answer_tag/composite=2/5"
+        ],
+        [
+          0.0,
+          "answer_tag/composite=0/5"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "A",
+        "A"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "answer_tag"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "answer_tag"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 4756,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/2"
+        ],
+        [
+          0.0,
+          "answer_tag/steps=0/2"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.0,
+          "truncated_untagged/composite=0/3"
+        ],
+        [
+          0.13333333333333333,
+          "answer_tag/composite=1/3"
+        ]
+      ],
+      "winner": "B",
+      "historical_winner": "B",
+      "judges_ab": [
+        "B",
+        "B"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "answer_tag"
+        ]
+      ]
+    },
+    {
+      "id": 5669,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.1,
+          "truncated_untagged/composite=1/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/composite=0/4"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "A",
+        "A"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 6695,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.1,
+          "truncated_untagged/composite=1/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/composite=0/4"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "A",
+        "A"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 6807,
+      "simple_ab": [
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/steps=0/4"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.1,
+          "truncated_untagged/composite=1/4"
+        ],
+        [
+          0.0,
+          "truncated_untagged/composite=0/4"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "A",
+        "A"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "truncated_untagged"
+        ],
+        [
+          0,
+          "truncated_untagged"
+        ]
+      ]
+    },
+    {
+      "id": 7272,
+      "simple_ab": [
+        [
+          0.0,
+          "no_final_claim/steps=0/4"
+        ],
+        [
+          0.0,
+          "no_final_claim/steps=0/4"
+        ]
+      ],
+      "composite_ab": [
+        [
+          0.08000000000000002,
+          "no_final_claim/composite=1/5"
+        ],
+        [
+          0.0,
+          "no_final_claim/composite=0/5"
+        ]
+      ],
+      "winner": "A",
+      "historical_winner": "A",
+      "judges_ab": [
+        "A",
+        "A"
+      ],
+      "match": "supports",
+      "outcome_v2_ab": [
+        [
+          0,
+          "no_final_claim"
+        ],
+        [
+          0,
+          "no_final_claim"
+        ]
+      ],
+      "outcome_v3_ab": [
+        [
+          0,
+          "no_final_claim"
+        ],
+        [
+          0,
+          "no_final_claim"
+        ]
+      ]
+    }
+  ],
+  "scorer_sha256": {
+    "gsm8k_composite_reward.py": "14840a066438c674524b8a65269f02c8563b2265ea9874ed2aea081d4ffcc46c",
+    "gsm8k_step_reward.py": "2a8ef9537a469a4c65693ff6200ab4426580dcf33dd012938bb6e2d54a130331",
+    "gsm8k_training_reward.py": "6852996e0d9ea9e621533403367e452c3c92457b1fbd3e435e3f0b24cfa59cf8",
+    "gsm8k_training_reward_v2.py": "b7302ca3718d055798dacb4c9c23727e77c8c9ac2e24b6566b25099ca56fbbd9",
+    "gsm8k_training_reward_v3.py": "80233de471f3a461e7a5bfb53dfb77921175e92768f255c482198e546990feec"
+  },
+  "counts": {
+    "design_union": {
+      "all": {
+        "groups": 1830,
+        "questions": 414
+      },
+      "eligible": {
+        "groups": 1017,
+        "questions": 309
+      },
+      "historical_new": {
+        "groups": 138,
+        "questions": 79
+      },
+      "current_new": {
+        "groups": 138,
+        "questions": 79
+      }
+    },
+    "original_design": {
+      "all": {
+        "groups": 427,
+        "questions": 414
+      },
+      "eligible": {
+        "groups": 212,
+        "questions": 208
+      },
+      "historical_new": {
+        "groups": 30,
+        "questions": 30
+      },
+      "current_new": {
+        "groups": 30,
+        "questions": 30
+      }
+    },
+    "independent": {
+      "all": {
+        "groups": 304,
+        "questions": 137
+      },
+      "eligible": {
+        "groups": 200,
+        "questions": 123
+      },
+      "historical_new": {
+        "groups": 18,
+        "questions": 15
+      },
+      "current_new": {
+        "groups": 18,
+        "questions": 15
+      }
+    }
+  },
+  "historical_vs_current_differences": [],
+  "separate_v3_parser_changes": [
+    {
+      "id": 855,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-4/trace.jsonl",
+      "line": 48,
+      "eligible": false,
+      "new_step_order": false,
+      "v2_outcomes": [
+        0,
+        1
+      ],
+      "v3_outcomes": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": 855,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "line": 48,
+      "eligible": true,
+      "new_step_order": false,
+      "v2_outcomes": [
+        0,
+        0
+      ],
+      "v3_outcomes": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 5771,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-0/trace.jsonl",
+      "line": 73,
+      "eligible": false,
+      "new_step_order": false,
+      "v2_outcomes": [
+        1,
+        0
+      ],
+      "v3_outcomes": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": 855,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+      "line": 48,
+      "eligible": true,
+      "new_step_order": false,
+      "v2_outcomes": [
+        0,
+        0
+      ],
+      "v3_outcomes": [
+        1,
+        0
+      ]
+    }
+  ]
+}

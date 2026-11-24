@@ -1,0 +1,1633 @@
+{
+  "feasibility_cutoff_utc": "2026-11-24T11:34:53.381801+00:00",
+  "feasibility_cutoff_ns": 1795520093381801474,
+  "historical_feasibility_sha256": "b76be68d13bcf65947d543d515143380da134c1e79bd56b8eaf9b67068ce27a3",
+  "historical_scanner_sha256": "7d29050b9d03f0dc186f6df57277fe066f28e2d39bc630e4d6d6995609717f1c",
+  "completed_v2_seeds": {
+    "seed-0": 1795518598910289371,
+    "seed-1": 1795519771411340546,
+    "seed-3": 1795519205977530535,
+    "seed-4": 1795517928658333095
+  },
+  "training_archives": {
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl": {
+      "sha256": "c9a7d354dab977ddfff55c562779957e9054beed47ee36a928c2140c0edca401",
+      "mtime_ns": 1795358474629891507
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl": {
+      "sha256": "7d4fe72dfabcecc3e9ea89f94786f5c324861376ac0ce2544229a52c5d3e6bac",
+      "mtime_ns": 1795360108762246070
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl": {
+      "sha256": "5d87265231feb8431b32e5dcd6461fc6c362b38707340c0749f431c1ebfdfe0f",
+      "mtime_ns": 1795360525016105544
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl": {
+      "sha256": "0b271b90b1e4dc95aebcae8a9f678343029706e77963a8d37bd2147577f59561",
+      "mtime_ns": 1795360947290661021
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl": {
+      "sha256": "ae8aa6ba6ddc4ab520c2ca6b5f4ff7e7fe7eee558a3b41fd2a7d6273c47d38e8",
+      "mtime_ns": 1795358847556764785
+    },
+    "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl": {
+      "sha256": "b7f4efda725b570b156732a2c9b1faca980090defae69b08d900902a54c131c8",
+      "mtime_ns": 1795094271425654284
+    },
+    "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl": {
+      "sha256": "bd2a7e54644eb01b44504dab24e87837f501f0e267b5f69f6ff8d46e8e99facb",
+      "mtime_ns": 1795095627539097961
+    },
+    "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl": {
+      "sha256": "5eef91d3f14261201f5aa575555a0a8ed62de4268ff33eafc1c30b835aa6c218",
+      "mtime_ns": 1795097251289751939
+    },
+    "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl": {
+      "sha256": "a3bc6dcb84ea5b15a9a0f0c3423d6cd2dae6cd09d2623f18baeeb7c22bd91394",
+      "mtime_ns": 1795098188272827423
+    },
+    "runs/gsm8k-budget-5seed/seed-4/grpo/trace.jsonl": {
+      "sha256": "bf6a0e1ce7e9f5a21bed136c039684eef7f1772ae7c867a3368271800a9c8ad5",
+      "mtime_ns": 1795099410398650973
+    },
+    "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl": {
+      "sha256": "7675bd0a111b70faa5a6104cfcd25b56c194366c2c23000449adf3019769d728",
+      "mtime_ns": 1795196938993470613
+    },
+    "runs/gsm8k-online-lag-5seed/seed-0/fresh/trace.jsonl": {
+      "sha256": "cb7ebc1148c2e5a590e269d7fde91c7d2ebf3270a39b0d25550a265b10164c2a",
+      "mtime_ns": 1794590396512995849
+    },
+    "runs/gsm8k-online-lag-5seed/seed-0/mixed/trace.jsonl": {
+      "sha256": "879939b1be30a1b2bec79fbcf32c2891060e2a44e0e545b9d79545036a6289db",
+      "mtime_ns": 1794590676331367586
+    },
+    "runs/gsm8k-online-lag-5seed/seed-0/stale/trace.jsonl": {
+      "sha256": "567c9eb274fdc3ce3b228ff10b085fba8ad99540d6ffb73410ab04e3e0523a77",
+      "mtime_ns": 1794590532554876585
+    },
+    "runs/gsm8k-online-lag-5seed/seed-1/fresh/trace.jsonl": {
+      "sha256": "a243ff89eeb439bc1cdecb64563d96028fcba5541f08c4f6d475306975d71b78",
+      "mtime_ns": 1794590819725064580
+    },
+    "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl": {
+      "sha256": "d453034ecc7341a91bf06f4abf4a04b415c794ed884edaaba547661966864a91",
+      "mtime_ns": 1794591127706629385
+    },
+    "runs/gsm8k-online-lag-5seed/seed-1/stale/trace.jsonl": {
+      "sha256": "45ee17904e128304912e803edd579bf2ad9235a8c7e12657a8ae6143ec3411da",
+      "mtime_ns": 1794590967170239293
+    },
+    "runs/gsm8k-online-lag-5seed/seed-2/fresh/trace.jsonl": {
+      "sha256": "bda99bcd2d09d7befdacb24552fbdf334ae99b3d80e3c845336aab672c971774",
+      "mtime_ns": 1794591275432366462
+    },
+    "runs/gsm8k-online-lag-5seed/seed-2/mixed/trace.jsonl": {
+      "sha256": "f8e998caf61406312da45329fce8845f12a2481d92e6350f3c05c69dda2a8228",
+      "mtime_ns": 1794591649785695130
+    },
+    "runs/gsm8k-online-lag-5seed/seed-2/stale/trace.jsonl": {
+      "sha256": "2a3bf5b2916d34b54832ac51c44ed61fa5ebcc798c396c1a8c04d2de04495424",
+      "mtime_ns": 1794591454239863950
+    },
+    "runs/gsm8k-online-lag-5seed/seed-3/fresh/trace.jsonl": {
+      "sha256": "4f223cabb783568aa42bd8a048f8885b81bc3f5215e19474400afed17b6f9e26",
+      "mtime_ns": 1794591832236949752
+    },
+    "runs/gsm8k-online-lag-5seed/seed-3/mixed/trace.jsonl": {
+      "sha256": "79e468eaac120e475ff5091e2769f9791657842b80b738e36312648bf4646993",
+      "mtime_ns": 1794592224996605196
+    },
+    "runs/gsm8k-online-lag-5seed/seed-3/stale/trace.jsonl": {
+      "sha256": "e9cfae77d2808f6ce1b73b678948357386b4773e65c7158b880e9d16bdfd2335",
+      "mtime_ns": 1794592026177853254
+    },
+    "runs/gsm8k-online-lag-5seed/seed-4/fresh/trace.jsonl": {
+      "sha256": "ce6c99c7498a4dfe49d8fd67f54b8ee227747594be713783432fbc6fe02822a4",
+      "mtime_ns": 1794592426764792838
+    },
+    "runs/gsm8k-online-lag-5seed/seed-4/mixed/trace.jsonl": {
+      "sha256": "60e21db5701bd6322fe7693b7f636c41304cb1c13f774cc12abf7f5bcc5d5521",
+      "mtime_ns": 1794592839790364622
+    },
+    "runs/gsm8k-online-lag-5seed/seed-4/stale/trace.jsonl": {
+      "sha256": "2c4afb530e48fdb233335ee911419611d813d37bf5081e5df6a4ba81484bbe9e",
+      "mtime_ns": 1794592626081505276
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-0/trace.jsonl": {
+      "sha256": "f217602086412e3ecee971b371ff4079964343079805d7db56b376cf4dc48ed2",
+      "mtime_ns": 1795354221688425464
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl": {
+      "sha256": "b22b78b069d74dbd7b57d5d8d0caf0fde97b69730f530e348aa15916b1f32d11",
+      "mtime_ns": 1795354660664382382
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-0/trace.jsonl": {
+      "sha256": "927ed28aa17659dc748d001413c9ea696a6276343a87d9cbcf7de89c109655c3",
+      "mtime_ns": 1795355080189818441
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-4/trace.jsonl": {
+      "sha256": "1c1d6aa22ae0f6efcc932f957776de6a7e872b2c38a071b4444e75f6e58feb24",
+      "mtime_ns": 1795355441657870570
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-0/trace.jsonl": {
+      "sha256": "c4cbf5e337056e420318203a9f47afadc86ea6183a95fd65fec236da6bf5eb51",
+      "mtime_ns": 1795359218949924294
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-4/trace.jsonl": {
+      "sha256": "2e1f466b1aa1d4d9aee9e67f083ace63e0a30411688bf2081b0d2aaed497e2d0",
+      "mtime_ns": 1795359586580154018
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-0/trace.jsonl": {
+      "sha256": "8f09e0881c3bce34d1bdfebe04b6ef0de73c828b2306c15bdfbe8c4b73cf196d",
+      "mtime_ns": 1795355798345141271
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-4/trace.jsonl": {
+      "sha256": "f6eec2b238b8094160c8d4d26ba3264582de545c1d79fa5ea9000ced9e7bab63",
+      "mtime_ns": 1795356163327478798
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl": {
+      "sha256": "3444286eed5e5ec7a6871b841a161821a1d1c5753b9928d9b70e3865184d9739",
+      "mtime_ns": 1795356658851498336
+    },
+    "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl": {
+      "sha256": "a782a227485c2865a5c598237c4a8d73056f5e5fa2a9fbbf8298f8e8270dcb98",
+      "mtime_ns": 1795357235628344982
+    },
+    "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-0/trace.jsonl": {
+      "sha256": "39d53ced20a6486af253467fe8b9c515dd3f00051e5babb73bd7ef5c00b6a08e",
+      "mtime_ns": 1795357739452301287
+    },
+    "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-4/trace.jsonl": {
+      "sha256": "694bc9760731f5530c71c40e413ab6b22b5d62689b03009a2ce2d519a414ceb3",
+      "mtime_ns": 1795358109088514983
+    },
+    "runs/gsm8k-budget-smoke/seed-0/grpo/trace.jsonl": {
+      "sha256": "26d180c4f7f3a50ea7c58103a3bcdc4d923f76f22ad6ffbc9c99a4020d129bf6",
+      "mtime_ns": 1795092930657284220
+    },
+    "runs/gsm8k-budget-smoke/seed-1/grpo/trace.jsonl": {
+      "sha256": "292459ef0a9322f342e66265bb1cdcd9d36539a6c35aad6aed2b21a1d4b613ca",
+      "mtime_ns": 1795092952180926471
+    },
+    "runs/gsm8k-online-lag-anchor-smoke/seed-0/fresh/trace.jsonl": {
+      "sha256": "5577800ba821afa9494209f46f887a9ca2e4a8ea09ac88fca7081d9446bd9034",
+      "mtime_ns": 1794590162136603104
+    },
+    "runs/gsm8k-reward-online-v1/parsed_outcome/models/seed-4/trace.jsonl": {
+      "sha256": "bd58a0689a2099115c8b7b1ca1c069d1f48730b0b6cc229ef90a6e98b7f8e73d",
+      "mtime_ns": 1795517323665308597
+    },
+    "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-0/trace.jsonl": {
+      "sha256": "d63e453db445169a9f834d36cd384a53fb0297c019db699f0d85f915e46faf46",
+      "mtime_ns": 1795518594770196849
+    },
+    "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl": {
+      "sha256": "2c5af9cb200d7cabd3206b1a06b4de7b71a532d95987c00c6378eb59ee1efc25",
+      "mtime_ns": 1795519771340796504
+    },
+    "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-3/trace.jsonl": {
+      "sha256": "2dade3a9b4b4dc8ab55705aa7eb10daabd26d81548c58caddf21dd90e87549b3",
+      "mtime_ns": 1795519205911711751
+    },
+    "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl": {
+      "sha256": "349bd89217cdc413d834d4f371b5ad4e234fb4422516324681cffc01b8124166",
+      "mtime_ns": 1795517926904775155
+    },
+    "runs/gsm8k-matched-mlx-final/samples.jsonl": {
+      "sha256": "22e5cdc32a5763989c34d217be8bdedc3a03183398cb898da0b49e7127808df5",
+      "mtime_ns": 1794589150731564144
+    },
+    "runs/gsm8k-regroup-local/samples.jsonl": {
+      "sha256": "7880a1be3c2754875d4c357c69a8a7df70018be44a9deba1f1624799fa41df0a",
+      "mtime_ns": 1794586637948274698
+    },
+    "runs/gsm8k-regroup-local-fp32/samples.jsonl": {
+      "sha256": "7880a1be3c2754875d4c357c69a8a7df70018be44a9deba1f1624799fa41df0a",
+      "mtime_ns": 1794586934219399203
+    },
+    "runs/gsm8k-regroup-mps-final/samples.jsonl": {
+      "sha256": "7880a1be3c2754875d4c357c69a8a7df70018be44a9deba1f1624799fa41df0a",
+      "mtime_ns": 1794586544024137307
+    },
+    "runs/gsm8k-regroup-mps-pilot/samples.jsonl": {
+      "sha256": "3787309bda70ff432c89ab814d9987d38f4a4e0344a4ce4a6e0970860c938275",
+      "mtime_ns": 1794586086617076976
+    },
+    "runs/gsm8k-regroup-mps-retry/samples.jsonl": {
+      "sha256": "3787309bda70ff432c89ab814d9987d38f4a4e0344a4ce4a6e0970860c938275",
+      "mtime_ns": 1794586346938580503
+    },
+    "runs/gsm8k-regroup-mps-smoke/samples.jsonl": {
+      "sha256": "5c5f7e7148ad0f08780136121413bcd89072b0183c20a423c79cc9b9783a3e47",
+      "mtime_ns": 1794585853409816293
+    }
+  },
+  "historical_discordant_groups": [
+    {
+      "id": 791,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "6515b13232c94aeb94b1c1bc1aa06b28057d251d52d73c1cba7cd8ebba1d52d8",
+        "3ced9b197fc5d2e8b7ea364b23691d35c9efdb48b44d83f539eca88ac722e04b"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 791,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "1ae6d3f8a5a9a170a26150851682e87fc1bcca13685a1d2d98739581f9e3481f",
+        "23b0fc3d217bd5fcf1295b359025bc7bcd01779afac94b205b43e289dedb869a"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5735,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "8748411dff0116763a9f569f66c1c6f7aff9fd80b4d647d74a99a54cba8246b6",
+        "6fe5af71a65871e1ccb51a1327a4261ab2586a614213b7596f94929547df206f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5735,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "fd47d6b6763701f194e39389fb1c6c1219f81ba4c83b1bf5f58234bd680ec2a6",
+        "16ed18539e64e4a2426b30577d29c41d0b2fb4c0376c5cceaac86d7c1607926e"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5368,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "a9eba3fb6174ac12546de1f7033e0d1fd110922df213856eed4688d1d1ab5f00",
+        "63214cc817766f4c1b7135984b3aafdc553b583a40dda5051dc4ef0de0262844"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4632,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "b5889638351c17f03da7a39980d0ba5821b402563aef41a59cbcd4fd47ab559e",
+        "02d1ce8e5af878d30678208e639058d3e2075f54f97bc51eeaac409fe0553e34"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4632,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "003fa149b39bbf690495649110d9bf9829882345b74dafe1d5b9c7ea39f885a9",
+        "a204914fbc131fc33f5983d7e0b01d8d5b2063bbc891a5882a932d5e484e752d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4632,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "bd4b8833421cf87fca9ff794f46ae9341ce3f22d8e7b2c8bba24a91cd207da0c",
+        "a204914fbc131fc33f5983d7e0b01d8d5b2063bbc891a5882a932d5e484e752d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4632,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "8b737c495bdc3927fe7f01b471f351ee00b41e93be5705db8db16a8c86af8a95",
+        "8fcbdef1a35c5ab9df4a2bc1024dea6937d29acf08b6b7098d42835a68d1f8ab"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4632,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-0/trace.jsonl",
+      "hashes": [
+        "003fa149b39bbf690495649110d9bf9829882345b74dafe1d5b9c7ea39f885a9",
+        "6f4cd5cdde2c6062b68217cf7b0492e26031d0745eaf32a0b15f5005038dba11"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6449,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "557c5b6b68d6aef51d13ca03f8d0607de54191e3fee4118f2d322731c31f7962",
+        "1928748e2748b413eb1d74af195ca4da0333a825cd3cc54d55e2340b35730e6d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6449,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "b52f4a8358a71363717b98acf3cf53345d5d6df229b4e3b8d2fd666599030f21",
+        "5f5f89330f886e694d6db70e5e4eae87c43fc13a9a2f5bf881e1246acb641ccc"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6449,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "d2e23d8988a85f9206456ae161e128db841156b2f5d8025015c7507f92810f48",
+        "1928748e2748b413eb1d74af195ca4da0333a825cd3cc54d55e2340b35730e6d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6449,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "7b5b3e8c5706ca3a8dac743f1741720a441704fc3c0d39e797f798fb60ab3545",
+        "6b9615754bc92697c2ca40442453cf4a84a7e9b494fdb27f6d44b372c76998e4"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6449,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "c2e2d895695cfa6b960060d0c837e8289439374f8a9067b8c49cd7999ef6a653",
+        "981722711bb4ba83e697df0563f09bb543ea18defc563a03361f5df92f861c13"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "ff7b4ac251628aa8d3c717fe37ad5c72fa005525ba6136804670d5cba265efe8",
+        "f05f6e27f85da36108773ab1e39b37ba7b9b233c3f001d2acd4656e64f4978fa"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "f28de86ffa2a536dd23c4c6fea7d98d446135eb716a15a4bea11d2ccfeabafd5",
+        "77d2076d9ed4380191028a462b52f290fc4fbc02fb7265d87459a693727a255d"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "8f50e365f7636ffa5bbe0b241e2988877a7716464aff6fd53c8d1c0897a2fb97",
+        "5842265da8cfebf47133207bc0b17b7d0a3b6396db257b1f632fb520258c5093"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-0/trace.jsonl",
+      "hashes": [
+        "feeb3130043ca9d146817cfc50017316048b0a8c449ac636155597c86ee668fb",
+        "5f9010590ca4e2fac427f64ad04ced3a5fe0308ba7a213e5d7039e6eaba2e41c"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "7ef33afc76410aa541afbbef5fff878707ae1d143d32481436e77c73daa95195",
+        "8b6c2ab1316abf11947248015dca9d91fc25964d5c9c85cf6603ba45a67b86dd"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "9bf4d0c2b8333d702b1156e0e8a01e23e703841629013049f10d993a2a8b01ff",
+        "da3247a1f51d100918771c8808c03fcf8dc8336ff0d8a2d61f5bfda36656be40"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-0/trace.jsonl",
+      "hashes": [
+        "f28de86ffa2a536dd23c4c6fea7d98d446135eb716a15a4bea11d2ccfeabafd5",
+        "3e3b3aa99ad943a342977a0421ec3b3a1046b59fc969d316f4d424849d072318"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7301,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-3/trace.jsonl",
+      "hashes": [
+        "706e14e71192c6bbb9770680568206eae0798d816f577ec561b1abfb41533a64",
+        "e2bce2f34b2ab1aa369abbb66cf24a4c6da22fe16bdc32b7b2a82ab065ce2fcb"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5253,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "hashes": [
+        "6987709a4760e02c2ba9c13b2c66c76d568ce8be59f8fd60aa485ab78630ece7",
+        "dc6cdc57218300142a4dfa7d81e4e45cb2b30a589132ac19b048c0e8e0ee1491"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6659,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "hashes": [
+        "37ae187de5eec955399d3e06e40191e8d51cd07caa1c2fe3867e4f7a34a81f6e",
+        "466124c3ddaa0890c2791330ef365e8e9c5537afd0d8854dd083b7305426a328"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6659,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "7669a20afdc45c3de8134dd2677712c15e8385d9a9bea5c660ec602580a2948b",
+        "fc4b4d7f59eee59476dca4fb0e5556d95d9a1bc7cc20d150da7a02b658645a33"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5136,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "hashes": [
+        "806e2823cd2d4fc4ffd01bd791d7333df456bff1ee27a9763c09be7889b9b55c",
+        "7706b86e9df24db78360f900b3e9aa72cef62b1b68eda5bde7083e070cc4ca80"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5136,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "806e2823cd2d4fc4ffd01bd791d7333df456bff1ee27a9763c09be7889b9b55c",
+        "554834a18b2ea9472f8ab52bb5bef1767cd3454ec0c51a541e32bd354ac60b08"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4208,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-1/trace.jsonl",
+      "hashes": [
+        "40e010a3e8fbf7ab9312cbfb30dd4b864c4bd67da53632272486e70ce91d32e5",
+        "cacde67b8117fc8fb2a0539183cd10a551e8a00fc4922eaf0bed4fae50dc4e5b"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4208,
+      "source": "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl",
+      "hashes": [
+        "0b990d78135f7021ddbffcdb1620f9b7836d066a50081d71a471907117a71fd3",
+        "e7c89d08a1c57a6355b0c9d5e728528bda6f6650e086a90351b180253b66ccb0"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4208,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "795f06c43a628bab1ce32672d950ae9567577335575d88610b5108ab4d12f46d",
+        "92582b6455bcb733a952ea058e528820c566d8a2c703f9e7bf5f167961970a96"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1131,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "hashes": [
+        "7653e993e6a957de7be1b88c40a55c97e24914ce798b833d8462c96115cb22ed",
+        "378a8734318cbf1b3e07dc932f7cfc39179208cf72a1659912cdf6be066c77c7"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1131,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "f6db2818404b7c7996f224c5023325dbee63d88fd28ca8b86b3151b3040b844e",
+        "45cf4919960aa8ed86e61b9a8a1c91a3de95da05e6ae96f79bc4664dca6a2121"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6773,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "hashes": [
+        "f0cae45e15fee1951674ebad33a13ac26ac13f50e45f8255af0b9b65e6b862aa",
+        "88ce4ed87f1c18bd742080d088b2a018ebc54c2a1804d07b41afb64835ef1ef9"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1719,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "hashes": [
+        "161908664894c9eafbfacf08ef8c1275ab834fbf10982ac9f4dec2a9f76508b0",
+        "935bbdf3b936c4a66c008283fcee34a28a03c30fee1eef55601eb948722867ac"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5129,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "hashes": [
+        "01cb5ac80daf019c8040cbfb17b1891fa444d511ec2cfecbcd41a6cc3368db49",
+        "6416c6589508074a49a2dbaee0734b77934151d6f8b61f740aee1b4d397b5608"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5129,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "10ec4c1b329090f202c74dd5565fe0f79f167fc872d49711b21757fdce101c9d",
+        "667eff42e207e8f1d9a197426e948770b501e74b65ba8cb621d7a3059dc26aad"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3206,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-2/trace.jsonl",
+      "hashes": [
+        "6888edb17d4ffd5426d2c5a40c8141bf868e26af3c7826fe5fca2192130cc8d7",
+        "bdb94b9d755b9e24ac2df986e26eb9c53e8facbf44e6984163f9132a261f6347"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6730,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "hashes": [
+        "4d7f2e27da5ef44cc2dac48d4a10a5d002d2276b677ca7b8cfb8e43174e84a52",
+        "c3f6fda6913667b8b8837400812ae5875a0101df9d762883261cee2733231a70"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6730,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "918da9ccda70fc724fb90a72762118e25ebfef13d1e6a67823d244bf4105011a",
+        "364a6557ebf157261731f3652815d6cf7c373bbe2aeaa3c71aa0d90f3055d920"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5373,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "hashes": [
+        "1443fd84caf2bcb9e05a28b3a4418ae9653047e1400d79253ae6f3209b59c23f",
+        "61d4c24e9b68364f1ac701a5b29a73fc72158f881c2123d68c5d77ebafec5203"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4444,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "hashes": [
+        "51d41ff8130fd4dd6d92ad74f13c3c04ad7cf3fcf4f094b12d830d5ff2a03cae",
+        "6e11980af388f5400eb92f9d58f4880cf3cc4f258289374b326b6c737fa79b27"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1499,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "hashes": [
+        "fde640a5eaef35799088ee2ed43dd1519c4d5b6b4259bf6d542355fcd564cacc",
+        "024ff5a3d53ff50f9bdb81869a5be7d80f7e8ad7ea148baed710aa071badc846"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4296,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "hashes": [
+        "ecdd489ee3238127cc48c4e16714b2cd158f7cbae18d8b48f1cca837e37190b3",
+        "ec7c136716307f3598989e957300fda4798976f7fc4ed46100e44b7e12a6c9e6"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6687,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-3/trace.jsonl",
+      "hashes": [
+        "30b057b5e2f04c71716b1c5ce3174a179ce45e2d1805bf92e5606b691962f32b",
+        "70a73a1c0144a487479bc6f6bd7adf30e2adc053f92642d3efccc49ec7841d66"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4767,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "b5ae81818a73ffc1ff3ebc9d775c4c886b84dcc426fe123018c2700b5dc54466",
+        "e5e354d286bb1c296c6154689872f01ff5338a677c2f1ea4d6000ddcf094cabe"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5795,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "12154212378da3d949959b22f061f516f3d7e94d7ad8384f49da4901cfd7e41c",
+        "d35a2cb3efa966c2c4332ea25182821f0d2a71fb455dd70d805a746d32e7a753"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3142,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "0fc996a09bf14b3812757747acf38422d875fc5e1fe14a0ccb7709fbefb70b5d",
+        "998d10297206b3d3ea86e916909ac8cc7447748e0455a7037fd845d00baa34f6"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7399,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "af63a2b5af5a16a32f6b09d27d25399041f2ad839ec686deb9202ac6f4209398",
+        "f224113e5c7eb6fa41f4717ce858086976264c926de299b8b2c2a6dd2888c096"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7399,
+      "source": "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl",
+      "hashes": [
+        "176c54e89b85e83353d97bdce87fca75757779aa573361ec6510e49ef5ce487a",
+        "11fe35fe44eb3b4dee68163e887fb6751d50a8996f8bc60997764dbf94fee081"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7399,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "30147d04661c4f00ad70816ae98ea12ed61e5ba7bb71da5a92dce1946826650b",
+        "11fe35fe44eb3b4dee68163e887fb6751d50a8996f8bc60997764dbf94fee081"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7399,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "3a68058aa093b2d5e951e514f7a1597ff7961a0726f3a3268a1d106ce160eb34",
+        "11fe35fe44eb3b4dee68163e887fb6751d50a8996f8bc60997764dbf94fee081"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6046,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "987acef7bc83022c408f9a8541947ccd49d5f21433091bd0b3b39a79a7dfedcf",
+        "5ad1397388c2abe3787fe0a0176dfb99c4a96b9de5f87aaeae1533c82cbefb0b"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6046,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "1ce8817ca26eaf87c7bec9775fc0448dd507eaffa3da6012ce2940a95c6cb5da",
+        "59a3ab0b93668175c5e394909d0e1e942bc4f0915630a4aa7e0dec5fbf48f55a"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5540,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "ec77fc68b10244ae9279b5e1882052823b782978c78cce630cb1fa9cd4903205",
+        "5d6b00566133c657ab1b6eb00cd37cb5778b01e491a8730d181cbe5e9aad268f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5540,
+      "source": "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl",
+      "hashes": [
+        "81806f9b4d38c71a0b6a06e4d236ccf8668753ab5a14da24aca134095cbd5654",
+        "5d6b00566133c657ab1b6eb00cd37cb5778b01e491a8730d181cbe5e9aad268f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5540,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "01854613328cef0ac01ea88e5725fa4e9fc1360852c56ce4d86760044ca5ee67",
+        "5d6b00566133c657ab1b6eb00cd37cb5778b01e491a8730d181cbe5e9aad268f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5540,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "c3a614eb4cd3b4d09d730c8b0016a453c0e60dd8f2686ebedd1ece6fff812fb1",
+        "5d6b00566133c657ab1b6eb00cd37cb5778b01e491a8730d181cbe5e9aad268f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5540,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+      "hashes": [
+        "23431cc531b59627f7619122c84784074a5bff9d908f9b7f2f3a34efd0ca142d",
+        "5d6b00566133c657ab1b6eb00cd37cb5778b01e491a8730d181cbe5e9aad268f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 775,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "acbaa76249f294fd048aca4b504561127d83b6388810676fd5e65e0058219564",
+        "ed0328547a0cba7bcca21343e76eaef770594d754f359550a7bb36c11cd1bd3a"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 775,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "94e5598db72151fe64c3423dfee4abba7c8b1795bf1792ad9c7b64d3155e8444",
+        "3a2268ba850a84bb42db50b78e8b526195e6e1f3c62b430b86750a2b2a0b5631"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 775,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "acbaa76249f294fd048aca4b504561127d83b6388810676fd5e65e0058219564",
+        "3a2268ba850a84bb42db50b78e8b526195e6e1f3c62b430b86750a2b2a0b5631"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5854,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "be914783e02a418ed40668d68738175559c0ee32853a820956716720a6426345",
+        "a30742b9b735d3e5e4f6c6ad6f42f98401f580b75b8d3efb0e4356aecd329a3c"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7131,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "cb8ff7767d24646f35b0be2ba6fdcac61bee654952ddcb7ad10ceca210f6b86c",
+        "73cf410b70b9eae350127a1f002a99bcd58a0143d434cb31750505654569eb1b"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7131,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "041b5c14c68d31b7aa47e8aa48fdda40e0c3ba1959ca70bcc37aaa2b40a7bb63",
+        "2651b0a6c4c255213982832c13672161f72f8f545da5ecc998471f70e13a0d88"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7131,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "688fdb3b55846a6c44e7f77d46e03b43ecbbf30bb197b795cffecd18c365b718",
+        "9f2459db8bfd0bee1ee5d1cd5ac65275ce5522d359117b2a16424edd1ca2ffa6"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7131,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "131ed10feb3b13aba6a7225cc45f23ceba8ee6feb9b4f7db21ce1db50397fd84",
+        "a2c2db8a42e95a6c2f4412633176c8aea1181772b9caf170e41f48355ce232ab"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7131,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "f7657e51cdbecbbb2632b339414e03b3af359b1cf2d03b6b7a0189d91fc9dce4",
+        "574e295f7779a24b062a47d1b29edc5bf4c75c5019d34d1a1f9d3df719498af0"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7131,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "688fdb3b55846a6c44e7f77d46e03b43ecbbf30bb197b795cffecd18c365b718",
+        "f5930bc8d3630b78f0e5d5cda506c49ddbf056af83810a0660caf76c9b5830bd"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4006,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "hashes": [
+        "8d6e2d9985d440f9f75c7dc2588bb408fa36327fefc68b68350707d6b4f2de08",
+        "3df5442c6ff08dba5a36f48596789dd9cf1813758a3b34720d6ac98caeaa0420"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5082,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "hashes": [
+        "34b0018666f9e37ed130964b890ef89ec634cbebebe7d253022afb7845017042",
+        "f4b06ef6d3c81436f60a318c81c42f8f7e2d774d45a22f3b9b5f3b6980d28146"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 100,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "hashes": [
+        "51c87c14d4e16d8a8e76a568d384a698e1e4080b75f14ddd26711426e7bffc65",
+        "8062aa2d758dc0eb00e49fd649118201f130d4c6a2812e3aa0ceeb095c5f2124"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 2127,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "hashes": [
+        "85ae5c5392e1945bb94e759954c1020a0d568c1a5c082f3d24f4c78225a17965",
+        "2e474a494b42fd2006e55c1eb55452c79c3c1ccb2fffd4f3e160d1dcc2a65bb2"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 2127,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "7226b03b8cd2e5199968c7069e8e01f352dcf3f07f2a1ddcd13c5763f45728f0",
+        "2e474a494b42fd2006e55c1eb55452c79c3c1ccb2fffd4f3e160d1dcc2a65bb2"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 2127,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "3956f88cf5850758cd9ba876ad2d7f7789f713d6dd99993037cb80962dccbaaa",
+        "2e474a494b42fd2006e55c1eb55452c79c3c1ccb2fffd4f3e160d1dcc2a65bb2"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7177,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "hashes": [
+        "17a2dfa63e45b135bd472d1c36523214502a967cb73633bcdb7c6496cdafcbee",
+        "efae3bbd1e0afa7c4381fe76f476ad433c45be6e35ab0416acc1ac81dd9bf9a2"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7177,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "a27c82e23d1d6f26fe8f19f80b56b25925e4dbedb1736f28c2ca5b7581321dd7",
+        "ff8bcae9091f05d325606094111a2b30c7ac0619b36f184501125a02581a4e23"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6675,
+      "source": "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl",
+      "hashes": [
+        "97c9556731ce3ca90a445af27d9177f35a3cff0934340e258b21c8585be97412",
+        "df658e61503605245054a144f8051ef449f6e3b97217b8ba594e037352f8de03"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 148,
+      "source": "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl",
+      "hashes": [
+        "753f36a7b40c73d2e80478017f53f0d865a1040e8deaae11e210ac1f73f91cb2",
+        "ac5c4aee11f5ab20f612ebf3c4090361fd567909251dfcec66a8861e2740945f"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 148,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "f4fa3c6976af5e289ee869e90362fce430867656af2665b2aa6004bd2e81d1ef",
+        "90e3691473c0a94e3652b337a910785ef73188fb4665d1e15f151c084b679226"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6545,
+      "source": "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl",
+      "hashes": [
+        "737309518981cdc163a9d94f0a99f50d9a38376cf9ea5e9621462c2f3c0adb74",
+        "c8dba4f109d8b13beb742f1075a66c9caf343ee994d49d5bc9641a7299c16277"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3038,
+      "source": "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl",
+      "hashes": [
+        "9bdda231cf402bb271a0cc88516072570c773eacf4ac195cbd4de125be9563ef",
+        "6dbcf21100998bea73159e21d3b42fd2ed0b34df63a8878a252762d7c9e6577c"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5783,
+      "source": "runs/gsm8k-budget-5seed/seed-1/grpo/trace.jsonl",
+      "hashes": [
+        "694120f483b617570ac4809f3bcab60138d94aaba39a4cd48994024b865ee6af",
+        "f3888641b4c774600e68f4f15c7b421b8ad3d3d70c1756245d94c3de00ae3de3"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 783,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "4b5cf3471d900fb7247ae9cc53046033d894a329f4478b8632b0bed7695d20a6",
+        "eabb87ec59cd7395224758477a7d9d323fe021040ef20be11722a81a1a0a1109"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4486,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "246e83d5ef4a6456d7286549e2174819bc95d264155c5bd2689136ae194b4984",
+        "fc2eb368aba49e17775482ea40e10f0f7a19767b42fe4658ad6d5e47b3c8aad6"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3239,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "e8aac007e0dfa3c375f1a7a0121842f524dd08d35ea0fd4c0a4ac66d80066217",
+        "657e86313569ac9aebc0e69365cbcbf0b0040a9631b91a4886da6ae8622be9cd"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5011,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "59f639d3535ff78908992c4483ffebfb60c128647802696d48d77f396c9c4119",
+        "8c8f7d22bb6c049ac333ba26e29195e41a8f8ddcfefc79c9857ff2542bacb4fa"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4033,
+      "source": "runs/gsm8k-budget-5seed/seed-2/grpo/trace.jsonl",
+      "hashes": [
+        "aa4778539785dc3d3c1ea800d659981b99b7b80073fb74a8199e1ac3e1a5932e",
+        "0caaa8e07eeea5dada57d9c7b0b31f0564763ee7ec2d7c96697870c35e09f3d7"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5454,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "3672a6bde6df27c4ac3fdcbc9a52d42cb75d3344e3a98631923c429f27ba4ad3",
+        "f3efa520c46b9ba7ebe1c614a5d50c2d400841e062117f55f4b72425d1205c6e"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 2083,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "1c0abd52868d5b38e76f441f6fb8743292a217b0f98e78d042c3e5314b8d50d6",
+        "839fee228b17b4afd9e1fa5bb7443fef020b099d58fcd0a2dcc849bf4eff8f23"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4624,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "b278dcb112f40aa22f50416ef09c001c7f1363c9d3f470a3c7cc02166fddcb0a",
+        "f9ee0079e8813ec5bcbd8efdc19ad9fd798c54579e188deb36a35abf6e60fde3"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4516,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "e5dbc062729156aedcd72e2864a4a582e4a11e6ba587fb4ebad08ada72bfa60d",
+        "7f09cd914283cd24d51c457e19152250a0cf623d2c2fe7c4bc90824e6652cd21"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1647,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "6e150e688ccaf4a99400c6bbc02afbccdf4b554839ff452be61904e424727546",
+        "f2d21212ee317b2c97f5b0d8e77ca04fc6d7d3a48bc5d98b57e591aaad0ddd90"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 5190,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "8e54a005de454749627b7d33367c15061bf89a6cdb8494b48ad899131e5b930c",
+        "31e07d2f5c5f3907eb611a135a7fca0fe719a75c3224418a8a8acc806bf8c19a"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4925,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "861bf221bd7599f60b99abfbf6aaeece8693e401f4dd5f4d26573faed74249bf",
+        "fe1564806c5ff44e7465dd8d3afabc3901e47ca70bdaa96996a13e8ee3146005"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1722,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "80f2310d255ba1ed67de46d2856976fea1c132f99a7f17bc90a16f30d73d5168",
+        "3a16ee6dd79303464f4d51520b23cd2d0970859f237d86759d3095eaa7411826"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4138,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "67051a4f878c5fcdb6e29dcdfe88a58f96a2261dd60b7c7539d745d5be25779c",
+        "9530279d5f65c4151dfeaae30514a38305dc09d3eb9af389b89aaec9cc2eae70"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6490,
+      "source": "runs/gsm8k-budget-5seed/seed-3/grpo/trace.jsonl",
+      "hashes": [
+        "df2127a6a3abab9c8257a3d43a82dca34e47ae809f589f5ad1d7e9887792209a",
+        "776d33d3eef303305b5414868cd39b83e458e68fa32928bfdb50d429def9fa70"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6349,
+      "source": "runs/gsm8k-budget-5seed/seed-4/grpo/trace.jsonl",
+      "hashes": [
+        "ab6bffd11214138044c923a85e147c0e4fa12e0bc21576697a76ec4d17eb914d",
+        "4bc3df6565b33c778ec8aed1ed8a9aa77521ba2c7a7a32eab7c1a6dcf27c70f1"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6349,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "a404761e032d7e57bdeb81f993a254b19c9fa810e972f61da6d3a9cfb45fe5e9",
+        "d4436885cbf202f85c5a61d304f9743cedeb6c4459e40c5b03f74d003099a71a"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6349,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "a60a117bca2f9c169eaa180ba93199fdc79ce7d6a4eca9f8ec828114fa406bc2",
+        "84509cc51897b370925927d1cf50fedc63e4b2d775d62291641ee6ce5066cb56"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6349,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "7c36cf983f7d170686c51157f07f291979a5979a317ee6cfee89dbb62b316b59",
+        "df3383f2d367364f1dd20a6cd8ceb1665677f469e66863e3240cba905cfcbde9"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6349,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "c45858c8972a0a2ff5e989f56ba37d04ac00294244fd39c156cbbd46e951f296",
+        "c077336265ad5b1ccf86ce0ba6ab9aa7ae40d40360ed14ae9f2e831834328cda"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4217,
+      "source": "runs/gsm8k-budget-5seed/seed-4/grpo/trace.jsonl",
+      "hashes": [
+        "1cafc140c10a9aeb95e274b3f29c190455941a752afcd15c6bb8ac486cfe85a8",
+        "6705c9510d469219e391f8461ad68bcf50120072adb3b20fe82b5e83c9f79f9a"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1553,
+      "source": "runs/gsm8k-budget-5seed/seed-4/grpo/trace.jsonl",
+      "hashes": [
+        "6336970199268025316eccd7ca02e52478de092cde7d8f797198f38fa9a90543",
+        "0eea129f294ff58c4e8645b0c58921a54d671edb39e23fc871c372b719f623f0"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 855,
+      "source": "runs/gsm8k-budget-5seed/seed-4/grpo/trace.jsonl",
+      "hashes": [
+        "89d342991bc5cd66821438a6140a7e0410476b74532b6f9168a7f80f18f2915d",
+        "4d47be16465061500601aa44db00634e1708fd41a9981562a599869cda73faba"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 855,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "9594007b0dab2a487b0234c0e6aa0c37acb50de4016ae99a17e9b5fd2171d4b2",
+        "31d090988a9daaf4287b7a1ac584623232e2a908a742497677853f66f1d359e9"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3682,
+      "source": "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl",
+      "hashes": [
+        "4ca60401954a92d608cbd4e572438c62ead2f471888de64033b7cc22857c0346",
+        "17a19add758ddaa87cb957f370cc4a891b526d8ae0a438c0c85971189be59590"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3682,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "a4dd224dd00b06879c5f3f3c99b355ac1f6ea9988e8618b531926eace4c56153",
+        "dfc6ab8437d7a3c0395fe195a8d9678bceb318dcbda8e880333abd174b9d905f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3682,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+      "hashes": [
+        "bb0e7a46744c9d79fe28f58cc467fcd87046311cc032e8e3a54d060f25d112b0",
+        "5439754f4752aff5781c44eb2b5e5c4da398e8072d9ea4961fe834f16ffc1a91"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1040,
+      "source": "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl",
+      "hashes": [
+        "764528f5afcaa917fca7961e66ff1fe29e6203d3379a09e8c290da2f8cdaa337",
+        "77061223c6f56bc737f19a20ed06889eaa44f87d148d0df35cfcc2655a9884bf"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1040,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "3a91eddfef4cbfeadd4eb0f6a5202ea61452c185fa7052f23f8c3f09e34dcacb",
+        "0459cdbf1ed6e145f3e0b62d22eba0e5a7593cbbc0f0b105c7e6343b35271a23"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1040,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-16/seed-4/trace.jsonl",
+      "hashes": [
+        "0b5da4107dfbbcbb6a6735c13b441de2f2193ad1984319974a99b60494d49f29",
+        "25b7e357c2f57da3a05b5713e051ca8f1188524141dc5bb8334cf71c268e4f3d"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1040,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "f6872f0772ca7f6fc5575c9446cf4923dfedecc7346387342eff20ee3ad3412b",
+        "55ab1fa671c2917c61c609286aca21688034ff46a97fb53c9fe1c1ecaf477ca6"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1040,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+      "hashes": [
+        "2ea4d331d6f59ae6d6982403b64f2d7478267451bf6f24a49f39e4c8607e7476",
+        "dd442b29fbdb64e3f800ad91f9d3f746a6f6bfdba2f0896fa1d1dfb3e3e436cd"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3566,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "be999d250bbc15056d5ea5939f14cdb52510f5a64abb3e21a8f30423cc986fbd",
+        "65fe5f1a5ea6f2c752c48bea5b6acf08c1a9ce4e76745e22cbf16012e20be260"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1785,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "0c4cd0a1235fb7751b4b7f5caa1b9998f93a5efb5d92bef83f4d87fdff495fbe",
+        "ad6f523d06964d8855981eaaf33cd4671cd717b89fc085f34beb4b8b2d81b659"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1529,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "a020fa009f760ea90289f98808f72dc7b050769dbce12402749058c8d6e85047",
+        "c6e7c0bf5a82d271192535076c6bd97fea04cc532f86366d8cf571b3d82d30f0"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1529,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+      "hashes": [
+        "a5c0287479b98a749167c8e47dda6a7f2ae15bd9b56f278ff4c796b676562ba8",
+        "207b6a2cf551262ef6afd127240887f84bd1b139a14ff7d8f30512d4b497c852"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7306,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0001-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "fea9a5dd724c8a2d10a00465639f350dcb65c3ccb4d37ec8cdd7a711ebc17570",
+        "bebd2273067795d4ef85e130e270f7033355eee733503a02ba22f0fb8647b497"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 7306,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "73e7b4511aa707b79b3e01e8bca11553cff769a8e059dfbcda25a92ac3e17eb8",
+        "a745085da6603b315327392d58f9cfdfb8bcd41c874583594faf3545f4d0c5d5"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1743,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-0/trace.jsonl",
+      "hashes": [
+        "2988cad0c1c5732718a8f2fc9ff019f78244bb0bcb20d1a5e41cbe062384db1c",
+        "b05de705e72744bc55a73bda89cf18b51fe7f64d04578d79ee0111881e209c62"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 1743,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "3f60d76a14098ad2bc3efe80010201efbbe503ddc3e442ded35ca63d46231799",
+        "8b3f431c63288a4dcda8e2ef113c33dd17238e63a56a7ba4231f8fe1f878f3ec"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 2588,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-4/seed-4/trace.jsonl",
+      "hashes": [
+        "3633aafb6c0e86a9790d327b89d75827ee320a87ba9c0d0921569854f9167e69",
+        "3369432a87c8e1dd0865a7b5490dc96dfe5301acf208c72ecf031696641250ed"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1659,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "743b736bb1994e49896b3a41c3a1ac0b5c39897d301586e3a61816bb4073401a",
+        "ae12c57c273433d016c5b64b679ebc01c5d7dcbdd9cfbcf36d54fcf37741eef1"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3539,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "65e20656d6ca52ab545e545237cec41fcf3c4b9fef6f086e63e6a3299874abb7",
+        "94e0b83502c8a83f8848f186e576fbfbc27a9282779f6a4282710011d67e343f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3539,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "65e20656d6ca52ab545e545237cec41fcf3c4b9fef6f086e63e6a3299874abb7",
+        "897bc8ca7d22aa7dc29e5951d3ae3a0793051e1c21a4a48190f0622a47dfa575"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 270,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "0a30e42f1cdf4359852b29fadc6457c1d96b08919fa5dbc477f5743502b1da55",
+        "41a51365e125016b1d695a6c2dacbcaa677930facacec85c8875cc90d262159c"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4847,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "0345cf828fd3a47376df1200ad7e3baa914003d6458e2928014423c0a6a3ba89",
+        "021bf35e2eacfd0af36256c6c1bd6f23ee4df612b210c178dbe965533c523aa0"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5871,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "52f75bdb7c425e0ed95e8d4e48c8acea3cb7a246d789e29f3d23ceda27c8929e",
+        "70ca4a7bdf0c58a9301d58db642e2e11819199932b6071afbee5d600777a9b01"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 284,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-4/trace.jsonl",
+      "hashes": [
+        "32fc962573b52424c10a8e7480119502a6ac85ac487784f2f75157f142fc19f2",
+        "e09425b464b0e250bed5402e49f19c03cc0aef19a450574a50bb722712824859"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 284,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-4/trace.jsonl",
+      "hashes": [
+        "0296947e2f17992955e661750b719377be0fa7c61770ed52ac331f5019dd8b78",
+        "99079da8b8d63ee649e36d2bee873a4597b038344d8145bffc115e6762c3b93d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6097,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "2679a4c6672b3c3e621b804a432643d1aee28cf7ac10f4124945d70d9b66ba14",
+        "3c42ad40ac6bc6a9f9de261d316a66773661c2e847b0b05e5836a92ed46f4886"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 2100,
+      "source": "runs/gsm8k-stable-v1/models/lr-3e-05-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "9a6460ef3c95f40284e92e0d1972d68e51ceb4189d29dc515c1423588d6e080e",
+        "f56f59e6ef17e72e33b6b76bf1e95fe85f52e99fd386fd7e89023425cabfa4b1"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 426,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "ad01e8773549b22e5b2347f649a709b33686b075604d080aa2000ddce1bae2c3",
+        "20d704eadf226c3c1a244e509a144865cc488e2015658c5f8bee443682936b3c"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 2739,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "7b5d58537ab4d5edd35448ec548b11e0b6ab683c794d4bd07ea33dbe0de9fd60",
+        "546a8827568c1de2aa8aae4ee6c66c5e9d9632b8b7f9a429dc669d1f02ac219d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3634,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "5c14795845d55524d746e0455db222b960d9499cd4b5cbfe8eed162d9777b9a8",
+        "df7ab54f2d6990faa99e58179529f5e69abd427848ff36bdf176a6f88a02daa0"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 2666,
+      "source": "runs/gsm8k-reward-online-v2/parsed_outcome/models/seed-1/trace.jsonl",
+      "hashes": [
+        "5bf9bf629c995e9920c8396be14b4cbbea29f292fb719c5d2276c0be175d1a5f",
+        "1992637e59375649f31930186d6b9afec99fa51c02c7e539655a3869d8088717"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4517,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "hashes": [
+        "2ae5b1a8c5b7bcd11183ed0c53baf20f3c0b738cdd6ad6a9fa20ac0a9c2e18b5",
+        "1e458bcb83df357ee344aec41d9f8bad4b66a8bc1674dd8e594601fc8edcb506"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4517,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "21fa64de24ae9a50c4e48f03b9183e60dbe46a15caca9fe048beb8c41199f69b",
+        "99f3b8405afc23abe73364dbaa36b65424f0001edebb224a8879e26ea029a1dd"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 5669,
+      "source": "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl",
+      "hashes": [
+        "ff2281e12010c4d7428eee3fe62bb21a84669d547be7456a0f8b522a5d020b65",
+        "ca0471bb2752859967ad3bf0e7d6f019da29c622bd63790ab50415c79a1ea7e9"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 3058,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/fresh/trace.jsonl",
+      "hashes": [
+        "b2f3c98881337dadbe846af7bd589d3a523ff3b235e08f308f7a3710b283f1d4",
+        "f15a88082d525aab96249c401f51d47ac4bd339fdd89c898d356650531dc8f2e"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 3058,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/stale/trace.jsonl",
+      "hashes": [
+        "b2f3c98881337dadbe846af7bd589d3a523ff3b235e08f308f7a3710b283f1d4",
+        "9709299dbddfdc60a5301956ff545fdd2aade40a38e8542b8617e795ec70949a"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 2502,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/mixed/trace.jsonl",
+      "hashes": [
+        "97915e88518fee36ab264f4dd38685aad91dd83d41162975b7df6d8c3b3e3ee9",
+        "3742d811a2fe1beccb62884d8718906fb498d3c8640de852daebafbebd79a58a"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1696,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/mixed/trace.jsonl",
+      "hashes": [
+        "17842123f26e157628cb5cd671e64f54ecb0ed36674cd9fcb4203c66b6d4ebbe",
+        "7b80b17cde9422356d31ac1b67402e6deddfdb2e8d323880053672622649d45b"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 1199,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/stale/trace.jsonl",
+      "hashes": [
+        "8cf0da246c37d85674fa5632ec21096abc132423cfe3b7e73748bee61d72fee6",
+        "0e06dbea6bbca997c011844fb2dc91660b9c846657b9765c833873c0977423ad"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4132,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "hashes": [
+        "569e8411f90ef4bf74d8c38f7e8173a3ed0c6bd13374b2122e92fe18193183aa",
+        "2d41802a24ecc96448e21560a946b58b9056a53a23f999906f6c8d84d32ead57"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 4482,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "hashes": [
+        "fa9d283d702defd7868a6b142e27e17c1ee45cfa2a4468701816e3713a0159e0",
+        "93e30cf5bed4efae5b0867ea186e9e399e70faad3e94ff9b98c287ff75500079"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 2742,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "hashes": [
+        "39417b89af55deacae774e49b5c3b232b94cf4e47bce8088759f1de1ba21e321",
+        "78f6ab3a6d4557675517f8f1daec1f56d8138807bf728e59eb2473e302f77871"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 6695,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "hashes": [
+        "64697378d6a0a987102bdaa6b9b6e599efc56841a0fef6f13f508a2bfba81706",
+        "a6320e4bd8a3f2c234ffd3646fb26ee70d7972c13ae7e2302c8b55973349d432"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6695,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/stale/trace.jsonl",
+      "hashes": [
+        "93253ed138203679f565592f47d1d73fb14ef20e2ad7750ec7526c3f0098a3e7",
+        "f4b06ef6d3c81436f60a318c81c42f8f7e2d774d45a22f3b9b5f3b6980d28146"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 6807,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "hashes": [
+        "6cb54def702a33a57a57b1289d942c57f0c0295edb91bf2d5d02ac5c55320809",
+        "c54cbee211a25e1433eb71998057181fa2c44273dc20445a35263c86a0ca041d"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 290,
+      "source": "runs/gsm8k-online-lag-5seed/seed-2/fresh/trace.jsonl",
+      "hashes": [
+        "df24252c0cd6a06767cb659f361b322d9ea9aaec5a3b11111ebd2f749d1b1785",
+        "ffc0dd909254c8787321c57cb82c626a2ee70e1ccac357949463d5bac924e88f"
+      ],
+      "winner_index": 0
+    },
+    {
+      "id": 7272,
+      "source": "runs/gsm8k-online-lag-5seed/seed-3/stale/trace.jsonl",
+      "hashes": [
+        "4619082929e731cbd9c16e94cf8a58fe31e56ebc904c6ef66ec9020d1865ecc8",
+        "825acaf898679b09e3f6a97a4302e40c97844d9880e225174ae992a49c22aae0"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 71,
+      "source": "runs/gsm8k-online-lag-5seed/seed-4/stale/trace.jsonl",
+      "hashes": [
+        "828dcd1541cd0142330e7dfb253f6619a834a7c6932975cf1d561b68eb2258ec",
+        "4ade6238514a6eaa84285a642b029d0e62c2e52ef5ed2e19fc8dc597c91852c0"
+      ],
+      "winner_index": 1
+    },
+    {
+      "id": 4756,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "hashes": [
+        "c54a1934aa2d34c4387a13e4ffa5f35bb98baaec0c4ddf4f1147e9c6e30866d4",
+        "3055932e9720a452a246727d35af4b34edb2e02acf0f3d9fb14ac53600c6fa91"
+      ],
+      "winner_index": 0
+    }
+  ],
+  "smoke_group_supplement_sha256": "1c8e97b5d3428f05c14772a159cbe81a551708c2c6ae065e5cac242f618daf9c"
+}

@@ -1,0 +1,415 @@
+{
+  "labeling": "Two same-family AI reviews. Each observed question, reference rationale and blinded A/B completions before seeing the automatic order. A tie includes uncertain. Neither is a human annotation.",
+  "original_files": {
+    "blinded": {
+      "sha256": "31f1c98ea49b7d21826b063abfc9093b96129711a63ac5f0f9a110e3fbbdb162",
+      "mtime_ns": 1795523252232521522
+    },
+    "blind-key": {
+      "sha256": "f32ae4301fe6b490b4816cac62db1541ead4d4ea2dc448094b2729f55eb00feb",
+      "mtime_ns": 1795523252234549662
+    },
+    "primary-review": {
+      "sha256": "8025c696ea671cfa19103a1b9cfad8cff1be0a8e0ded70d6158ba16bb04c79e2",
+      "mtime_ns": 1795523315014361757
+    },
+    "independent-review": {
+      "sha256": "064391056163fac40e11e11dcd725e4f4f0b7e15927abdde15dfb2bb04dffd25",
+      "mtime_ns": 1795523299344233351
+    },
+    "earliest-recheck": {
+      "sha256": "e1c3993ff8d18a331bf83782c548ba265ca7e1e7241424dbc6433677884c9e0a",
+      "mtime_ns": 1795523365197395719
+    },
+    "earliest-recheck-key": {
+      "sha256": "6897847b6dc416580c76edb0a56b8c2d0a7b9a8d9407a1a889f33907c9385505",
+      "mtime_ns": 1795523365197713138
+    },
+    "primary-earliest": {
+      "sha256": "063d86b9a981ec90e57387f4487cb0d4d1970704967a1392f7343398d08ca1a7",
+      "mtime_ns": 1795523377627749490
+    },
+    "secondary-earliest": {
+      "sha256": "bbb0e5a0ce33a608f8bc0ad6f1331a49141f9960738ee4455806a7b5da6a759b",
+      "mtime_ns": 1795523382333903888
+    },
+    "match-report": {
+      "sha256": "61f51316be7d69e5dcbbaee632c3ec347a8d34dd7d090813dd92893647686ee5",
+      "mtime_ns": 1795523399906656825
+    }
+  },
+  "superseded_6695": {
+    "id": 6695,
+    "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+    "line": 17,
+    "ab_sample_indices": [
+      1,
+      0
+    ],
+    "completion_sha256_ab": [
+      "a6320e4bd8a3f2c234ffd3646fb26ee70d7972c13ae7e2302c8b55973349d432",
+      "64697378d6a0a987102bdaa6b9b6e599efc56841a0fef6f13f508a2bfba81706"
+    ],
+    "automatic": "B",
+    "added_step": "{(('*', ('n', '2'), ('n', '5')), '10')}",
+    "primary": {
+      "choice": "B",
+      "reason": "Correctly derives two packs at 10 total and subtracts online cost from the station estimate, though station unit price is mistaken for quantity. A only describes a plan and guesses."
+    },
+    "secondary": {
+      "choice": "B",
+      "reason": "B obtains two packs and a $10 online cost, then subtracts it from the store total. Correcting the store unit price repairs its arithmetic chain."
+    }
+  },
+  "pairs": [
+    {
+      "id": 71,
+      "source": "runs/gsm8k-online-lag-5seed/seed-4/stale/trace.jsonl",
+      "line": 3,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "4ade6238514a6eaa84285a642b029d0e62c2e52ef5ed2e19fc8dc597c91852c0",
+        "828dcd1541cd0142330e7dfb253f6619a834a7c6932975cf1d561b68eb2258ec"
+      ],
+      "automatic": "A",
+      "added_step": "{(('*', ('n', '12'), ('n', '3')), '36')}",
+      "primary": {
+        "choice": "tie",
+        "reason": "Both get sales 36 and cash on hand 43. A invents another 7 before subtracting the right deposit; B describes subtracting the deposit but uses 7 rather than 18. Both are one operation or substitution away."
+      },
+      "secondary": {
+        "choice": "tie",
+        "reason": "Both reach $43 and call for subtracting the deposit. A uses $18 but adds the tip twice, while B substitutes $7 for the deposit. Each needs one local correction."
+      },
+      "evidence_note": "Both answers explicitly derive 36 and 43; difference in rendering of 3*12 produces a spurious rank."
+    },
+    {
+      "id": 290,
+      "source": "runs/gsm8k-online-lag-5seed/seed-2/fresh/trace.jsonl",
+      "line": 1,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "ffc0dd909254c8787321c57cb82c626a2ee70e1ccac357949463d5bac924e88f",
+        "df24252c0cd6a06767cb659f361b322d9ea9aaec5a3b11111ebd2f749d1b1785"
+      ],
+      "automatic": "B",
+      "added_step": "{(('*', ('n', '12'), ('n', '3')), '36')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Gets 36 eggs, nine for adults, and two per boy before mixing up the gender counts; A does not produce a usable allocation."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "B correctly computes 36 eggs in total, 9 for the adults and 2 per boy before confusing the number of girls with the number of boys."
+      }
+    },
+    {
+      "id": 1199,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/stale/trace.jsonl",
+      "line": 3,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "0e06dbea6bbca997c011844fb2dc91660b9c846657b9765c833873c0977423ad",
+        "8cf0da246c37d85674fa5632ec21096abc132423cfe3b7e73748bee61d72fee6"
+      ],
+      "automatic": "B",
+      "added_step": "{(('-', ('n', '400'), ('n', '160')), '240')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Both derive 240 remaining sq ft. B identifies packing 80-square-foot items into 240 and stops; A inverts the division and invents rounding."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "Both obtain 240 available square feet. B asks how many 80-square-foot shelves fit in 240, while A explicitly inverts the division and mishandles the fraction."
+      },
+      "evidence_note": "Both answers correctly compute 240 square feet. The directional agreement rests on the next division, not a unique correct subtraction on the preferred side."
+    },
+    {
+      "id": 1696,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/mixed/trace.jsonl",
+      "line": 14,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "7b80b17cde9422356d31ac1b67402e6deddfdb2e8d323880053672622649d45b",
+        "17842123f26e157628cb5cd671e64f54ecb0ed36674cd9fcb4203c66b6d4ebbe"
+      ],
+      "automatic": "B",
+      "added_step": "{(('/', ('n', '150'), ('n', '2')), '75')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Correctly halves to 75 and splits the pre-tip 75 among five. It goes badly wrong on tips and the final payment; A proposes subtracting the tip and invented 75 cents."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "B obtains the $75 remaining bill and correctly divides it among five to get the $15 per-person share before tip. A proposes several unsupported subtractions."
+      }
+    },
+    {
+      "id": 2502,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/mixed/trace.jsonl",
+      "line": 11,
+      "ab_sample_indices": [
+        0,
+        1
+      ],
+      "completion_sha256_ab": [
+        "97915e88518fee36ab264f4dd38685aad91dd83d41162975b7df6d8c3b3e3ee9",
+        "3742d811a2fe1beccb62884d8718906fb498d3c8640de852daebafbebd79a58a"
+      ],
+      "automatic": "A",
+      "added_step": "{(('-', ('n', '100'), ('n', '80')), '20')}",
+      "primary": {
+        "choice": "A",
+        "reason": "Gets both 80 grinding hours and 20 base enjoyment, despite torpedoing its own explanation with a contradictory 130; B treats all 80 grinding hours as enjoyable."
+      },
+      "secondary": {
+        "choice": "A",
+        "reason": "A correctly identifies 80 grinding hours and derives 20 remaining hours, though its proposed total is inconsistent. B adds 30 to the grinding hours."
+      }
+    },
+    {
+      "id": 2742,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "line": 16,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "78f6ab3a6d4557675517f8f1daec1f56d8138807bf728e59eb2473e302f77871",
+        "39417b89af55deacae774e49b5c3b232b94cf4e47bce8088759f1de1ba21e321"
+      ],
+      "automatic": "A",
+      "added_step": "{(('*', ('n', '2/5'), ('n', '300')), '120')}",
+      "primary": {
+        "choice": "tie",
+        "reason": "A computes 120 sour candies but skips removing them, contradicts itself and divides inconsistently. B tries to share the good stock among three but invents 90 good candies; neither carries a correct count into the next step."
+      },
+      "secondary": {
+        "choice": "tie",
+        "reason": "A computes 120 sour candies and initially counts three people, then divides all 300. B divides its purported good stock by three, but its good-stock calculation is invalid. Neither derives 180."
+      },
+      "evidence_note": "A writes 120 sour candies but immediately abandons it and divides inconsistent totals. B uses the correct three recipients but invents 90 good candies."
+    },
+    {
+      "id": 3058,
+      "source": "runs/gsm8k-online-lag-5seed/seed-0/fresh/trace.jsonl",
+      "line": 4,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "f15a88082d525aab96249c401f51d47ac4bd339fdd89c898d356650531dc8f2e",
+        "b2f3c98881337dadbe846af7bd589d3a523ff3b235e08f308f7a3710b283f1d4"
+      ],
+      "automatic": "A",
+      "added_step": "{(('*', ('n', '10'), ('n', '5')), '50')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Both find 50 acquired, but B retains the distinction between 50 total and eight remaining and at least proposes taking a difference. A then invents multiple acquisition rates. B still subtracts the wrong numbers."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "Both find 50 bones received. B also identifies eight as the remaining stock and calls for subtraction, but substitutes the wrong quantities. A abandons the monthly rate it used."
+      },
+      "evidence_note": "Both answers derive 50 bones. The auto winner matches a compact equation then invents multiple monthly rates; the other retains total vs remaining despite its wrong final answer."
+    },
+    {
+      "id": 4132,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "line": 6,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "2d41802a24ecc96448e21560a946b58b9056a53a23f999906f6c8d84d32ead57",
+        "569e8411f90ef4bf74d8c38f7e8173a3ed0c6bd13374b2122e92fe18193183aa"
+      ],
+      "automatic": "B",
+      "added_step": "{(('*', ('n', '2'), ('n', '3/2')), '3'), (('*', ('n', '3'), ('n', '3/2')), '9/2'), (('*', ('n', '2'), ('n', '9/2')), '9')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Finds all five annual increments, including 9 and 4.5 in years four and five; A doubles 1.5 instead of 4.5. B omits the final sum."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "B correctly calculates all five annual growth amounts and only lacks their sum. A already uses the wrong starting amount for year four."
+      }
+    },
+    {
+      "id": 4482,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "line": 9,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "93e30cf5bed4efae5b0867ea186e9e399e70faad3e94ff9b98c287ff75500079",
+        "fa9d283d702defd7868a6b142e27e17c1ee45cfa2a4468701816e3713a0159e0"
+      ],
+      "automatic": "B",
+      "added_step": "{(('/', ('n', '18'), ('n', '2')), '9')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Correctly computes half of 18 as nine fruit trees, then mishandles the three types. A never identifies nine and invents additional street totals."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "B correctly derives nine fruit trees by halving 18 before misallocating them. A misinterprets every other tree from the beginning."
+      }
+    },
+    {
+      "id": 4517,
+      "source": "runs/gsm8k-budget-5seed/seed-0/grpo/trace.jsonl",
+      "line": 85,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "1e458bcb83df357ee344aec41d9f8bad4b66a8bc1674dd8e594601fc8edcb506",
+        "2ae5b1a8c5b7bcd11183ed0c53baf20f3c0b738cdd6ad6a9fa20ac0a9c2e18b5"
+      ],
+      "automatic": "A",
+      "added_step": "{(('*', ('n', '1'), ('n', '4')), '4'), (('*', ('n', '2'), ('n', '3')), '6')}",
+      "primary": {
+        "choice": "A",
+        "reason": "Correctly calculates banana, apple, and avocado subtotals before errors on other fruit and aggregation. B gives only an unsupported 32."
+      },
+      "secondary": {
+        "choice": "A",
+        "reason": "A correctly calculates the banana, apple and avocado subtotals. B gives a bare incorrect total with no recoverable calculation."
+      }
+    },
+    {
+      "id": 4756,
+      "source": "runs/gsm8k-stable-v1/models/lr-0.0003-groups-8/seed-0/trace.jsonl",
+      "line": 83,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "3055932e9720a452a246727d35af4b34edb2e02acf0f3d9fb14ac53600c6fa91",
+        "c54a1934aa2d34c4387a13e4ffa5f35bb98baaec0c4ddf4f1147e9c6e30866d4"
+      ],
+      "automatic": "B",
+      "added_step": "{(('-', ('n', '80'), ('n', '391/5')), '9/5')}",
+      "primary": {
+        "choice": "B",
+        "reason": "Gets temperature drop 1.8 and cost six per tree, then treats one tree as one degree. A invents the number of trees, rate, and price."
+      },
+      "secondary": {
+        "choice": "B",
+        "reason": "B derives the 1.8-degree drop and uses the $6 cost with the correct final multiplication. Its wrong rate causes the wrong tree count."
+      }
+    },
+    {
+      "id": 5669,
+      "source": "runs/gsm8k-grpo-diagnosis/online-low/trace.jsonl",
+      "line": 89,
+      "ab_sample_indices": [
+        0,
+        1
+      ],
+      "completion_sha256_ab": [
+        "ff2281e12010c4d7428eee3fe62bb21a84669d547be7456a0f8b522a5d020b65",
+        "ca0471bb2752859967ad3bf0e7d6f019da29c622bd63790ab50415c79a1ea7e9"
+      ],
+      "automatic": "A",
+      "added_step": "{(('+', ('n', '500'), ('n', '800')), '1300')}",
+      "primary": {
+        "choice": "A",
+        "reason": "Computes 800 feed and 1300 feed plus treatment before wrongly subtracting from purchase price; B multiplies unlike costs."
+      },
+      "secondary": {
+        "choice": "A",
+        "reason": "A correctly computes $800 feed cost, $1,300 care cost and the direction of the profit calculation before mishandling the purchase price."
+      }
+    },
+    {
+      "id": 6695,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/stale/trace.jsonl",
+      "line": 17,
+      "ab_sample_indices": [
+        0,
+        1
+      ],
+      "completion_sha256_ab": [
+        "93253ed138203679f565592f47d1d73fb14ef20e2ad7750ec7526c3f0098a3e7",
+        "f4b06ef6d3c81436f60a318c81c42f8f7e2d774d45a22f3b9b5f3b6980d28146"
+      ],
+      "automatic": "A",
+      "added_step": "{(('*', ('n', '2'), ('n', '5')), '10')}",
+      "primary": {
+        "choice": "A",
+        "reason": "A calculates two packs at 10 in total before substituting the wrong gas station unit cost. B only starts a sentence."
+      },
+      "secondary": {
+        "choice": "A",
+        "reason": "A correctly computes that 24 lighters require two packs costing $10 online and begins the subtraction, although it uses the wrong unit price for the gas station. B contains no mathematical work."
+      }
+    },
+    {
+      "id": 6807,
+      "source": "runs/gsm8k-online-lag-5seed/seed-1/mixed/trace.jsonl",
+      "line": 18,
+      "ab_sample_indices": [
+        0,
+        1
+      ],
+      "completion_sha256_ab": [
+        "6cb54def702a33a57a57b1289d942c57f0c0295edb91bf2d5d02ac5c55320809",
+        "c54cbee211a25e1433eb71998057181fa2c44273dc20445a35263c86a0ca041d"
+      ],
+      "automatic": "A",
+      "added_step": "{(('+', ('n', '15'), ('n', '6')), '21')}",
+      "primary": {
+        "choice": "A",
+        "reason": "Derives valid per-batch costs 15 and 6 and total 21, then points toward scaling by three. B says only Sure."
+      },
+      "secondary": {
+        "choice": "A",
+        "reason": "A derives $15 milk, $6 fruit and $21 per batch, and begins the final multiplication. B supplies no mathematical work."
+      }
+    },
+    {
+      "id": 7272,
+      "source": "runs/gsm8k-online-lag-5seed/seed-3/stale/trace.jsonl",
+      "line": 16,
+      "ab_sample_indices": [
+        1,
+        0
+      ],
+      "completion_sha256_ab": [
+        "825acaf898679b09e3f6a97a4302e40c97844d9880e225174ae992a49c22aae0",
+        "4619082929e731cbd9c16e94cf8a58fe31e56ebc904c6ef66ec9020d1865ecc8"
+      ],
+      "automatic": "A",
+      "added_step": "{(('*', ('n', '4'), ('n', '5')), '20')}",
+      "primary": {
+        "choice": "A",
+        "reason": "Correctly accounts for 20 books on day one and 100 remaining, but ignores the next two days; B gives unrelated examples."
+      },
+      "secondary": {
+        "choice": "A",
+        "reason": "A calculates the first day's 20 books and 100 remaining, and identifies division by five as relevant. B gives unrelated examples."
+      }
+    }
+  ]
+}
