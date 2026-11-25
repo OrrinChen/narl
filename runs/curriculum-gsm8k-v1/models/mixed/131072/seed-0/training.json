@@ -1,0 +1,21 @@
+{
+  "lr": 0.0001,
+  "accumulation_groups": 16,
+  "seed": 0,
+  "start_sha256": "2c6a2883a67adfb9e2f5bb2ff2f5c14dcab8203847b0f3522b1790f021f56dd2",
+  "final_sha256": "1a67a7eabe2896dee6a7c761c22029137b66ac622c964a84f8ddb182cc0047b0",
+  "trace_sha256": "9de7f17c9f2da9c07c9deab82bbaa8f88f0b1afcc51219a743dd2f22673b5690",
+  "updates_sha256": "de7a425b4fbc09e6a4e29dd868813e6bf12121dc7425d77f21cd525b20e643a4",
+  "accounting": {
+    "generated_tokens": 131072,
+    "supervised_tokens": 0,
+    "consumed_tokens": 131072,
+    "nonzero_advantage_tokens": 31003,
+    "learner_input_tokens": 64179,
+    "generation_prompt_tokens": 130224,
+    "groups": 366,
+    "optimizer_batches": 23,
+    "changed_weights": 23
+  },
+  "training_elapsed_s": 1212.4250337088015
+}
