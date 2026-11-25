@@ -25,6 +25,8 @@ A subsequent development study added frozen-policy gradient accumulation across 
 
 A reward-only study trained four GSM8K recipes from the same starting checkpoint with five paired seeds and 32,768 newly generated response tokens per endpoint. Rewarding verified steps and a clean answer format scored **52, 48, 48, 49, 52 / 128** against **46/128** at initialization. Every seed improved on this development set. The median gain was **+2.34 pp**, with a question-block 95% interval of **0.00 to +7.03 pp**, missing the preregistered positive-lower-bound criterion. [Online reward comparison](RESULTS.md#t-修复训练奖励后的真实在线-grpo) The same fixed models were then checked on two new 256-question panels. The median gain over initialization was **0.00 pp** on A and **+0.78 pp** on B. Both paired intervals included zero. [Two-panel replication](RESULTS.md#固定格式奖励模型在两批新题上的复核)
 
+In a five-seed online GRPO comparison, drawing half the training questions from problems with exactly two calculator annotations increased the number of one-correct/one-wrong pairs per 10,000 generated tokens from **6.47 to 8.12** at 32,768 tokens per seed. On 256 new GSM8K development questions the paired median gain over uniform sampling was **+0.39 percentage points** (95% question-bootstrap interval **−1.95 to +2.34**). On the 92 questions with four or more annotations the median difference was **−2.17 points**. [Sampling results](runs/curriculum-gsm8k-v1/results-primary.json)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline
