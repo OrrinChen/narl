@@ -1,0 +1,16 @@
+{
+  "audit_passed": true,
+  "protocol_sha256": "e4c1029d3102aee7db7a336701d19775ab46ced6503d1bc22bfa7efcee354fc6",
+  "phase": "primary",
+  "protocol_only": true,
+  "excluded_count": 5607,
+  "train_pool_size": 1354,
+  "panel_sizes": {
+    "primary": 256,
+    "dose": 256
+  },
+  "four_plus_counts": {
+    "primary": 92,
+    "dose": 83
+  }
+}

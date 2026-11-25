@@ -143,7 +143,7 @@ def check_plan(source_path, run, train, test):
 
 
 def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, training_sample_validator=None,
-               training_group_reward=None):
+               training_group_reward=None, checkpoints=()):
     report = read_json(folder / "training.json")
     rows, updates = read_rows(folder / "trace.jsonl"), read_rows(folder / "updates.jsonl")
     require(rows and report["lr"] == lr and report["accumulation_groups"] == accumulation and report["seed"] == seed,
@@ -153,9 +153,14 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, traini
                                        "nonzero_advantage_tokens", "learner_input_tokens", "generation_prompt_tokens",
                                        "groups", "optimizer_batches", "changed_weights"), 0)
     schedule = plan["train_prompt_ids"][str(seed)]
+    limits = tuple(checkpoints) + (plan["token_budget"],)
+    require(all(type(n) is int and n > 0 for n in limits) and tuple(sorted(set(limits))) == limits,
+            f"{folder}: invalid intermediate generation-budget boundaries")
+    boundaries = iter(limits)
+    boundary = next(boundaries)
     for index, row in enumerate(rows):
         label = f"{folder.name}/group {index}"
-        remaining = plan["token_budget"] - totals["generated_tokens"]
+        remaining = boundary - totals["generated_tokens"]
         require(remaining > 0 and row["group_index"] == index and row["prompt_id"] == schedule[index]
                 and row["batch_index"] == batch and row["version"] == version and row["sha256"] == current,
                 f"{label}: broken prompt, frozen-policy batch, or version chain")
@@ -205,7 +210,7 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, traini
         totals["groups"] += 1
         if complete:
             pending.append(index)
-        if pending and (len(pending) == accumulation or totals["generated_tokens"] == plan["token_budget"]):
+        if pending and (len(pending) == accumulation or totals["generated_tokens"] == boundary):
             require(batch < len(updates), f"{label}: complete batch was never passed to the learner")
             update = updates[batch]
             batch_values = [value for i in pending for value in normalized_advantages(rows[i]["samples"])]
@@ -223,6 +228,8 @@ def check_case(folder, plan, train, tokenizer, lr, accumulation, seed, *, traini
             totals["changed_weights"] += int(changed)
             batch += 1
             pending = []
+        if totals["generated_tokens"] == boundary and boundary < plan["token_budget"]:
+            boundary = next(boundaries)
     require(totals["generated_tokens"] == plan["token_budget"] and not pending and batch == len(updates),
             f"{folder}: unused budget, unflushed groups, or extra learner updates")
     check_reported(report["accounting"], totals, str(folder))

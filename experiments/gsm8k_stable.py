@@ -108,7 +108,7 @@ def pair_stats(initial, evaluations, count):
 
 
 def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, folder, *, training_reward=None,
-               training_group_reward=None):
+               training_group_reward=None, restore_training=None):
     require(training_reward is None or training_group_reward is None, "choose one training reward callback")
     folder.mkdir(parents=True, exist_ok=True)
     if (folder / "training.json").exists():
@@ -119,8 +119,25 @@ def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, fol
     generated = consumed = signal_tokens = learner_tokens = 0
     rows, updates, pending, pending_ids = [], [], [], []
     started = perf_counter()
-    with (folder / "trace.jsonl").open("w") as trace_handle, (folder / "updates.jsonl").open("w") as update_handle:
-        for index, prompt_id in enumerate(plan["train_prompt_ids"][str(seed)]):
+    mode = "w"
+    if restore_training is not None:
+        rows, updates = restore_training(model, learner)
+        if updates:
+            current = adapter_snapshot(model), updates[-1]["new_sha256"]
+            version_ = updates[-1]["new_version"]
+            require(adapter_digest(current[0]) == current[1], "restored adapter differs from the last update")
+        generated = sum(r["generated_tokens"] for r in rows)
+        consumed = sum(r["consumed_tokens"] for r in rows)
+        signal_tokens = sum(r["nonzero_advantage_tokens"] for r in rows)
+        learner_tokens = sum(r["learner_input_tokens"] for r in rows)
+        require(generated <= plan["token_budget"], "restored progress exceeds the budget")
+        mode = "a"
+    schedule = plan["train_prompt_ids"][str(seed)]
+    with (folder / "trace.jsonl").open(mode) as trace_handle, (folder / "updates.jsonl").open(mode) as update_handle:
+        for index in range(len(rows), len(schedule)):
+            if generated == plan["token_budget"]:
+                break
+            prompt_id = schedule[index]
             prompt_ids, samples = rollouts(model, tokenizer, train[prompt_id], plan["source_protocol"], seed, "fresh", index,
                                            plan["token_budget"] - generated, current, current, version_)
             if training_group_reward is not None:
@@ -169,10 +186,8 @@ def train_case(model, tokenizer, train, plan, start, lr, accumulation, seed, fol
                 updates.append(update)
                 current, version_ = (snapshot, next_hash), update["new_version"]
                 pending, pending_ids = [], []
-                print(config_name(lr, accumulation), seed, f"{generated}/32768", f"v{version_}",
+                print(config_name(lr, accumulation), seed, f"{generated}/{plan['token_budget']}", f"v{version_}",
                       "active groups", update["nonzero_groups"], flush=True)
-            if generated == plan["token_budget"]:
-                break
     require(generated == plan["token_budget"] and not pending, "incomplete generation budget or unflushed batch")
     save_file(current[0], folder / "final-adapter.safetensors")
     report = {"lr": lr, "accumulation_groups": accumulation, "seed": seed,
