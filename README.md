@@ -27,6 +27,8 @@ A reward-only study trained four GSM8K recipes from the same starting checkpoint
 
 In a five-seed online GRPO comparison, drawing half the training questions from problems with exactly two calculator annotations increased the number of one-correct/one-wrong pairs per 10,000 generated tokens from **6.47 to 8.12** at 32,768 tokens per seed. On 256 new GSM8K development questions the paired median gain over uniform sampling was **+0.39 percentage points** (95% question-bootstrap interval **−1.95 to +2.34**). On the 92 questions with four or more annotations the median difference was **−2.17 points**. [Sampling results](runs/curriculum-gsm8k-v1/results-primary.json)
 
+After continuing the five mixed-sampling models to 131,072 tokens each, all five beat their common SFT starting point on a separate 256-question panel. The median gain was **9 questions (+3.52 points, 95% interval +0.39 to +6.64)**. Against their own 32,768-token checkpoints they gained **13, 6, 8, −2 and 2 questions**. That median gain of **+2.34 points** had a 95% interval of **−0.39 to +4.69**, missing the preregistered stability criterion. The median difference on the 83 questions with at least four annotations was zero. [Budget comparison](RESULTS.md#u-相同生成预算下按参考算式数量选题)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline

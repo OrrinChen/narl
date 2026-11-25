@@ -338,7 +338,9 @@ def main():
     pending = destination.with_suffix(".tmp")
     pending.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     pending.replace(destination)
-    print("Audited", args.phase, destination, "passed", result.get("outcome", {}).get("passed"))
+    print(f"Audited {args.phase} at {destination}: audit_passed={result['audit_passed']}")
+    if "outcome" in result:
+        print(f"Learning criteria met: {result['outcome']['passed']}")
 
 
 if __name__ == "__main__":

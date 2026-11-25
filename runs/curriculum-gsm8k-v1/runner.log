@@ -1,0 +1,236 @@
+gsm8k_curriculum_run --stage train --panel primary --arm uniform --budget 32768 --seed 0
+lr-0.0001-groups-16 0 5816/32768 v1 active groups 4
+lr-0.0001-groups-16 0 11564/32768 v2 active groups 2
+lr-0.0001-groups-16 0 17668/32768 v3 active groups 5
+lr-0.0001-groups-16 0 23711/32768 v4 active groups 4
+lr-0.0001-groups-16 0 29806/32768 v5 active groups 3
+lr-0.0001-groups-16 0 32768/32768 v6 active groups 1
+gsm8k_curriculum_run --stage train --panel primary --arm mixed --budget 32768 --seed 0
+lr-0.0001-groups-16 0 4989/32768 v1 active groups 4
+lr-0.0001-groups-16 0 10041/32768 v2 active groups 6
+lr-0.0001-groups-16 0 16127/32768 v3 active groups 4
+lr-0.0001-groups-16 0 21699/32768 v4 active groups 3
+lr-0.0001-groups-16 0 27803/32768 v5 active groups 4
+lr-0.0001-groups-16 0 32768/32768 v6 active groups 6
+gsm8k_curriculum_run --stage train --panel primary --arm mixed --budget 32768 --seed 1
+lr-0.0001-groups-16 1 5300/32768 v1 active groups 8
+lr-0.0001-groups-16 1 11856/32768 v2 active groups 2
+lr-0.0001-groups-16 1 17202/32768 v3 active groups 5
+lr-0.0001-groups-16 1 23252/32768 v4 active groups 4
+lr-0.0001-groups-16 1 28930/32768 v5 active groups 6
+lr-0.0001-groups-16 1 32768/32768 v6 active groups 5
+gsm8k_curriculum_run --stage train --panel primary --arm uniform --budget 32768 --seed 1
+lr-0.0001-groups-16 1 5378/32768 v1 active groups 6
+lr-0.0001-groups-16 1 12220/32768 v2 active groups 5
+lr-0.0001-groups-16 1 18318/32768 v3 active groups 6
+lr-0.0001-groups-16 1 25060/32768 v4 active groups 5
+lr-0.0001-groups-16 1 30894/32768 v5 active groups 3
+lr-0.0001-groups-16 1 32768/32768 v5 active groups 0
+gsm8k_curriculum_run --stage train --panel primary --arm uniform --budget 32768 --seed 2
+lr-0.0001-groups-16 2 6423/32768 v1 active groups 3
+lr-0.0001-groups-16 2 12994/32768 v2 active groups 3
+lr-0.0001-groups-16 2 18904/32768 v3 active groups 5
+lr-0.0001-groups-16 2 25409/32768 v4 active groups 3
+lr-0.0001-groups-16 2 31371/32768 v5 active groups 5
+lr-0.0001-groups-16 2 32768/32768 v5 active groups 0
+gsm8k_curriculum_run --stage train --panel primary --arm mixed --budget 32768 --seed 2
+lr-0.0001-groups-16 2 6465/32768 v1 active groups 5
+lr-0.0001-groups-16 2 12794/32768 v2 active groups 5
+lr-0.0001-groups-16 2 18725/32768 v3 active groups 3
+lr-0.0001-groups-16 2 23964/32768 v4 active groups 6
+lr-0.0001-groups-16 2 29351/32768 v5 active groups 7
+lr-0.0001-groups-16 2 32768/32768 v6 active groups 5
+gsm8k_curriculum_run --stage train --panel primary --arm mixed --budget 32768 --seed 3
+lr-0.0001-groups-16 3 5491/32768 v1 active groups 5
+lr-0.0001-groups-16 3 11282/32768 v2 active groups 3
+lr-0.0001-groups-16 3 17421/32768 v3 active groups 4
+lr-0.0001-groups-16 3 23281/32768 v4 active groups 2
+lr-0.0001-groups-16 3 28682/32768 v5 active groups 9
+lr-0.0001-groups-16 3 32768/32768 v6 active groups 1
+gsm8k_curriculum_run --stage train --panel primary --arm uniform --budget 32768 --seed 3
+lr-0.0001-groups-16 3 6021/32768 v1 active groups 2
+lr-0.0001-groups-16 3 12584/32768 v2 active groups 4
+lr-0.0001-groups-16 3 18701/32768 v3 active groups 4
+lr-0.0001-groups-16 3 24473/32768 v4 active groups 4
+lr-0.0001-groups-16 3 30132/32768 v5 active groups 8
+lr-0.0001-groups-16 3 32768/32768 v6 active groups 1
+gsm8k_curriculum_run --stage train --panel primary --arm uniform --budget 32768 --seed 4
+lr-0.0001-groups-16 4 6600/32768 v1 active groups 5
+lr-0.0001-groups-16 4 13090/32768 v2 active groups 7
+lr-0.0001-groups-16 4 19151/32768 v3 active groups 2
+lr-0.0001-groups-16 4 25383/32768 v4 active groups 2
+lr-0.0001-groups-16 4 31628/32768 v5 active groups 3
+lr-0.0001-groups-16 4 32768/32768 v6 active groups 1
+gsm8k_curriculum_run --stage train --panel primary --arm mixed --budget 32768 --seed 4
+lr-0.0001-groups-16 4 5492/32768 v1 active groups 3
+lr-0.0001-groups-16 4 11753/32768 v2 active groups 7
+lr-0.0001-groups-16 4 17033/32768 v3 active groups 3
+lr-0.0001-groups-16 4 22980/32768 v4 active groups 4
+lr-0.0001-groups-16 4 29478/32768 v5 active groups 2
+lr-0.0001-groups-16 4 32768/32768 v6 active groups 2
+gsm8k_curriculum_run --stage initial --panel primary
+primary initial None None None 90 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm uniform --budget 32768 --seed 0
+primary eval uniform 32768 0 88 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm mixed --budget 32768 --seed 0
+primary eval mixed 32768 0 89 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm uniform --budget 32768 --seed 1
+primary eval uniform 32768 1 87 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm mixed --budget 32768 --seed 1
+primary eval mixed 32768 1 94 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm uniform --budget 32768 --seed 2
+primary eval uniform 32768 2 91 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm mixed --budget 32768 --seed 2
+primary eval mixed 32768 2 85 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm uniform --budget 32768 --seed 3
+primary eval uniform 32768 3 93 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm mixed --budget 32768 --seed 3
+primary eval mixed 32768 3 90 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm uniform --budget 32768 --seed 4
+primary eval uniform 32768 4 85 / 256
+gsm8k_curriculum_run --stage eval --panel primary --arm mixed --budget 32768 --seed 4
+primary eval mixed 32768 4 87 / 256
+gsm8k_curriculum_results --phase primary
+primary passed=False, criteria={'candidate_vs_reference_gate': False, 'candidate_vs_initial_gate': False, 'hard_median_nonnegative': False, 'density_gain': True}
+audit_gsm8k_curriculum --phase primary --verify-training
+replayed uniform-32768-seed-0 {'groups': 88, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed uniform-32768-seed-1 {'groups': 85, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed uniform-32768-seed-2 {'groups': 86, 'learner_batches': 6, 'changed_weights': 5, 'every_batch_hash_matches': True}
+replayed uniform-32768-seed-3 {'groups': 88, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed uniform-32768-seed-4 {'groups': 83, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-0 {'groups': 94, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-1 {'groups': 92, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-2 {'groups': 91, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-3 {'groups': 90, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-4 {'groups': 91, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+Audited primary runs/curriculum-gsm8k-v1/audit-primary.json passed False
+gsm8k_curriculum_run --stage train --panel dose --arm mixed --budget 131072 --seed 0
+lr-0.0001-groups-16 0 38453/131072 v7 active groups 3
+lr-0.0001-groups-16 0 43835/131072 v8 active groups 3
+lr-0.0001-groups-16 0 50297/131072 v9 active groups 8
+lr-0.0001-groups-16 0 55971/131072 v10 active groups 5
+lr-0.0001-groups-16 0 61238/131072 v11 active groups 6
+lr-0.0001-groups-16 0 66919/131072 v12 active groups 6
+lr-0.0001-groups-16 0 72594/131072 v13 active groups 6
+lr-0.0001-groups-16 0 78140/131072 v14 active groups 5
+lr-0.0001-groups-16 0 83765/131072 v15 active groups 4
+lr-0.0001-groups-16 0 89833/131072 v16 active groups 5
+lr-0.0001-groups-16 0 96083/131072 v17 active groups 2
+lr-0.0001-groups-16 0 101585/131072 v18 active groups 6
+lr-0.0001-groups-16 0 108409/131072 v19 active groups 2
+lr-0.0001-groups-16 0 114392/131072 v20 active groups 3
+lr-0.0001-groups-16 0 119856/131072 v21 active groups 2
+lr-0.0001-groups-16 0 125616/131072 v22 active groups 3
+lr-0.0001-groups-16 0 131072/131072 v23 active groups 2
+gsm8k_curriculum_run --stage train --panel dose --arm mixed --budget 131072 --seed 1
+lr-0.0001-groups-16 1 38398/131072 v7 active groups 2
+lr-0.0001-groups-16 1 44389/131072 v8 active groups 2
+lr-0.0001-groups-16 1 50812/131072 v9 active groups 4
+lr-0.0001-groups-16 1 56722/131072 v10 active groups 5
+lr-0.0001-groups-16 1 63003/131072 v11 active groups 2
+lr-0.0001-groups-16 1 68883/131072 v12 active groups 6
+lr-0.0001-groups-16 1 74239/131072 v13 active groups 1
+lr-0.0001-groups-16 1 79641/131072 v14 active groups 3
+lr-0.0001-groups-16 1 85790/131072 v15 active groups 5
+lr-0.0001-groups-16 1 91351/131072 v16 active groups 4
+lr-0.0001-groups-16 1 96858/131072 v17 active groups 5
+lr-0.0001-groups-16 1 102677/131072 v18 active groups 3
+lr-0.0001-groups-16 1 108001/131072 v19 active groups 8
+lr-0.0001-groups-16 1 113286/131072 v20 active groups 5
+lr-0.0001-groups-16 1 119560/131072 v21 active groups 3
+lr-0.0001-groups-16 1 126003/131072 v22 active groups 3
+lr-0.0001-groups-16 1 131072/131072 v23 active groups 3
+gsm8k_curriculum_run --stage train --panel dose --arm mixed --budget 131072 --seed 2
+lr-0.0001-groups-16 2 38738/131072 v7 active groups 4
+lr-0.0001-groups-16 2 44926/131072 v8 active groups 5
+lr-0.0001-groups-16 2 50176/131072 v9 active groups 4
+lr-0.0001-groups-16 2 56337/131072 v10 active groups 4
+lr-0.0001-groups-16 2 62480/131072 v11 active groups 2
+lr-0.0001-groups-16 2 68452/131072 v12 active groups 4
+lr-0.0001-groups-16 2 73704/131072 v13 active groups 3
+lr-0.0001-groups-16 2 79048/131072 v14 active groups 7
+lr-0.0001-groups-16 2 84797/131072 v15 active groups 7
+lr-0.0001-groups-16 2 90317/131072 v16 active groups 6
+lr-0.0001-groups-16 2 96034/131072 v17 active groups 4
+lr-0.0001-groups-16 2 101503/131072 v18 active groups 3
+lr-0.0001-groups-16 2 107525/131072 v19 active groups 2
+lr-0.0001-groups-16 2 113219/131072 v20 active groups 4
+lr-0.0001-groups-16 2 119073/131072 v21 active groups 4
+lr-0.0001-groups-16 2 124611/131072 v22 active groups 4
+lr-0.0001-groups-16 2 129715/131072 v23 active groups 5
+lr-0.0001-groups-16 2 131072/131072 v24 active groups 1
+gsm8k_curriculum_run --stage train --panel dose --arm mixed --budget 131072 --seed 3
+lr-0.0001-groups-16 3 38341/131072 v7 active groups 4
+lr-0.0001-groups-16 3 43914/131072 v8 active groups 6
+lr-0.0001-groups-16 3 49540/131072 v9 active groups 5
+lr-0.0001-groups-16 3 56230/131072 v10 active groups 2
+lr-0.0001-groups-16 3 61767/131072 v11 active groups 3
+lr-0.0001-groups-16 3 67571/131072 v12 active groups 5
+lr-0.0001-groups-16 3 74104/131072 v13 active groups 1
+lr-0.0001-groups-16 3 80375/131072 v14 active groups 2
+lr-0.0001-groups-16 3 86440/131072 v15 active groups 2
+lr-0.0001-groups-16 3 91762/131072 v16 active groups 9
+lr-0.0001-groups-16 3 98019/131072 v17 active groups 5
+lr-0.0001-groups-16 3 103980/131072 v18 active groups 5
+lr-0.0001-groups-16 3 110261/131072 v19 active groups 5
+lr-0.0001-groups-16 3 116799/131072 v20 active groups 4
+lr-0.0001-groups-16 3 123444/131072 v21 active groups 5
+lr-0.0001-groups-16 3 129448/131072 v22 active groups 1
+lr-0.0001-groups-16 3 131072/131072 v23 active groups 2
+gsm8k_curriculum_run --stage train --panel dose --arm mixed --budget 131072 --seed 4
+lr-0.0001-groups-16 4 38423/131072 v7 active groups 5
+lr-0.0001-groups-16 4 44678/131072 v8 active groups 2
+lr-0.0001-groups-16 4 50869/131072 v9 active groups 4
+lr-0.0001-groups-16 4 56611/131072 v10 active groups 6
+lr-0.0001-groups-16 4 62173/131072 v11 active groups 4
+lr-0.0001-groups-16 4 67675/131072 v12 active groups 4
+lr-0.0001-groups-16 4 73703/131072 v13 active groups 5
+lr-0.0001-groups-16 4 79952/131072 v14 active groups 1
+lr-0.0001-groups-16 4 86250/131072 v15 active groups 2
+lr-0.0001-groups-16 4 91590/131072 v16 active groups 4
+lr-0.0001-groups-16 4 97635/131072 v17 active groups 2
+lr-0.0001-groups-16 4 104033/131072 v18 active groups 3
+lr-0.0001-groups-16 4 109402/131072 v19 active groups 6
+lr-0.0001-groups-16 4 114799/131072 v20 active groups 3
+lr-0.0001-groups-16 4 119939/131072 v21 active groups 5
+lr-0.0001-groups-16 4 125090/131072 v22 active groups 2
+lr-0.0001-groups-16 4 130772/131072 v23 active groups 7
+lr-0.0001-groups-16 4 131072/131072 v23 active groups 0
+gsm8k_curriculum_run --stage initial --panel dose
+dose initial None None None 103 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 32768 --seed 0
+dose eval mixed 32768 0 101 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 131072 --seed 0
+dose eval mixed 131072 0 114 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 32768 --seed 1
+dose eval mixed 32768 1 106 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 131072 --seed 1
+dose eval mixed 131072 1 112 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 32768 --seed 2
+dose eval mixed 32768 2 102 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 131072 --seed 2
+dose eval mixed 131072 2 110 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 32768 --seed 3
+dose eval mixed 32768 3 109 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 131072 --seed 3
+dose eval mixed 131072 3 107 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 32768 --seed 4
+dose eval mixed 32768 4 112 / 256
+gsm8k_curriculum_run --stage eval --panel dose --arm mixed --budget 131072 --seed 4
+dose eval mixed 131072 4 114 / 256
+gsm8k_curriculum_results --phase dose
+dose passed=False, criteria={'candidate_vs_reference_gate': False, 'candidate_vs_initial_gate': True, 'hard_median_nonnegative': True}
+audit_gsm8k_curriculum --phase dose --verify-training
+replayed mixed-32768-seed-0 {'groups': 94, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-1 {'groups': 92, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-2 {'groups': 91, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-3 {'groups': 90, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-32768-seed-4 {'groups': 91, 'learner_batches': 6, 'changed_weights': 6, 'every_batch_hash_matches': True}
+replayed mixed-131072-seed-0 {'groups': 366, 'learner_batches': 23, 'changed_weights': 23, 'every_batch_hash_matches': True}
+replayed mixed-131072-seed-1 {'groups': 362, 'learner_batches': 23, 'changed_weights': 23, 'every_batch_hash_matches': True}
+replayed mixed-131072-seed-2 {'groups': 367, 'learner_batches': 24, 'changed_weights': 24, 'every_batch_hash_matches': True}
+replayed mixed-131072-seed-3 {'groups': 351, 'learner_batches': 23, 'changed_weights': 23, 'every_batch_hash_matches': True}
+replayed mixed-131072-seed-4 {'groups': 364, 'learner_batches': 24, 'changed_weights': 23, 'every_batch_hash_matches': True}
+Audited dose at runs/curriculum-gsm8k-v1/audit-dose.json: audit_passed=True
+Learning criteria met: False
+study finished
