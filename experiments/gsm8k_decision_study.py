@@ -370,6 +370,8 @@ def run_all(out):
         for stage in ("score", "analyze", "live", "verify-scores"):
             execute("gsm8k_decision_study", "--stage", stage)
         execute("audit_gsm8k_decision")
+        if (out / "tag-control-plan.json").is_file():
+            execute("gsm8k_decision_tag_control")
         print("Decision study finished", flush=True)
 
 
