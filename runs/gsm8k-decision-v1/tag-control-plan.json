@@ -1,0 +1,17 @@
+{
+  "study": "Supplementary pre-outcome format-priority control for GSM8K decision allocation",
+  "status": "Frozen after the scoring head was trained and before inspecting any held-out candidates, scores, or policy results.",
+  "protocol_sha256": "11ba13b9a2e5b3b3cc756200bd33a3d5dc5f63fa5d0ef8a4951e465f93cd7152",
+  "head_sha256": "7f25df0dddebf72802c89d0cb814402d5031ce88c3c7b16f065effe97116168a",
+  "head_lock_sha256": "5ffe9ab4508915382b9563e9e3a24d3a84ed0b4df6b660d35acc8740093bc6a3",
+  "population": "Exactly the primary 256 questions, five seeds and frozen two candidates per question; no new data or model calls.",
+  "policy": "Rank by first answer only. Retry answers missing a complete answer tag before tagged answers. Within each category retry smaller mean sampled-token log probability first; exact ties follow the same per-seed shuffled ID order as the primary arms.",
+  "budget_and_selection": "Use 64*n generated retry tokens per seed and at most one retry per question. Truncate the last retry to the remaining tokens and re-decode and rescore it. Share the primary arms' tag-then-logprob final selector, ties to first answer.",
+  "allocation_contrasts": [
+    "judge minus tag-priority",
+    "tag-priority minus confidence"
+  ],
+  "uncertainty": "Paired question-block bootstrap shared across fixed seeds (10,000 resamples, seed 80161); report gains/losses/ties, mean and median differences, and both 95% intervals. Descriptive supplementary comparisons without independent stopping or significance decisions.",
+  "ranking_subset": "On each seed's pairs where both answers have a complete tag, report sample size, rule/head correct answers and paired wins, losses and ties, including the pooled counts. The subset varies across seeds; pooled counts weight each eligible candidate pair once.",
+  "timing": "Only an offline replay on the recorded candidates; no independent timing run or deployment-speed claim."
+}
