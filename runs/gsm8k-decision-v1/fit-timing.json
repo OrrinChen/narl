@@ -1,0 +1,11 @@
+{
+  "feature_binding": "50c01b265d59049c0b0bd2b3d16af85486601837ee1f838148c8228afc7ad01f",
+  "rows": 3620,
+  "input_tokens": 1301202,
+  "batch_size": 8,
+  "cache_hit": false,
+  "wall_seconds": 712.6129882920068,
+  "encoder_seconds": 712.1625657891855,
+  "recorded_encoder_seconds": 712.1625657891855,
+  "fit_stage_wall_s": 715.9487240829039
+}
