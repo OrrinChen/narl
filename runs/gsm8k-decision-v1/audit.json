@@ -1,0 +1,42 @@
+{
+  "audit_passed": true,
+  "protocol_sha256": "11ba13b9a2e5b3b3cc756200bd33a3d5dc5f63fa5d0ef8a4951e465f93cd7152",
+  "protocol_only": false,
+  "historical": {
+    "train_questions": 712,
+    "dev_questions": 179,
+    "train_candidates": 2890,
+    "dev_candidates": 730
+  },
+  "holdout_questions": 256,
+  "gate": {
+    "judge_vs_rule": false,
+    "judge_vs_confidence": false
+  },
+  "live": {
+    "judge": {
+      "tokens": 7650,
+      "correct": 9,
+      "wall_seconds": 111.4887818749994,
+      "prefix_hashes_verified": 45
+    },
+    "confidence": {
+      "tokens": 7650,
+      "correct": 8,
+      "wall_seconds": 106.86382562480867,
+      "prefix_hashes_verified": 44
+    },
+    "uniform": {
+      "tokens": 7650,
+      "correct": 7,
+      "wall_seconds": 106.8390778331086,
+      "prefix_hashes_verified": 45
+    }
+  },
+  "candidate_answers": 2560,
+  "paired_question_seed_rows": 1280,
+  "retry_tokens_per_seed_per_arm": 16384,
+  "results_sha256": "73ca37708c7b5a02e36cb677b3b158e03c9cf9709dc56e40d701dd966be504cb",
+  "score_forward_check_sha256": "7596565fa89a324e2ee547febbb53648c8333a8f747749b29d883e13bb7d58c7",
+  "head_sha256": "7f25df0dddebf72802c89d0cb814402d5031ce88c3c7b16f065effe97116168a"
+}

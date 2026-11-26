@@ -1,0 +1,271 @@
+{
+  "protocol_sha256": "11ba13b9a2e5b3b3cc756200bd33a3d5dc5f63fa5d0ef8a4951e465f93cd7152",
+  "head_sha256": "7f25df0dddebf72802c89d0cb814402d5031ce88c3c7b16f065effe97116168a",
+  "seed": 0,
+  "policy": "confidence",
+  "wall_seconds": 106.86382562480867,
+  "judge_seconds": 0.0,
+  "first_tokens": 5602,
+  "retry_tokens": 2048,
+  "total_tokens": 7650,
+  "correct": 8,
+  "replay_verified": true,
+  "questions": [
+    {
+      "prompt_id": 6140,
+      "retry_tokens": 256,
+      "selected_slot": 1,
+      "correct": 0,
+      "first_tokens_sha256": "d98f6135cde142c396d39e07d2b073859c83b874d1e57c6fb29f65d7f60c03fc",
+      "retry_tokens_sha256": "838c21aeb8a8410e37dff389307628400ace3139bf95e04d7fe4a1e5c18b8320"
+    },
+    {
+      "prompt_id": 1670,
+      "retry_tokens": 159,
+      "selected_slot": 1,
+      "correct": 1,
+      "first_tokens_sha256": "7355cfbd62a221e90ca169ef765b93c57a5d4a0b98fd00d4de13cb232bcbc0b6",
+      "retry_tokens_sha256": "4ea8f25c260521b83be99c17726ce98bb5dca22cc06ac2c2c1c44a3d3c90e444"
+    },
+    {
+      "prompt_id": 343,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "fdea1a656097ba9dc4385e1932788a142d77c5f30774a04446288f86eb6078ef",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 1141,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 1,
+      "first_tokens_sha256": "dbe710c9a09939e63020fb5f2a00e785ded351848303f25353f474ff29976a0d",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 7283,
+      "retry_tokens": 256,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "b1fba81b0b1c7f16241eef6ac059920788289c0412d583c728ffabb3414619e0",
+      "retry_tokens_sha256": "7af53bd87800c01b6e99baccbafc125eb8c2c8b7b2e91241427705aa9341c539"
+    },
+    {
+      "prompt_id": 4390,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "bd968844ec7bf6d4ea705eaf84aa3b67f7b3acde9a4ce38bf3eec513995d723b",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 5327,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "141bb9ca7267dadb767b4c3750d8b5d1d42789c042aa4475f33f2693ce71fa6f",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 2009,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "b7ee9eb4926e0b245540a9cbf3d11a9aaee05837b46b83a306881700a9684dd7",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 895,
+      "retry_tokens": 180,
+      "selected_slot": 1,
+      "correct": 1,
+      "first_tokens_sha256": "d2c7e5955ce20e11a14bca8dcf11bf311481885619ab824e0c65390cfc8d1fd6",
+      "retry_tokens_sha256": "4c07bdbb039f4c34a0d99939c588e73e8e36b0305213341d77b8c118d02b8df7"
+    },
+    {
+      "prompt_id": 2398,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "63ef789fda7f06eff34cc094d1564f0c6e386e4f994d7d0cc2695b42f0b5a4a3",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 2366,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "0e1e3340297ac3b079c3eb315b2faae642f6306431674387d773f8902ca4ccbd",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 3611,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "ade24e1ca69b2ff190c8abafa0db0c7a58af6954a775d252d4dded9de4faf50b",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 4414,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 1,
+      "first_tokens_sha256": "24f96e2ec5a1db8f0d13780952507ad08502cef8e035158b9e19699f7df6b28b",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 2444,
+      "retry_tokens": 256,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "54a3cb96d962a595c7f2d02a787656447f96d195da34a67b79fc1d08bf2976f8",
+      "retry_tokens_sha256": "f20743aab8ec987ed31b8edafa89e29a986ae12b14ea36e737590819b494b620"
+    },
+    {
+      "prompt_id": 57,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "214c6ef1e1e303ad3e27f438b431c16ba431663c1ab7213c21efbb2f1c8c691d",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 2261,
+      "retry_tokens": 35,
+      "selected_slot": 1,
+      "correct": 0,
+      "first_tokens_sha256": "17d1232ca750c354c1b433681f699a539236737eb5f19b0b971e00824816b895",
+      "retry_tokens_sha256": "da2a05447831614e41e0b8e7ce387a9c42107010ba63be1e2e7b8c01c2d7e6ec"
+    },
+    {
+      "prompt_id": 6723,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 1,
+      "first_tokens_sha256": "4b8ba89ce627282ee008fa95152f2c640460a84262f160262c2d1afaf5cdc367",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 2621,
+      "retry_tokens": 105,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "7cf86bd99f234004fe40fce9a7658b87a6fc46f12a80ece2d359395b95bcc252",
+      "retry_tokens_sha256": "477dbcc19fb7a9ddbb7a78062dc7feb7bd106c09e0eef2b60937df2dec1d1491"
+    },
+    {
+      "prompt_id": 5271,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "fbbaa35409055b98b63c68cea3cc10c44fe0a95626ce16c20e7b2423aa432f04",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 1639,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "06d17d2c448ab1a0cea41ee8a29109d5c5d462faf1081d48937b081bb28a9c26",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 3698,
+      "retry_tokens": 96,
+      "selected_slot": 1,
+      "correct": 0,
+      "first_tokens_sha256": "245aaaad925fdbdaa9c43e1f7914831bc7d393cc13d034e7e950e1422c49a533",
+      "retry_tokens_sha256": "ee2523ad001ef47ff52b57b14e45e12a2578cd20b52ed1eaa4011e51d005f742"
+    },
+    {
+      "prompt_id": 2419,
+      "retry_tokens": 256,
+      "selected_slot": 1,
+      "correct": 0,
+      "first_tokens_sha256": "45262c6c866a2218e56e886b2a4b7fb728caac80ccdb235490b74ee27977d0a9",
+      "retry_tokens_sha256": "f35ca77ae704ca7da663143afc73ceb5b78b503c893ec1c3ec623d09d803473f"
+    },
+    {
+      "prompt_id": 6110,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "a75d6a3f00db90a5675fb709b74ff5ec3e94b1cfa08a004989901d97bb085041",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 7036,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 1,
+      "first_tokens_sha256": "864b267b4ef66d9de0e5deb9b63adeca1832d5ccaeae480d50d5ab0c3b0c1b89",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 4275,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "d356af686cb633852dff32e5b4194d4ec54dbe8b9fb4b387725b8cd9e3cde84b",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 1690,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "41345c17e198ca6c509ce0164d311fd31a3b17e1318380927d437a0f8809d028",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 7094,
+      "retry_tokens": 150,
+      "selected_slot": 1,
+      "correct": 0,
+      "first_tokens_sha256": "33ab90adf990cd4c83fa1e853a8a208eaf78b685c326fb649f75ea6b8bcaa484",
+      "retry_tokens_sha256": "0bb5955d961f256c361eae7fa730453462a39b20011f1e798f07d2f7fbb6c315"
+    },
+    {
+      "prompt_id": 764,
+      "retry_tokens": 43,
+      "selected_slot": 1,
+      "correct": 1,
+      "first_tokens_sha256": "e1fda769b44de978d0a22edd1e45c4401b4f9cc2027f41989aca468f5c885ffc",
+      "retry_tokens_sha256": "7ebe43b20c6ad6398fc82349aa8f5ed9728b42ae9f31bb6def02043ff400b4ae"
+    },
+    {
+      "prompt_id": 3829,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "f76602b3337049bdd14b2a9bed5ca8907a42814ce77fa8f4653e40a243e86fc6",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 139,
+      "retry_tokens": 256,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "70c69a84094c9b6ca59f66ba0452be41e1b4d128c039495e218b016d989e5f78",
+      "retry_tokens_sha256": "69679082248b860a5a0185c1490a306638cd926ba48b891d1f51f6f20bc2c0a3"
+    },
+    {
+      "prompt_id": 4705,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 1,
+      "first_tokens_sha256": "808c77acab63b179fac6c9876d1baab3ad61d7f7b407e4ac5b703ea5149bb6f1",
+      "retry_tokens_sha256": null
+    },
+    {
+      "prompt_id": 6016,
+      "retry_tokens": 0,
+      "selected_slot": 0,
+      "correct": 0,
+      "first_tokens_sha256": "7b286c742eb659761074947a19a663e40a9fa18127a75e3a6f78abd1c5fb08b8",
+      "retry_tokens_sha256": null
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+Running gsm8k_decision_candidates
+holdout seed 0: 16/256 pairs
+holdout seed 0: 32/256 pairs
+holdout seed 0: 48/256 pairs
+holdout seed 0: 64/256 pairs
+holdout seed 0: 80/256 pairs
+holdout seed 0: 96/256 pairs
+holdout seed 0: 112/256 pairs
+holdout seed 0: 128/256 pairs
+holdout seed 0: 144/256 pairs
+holdout seed 0: 160/256 pairs
+holdout seed 0: 176/256 pairs
+holdout seed 0: 192/256 pairs
+holdout seed 0: 208/256 pairs
+holdout seed 0: 224/256 pairs
+holdout seed 0: 240/256 pairs
+holdout seed 0: 256/256 pairs
+holdout seed 1: 16/256 pairs
+holdout seed 1: 32/256 pairs
+holdout seed 1: 48/256 pairs
+holdout seed 1: 64/256 pairs
+holdout seed 1: 80/256 pairs
+holdout seed 1: 96/256 pairs
+holdout seed 1: 112/256 pairs
+holdout seed 1: 128/256 pairs
+holdout seed 1: 144/256 pairs
+holdout seed 1: 160/256 pairs
+holdout seed 1: 176/256 pairs
+holdout seed 1: 192/256 pairs
+holdout seed 1: 208/256 pairs
+holdout seed 1: 224/256 pairs
+holdout seed 1: 240/256 pairs
+holdout seed 1: 256/256 pairs
+holdout seed 2: 16/256 pairs
+holdout seed 2: 32/256 pairs
+holdout seed 2: 48/256 pairs
+holdout seed 2: 64/256 pairs
+holdout seed 2: 80/256 pairs
+holdout seed 2: 96/256 pairs
+holdout seed 2: 112/256 pairs
+holdout seed 2: 128/256 pairs
+holdout seed 2: 144/256 pairs
+holdout seed 2: 160/256 pairs
+holdout seed 2: 176/256 pairs
+holdout seed 2: 192/256 pairs
+holdout seed 2: 208/256 pairs
+holdout seed 2: 224/256 pairs
+holdout seed 2: 240/256 pairs
+holdout seed 2: 256/256 pairs
+holdout seed 3: 16/256 pairs
+holdout seed 3: 32/256 pairs
+holdout seed 3: 48/256 pairs
+holdout seed 3: 64/256 pairs
+holdout seed 3: 80/256 pairs
+holdout seed 3: 96/256 pairs
+holdout seed 3: 112/256 pairs
+holdout seed 3: 128/256 pairs
+holdout seed 3: 144/256 pairs
+holdout seed 3: 160/256 pairs
+holdout seed 3: 176/256 pairs
+holdout seed 3: 192/256 pairs
+holdout seed 3: 208/256 pairs
+holdout seed 3: 224/256 pairs
+holdout seed 3: 240/256 pairs
+holdout seed 3: 256/256 pairs
+holdout seed 4: 16/256 pairs
+holdout seed 4: 32/256 pairs
+holdout seed 4: 48/256 pairs
+holdout seed 4: 64/256 pairs
+holdout seed 4: 80/256 pairs
+holdout seed 4: 96/256 pairs
+holdout seed 4: 112/256 pairs
+holdout seed 4: 128/256 pairs
+holdout seed 4: 144/256 pairs
+holdout seed 4: 160/256 pairs
+holdout seed 4: 176/256 pairs
+holdout seed 4: 192/256 pairs
+holdout seed 4: 208/256 pairs
+holdout seed 4: 224/256 pairs
+holdout seed 4: 240/256 pairs
+holdout seed 4: 256/256 pairs
+Running gsm8k_decision_study --stage score
+Scored 0 512 answers in 75.5 seconds
+Scored 1 512 answers in 75.2 seconds
+Scored 2 512 answers in 85.9 seconds
+Scored 3 512 answers in 87.9 seconds
+Scored 4 512 answers in 86.7 seconds
+Running gsm8k_decision_study --stage analyze
+Results {'judge_vs_rule': False, 'judge_vs_confidence': False}
+Running gsm8k_decision_study --stage live
+Live judge 9 / 32 seconds 111.5
+Live confidence 8 / 32 seconds 106.9
+Live uniform 7 / 32 seconds 106.8
+Running gsm8k_decision_study --stage verify-scores
+Verified all scores for seed 0
+Verified all scores for seed 1
+Verified all scores for seed 2
+Verified all scores for seed 3
+Verified all scores for seed 4
+Running audit_gsm8k_decision
+Verified runs/gsm8k-decision-v1/audit.json {'judge_vs_rule': False, 'judge_vs_confidence': False}
+Decision study finished

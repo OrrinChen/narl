@@ -1,0 +1,3592 @@
+{
+  "protocol_sha256": "11ba13b9a2e5b3b3cc756200bd33a3d5dc5f63fa5d0ef8a4951e465f93cd7152",
+  "head_sha256": "7f25df0dddebf72802c89d0cb814402d5031ce88c3c7b16f065effe97116168a",
+  "rows": [
+    {
+      "prompt_id": 6140,
+      "slot": 0,
+      "decision_score": 0.18389009413142524,
+      "candidate_sha256": "471fdbfa5dd914cc4024e85780519d3563fab7eb60db95929ad28d1dbe0bfdc8",
+      "decision_s": 0.20093337493017316
+    },
+    {
+      "prompt_id": 6140,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "22bcd2fea893ec72a0f9ee3d5dd5af3c9bd29a05d341d54b96f4760ccc9239b3",
+      "decision_s": 0.20306070800870657
+    },
+    {
+      "prompt_id": 1670,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "38f1acefb3595f5da9116c4628e31798d127a2a82a66d8a315bc4fa822966909",
+      "decision_s": 0.181402999907732
+    },
+    {
+      "prompt_id": 1670,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "c6df81deb8c956102f3f14032ef14c365c8fa39fe617f3c0d12aed5a3e388877",
+      "decision_s": 0.17912329197861254
+    },
+    {
+      "prompt_id": 343,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "bd44e6bb889131c0f544ee3ba6e231a91d401c7fcf048e5befe6aa35656715a9",
+      "decision_s": 0.17998112505301833
+    },
+    {
+      "prompt_id": 343,
+      "slot": 1,
+      "decision_score": 0.019384157127284786,
+      "candidate_sha256": "6770f7b432e8c0899d994b1eebc04dd492d7fcde6e01578a27bf50366795c6fd",
+      "decision_s": 0.1634559161029756
+    },
+    {
+      "prompt_id": 1141,
+      "slot": 0,
+      "decision_score": 0.08303043656169753,
+      "candidate_sha256": "f784c7a0c59fe7fe4e9fc4487912a444bd2d2ce38460cd98fd8dcdc68da83c2a",
+      "decision_s": 0.17812537495046854
+    },
+    {
+      "prompt_id": 1141,
+      "slot": 1,
+      "decision_score": 0.27925147153024005,
+      "candidate_sha256": "9e55bd95a4df59d4da598c3cfd0b622d18d8c10fd1888f924f829844b1c35bec",
+      "decision_s": 0.13642870914191008
+    },
+    {
+      "prompt_id": 7283,
+      "slot": 0,
+      "decision_score": 0.16691138410159956,
+      "candidate_sha256": "38ef6a8840d55402504e74c7e931932bf9a1514aa74079efc5288656a9080036",
+      "decision_s": 0.15642816596664488
+    },
+    {
+      "prompt_id": 7283,
+      "slot": 1,
+      "decision_score": 0.0009395780762497777,
+      "candidate_sha256": "d88223514934f26cbd7b3029f0d3a13b8865c7ea50c4398761ed24a6f98bf5ff",
+      "decision_s": 0.17741141701117158
+    },
+    {
+      "prompt_id": 4390,
+      "slot": 0,
+      "decision_score": 0.5322679512817711,
+      "candidate_sha256": "b1124c14dc9eff74fe5d42d57f17bcf95405878d99ef7b0b7f3fd05f12729914",
+      "decision_s": 0.16469220793806016
+    },
+    {
+      "prompt_id": 4390,
+      "slot": 1,
+      "decision_score": 0.3556830048214501,
+      "candidate_sha256": "3b6a538c71d4d6775854c2c23bcde47a1762d3c9f34ff141d14e216cd1767a59",
+      "decision_s": 0.17980387504212558
+    },
+    {
+      "prompt_id": 5327,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "15b59aeadeb39a1d8186e08b2a235ce272cff7e79c3e7b4f6616f178460f0355",
+      "decision_s": 0.2033927501179278
+    },
+    {
+      "prompt_id": 5327,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "7f98c2e224cd203023d40cb886da259384697466fe4c6b319f761d5dd09a201d",
+      "decision_s": 0.2047444588970393
+    },
+    {
+      "prompt_id": 2009,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "490d6ead39fd888c6a1ecd91cdc43e9e0beb38abc054fdff2b55b64d4b94d413",
+      "decision_s": 0.17947666603140533
+    },
+    {
+      "prompt_id": 2009,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "3127321742e510ee20ec6ef9399fe5377084f921171efa371fd25bcfd07ad0e5",
+      "decision_s": 0.17903587501496077
+    },
+    {
+      "prompt_id": 895,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cb9d89da1f1d6d1b03b70a7ad23f40fdc24adb16bb82a8200007ed507cef059d",
+      "decision_s": 0.2007500829640776
+    },
+    {
+      "prompt_id": 895,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "016c13759ff38e5fe9d1995eb19c4af8283103face8ea1299fb0c4735c26d09d",
+      "decision_s": 0.20313737518154085
+    },
+    {
+      "prompt_id": 2398,
+      "slot": 0,
+      "decision_score": 0.30287236705612414,
+      "candidate_sha256": "f5d4d8b7d35fe617a358b47716b4c7987157c182179301eba13c667b721854ba",
+      "decision_s": 0.13249920890666544
+    },
+    {
+      "prompt_id": 2398,
+      "slot": 1,
+      "decision_score": 0.5655017075692284,
+      "candidate_sha256": "93729381297e4beea6b6e125054b8b08ec7e299ebfed006a2a5e424d79c213f8",
+      "decision_s": 0.130935916909948
+    },
+    {
+      "prompt_id": 2366,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f2928736b3b7a5311e40f517aff24847b8f9e4cc16c352790311222887f7291d",
+      "decision_s": 0.20450545917265117
+    },
+    {
+      "prompt_id": 2366,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5b16323fb7998adfc02460b6a4f25f9538cc4706012b0b640573092b42b0cf73",
+      "decision_s": 0.20431591593660414
+    },
+    {
+      "prompt_id": 3611,
+      "slot": 0,
+      "decision_score": 0.03340734557976558,
+      "candidate_sha256": "9f9248d5af88e060df0bc230c96a08c1926580e83c01b0fbc8ad9a7c2f4ba347",
+      "decision_s": 0.17925979220308363
+    },
+    {
+      "prompt_id": 3611,
+      "slot": 1,
+      "decision_score": 0.4430320916730246,
+      "candidate_sha256": "3db47986ef803d3c43cdc24b0a4468e4f9ce56afe608254d28143156dec3f248",
+      "decision_s": 0.13226350001059473
+    },
+    {
+      "prompt_id": 4414,
+      "slot": 0,
+      "decision_score": 0.04327211163023899,
+      "candidate_sha256": "d6cc1c9cbe942d14627609db1276b03adefc2258a9490355fcbaf5955ab3b2c5",
+      "decision_s": 0.15899545908905566
+    },
+    {
+      "prompt_id": 4414,
+      "slot": 1,
+      "decision_score": 0.5297966978152078,
+      "candidate_sha256": "e555783f82fa8cafaf8bff65328645b8993be67e5cbea68add22c04b215d14e7",
+      "decision_s": 0.16177237499505281
+    },
+    {
+      "prompt_id": 2444,
+      "slot": 0,
+      "decision_score": 0.3793918493400375,
+      "candidate_sha256": "b43d9fd69f15c16681c1ed1ddf749fd7f5a7956a0fa129b4e32c1f91a47bf412",
+      "decision_s": 0.17823445796966553
+    },
+    {
+      "prompt_id": 2444,
+      "slot": 1,
+      "decision_score": 0.08740165780131641,
+      "candidate_sha256": "60e960f4367c8bb20c0d131953132df92c56460db3eac24f3014944c4fa6c256",
+      "decision_s": 0.20124145806767046
+    },
+    {
+      "prompt_id": 57,
+      "slot": 0,
+      "decision_score": 0.025692951069742093,
+      "candidate_sha256": "c416c39b5aab4a5f1f8e0bef9f7701e48bf3ceeec08c7b8994e7b0682db28c26",
+      "decision_s": 0.17885145801119506
+    },
+    {
+      "prompt_id": 57,
+      "slot": 1,
+      "decision_score": 0.0016808139766312192,
+      "candidate_sha256": "e4ca12e7038ac2f8d536d3f435a9b8319756b85f4de8f790aa081d58b06c8ab8",
+      "decision_s": 0.09574845805764198
+    },
+    {
+      "prompt_id": 2261,
+      "slot": 0,
+      "decision_score": 0.14583052687140824,
+      "candidate_sha256": "924a8697484e50a3d157fa7cf49700ad0728fc333ae1bd30f623c4001f3751a6",
+      "decision_s": 0.13127737515605986
+    },
+    {
+      "prompt_id": 2261,
+      "slot": 1,
+      "decision_score": 0.3940508842462284,
+      "candidate_sha256": "49da3a5c486194575ad6095ddbd9e8ac81436b379591316c6373ed996aea37bd",
+      "decision_s": 0.13172920909710228
+    },
+    {
+      "prompt_id": 6723,
+      "slot": 0,
+      "decision_score": 0.3315225138367264,
+      "candidate_sha256": "ed838b3bb65b627bc69118fc17f8c8a79371dfda2e0caecad7bf843eac127ab4",
+      "decision_s": 0.16010233317501843
+    },
+    {
+      "prompt_id": 6723,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "ad130bd23ec62ed4bd8f1a22a332dffb01c9ba0e7151e6fe659f213161ac9897",
+      "decision_s": 0.17834350001066923
+    },
+    {
+      "prompt_id": 2621,
+      "slot": 0,
+      "decision_score": 0.33147493840792536,
+      "candidate_sha256": "c3eb129f0396d1f855001fecf6b04104780c0ffae2f4609206901f3dfcbdfc82",
+      "decision_s": 0.176789958961308
+    },
+    {
+      "prompt_id": 2621,
+      "slot": 1,
+      "decision_score": 0.34542005248755886,
+      "candidate_sha256": "91904e0af1cc7d10c9e93406e1dafaa1ff28994932233d7f176a67a5de200636",
+      "decision_s": 0.1548167080618441
+    },
+    {
+      "prompt_id": 5271,
+      "slot": 0,
+      "decision_score": 0.18411665912073438,
+      "candidate_sha256": "6201b25bec9251892766c9d04c54a04fc831ba6fe8bcdc7a88675853c44c05d2",
+      "decision_s": 0.16079566697590053
+    },
+    {
+      "prompt_id": 5271,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5150f6b3a57b9ac5305715cb7b2efca3299129978a250fa166526e294ffb36cb",
+      "decision_s": 0.179957167012617
+    },
+    {
+      "prompt_id": 1639,
+      "slot": 0,
+      "decision_score": 0.12312557674075399,
+      "candidate_sha256": "d84b79a482510396974478e271b32a2d72829b16181eb609c8dd101ae0a2d128",
+      "decision_s": 0.1564014998730272
+    },
+    {
+      "prompt_id": 1639,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "bd2e0f2b578189c164730faa318780de12121beba10111e3221d8ae74c98dd16",
+      "decision_s": 0.17807612498290837
+    },
+    {
+      "prompt_id": 3698,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cbe85d095cd054a06a95526f5e4f0d6a30e37d3d7694ce3c40ef3a34a71d6610",
+      "decision_s": 0.1805771659128368
+    },
+    {
+      "prompt_id": 3698,
+      "slot": 1,
+      "decision_score": 0.025522122699427847,
+      "candidate_sha256": "631fbb5432f77e2c56a5fd4c0b82fecc6613cf86ee1f5702049ad20856752f9a",
+      "decision_s": 0.178559459047392
+    },
+    {
+      "prompt_id": 2419,
+      "slot": 0,
+      "decision_score": 0.044797314306363134,
+      "candidate_sha256": "0e96c55e40e0f0a88bb05a2d0b1246cb70e8bdf8c06d39c3c60567db85ef62f5",
+      "decision_s": 0.17892604181542993
+    },
+    {
+      "prompt_id": 2419,
+      "slot": 1,
+      "decision_score": 0.12283261680829419,
+      "candidate_sha256": "937c927ccd7e582064485c7a8c23079db00dc1004af8ae3dd93a295d3b127d72",
+      "decision_s": 0.16037225001491606
+    },
+    {
+      "prompt_id": 6110,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "89f7e5a72b2a472945dbe92b5d2e745a66cd36b5ccac7eb9a0a8f383d0ee5730",
+      "decision_s": 0.20090466691181064
+    },
+    {
+      "prompt_id": 6110,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "c58a85fd6d8dbb9bec03f6c91aff9193ae82b54595f9394b26377d07cd793bcd",
+      "decision_s": 0.2000590420793742
+    },
+    {
+      "prompt_id": 7036,
+      "slot": 0,
+      "decision_score": 0.6691129232462238,
+      "candidate_sha256": "523080ec7c3d6ad1ce2e08632d83e6ab81bcd5fca8a35721dcac5bd5c61dadf8",
+      "decision_s": 0.1322653330862522
+    },
+    {
+      "prompt_id": 7036,
+      "slot": 1,
+      "decision_score": 0.7187303697343173,
+      "candidate_sha256": "1eb6f63c0d043833b4aebdf6c705630b138c701df781463c9c495ee24b04a353",
+      "decision_s": 0.15963833313435316
+    },
+    {
+      "prompt_id": 4275,
+      "slot": 0,
+      "decision_score": 0.01836057732868953,
+      "candidate_sha256": "a8ff3c992c81752dcf36a653ef09da400ffaaf56121733ea9215b987c4cce887",
+      "decision_s": 0.17904987488873303
+    },
+    {
+      "prompt_id": 4275,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f0309a7c57741385caac137a88774fa3efd4c3a548309644efb289242b3f7782",
+      "decision_s": 0.17711054091341794
+    },
+    {
+      "prompt_id": 1690,
+      "slot": 0,
+      "decision_score": 0.40087368750990304,
+      "candidate_sha256": "bf2355643bd216a9689dd33caa60044c654a17568fc2df5000854c6fa1c93dc7",
+      "decision_s": 0.15363462502136827
+    },
+    {
+      "prompt_id": 1690,
+      "slot": 1,
+      "decision_score": 0.5588666983174194,
+      "candidate_sha256": "920416b6078918125dbe618971e5bfe31b1e65be46ec014fa74d4f9e3e5ce0b4",
+      "decision_s": 0.11018883297219872
+    },
+    {
+      "prompt_id": 7094,
+      "slot": 0,
+      "decision_score": 0.5371316182835577,
+      "candidate_sha256": "8e8f837b574c9cdf45de59a562616da7dea5ea0e1a73bd690c70196224a5fd78",
+      "decision_s": 0.10416195797733963
+    },
+    {
+      "prompt_id": 7094,
+      "slot": 1,
+      "decision_score": 0.46442448086691035,
+      "candidate_sha256": "14a4b134d63af53e2052085bacdca1befc677cc8b232a65d372ca801c807e3cf",
+      "decision_s": 0.1613907921127975
+    },
+    {
+      "prompt_id": 764,
+      "slot": 0,
+      "decision_score": 0.12376099226376151,
+      "candidate_sha256": "8bd2b581f5833d6c65ab2e77807c1fb213cf61f964c3ad280313bccc40ec98e2",
+      "decision_s": 0.13408033293671906
+    },
+    {
+      "prompt_id": 764,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "44c1dcbb5b7e627dcea4250612316927baef60fae55b24edfe369c1fd2105b74",
+      "decision_s": 0.1789608330000192
+    },
+    {
+      "prompt_id": 3829,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cda3c10f40f75b00bf172f03805332f28356576b54d5d1cc24842b97eeb8e233",
+      "decision_s": 0.17649654182605445
+    },
+    {
+      "prompt_id": 3829,
+      "slot": 1,
+      "decision_score": 0.43330052756441123,
+      "candidate_sha256": "efd6c4a641b32a47a6cff20abff125b8628497c1290fd286c295d109db713b3d",
+      "decision_s": 0.1320901250001043
+    },
+    {
+      "prompt_id": 139,
+      "slot": 0,
+      "decision_score": 0.21791005709926484,
+      "candidate_sha256": "660198bb1853fe79f2027d15921f92f3c9721e62eed70ea2979e782c092e259b",
+      "decision_s": 0.15770008298568428
+    },
+    {
+      "prompt_id": 139,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b94325eccc671228754977a4dddea16428af7878fd81394338ace3cf55cc9611",
+      "decision_s": 0.20540341595187783
+    },
+    {
+      "prompt_id": 4705,
+      "slot": 0,
+      "decision_score": 0.6485754430092605,
+      "candidate_sha256": "87293103dcddfadc0f3498cf16e3d85edc61da892557025e9ec9333ad792a505",
+      "decision_s": 0.13245579088106751
+    },
+    {
+      "prompt_id": 4705,
+      "slot": 1,
+      "decision_score": 0.6654609632980498,
+      "candidate_sha256": "1f93741772bade13daaeebad8172d7448c306b898fbef0786b436d87653127af",
+      "decision_s": 0.13700562505982816
+    },
+    {
+      "prompt_id": 6016,
+      "slot": 0,
+      "decision_score": 0.28475705565965614,
+      "candidate_sha256": "001889dc0eec4f7f1a4f02553edb17b1320616d5a9d4a64181de4c106b8cd310",
+      "decision_s": 0.15993604087270796
+    },
+    {
+      "prompt_id": 6016,
+      "slot": 1,
+      "decision_score": 0.03239561757741982,
+      "candidate_sha256": "cea8cf4d3ed71b8c3806db86f9378085d7a55a1f1f43262567d71a4b73b187d8",
+      "decision_s": 0.1809565001167357
+    },
+    {
+      "prompt_id": 1715,
+      "slot": 0,
+      "decision_score": 0.10046671299320145,
+      "candidate_sha256": "2087f6f76af0c5fd4b1c041a9bd5866277620c18905158f904a765b16f1282ad",
+      "decision_s": 0.13603012496605515
+    },
+    {
+      "prompt_id": 1715,
+      "slot": 1,
+      "decision_score": 0.7310008894120626,
+      "candidate_sha256": "4cc043d13a229e16d5956d878580948436c48ef57b6e09c3d19d1ed9f3b00b17",
+      "decision_s": 0.13183416589163244
+    },
+    {
+      "prompt_id": 1738,
+      "slot": 0,
+      "decision_score": 0.252226564435436,
+      "candidate_sha256": "c6edc509a12481d140309ee8f45de6828900b8c02e972ea007444f225eb4ea7f",
+      "decision_s": 0.1385277919471264
+    },
+    {
+      "prompt_id": 1738,
+      "slot": 1,
+      "decision_score": 0.42959534674296446,
+      "candidate_sha256": "9ec8eb5e97b3c876689d0dc1c05b83f7272b742034f2ffe971220e8e898211d3",
+      "decision_s": 0.18104558298364282
+    },
+    {
+      "prompt_id": 457,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "9d9cf7bd32260650e4920ce25afd9ebe4b724b6d2816eb4e93c777b39e04789b",
+      "decision_s": 0.17528816708363593
+    },
+    {
+      "prompt_id": 457,
+      "slot": 1,
+      "decision_score": 0.038492751963464626,
+      "candidate_sha256": "d3251a4e0e4b0c63b5ed54280fcef0f1b6b5c5c02ef63141023aef0e2821144b",
+      "decision_s": 0.1511083331424743
+    },
+    {
+      "prompt_id": 3983,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "fa9f1ebcc4682839e161cf60da3eaaa8b3878faed1c53abc699dc5462dfcde11",
+      "decision_s": 0.20230562495999038
+    },
+    {
+      "prompt_id": 3983,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "987bbdc53e04a7152fe63b85883c4bfa00977273d7a2a533bd7b4b299ee809ef",
+      "decision_s": 0.2014142090920359
+    },
+    {
+      "prompt_id": 4206,
+      "slot": 0,
+      "decision_score": 0.007662785198237324,
+      "candidate_sha256": "3ffe77dd0e321982c9f26f21c2d29133e1afd285aa934a9770ce8dcd28922e6a",
+      "decision_s": 0.178969917120412
+    },
+    {
+      "prompt_id": 4206,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "e929cf8cd94fbbeb63785e96c0fdec08726cfbbb69e768bbed1e80bb3ac626fc",
+      "decision_s": 0.20365158305503428
+    },
+    {
+      "prompt_id": 166,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "33add971d23b37b3fafe735ce344fb2f518ede70e7ca32f2548afcbfb8804a37",
+      "decision_s": 0.2051377089228481
+    },
+    {
+      "prompt_id": 166,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f87835985e6f9110e9b232da12ed60f05e133f01e95b73f7d46b14fd5af1e9c2",
+      "decision_s": 0.20482016680762172
+    },
+    {
+      "prompt_id": 414,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "e2bcab37e651cb4b0932a507d2e94718b650551ae057efe6fdcced49234f36b8",
+      "decision_s": 0.1984162910375744
+    },
+    {
+      "prompt_id": 414,
+      "slot": 1,
+      "decision_score": 0.08319555264821507,
+      "candidate_sha256": "7e557734c16db20d70c7e0f9f6ab6035e09c9f0a2c0dbcf932a1e37e9651bf42",
+      "decision_s": 0.17440554220229387
+    },
+    {
+      "prompt_id": 6717,
+      "slot": 0,
+      "decision_score": 0.5797619298302217,
+      "candidate_sha256": "0cab3912e6e66798dd5adc77c46d43e9bbb5dcd3a4ca4a81dd94b93c0ed3b695",
+      "decision_s": 0.1121250418946147
+    },
+    {
+      "prompt_id": 6717,
+      "slot": 1,
+      "decision_score": 0.20409643163896646,
+      "candidate_sha256": "0bab5bb2bd4b17025f5487a6b49407884253152a1c51683f3230cb4d1428eb39",
+      "decision_s": 0.1810710420832038
+    },
+    {
+      "prompt_id": 5381,
+      "slot": 0,
+      "decision_score": 0.18781899476719338,
+      "candidate_sha256": "f039368b3dcf632248d209286d574260c341f364e497bbcdb8de3ab5ff1d16ba",
+      "decision_s": 0.1319871658924967
+    },
+    {
+      "prompt_id": 5381,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "61360ff0594761a0a3e5c78b439baaba425928e3eea0552752d61173d66625ea",
+      "decision_s": 0.1767426251899451
+    },
+    {
+      "prompt_id": 6707,
+      "slot": 0,
+      "decision_score": 0.5692916403442145,
+      "candidate_sha256": "5574e9dacff68f902c8d49717e4bc7073a313df4f7aee758160801ccad29d429",
+      "decision_s": 0.16062550013884902
+    },
+    {
+      "prompt_id": 6707,
+      "slot": 1,
+      "decision_score": 0.6588791914705756,
+      "candidate_sha256": "e6498e5e17939a1a3e8ddc8d194ee4efede8bee48a12fcc764e3f3f98c64f2c3",
+      "decision_s": 0.13215670897625387
+    },
+    {
+      "prompt_id": 6505,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d7c7ae7b420792552afaf7c5d16d82b99399813b625d83e893ba769da1c1fbcc",
+      "decision_s": 0.17835245886817575
+    },
+    {
+      "prompt_id": 6505,
+      "slot": 1,
+      "decision_score": 0.021719311906472284,
+      "candidate_sha256": "ee325606d5f230515b41a1a486eebe9d2b148a8d00fe2df7116a7abc3f772fe5",
+      "decision_s": 0.17452216590754688
+    },
+    {
+      "prompt_id": 6587,
+      "slot": 0,
+      "decision_score": 0.3620913721818414,
+      "candidate_sha256": "a6ed9724fec899038c16d0f2671114e1f719115a752d230fc6540b96cbe3414b",
+      "decision_s": 0.1771706249564886
+    },
+    {
+      "prompt_id": 6587,
+      "slot": 1,
+      "decision_score": 0.03760281131151877,
+      "candidate_sha256": "06ce870837f2ddb4ea5b69f4f7cf98f382d8cb2a973377927142619dc96c00d6",
+      "decision_s": 0.13333416683599353
+    },
+    {
+      "prompt_id": 2069,
+      "slot": 0,
+      "decision_score": 0.06814043968084374,
+      "candidate_sha256": "6198c078ba7edec744c635ecf38a1ac212f35ef6fc0a6893f251321f8581c285",
+      "decision_s": 0.14900620887055993
+    },
+    {
+      "prompt_id": 2069,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "01c1d28415c281a04682a551ce44773612354394c11902b3a96f8814fe8e95c9",
+      "decision_s": 0.1801849170587957
+    },
+    {
+      "prompt_id": 5733,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "530d0621e3ef195dddab7fb647e8944e6aa22d917965b511441f2f31a8ecb5ec",
+      "decision_s": 0.17791137495078146
+    },
+    {
+      "prompt_id": 5733,
+      "slot": 1,
+      "decision_score": 0.19115061061232227,
+      "candidate_sha256": "f0b8b422bfc5c4a589b0d8c332dea0d20fdb7a3ed54332edb76c51b1f00f9d4d",
+      "decision_s": 0.1565877078101039
+    },
+    {
+      "prompt_id": 7063,
+      "slot": 0,
+      "decision_score": 0.07781329269408947,
+      "candidate_sha256": "b00cfd40a9c66588ce25534550aed56809be92bb237769f952f10b8de3c2e379",
+      "decision_s": 0.20208841701969504
+    },
+    {
+      "prompt_id": 7063,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a814221db5dbbf4d71f084385e480332e042182acea4a92be3711ebae16fc951",
+      "decision_s": 0.20302629098296165
+    },
+    {
+      "prompt_id": 1894,
+      "slot": 0,
+      "decision_score": 0.08033673784286445,
+      "candidate_sha256": "4e875b2ddd6a21b0fa8d7e5209fccbcf829448608c6a2ca2847f9b70fc30bea0",
+      "decision_s": 0.2038153752218932
+    },
+    {
+      "prompt_id": 1894,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "42a40b1fb9c2950eec59bd8e9716aacc6c271fbaa3425fdf7ac348e2f92a351f",
+      "decision_s": 0.22677654190920293
+    },
+    {
+      "prompt_id": 1308,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "b2b7afa3b767626f217961f2fa1ec983bc01cf33e0b4a1a2108f8afbc6dd7c44",
+      "decision_s": 0.20227441703900695
+    },
+    {
+      "prompt_id": 1308,
+      "slot": 1,
+      "decision_score": 0.1134097983809223,
+      "candidate_sha256": "7b62d3c18fe70aaca09a578672207bd52a16c679f264f9fcd177a91723d9fbec",
+      "decision_s": 0.20041270810179412
+    },
+    {
+      "prompt_id": 800,
+      "slot": 0,
+      "decision_score": 0.3831484790721554,
+      "candidate_sha256": "064e55c9afb77fca420149d4115a2969b8b351c96c263625bd427b3b9e16154e",
+      "decision_s": 0.17879995796829462
+    },
+    {
+      "prompt_id": 800,
+      "slot": 1,
+      "decision_score": 0.33217815260731004,
+      "candidate_sha256": "12a65f77de77c0d42031e22319f1fc9ee7a908403664161b4a8760412104817f",
+      "decision_s": 0.18136116699315608
+    },
+    {
+      "prompt_id": 1101,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cf58c49b11c6a56b1e3e58ab5a7919f81c0848676f9984e9eb055cb9abfa8740",
+      "decision_s": 0.17934320913627744
+    },
+    {
+      "prompt_id": 1101,
+      "slot": 1,
+      "decision_score": 0.5752028639276795,
+      "candidate_sha256": "c100480953e4297e2931f09605aece8311dc2dc51ab0c41f4a4ad87d7706754a",
+      "decision_s": 0.1317596670705825
+    },
+    {
+      "prompt_id": 3680,
+      "slot": 0,
+      "decision_score": 0.0400240466867514,
+      "candidate_sha256": "83bb984c0e6baaf643a1f73438ccb195558614a2f5ea2e5d957a03d16923f052",
+      "decision_s": 0.18026883387938142
+    },
+    {
+      "prompt_id": 3680,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "dd0cc326a1b83ce160dab64bc01da538470a688731520f8e60336c91da35d6b2",
+      "decision_s": 0.17616724991239607
+    },
+    {
+      "prompt_id": 2306,
+      "slot": 0,
+      "decision_score": 0.05546788533097288,
+      "candidate_sha256": "264ce068ae1e3180cd7c7c74b6923a087531ebf008fce980add5088954d4ef4a",
+      "decision_s": 0.154962542001158
+    },
+    {
+      "prompt_id": 2306,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5bb06e07fde8a3d7f6acd550960d3517c6c1363f6e4756655f12bd872e4f8ee9",
+      "decision_s": 0.17980562499724329
+    },
+    {
+      "prompt_id": 3403,
+      "slot": 0,
+      "decision_score": 0.2251509078312968,
+      "candidate_sha256": "daed2a6fd5ce7ca7318b4d87bda9cf60d25d3dba6092b633682e090f5e6e7538",
+      "decision_s": 0.11101433401927352
+    },
+    {
+      "prompt_id": 3403,
+      "slot": 1,
+      "decision_score": 0.3618773920537248,
+      "candidate_sha256": "71566c8ec25746faa56d06c75952666c346c9b1fa86a0041d60e8aae261f4057",
+      "decision_s": 0.15643470897339284
+    },
+    {
+      "prompt_id": 7033,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "3f7344fc28a08ceaaa2011bb13a53c9767002340b1c63a8c5b18008161cf226b",
+      "decision_s": 0.20311020803637803
+    },
+    {
+      "prompt_id": 7033,
+      "slot": 1,
+      "decision_score": 0.003939924040223497,
+      "candidate_sha256": "03438ebdfcf6cb18523d2e15666a983593decc4a8cfe65d99afc8a7e903d2455",
+      "decision_s": 0.16120741586200893
+    },
+    {
+      "prompt_id": 149,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "4f65abc73f5cc862f0a3506856d2f7c1559b490fe272008b87f4205324a45920",
+      "decision_s": 0.18001549993641675
+    },
+    {
+      "prompt_id": 149,
+      "slot": 1,
+      "decision_score": 0.04891917391914469,
+      "candidate_sha256": "a20d1980d6298fab104abfdaae22e537b13b07fc548e6c24a213fdb77ecc5100",
+      "decision_s": 0.1027974160388112
+    },
+    {
+      "prompt_id": 902,
+      "slot": 0,
+      "decision_score": 0.540809945376588,
+      "candidate_sha256": "5505d6aceefee004c4649400f3e6b50a618d35bce7f856c6694bec2e9a9cf1a6",
+      "decision_s": 0.1791240000165999
+    },
+    {
+      "prompt_id": 902,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "897e0ef7de2fda17755bd8ad94a06b7c8459919b754ac0e21ff0db19e8ebff3b",
+      "decision_s": 0.17659170809201896
+    },
+    {
+      "prompt_id": 1438,
+      "slot": 0,
+      "decision_score": 0.2223210988949709,
+      "candidate_sha256": "ce4bf2d2d937520e1580a2f88d5bebf2a419e36f2e7bbb02434eca6c8350ee6e",
+      "decision_s": 0.15502508403733373
+    },
+    {
+      "prompt_id": 1438,
+      "slot": 1,
+      "decision_score": 0.21362607565594105,
+      "candidate_sha256": "44afb0776782410d9be61a9eeddb90b0195f60b6aaaf8bf2e8fabb6abf5c48bb",
+      "decision_s": 0.13188241608440876
+    },
+    {
+      "prompt_id": 2160,
+      "slot": 0,
+      "decision_score": 0.3017647957522958,
+      "candidate_sha256": "c4c3048e5d56f7d6c1e65713b88ffd146e24f2bf6e0544f226494338b05c3504",
+      "decision_s": 0.1537090828642249
+    },
+    {
+      "prompt_id": 2160,
+      "slot": 1,
+      "decision_score": 0.6459737324566213,
+      "candidate_sha256": "007168c3f7ff25c88f7741dd76b25a95c8ed38badf15e2824323c35a2eca86f3",
+      "decision_s": 0.14023675001226366
+    },
+    {
+      "prompt_id": 2446,
+      "slot": 0,
+      "decision_score": 0.6825610827221293,
+      "candidate_sha256": "6af793a3a39adc7a534e26d14e4645de88858b3fc60a72a8f9b349ffc9b2c9af",
+      "decision_s": 0.13391412515193224
+    },
+    {
+      "prompt_id": 2446,
+      "slot": 1,
+      "decision_score": 0.4023435632885781,
+      "candidate_sha256": "26a2c25ae6df089a1786ae9827319d13f36dbf6d65677a73864cddb6e47751a9",
+      "decision_s": 0.1582208329346031
+    },
+    {
+      "prompt_id": 4154,
+      "slot": 0,
+      "decision_score": 0.2830168188507546,
+      "candidate_sha256": "0d69b91f779896eeb4446ad65ffd3157895bbda2c28017d4d14f207b703fbed9",
+      "decision_s": 0.13518020883202553
+    },
+    {
+      "prompt_id": 4154,
+      "slot": 1,
+      "decision_score": 0.1773944881034147,
+      "candidate_sha256": "1ae76ea7dfbedcdb25e2e1cb9c023cde0d9070cc114d3aac4900989ed2c28bdf",
+      "decision_s": 0.18024474987760186
+    },
+    {
+      "prompt_id": 1312,
+      "slot": 0,
+      "decision_score": 0.13242573256826137,
+      "candidate_sha256": "80fd64d7e9b6f340494957ec34cbc4412dcecf166a59945f7bf08e47548efb50",
+      "decision_s": 0.17292987508699298
+    },
+    {
+      "prompt_id": 1312,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "82b46c21f69eb07c617523abd1a549bf4e895294bb03dc6f89fa649fb6dbf450",
+      "decision_s": 0.18130733398720622
+    },
+    {
+      "prompt_id": 4062,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "b5527d2b2dda37cd20c5d68ad4ed2b630839d7c3ef6de7677b2864b104b8230b",
+      "decision_s": 0.17931949999183416
+    },
+    {
+      "prompt_id": 4062,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "e8824cfb2982dbc950aa588220ee74bd34ae2ec63bf0721feb6edec63732d77c",
+      "decision_s": 0.17819133307784796
+    },
+    {
+      "prompt_id": 7228,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "8063b86e2346aeb3c886ad45fc71175c821a229779093fda3a196a4bb69dcba7",
+      "decision_s": 0.1794377090409398
+    },
+    {
+      "prompt_id": 7228,
+      "slot": 1,
+      "decision_score": 0.6125937445210704,
+      "candidate_sha256": "f500651806b1846a9509a1571fb896fda188d384aaf81b96ac6b4dcc57247aea",
+      "decision_s": 0.17328641610220075
+    },
+    {
+      "prompt_id": 1412,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "aabb2cccaecddd6fb796d2703aae8cf405449e7e3522bdf12f7edd0eebb720bc",
+      "decision_s": 0.20404295809566975
+    },
+    {
+      "prompt_id": 1412,
+      "slot": 1,
+      "decision_score": 0.10064325875600366,
+      "candidate_sha256": "e12afdca175380bc14d238b9ca15510063a160e2a6698346b9ab8f31b20f5b8f",
+      "decision_s": 0.1811112081632018
+    },
+    {
+      "prompt_id": 2919,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "c81fe572238ee8e4b856c5a9b21a97faf0d6ce1567e64b98aec1cb1dd2bda646",
+      "decision_s": 0.1797771251294762
+    },
+    {
+      "prompt_id": 2919,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "56b066e798a64eadf6d37fc9df5c4ce09ee1e8d082fc67977b5abd323a44d72c",
+      "decision_s": 0.1781618339009583
+    },
+    {
+      "prompt_id": 319,
+      "slot": 0,
+      "decision_score": 0.6189642800411945,
+      "candidate_sha256": "c5db5ed2262897b25ca2a2157c64fe34b7b9746cdc6e4c88b1b453a70c2d6c0f",
+      "decision_s": 0.1611595000140369
+    },
+    {
+      "prompt_id": 319,
+      "slot": 1,
+      "decision_score": 0.28402382566549217,
+      "candidate_sha256": "4c14e03493b57da9d2026fa75ca38bc04e8296fd46b59b180712a18ac1bad127",
+      "decision_s": 0.1315949580166489
+    },
+    {
+      "prompt_id": 2169,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "91280bd8096212469ba472c63fafc581942a6dba53f529b3300c6719d0989368",
+      "decision_s": 0.131236125016585
+    },
+    {
+      "prompt_id": 2169,
+      "slot": 1,
+      "decision_score": 0.3322266717299104,
+      "candidate_sha256": "8cc10348cdbc70fff73912df838d973617117d59ad77c129374d809e700ab349",
+      "decision_s": 0.1021669169422239
+    },
+    {
+      "prompt_id": 3159,
+      "slot": 0,
+      "decision_score": 0.1482607611918924,
+      "candidate_sha256": "8324b398b24724fc60bc50b764745942d8921bee50a3a782f128db1f0be1ead6",
+      "decision_s": 0.179739624960348
+    },
+    {
+      "prompt_id": 3159,
+      "slot": 1,
+      "decision_score": 0.24823357418902453,
+      "candidate_sha256": "f6841adbe3720cb89831695842f70dc07a6e1738febc2cb515b520bee0499a82",
+      "decision_s": 0.18151262518949807
+    },
+    {
+      "prompt_id": 5762,
+      "slot": 0,
+      "decision_score": 0.004411686971660157,
+      "candidate_sha256": "817ed1de88fcd7e1ac502fa92bd16fb2fda426a493149496c17271bab88fab9e",
+      "decision_s": 0.18154504196718335
+    },
+    {
+      "prompt_id": 5762,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f30f46797958b9bc0a01a2cce054b0b7d7280090d70f2fefdcbe38bf47d56622",
+      "decision_s": 0.18054633308202028
+    },
+    {
+      "prompt_id": 991,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "e6b270c80c75d2c1517f7c03cd3459caec074a3cec3a2adc2e6d238a67d0bea4",
+      "decision_s": 0.10843841708265245
+    },
+    {
+      "prompt_id": 991,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "c40068db11f354b6e14146f2fc359f3f0cc35a9f888897af93755fb571ba1e69",
+      "decision_s": 0.17494175001047552
+    },
+    {
+      "prompt_id": 5083,
+      "slot": 0,
+      "decision_score": 0.19554062825426277,
+      "candidate_sha256": "872012f2ef20f32aad5176a16a8b8bf0c95ec83418186c85c93095c208cb110b",
+      "decision_s": 0.1779612498357892
+    },
+    {
+      "prompt_id": 5083,
+      "slot": 1,
+      "decision_score": 0.39110531416799804,
+      "candidate_sha256": "7febdaf4d9fd63ec853b6437c32bf8c295305322a2c83dbacab6bada50bd9c69",
+      "decision_s": 0.16215504193678498
+    },
+    {
+      "prompt_id": 3364,
+      "slot": 0,
+      "decision_score": 0.5874771102149717,
+      "candidate_sha256": "624760a21e947f75a0e9860046fbc7014b77a51681aec3fe43f89a8b7e9db7cd",
+      "decision_s": 0.15952408290468156
+    },
+    {
+      "prompt_id": 3364,
+      "slot": 1,
+      "decision_score": 0.4318035131141756,
+      "candidate_sha256": "ba8052cd03c9d7c6616db02ee1e04e79a6126107674caec2aa5a855595e34e7c",
+      "decision_s": 0.17934025009162724
+    },
+    {
+      "prompt_id": 3179,
+      "slot": 0,
+      "decision_score": 0.04824259464175449,
+      "candidate_sha256": "c20b9d3cd28ecc2f4a4f0ee2c35c5a867a90535787db715288531ea57570c702",
+      "decision_s": 0.13108395808376372
+    },
+    {
+      "prompt_id": 3179,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5182c65e69cabaaa30dfecba6e289140e65d290fd52b3baa8fdf5ad0b6182fe3",
+      "decision_s": 0.17653870792128146
+    },
+    {
+      "prompt_id": 7135,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "402e27720904fe6a54a9e9c7c1dc1f651254573eca7eab2833d566c9ca5265dd",
+      "decision_s": 0.1802804588805884
+    },
+    {
+      "prompt_id": 7135,
+      "slot": 1,
+      "decision_score": 0.4492541390960743,
+      "candidate_sha256": "15b4664fd8b597f07e55d933544bb374525c88037b15d3de966bbf99d10aa563",
+      "decision_s": 0.09734745789319277
+    },
+    {
+      "prompt_id": 3318,
+      "slot": 0,
+      "decision_score": 0.10097571482295477,
+      "candidate_sha256": "7eb659665c4bddc55dd62919770b48624ed6065508daad1d099f3a0a75bc00ce",
+      "decision_s": 0.15656987484544516
+    },
+    {
+      "prompt_id": 3318,
+      "slot": 1,
+      "decision_score": 0.05516354728123137,
+      "candidate_sha256": "eaa8bd5a9be47380d63badee3745c1e4cd7c64bd52b0cb68214fb187cdcff04d",
+      "decision_s": 0.10775091708637774
+    },
+    {
+      "prompt_id": 6951,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "97bc7035dedd24e13ca68b3b76c5f4c22ff0c59652cf6fffab70997fb544c952",
+      "decision_s": 0.20038116606883705
+    },
+    {
+      "prompt_id": 6951,
+      "slot": 1,
+      "decision_score": 0.06476737927874002,
+      "candidate_sha256": "c259b603cf42a1586bceed93033aaae82c5da054c5235b92739aee4104aa7f28",
+      "decision_s": 0.15867879195138812
+    },
+    {
+      "prompt_id": 721,
+      "slot": 0,
+      "decision_score": 0.28307526247661263,
+      "candidate_sha256": "03ad15ff13544cb226ba726a4fe3785f3a66091f1eb42e43c0b6558322542556",
+      "decision_s": 0.1381882920395583
+    },
+    {
+      "prompt_id": 721,
+      "slot": 1,
+      "decision_score": 0.4678514327163841,
+      "candidate_sha256": "ba6b54b81a876feedd329d956b9f54c0a053109c0ee83daf8263173e3e4d2c7a",
+      "decision_s": 0.17720604198984802
+    },
+    {
+      "prompt_id": 4469,
+      "slot": 0,
+      "decision_score": 0.010109888360544978,
+      "candidate_sha256": "2c064491675c8cefe92174518728e08c17dd532e5b7f657a68ae932712c237ae",
+      "decision_s": 0.1320283750537783
+    },
+    {
+      "prompt_id": 4469,
+      "slot": 1,
+      "decision_score": 0.5655399778876624,
+      "candidate_sha256": "c1e05cae4ea81df15808695675ba4bd5c7d06873d95a2bfdfaf3c521cc7cfaba",
+      "decision_s": 0.16011541592888534
+    },
+    {
+      "prompt_id": 4843,
+      "slot": 0,
+      "decision_score": 0.6033647916919168,
+      "candidate_sha256": "ebc7e7b2a318d81f42f67b1dfa9c7b6c50f6e1bec64192dd27dffe1495700312",
+      "decision_s": 0.1311864999588579
+    },
+    {
+      "prompt_id": 4843,
+      "slot": 1,
+      "decision_score": 0.4717277728058111,
+      "candidate_sha256": "bc43de68058615aa34438283034b396b87bfa3bfdcf2f98956fff3d299fdc329",
+      "decision_s": 0.159363083075732
+    },
+    {
+      "prompt_id": 2533,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "818042e52bd21cccaa2ce1eac45c3c4b6b4c6b490b7975bfe6c08fa0c4e7dbee",
+      "decision_s": 0.2031808749306947
+    },
+    {
+      "prompt_id": 2533,
+      "slot": 1,
+      "decision_score": 0.047933193402128746,
+      "candidate_sha256": "ed2f6efc8180aa6b351d2108ad1a2e748c6138a4e85ed33c58f36c7d0ed3618a",
+      "decision_s": 0.2032030001282692
+    },
+    {
+      "prompt_id": 5729,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "e99f3c91bc9af2fe01f6f23ea02aa46e6ab108ab2f905b7b009d87dfdd90a734",
+      "decision_s": 0.13227754109539092
+    },
+    {
+      "prompt_id": 5729,
+      "slot": 1,
+      "decision_score": 0.17121119139206445,
+      "candidate_sha256": "b08a2bba1212e36f492ba560bf74befba14cce3f2dfd8fb7ee0a8f4b9b903a26",
+      "decision_s": 0.15660412493161857
+    },
+    {
+      "prompt_id": 2870,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "2350b955499a84af315086dd68bfb36a5b1ba8669fe128d1bd60912c60b858c1",
+      "decision_s": 0.18045149999670684
+    },
+    {
+      "prompt_id": 2870,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "37ca214a0d31a2896d030354e9e88a7da299f5a9ef70649b588bd96ec28fface",
+      "decision_s": 0.17901170905679464
+    },
+    {
+      "prompt_id": 5861,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cb0b7256808dc311fa0e8183a6a2d50d00ed885858f797ffebe3713a8cc68e7e",
+      "decision_s": 0.20209870813414454
+    },
+    {
+      "prompt_id": 5861,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "011a3688e33fd2a1d8b30e4c35eb3e5f1142c1cff4143aab965517d0a83eabb4",
+      "decision_s": 0.2014246250037104
+    },
+    {
+      "prompt_id": 5717,
+      "slot": 0,
+      "decision_score": 0.5848299485891426,
+      "candidate_sha256": "11c6f2f861af8192182bd1b608234fafc8c5c3aae689ab8fa559d4e17c616db3",
+      "decision_s": 0.18099987506866455
+    },
+    {
+      "prompt_id": 5717,
+      "slot": 1,
+      "decision_score": 0.6930320160584317,
+      "candidate_sha256": "332ef0edd9da3c2210512303a239e449fb6ff045a464808f466a6891d29a8c85",
+      "decision_s": 0.1357835829257965
+    },
+    {
+      "prompt_id": 3155,
+      "slot": 0,
+      "decision_score": 0.00030407639485544464,
+      "candidate_sha256": "e593e465ae59ccc57ec8c394a64f5d68f1685bc039c5b78529d7f78bc102986d",
+      "decision_s": 0.15435062511824071
+    },
+    {
+      "prompt_id": 3155,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b6f6804ae41c192b5d13b2f84070622c80a7b8d70bdc9b4ecf69ac107ff58d65",
+      "decision_s": 0.2005689579527825
+    },
+    {
+      "prompt_id": 3956,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "5d7f4e8822ad940e30eb561c938016c5c4491ed2fc72d1dab75fdde493a73226",
+      "decision_s": 0.20044283312745392
+    },
+    {
+      "prompt_id": 3956,
+      "slot": 1,
+      "decision_score": 0.001104305223596081,
+      "candidate_sha256": "5f595e3568c8958c06530624b0dfd3d94d31948a77d52ef6a3090a2c9a682147",
+      "decision_s": 0.18174633313901722
+    },
+    {
+      "prompt_id": 3504,
+      "slot": 0,
+      "decision_score": 0.10024005138547928,
+      "candidate_sha256": "31a22e57fc4ffb85b6d8c1526762c0c2facd0571851105313bc317701bedbed7",
+      "decision_s": 0.18084366689436138
+    },
+    {
+      "prompt_id": 3504,
+      "slot": 1,
+      "decision_score": 0.035549049273815025,
+      "candidate_sha256": "c9ca36b1503db06819dfcf2358c25f6ccf552816e6e3d8ab89b4f88a3dbfc888",
+      "decision_s": 0.16053241677582264
+    },
+    {
+      "prompt_id": 6861,
+      "slot": 0,
+      "decision_score": 0.2543886597218144,
+      "candidate_sha256": "9d0e3ccfb6e3ab92cd5a5e5059993306a9f62f295f3720f4472dfa1a39af8b85",
+      "decision_s": 0.17911166604608297
+    },
+    {
+      "prompt_id": 6861,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "d7ab9592684a387de535361d2ecb839653bd30126aec817e2da84704cdd9f945",
+      "decision_s": 0.18058020807802677
+    },
+    {
+      "prompt_id": 2328,
+      "slot": 0,
+      "decision_score": 0.11729855961306761,
+      "candidate_sha256": "71bd413765b5713c52dc080649d19455fa63e4121930464dc6835bd68f641a24",
+      "decision_s": 0.17380754090845585
+    },
+    {
+      "prompt_id": 2328,
+      "slot": 1,
+      "decision_score": 0.10982028609525439,
+      "candidate_sha256": "41085dfce46d9f731ad456e03c1476e87849765fbfaaf2a3eb51b443f513e804",
+      "decision_s": 0.13113329210318625
+    },
+    {
+      "prompt_id": 2400,
+      "slot": 0,
+      "decision_score": 0.4748223391412376,
+      "candidate_sha256": "5de47cce1d9d9dc5fcccd1c082a8323ca58359e65cf5a0104861ef30ec7e4848",
+      "decision_s": 0.1620664580259472
+    },
+    {
+      "prompt_id": 2400,
+      "slot": 1,
+      "decision_score": 0.8532816907996099,
+      "candidate_sha256": "398becdbea833581649e4fd851152e0fe2308d8835e0a3ef278c7989795bb632",
+      "decision_s": 0.10660029202699661
+    },
+    {
+      "prompt_id": 1678,
+      "slot": 0,
+      "decision_score": 0.4789560096425834,
+      "candidate_sha256": "f0b0a2745b27f87048d61850d52c52634358b6b0117e7ad07655015ea771e980",
+      "decision_s": 0.13137650000862777
+    },
+    {
+      "prompt_id": 1678,
+      "slot": 1,
+      "decision_score": 0.0008851110785726573,
+      "candidate_sha256": "06d646e2346a7909293f180a70e2f07a22c11a02237fcd839f0cc91f73cccc97",
+      "decision_s": 0.2013931251130998
+    },
+    {
+      "prompt_id": 3381,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "c3fedd309e2588a8f7de1902df6384e765f956efd4289d2229a7ffa881362f8b",
+      "decision_s": 0.17774529196321964
+    },
+    {
+      "prompt_id": 3381,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "ecc0379af1a346e5cafefff63912e8d6235d38f33d282f82305dd14842da728a",
+      "decision_s": 0.1767728328704834
+    },
+    {
+      "prompt_id": 2710,
+      "slot": 0,
+      "decision_score": 0.21804678414844603,
+      "candidate_sha256": "59468804a298604746b609542c927aac5d25c5fe9b76873e9b1b3d540f52dd2b",
+      "decision_s": 0.17910870793275535
+    },
+    {
+      "prompt_id": 2710,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "7c9f19f4de5c7b3c2230b942ebf5e57a7d178e52816b8c994eec624c4bdc7076",
+      "decision_s": 0.16006716596893966
+    },
+    {
+      "prompt_id": 995,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "3b29aac290ce3123b7ffca8d1631e21cd314a2aa0766db019aa9d5294c7cee85",
+      "decision_s": 0.20043037505820394
+    },
+    {
+      "prompt_id": 995,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "8afc8d2d526c7b7cba789ba948f421ae43fe402534f3726a8d5a8ea83fe790c5",
+      "decision_s": 0.20029141707345843
+    },
+    {
+      "prompt_id": 6051,
+      "slot": 0,
+      "decision_score": 0.4823109433281202,
+      "candidate_sha256": "6ac9220cdc44ecdac5ac269422da0dd1e6c9ab296fdd5dfc0feefc7df17dd0fb",
+      "decision_s": 0.13258208287879825
+    },
+    {
+      "prompt_id": 6051,
+      "slot": 1,
+      "decision_score": 0.583626549883475,
+      "candidate_sha256": "7abc1b1129b3ee4290631f539d3a886dd956b8df13e969501c636f00253e5c49",
+      "decision_s": 0.1525181250181049
+    },
+    {
+      "prompt_id": 4428,
+      "slot": 0,
+      "decision_score": 0.02686117986542668,
+      "candidate_sha256": "b4a38f76e75394968c5b57d1d713373ea3c6d9453af94755a5a2500ed0108bf4",
+      "decision_s": 0.15706295822747052
+    },
+    {
+      "prompt_id": 4428,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5b7b95594490ca8baf2db1e589389fdabfaa2ca597f85854210dc1764017ceaf",
+      "decision_s": 0.20079795899800956
+    },
+    {
+      "prompt_id": 6842,
+      "slot": 0,
+      "decision_score": 0.3310819673903699,
+      "candidate_sha256": "6a76eb472d6b72e5dae3ff0b400024ba88963700d1bcb64ffc00695bf4e75bed",
+      "decision_s": 0.18159074988216162
+    },
+    {
+      "prompt_id": 6842,
+      "slot": 1,
+      "decision_score": 0.29872810616301954,
+      "candidate_sha256": "f8ce8fc22ca1449a43a6922ec9a13ce52e9403b0615d6286e81b3719c93dbfa0",
+      "decision_s": 0.1801157498266548
+    },
+    {
+      "prompt_id": 5932,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "620b5e97aa0da0c8a4855913d56e0c76e7bef305e0b6b32d9e5f35c1860e77ce",
+      "decision_s": 0.20011658291332424
+    },
+    {
+      "prompt_id": 5932,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "cd876cb9b6c5a84e33537ab70f78a23b4e90e10988eac8e7a6e328e77f47b83e",
+      "decision_s": 0.18015529215335846
+    },
+    {
+      "prompt_id": 3376,
+      "slot": 0,
+      "decision_score": 0.09419483204647262,
+      "candidate_sha256": "626ce6bcd0539f64a387ee7ee9cb4c818c3bbdf603eb7be093e82c8e93490608",
+      "decision_s": 0.20534233399666846
+    },
+    {
+      "prompt_id": 3376,
+      "slot": 1,
+      "decision_score": 0.1368605951698605,
+      "candidate_sha256": "6f3078eced05e7290d748b18cac282350cdbf1a401ead135f57fd6cdb66ab8e8",
+      "decision_s": 0.17436087504029274
+    },
+    {
+      "prompt_id": 868,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cdaad5cfb0bf9ff6856948f9e07bd97d050a3c9bb65f9aa188b1c88cdbe34266",
+      "decision_s": 0.17850112495943904
+    },
+    {
+      "prompt_id": 868,
+      "slot": 1,
+      "decision_score": 0.006813546948851869,
+      "candidate_sha256": "a5fba42ba76aa346565d932bbb028eba87e3cd5c7d3dbf5a1e2c46845ebea813",
+      "decision_s": 0.17928200005553663
+    },
+    {
+      "prompt_id": 7360,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "45700d82dc69ddc7094ed5d8840dd6dba1ec6d1290c100f01766830eaed63102",
+      "decision_s": 0.20285204192623496
+    },
+    {
+      "prompt_id": 7360,
+      "slot": 1,
+      "decision_score": 0.09607372676938765,
+      "candidate_sha256": "151046dd4f801aef424352111410c5d7bfe389193415aa1231cb3cfdf4f305c1",
+      "decision_s": 0.1812382498756051
+    },
+    {
+      "prompt_id": 6306,
+      "slot": 0,
+      "decision_score": 0.020541346544826745,
+      "candidate_sha256": "5ac1ae402aab8081dca627b3eab5fba8669b71e4690bfc46a0e0e5ee5adc47ae",
+      "decision_s": 0.17867158306762576
+    },
+    {
+      "prompt_id": 6306,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a569c2667bd7a4785f5b30bf2c512ceb56026a165eec691bd837fda56cc77f70",
+      "decision_s": 0.20346649992279708
+    },
+    {
+      "prompt_id": 2381,
+      "slot": 0,
+      "decision_score": 0.49750990742681567,
+      "candidate_sha256": "b2cbf0ffb5ddedab1e7915c5f9a2f0a77eb04121f70a6dc662e75fdb1150c42d",
+      "decision_s": 0.13299275003373623
+    },
+    {
+      "prompt_id": 2381,
+      "slot": 1,
+      "decision_score": 0.3580168447628205,
+      "candidate_sha256": "c527044f27f55c30373d6859c339378caf893b2ecec53ffa9e9b4a66526b3bed",
+      "decision_s": 0.1771796669345349
+    },
+    {
+      "prompt_id": 4605,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "c372c1ef51655fc73ab2ec43e52a23f99c3cc5e3bb475fe9f1090c3819216aa8",
+      "decision_s": 0.1791706250514835
+    },
+    {
+      "prompt_id": 4605,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a77cd845df2de4bd52962985313dd9901182a580e287523054d99dff0bc57f03",
+      "decision_s": 0.17937562498264015
+    },
+    {
+      "prompt_id": 4922,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "7f72d338f77068940f509bfeadecffb4755641794795c916cb7c4df37ed4c943",
+      "decision_s": 0.1750687500461936
+    },
+    {
+      "prompt_id": 4922,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "bc37a1482c77f92002f74be6e6fcee6e7883bc0dbf617a5a8137aa53ce294f06",
+      "decision_s": 0.17854791693389416
+    },
+    {
+      "prompt_id": 7027,
+      "slot": 0,
+      "decision_score": 0.028374176257039578,
+      "candidate_sha256": "08f59413fd9d3c66cb866acd1ee78cb9a0e87aa2bb100d157a1b17a6bbc1ca13",
+      "decision_s": 0.15871258289553225
+    },
+    {
+      "prompt_id": 7027,
+      "slot": 1,
+      "decision_score": 0.11182603637165865,
+      "candidate_sha256": "3b225bc8758e0721c44fe4f7f6a4bed2f2a1e1d4b486adfa3ad154df90d62967",
+      "decision_s": 0.15498724998906255
+    },
+    {
+      "prompt_id": 6698,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "1249e2377a1fe97d18f073d826110f9d19cead64da2fae75ec23d29f10c888b0",
+      "decision_s": 0.1802015418652445
+    },
+    {
+      "prompt_id": 6698,
+      "slot": 1,
+      "decision_score": 0.0658360167868997,
+      "candidate_sha256": "6f222cef1925b48b926321052505595198ea8e4dd6306290880b66eabc294fa6",
+      "decision_s": 0.13492274982854724
+    },
+    {
+      "prompt_id": 358,
+      "slot": 0,
+      "decision_score": 0.08701450599105907,
+      "candidate_sha256": "ab9a850201dfc1c38c7386db036f26a618941ae7bdc24802903403b3f07ef117",
+      "decision_s": 0.18126525008119643
+    },
+    {
+      "prompt_id": 358,
+      "slot": 1,
+      "decision_score": 0.15555616743983605,
+      "candidate_sha256": "35eebe2f64c8f429c437be56f11c0abf5e0fb6b60f62d5ae9b15d683c97dcba7",
+      "decision_s": 0.2033095001243055
+    },
+    {
+      "prompt_id": 6260,
+      "slot": 0,
+      "decision_score": 0.13730270108477943,
+      "candidate_sha256": "eafb565f0027e7415119821be7af12610c97744d0b21cb8bc236b7b103191882",
+      "decision_s": 0.15839754207991064
+    },
+    {
+      "prompt_id": 6260,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "d121ab87a3fac0a61f134910962d707699ecc85ea8533a00d0a4e14c825b4a96",
+      "decision_s": 0.20269766682758927
+    },
+    {
+      "prompt_id": 5265,
+      "slot": 0,
+      "decision_score": 0.003062990420658346,
+      "candidate_sha256": "da331f1a02059b4c62991305410cc41bdeb7f74f2520f973f833658264cffddc",
+      "decision_s": 0.17984066694043577
+    },
+    {
+      "prompt_id": 5265,
+      "slot": 1,
+      "decision_score": 0.13311420150274986,
+      "candidate_sha256": "b35a25b65ee5220793446f8bf1bc9fb5c2d13624917af97d0e593b495efda71c",
+      "decision_s": 0.1356958330143243
+    },
+    {
+      "prompt_id": 3886,
+      "slot": 0,
+      "decision_score": 0.05761607230167146,
+      "candidate_sha256": "d849ad81ece48e11e23eee8244ce08dcd1c1fb32e0107fead02d98a98ab731e6",
+      "decision_s": 0.17709345906041563
+    },
+    {
+      "prompt_id": 3886,
+      "slot": 1,
+      "decision_score": 0.18363851322491484,
+      "candidate_sha256": "97122d9ca924bd87b320645dce6e6a012d785e95d80f81457d0eb55c5cd48c54",
+      "decision_s": 0.17855420801788568
+    },
+    {
+      "prompt_id": 5690,
+      "slot": 0,
+      "decision_score": 0.1737478852534187,
+      "candidate_sha256": "3c7d77c3d854a7dcaf60fe33874611db33120bf58e0607c37ba28a17e5482bff",
+      "decision_s": 0.1544155420269817
+    },
+    {
+      "prompt_id": 5690,
+      "slot": 1,
+      "decision_score": 0.4991619316138159,
+      "candidate_sha256": "ccc6de843957fa83fd248dfde21966360b2d82bce04a9a53f943f8c866e178bd",
+      "decision_s": 0.1735657500103116
+    },
+    {
+      "prompt_id": 1975,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "225c5e04a2af9b9a314c7eca32053db117e83445ba3ea50b6c0fb33c1794538a",
+      "decision_s": 0.1768555419985205
+    },
+    {
+      "prompt_id": 1975,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "3b27667e584151154ad62f8207c0242d09c33332fdd09099a13b345bea4e81bb",
+      "decision_s": 0.17926045903004706
+    },
+    {
+      "prompt_id": 3495,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d100a283837a40bfbee4996cfeff2712ee260462c7172e546e8cdfe61b715d5c",
+      "decision_s": 0.20403870893642306
+    },
+    {
+      "prompt_id": 3495,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "fad822577783d3ab4d7792b1dbfcb351fec3159086edd55a0a2c141f3d0ce233",
+      "decision_s": 0.20380762498825788
+    },
+    {
+      "prompt_id": 3731,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f0a00f710db306c8d35ffc602dfccea3f9448da0de916fc0add60edff790b143",
+      "decision_s": 0.1808459172025323
+    },
+    {
+      "prompt_id": 3731,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "078593816e717a9605b46afb8673b557f53d03037b50b062c361c9e1b549aa34",
+      "decision_s": 0.1337384171783924
+    },
+    {
+      "prompt_id": 5640,
+      "slot": 0,
+      "decision_score": 0.26446957466590776,
+      "candidate_sha256": "d66fb00c0149068b150c1ad8a3160c8ce007041f11253b4efda641cd152bb420",
+      "decision_s": 0.17990066693164408
+    },
+    {
+      "prompt_id": 5640,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "fa89e4db521195b316bc9277ac9641c51e6a808c37be03b9da620fb14d8919d1",
+      "decision_s": 0.20441474998369813
+    },
+    {
+      "prompt_id": 6126,
+      "slot": 0,
+      "decision_score": 0.12662838997326986,
+      "candidate_sha256": "b4624827c2acbd7475d3834757b535b5402e671997073d5daecfab79e55a8683",
+      "decision_s": 0.1823362500872463
+    },
+    {
+      "prompt_id": 6126,
+      "slot": 1,
+      "decision_score": 0.3958750275665865,
+      "candidate_sha256": "81a4af084d3046f48ac0205b1cf4ca02bb0627ccdf53049c2ccd34c5eb4a9288",
+      "decision_s": 0.15407820791006088
+    },
+    {
+      "prompt_id": 3821,
+      "slot": 0,
+      "decision_score": 0.3221851392027774,
+      "candidate_sha256": "a7cc85731f42561f8915a403eec46bc43789663c5558d45318be8d9029aed975",
+      "decision_s": 0.09999866713769734
+    },
+    {
+      "prompt_id": 3821,
+      "slot": 1,
+      "decision_score": 0.32041847752848573,
+      "candidate_sha256": "a0d7f3ca159842f1b46e299ceacde20670529d25faedb54d4ba853d06038da02",
+      "decision_s": 0.17986783385276794
+    },
+    {
+      "prompt_id": 6122,
+      "slot": 0,
+      "decision_score": 0.7751276558156056,
+      "candidate_sha256": "e457b8f529088295f4f52b33625d51fc152320211168f9927d267aad2c7bff6e",
+      "decision_s": 0.15644045919179916
+    },
+    {
+      "prompt_id": 6122,
+      "slot": 1,
+      "decision_score": 0.5878771642901189,
+      "candidate_sha256": "f3cb61b1c3dbdc61f3f278896f23d0c2232cbeb0b28fb89f05de7a7b6047c75b",
+      "decision_s": 0.15786999999545515
+    },
+    {
+      "prompt_id": 3646,
+      "slot": 0,
+      "decision_score": 0.0029933985401326075,
+      "candidate_sha256": "2030895e38e81f3bb8143c0c3c09aa373f4c4696bb73862b8d74dcae9a827ca5",
+      "decision_s": 0.1813842908013612
+    },
+    {
+      "prompt_id": 3646,
+      "slot": 1,
+      "decision_score": 0.11042498363894765,
+      "candidate_sha256": "11ede6be2fc38b10b806c4ca3c86ea5aee099ccd6d0bb5f36a9cb0eeac6c0669",
+      "decision_s": 0.17810200015082955
+    },
+    {
+      "prompt_id": 4199,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d8970e6f97ffebb0639bd4e11e2efb6d0a6638948beeb85501836e792ac6695d",
+      "decision_s": 0.17813895805738866
+    },
+    {
+      "prompt_id": 4199,
+      "slot": 1,
+      "decision_score": 0.34471436860306254,
+      "candidate_sha256": "b00779e2d53a2f48536c7b4a2f54ab7b91225ca4b84485b4c6f8a86a42354413",
+      "decision_s": 0.15760070900432765
+    },
+    {
+      "prompt_id": 1757,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f70098ed41c74bd2fc240e9bbbe77f4668b8ddb379ff5ea12de84fc04ec7a939",
+      "decision_s": 0.15787112480029464
+    },
+    {
+      "prompt_id": 1757,
+      "slot": 1,
+      "decision_score": 0.13050159169549572,
+      "candidate_sha256": "c6820b0b926c114da47f446b5a789c54b6f6f3dbd7ce2cca20ae00515b32b3b1",
+      "decision_s": 0.15689354203641415
+    },
+    {
+      "prompt_id": 2958,
+      "slot": 0,
+      "decision_score": 0.5067772388197728,
+      "candidate_sha256": "92d39b4d62c5cfbc69e8e5ccbd1bee66d2157d355ca5933db0c8ad97aab2af0c",
+      "decision_s": 0.16053491714410484
+    },
+    {
+      "prompt_id": 2958,
+      "slot": 1,
+      "decision_score": 0.1759445826726145,
+      "candidate_sha256": "4120f94ec1d72322dd2c214ba9b184c05d7b0b9e2485fbabd3219c7f34130191",
+      "decision_s": 0.18149820901453495
+    },
+    {
+      "prompt_id": 6805,
+      "slot": 0,
+      "decision_score": 0.1844295993899891,
+      "candidate_sha256": "6496d528317fa10a911927297cc4d8dd4f55b6c7cdf7253fb17363f2d5991034",
+      "decision_s": 0.18207983393222094
+    },
+    {
+      "prompt_id": 6805,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "84b3b3ecdc293e60d7709ce41fc69ca61d7166ea06478fbd628869c61a71e5d7",
+      "decision_s": 0.20363995898514986
+    },
+    {
+      "prompt_id": 4513,
+      "slot": 0,
+      "decision_score": 0.029017397712170514,
+      "candidate_sha256": "4682881fbeb61f7b0ffb4bd3bd2ace981176e7346b1dc64fc95bbaeb025f324d",
+      "decision_s": 0.18022345914505422
+    },
+    {
+      "prompt_id": 4513,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "05549dc5d336fda980338254aea9b84d243d815049ded8ff84880b09198cc6b6",
+      "decision_s": 0.20383783406578004
+    },
+    {
+      "prompt_id": 2422,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "460d25ba162bea4a0579e342f485be55703d5731066aba27ee1afec293f93693",
+      "decision_s": 0.19797870819456875
+    },
+    {
+      "prompt_id": 2422,
+      "slot": 1,
+      "decision_score": 0.06365418229933476,
+      "candidate_sha256": "a2355e48fe10bec0b88ad4af5526c826b049ed0e6722427477a490e670a40e30",
+      "decision_s": 0.18128591706044972
+    },
+    {
+      "prompt_id": 5922,
+      "slot": 0,
+      "decision_score": 0.04460988505990543,
+      "candidate_sha256": "8e9fb73dd0c35f7e724b148e7b37e56e118272681490474df48369f4490d8d60",
+      "decision_s": 0.13579158298671246
+    },
+    {
+      "prompt_id": 5922,
+      "slot": 1,
+      "decision_score": 0.08192933110795413,
+      "candidate_sha256": "808a144ef1aac6ffafa3b8b1515181ed7bec60d2601a81be08cee58ed950a1a9",
+      "decision_s": 0.17988566705025733
+    },
+    {
+      "prompt_id": 5232,
+      "slot": 0,
+      "decision_score": 0.0016239720990772813,
+      "candidate_sha256": "f7d50d8b68cda588ed55ae6d226ea7313d6104949cca8a2412cc0407c0abfe80",
+      "decision_s": 0.2030683329794556
+    },
+    {
+      "prompt_id": 5232,
+      "slot": 1,
+      "decision_score": 0.00021182460360896527,
+      "candidate_sha256": "b460ad6870b8e1d7eda9b56a6001f5e3c04506f258d0b908d51a224f1e3b3821",
+      "decision_s": 0.20339037501253188
+    },
+    {
+      "prompt_id": 2000,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "279579d6ab5fb78008fc0c1dd0de526081c0c6fe2696ec1da4ad584cb5135332",
+      "decision_s": 0.2039678341243416
+    },
+    {
+      "prompt_id": 2000,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f10021a2d79b00e9cabe4d4dce8506af31f966524368b9bfa41ed877642a0b10",
+      "decision_s": 0.20396312489174306
+    },
+    {
+      "prompt_id": 2855,
+      "slot": 0,
+      "decision_score": 0.4914494522267153,
+      "candidate_sha256": "57ac64bb4ce2e5bbfa5e29b2c8251ddd532449aaadfaba3567b076321fdc9110",
+      "decision_s": 0.1562727082055062
+    },
+    {
+      "prompt_id": 2855,
+      "slot": 1,
+      "decision_score": 0.0318594412762795,
+      "candidate_sha256": "a8b4b74cef5da078d6bb9b844da4b415b8ed026652ff4d0877e817f49ae6c33d",
+      "decision_s": 0.1624587089754641
+    },
+    {
+      "prompt_id": 3032,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "68d0d7757bbd309a3ac576b947d3a7196999f19d85b556d3175e3cade89facbc",
+      "decision_s": 0.2002511671744287
+    },
+    {
+      "prompt_id": 3032,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "6b627b380b8292728c43737ac57614e705e401a7de47c8ced5df27664fef87dc",
+      "decision_s": 0.20030004205182195
+    },
+    {
+      "prompt_id": 1996,
+      "slot": 0,
+      "decision_score": 0.4562279505781968,
+      "candidate_sha256": "8b2bd79a31d53e8e047f04b121f460f6622742b6224bed77f44bdb84ed49c860",
+      "decision_s": 0.13826574990525842
+    },
+    {
+      "prompt_id": 1996,
+      "slot": 1,
+      "decision_score": 0.3129647042843917,
+      "candidate_sha256": "2868974f71d600930f37fe6adf8b5cd09299422242f7f293f28d351aadbc1dc8",
+      "decision_s": 0.10758658405393362
+    },
+    {
+      "prompt_id": 2421,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "20fc0de2f86475391f726f41db1aca261e8845bf888abdf0a9f41e0b80710f5c",
+      "decision_s": 0.1801892500370741
+    },
+    {
+      "prompt_id": 2421,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "d2b40bbfa33d11574a43b50c550ea13c746e9282cb050c3931c93f417f3bcdf2",
+      "decision_s": 0.17806620802730322
+    },
+    {
+      "prompt_id": 1350,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "6a681a30136304f2536838388e2eaed079710dd06c3d0715db09e36585c52d22",
+      "decision_s": 0.18000525003299117
+    },
+    {
+      "prompt_id": 1350,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "9c54491d64ae9b1fb937cc4a0379182392b5a556effe436e2091864442fb5f74",
+      "decision_s": 0.17803624994121492
+    },
+    {
+      "prompt_id": 4621,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "c940cb6c1efba2fca70aad1d030ee105825c1a70eb3f456e69aed7d3d947109b",
+      "decision_s": 0.17729345802217722
+    },
+    {
+      "prompt_id": 4621,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "9b0700885e3fab466e022e1c336419653284c4a59e8200ffcaedf93cf433c8a4",
+      "decision_s": 0.1772551250178367
+    },
+    {
+      "prompt_id": 385,
+      "slot": 0,
+      "decision_score": 0.08732520663851627,
+      "candidate_sha256": "47d077dc60d20005203af9795d0b77aab6cdb7ebef6e44665e851e61a614f48e",
+      "decision_s": 0.13218870921991765
+    },
+    {
+      "prompt_id": 385,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "02c8e8e449e456385caaa55399a89d5e9da73e9306d5c3036b9d6800225e25f6",
+      "decision_s": 0.2041042922064662
+    },
+    {
+      "prompt_id": 7104,
+      "slot": 0,
+      "decision_score": 0.04243071267523148,
+      "candidate_sha256": "4ce774aba96d9edd6884d75179777ecf8e4bb9c995676f86c789376dab490aa3",
+      "decision_s": 0.1994687078986317
+    },
+    {
+      "prompt_id": 7104,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "fc8c5d03d89532a712629b3a0a7ec68003b77de11e37bd6430478bcb2eb1561c",
+      "decision_s": 0.20271041593514383
+    },
+    {
+      "prompt_id": 7401,
+      "slot": 0,
+      "decision_score": 0.13465850909936194,
+      "candidate_sha256": "b2d7b9280c864af8165cc5faae202ff6d1049a80c11f303bfb0cb2c5e06b01f6",
+      "decision_s": 0.17759758420288563
+    },
+    {
+      "prompt_id": 7401,
+      "slot": 1,
+      "decision_score": 0.16065413481301274,
+      "candidate_sha256": "b1de172e5315c9589a44538afc66dd9a3958b174c864355683359e23fd7a9f21",
+      "decision_s": 0.177854125155136
+    },
+    {
+      "prompt_id": 651,
+      "slot": 0,
+      "decision_score": 0.2774214426392289,
+      "candidate_sha256": "5b89583eed3528090fa7f5b1c39f32d8e5edba408d8e7202afdf1f4f11e4a975",
+      "decision_s": 0.15792975015938282
+    },
+    {
+      "prompt_id": 651,
+      "slot": 1,
+      "decision_score": 0.6920848357203752,
+      "candidate_sha256": "5652e5adb4dae4dc1ff3c82be59cecc6a1d4636e924db1096eba0f41ef45d1bd",
+      "decision_s": 0.13190516689792275
+    },
+    {
+      "prompt_id": 777,
+      "slot": 0,
+      "decision_score": 0.06314886316875269,
+      "candidate_sha256": "302238187b51f971be14d0f7f065dfddf8a82cede983e77ef9756296c51b69cb",
+      "decision_s": 0.15605462505482137
+    },
+    {
+      "prompt_id": 777,
+      "slot": 1,
+      "decision_score": 0.7047575196968685,
+      "candidate_sha256": "403efd2952e548915e1f624f3787f15c4a4d46e80ce32fbf98a1793e7fd126ba",
+      "decision_s": 0.16229966608807445
+    },
+    {
+      "prompt_id": 2170,
+      "slot": 0,
+      "decision_score": 0.05932262819150104,
+      "candidate_sha256": "2e315f0da099531c10a5a92fcfa28edabe4291149313bbd1750a2f08e3920508",
+      "decision_s": 0.09956775000318885
+    },
+    {
+      "prompt_id": 2170,
+      "slot": 1,
+      "decision_score": 0.36987658337081414,
+      "candidate_sha256": "b0d4f76b4b4886af9f4c7408955881bc8e9a784e55a3cda018bde1d03c4a3bc7",
+      "decision_s": 0.10980654112063348
+    },
+    {
+      "prompt_id": 2354,
+      "slot": 0,
+      "decision_score": 0.2181228055459177,
+      "candidate_sha256": "e5e82143cd0250d00dbff35ec55d8b0c1608d6165a9bd0f2c20dadea9eb26350",
+      "decision_s": 0.15459791710600257
+    },
+    {
+      "prompt_id": 2354,
+      "slot": 1,
+      "decision_score": 0.5762067333738926,
+      "candidate_sha256": "c8a0adbca38ee84a1c9efeac303ee91f3f1cc6d69f2d9131caaca27cc926d386",
+      "decision_s": 0.15659129107370973
+    },
+    {
+      "prompt_id": 3068,
+      "slot": 0,
+      "decision_score": 0.21135096712271537,
+      "candidate_sha256": "3fa5e22f1afb4f47ac2bca2e1dd0418d8fd3d48d1bbec10a919790e64fb1ec3c",
+      "decision_s": 0.18140166602097452
+    },
+    {
+      "prompt_id": 3068,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "290a2582b2f8d5da27175ec5efc788ba5aaa94cfe4f86531393c5929405f0a96",
+      "decision_s": 0.20201733289286494
+    },
+    {
+      "prompt_id": 7065,
+      "slot": 0,
+      "decision_score": 0.3914313464705306,
+      "candidate_sha256": "3b9f470101a72e1b4eb098f2f4aa57b5fc39405c62eeb79114a93c3dbb7c1822",
+      "decision_s": 0.18224141607061028
+    },
+    {
+      "prompt_id": 7065,
+      "slot": 1,
+      "decision_score": 0.10821270599078509,
+      "candidate_sha256": "99bcdb7ea514dbe8b98e72fa4920a14ace7da58041e58b26e00891dad5dd2cd0",
+      "decision_s": 0.1782955841626972
+    },
+    {
+      "prompt_id": 7266,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "bc3565821cda2d8c74468cfd0fe300b40b3cab297a768a4334c00984e145c1b0",
+      "decision_s": 0.17687529209069908
+    },
+    {
+      "prompt_id": 7266,
+      "slot": 1,
+      "decision_score": 0.17173227392346782,
+      "candidate_sha256": "0cd43fbed8c8040b90245906a6971a5b42212a97caa1017ade775fc24c3bbbf1",
+      "decision_s": 0.1796189579181373
+    },
+    {
+      "prompt_id": 5087,
+      "slot": 0,
+      "decision_score": 0.4213632605651382,
+      "candidate_sha256": "a01ec6b9dccec0cc4324d5e853cfd581e009691c0db88c838a42c0bd1885b298",
+      "decision_s": 0.1811327498871833
+    },
+    {
+      "prompt_id": 5087,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "55e8c0b3c34f6969e686edbe7651e8c77b741211492f12b87b70a458caa51f1f",
+      "decision_s": 0.1795004999730736
+    },
+    {
+      "prompt_id": 2065,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "7ff80adf8c9050b711ae1733befbb5e12e29328806dc619ec67e2582564118f7",
+      "decision_s": 0.20008924999274313
+    },
+    {
+      "prompt_id": 2065,
+      "slot": 1,
+      "decision_score": 0.0517094592226566,
+      "candidate_sha256": "1d82f66dae23701d43d61bc4b0da34af3d8663ff3d296419847d4dcdaa4291c0",
+      "decision_s": 0.18070054217241704
+    },
+    {
+      "prompt_id": 1884,
+      "slot": 0,
+      "decision_score": 0.12164706778084872,
+      "candidate_sha256": "aa33c8f1884bdfb3a5661f5e49070037b7102f027cad62b019485df2bc98409f",
+      "decision_s": 0.16001654090359807
+    },
+    {
+      "prompt_id": 1884,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "3facb6635ea6cd1fcb2a0127846e34c7309b33d5627a8c38dbed2fd6f674cc4d",
+      "decision_s": 0.10214437497779727
+    },
+    {
+      "prompt_id": 6719,
+      "slot": 0,
+      "decision_score": 0.6480890874821904,
+      "candidate_sha256": "2063804b37daf4b29585add1469321b5b587cdb4a468f4db92bc6da0125030a9",
+      "decision_s": 0.13859070790931582
+    },
+    {
+      "prompt_id": 6719,
+      "slot": 1,
+      "decision_score": 0.3708893890578962,
+      "candidate_sha256": "10ab94c532668b2f14c8df8dbea5fc83b417b96d94f19e26ac2a928426e729ff",
+      "decision_s": 0.13489437499083579
+    },
+    {
+      "prompt_id": 1601,
+      "slot": 0,
+      "decision_score": 0.0414119163519403,
+      "candidate_sha256": "f606069dfc64f01efcdfc2f10397f6e983ba3f70732977420073e8b459e28e70",
+      "decision_s": 0.17695312504656613
+    },
+    {
+      "prompt_id": 1601,
+      "slot": 1,
+      "decision_score": 0.07687171654062465,
+      "candidate_sha256": "61c4761ac879a1c02f2f7ef33245e0161fa0d29c270f97450078b7818d4f7622",
+      "decision_s": 0.17908804211765528
+    },
+    {
+      "prompt_id": 5198,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "8e06c853bb55685b1e60d06e82071f937ee173094f210b534fb5b6bae52223d9",
+      "decision_s": 0.20611762488260865
+    },
+    {
+      "prompt_id": 5198,
+      "slot": 1,
+      "decision_score": 0.20288929914263185,
+      "candidate_sha256": "61a97070ebde5d6f43eedb8378d69f41c46ac9fff5a3fa02215524f6979e3630",
+      "decision_s": 0.17908174986951053
+    },
+    {
+      "prompt_id": 4360,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "b8c7734b204d25aa2edb1613845e053fbedf7f92acc241a11520ceca59a816f5",
+      "decision_s": 0.2029854168649763
+    },
+    {
+      "prompt_id": 4360,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "7d0d4a0ba52b85da8ff501e14473005841d9a887c1ab4cde29fda4fec922418f",
+      "decision_s": 0.20288341585546732
+    },
+    {
+      "prompt_id": 1238,
+      "slot": 0,
+      "decision_score": 0.3569921646572224,
+      "candidate_sha256": "16ed742a6026ffa273ea338e1be988a2642d41e0c94c5dd74b4512bd22ec78a9",
+      "decision_s": 0.17329341708682477
+    },
+    {
+      "prompt_id": 1238,
+      "slot": 1,
+      "decision_score": 0.3332342479651352,
+      "candidate_sha256": "aa577223c3794b912a67078aa62cde7747ae094997b8bc545733eb870ca9d60f",
+      "decision_s": 0.16227279091253877
+    },
+    {
+      "prompt_id": 2846,
+      "slot": 0,
+      "decision_score": 0.3434280199852486,
+      "candidate_sha256": "ff36cb90baa6ec56c8d74f273d7746fc142fdd85b2b02b3d06431384e6e9815a",
+      "decision_s": 0.15861054207198322
+    },
+    {
+      "prompt_id": 2846,
+      "slot": 1,
+      "decision_score": 0.5019545175815627,
+      "candidate_sha256": "dbcd247215bad672097bd30738aa42545dab3896cd679e99d6f073f0bef1c1ab",
+      "decision_s": 0.10946966684423387
+    },
+    {
+      "prompt_id": 5604,
+      "slot": 0,
+      "decision_score": 0.005961377874307971,
+      "candidate_sha256": "b49b85c2236379c250927f0b339c864cfd41ff8baf49cb444987ea3a15d4f5e1",
+      "decision_s": 0.19950387510471046
+    },
+    {
+      "prompt_id": 5604,
+      "slot": 1,
+      "decision_score": 0.08833217431158488,
+      "candidate_sha256": "8067c4133030fdd529c5d32aa98b670135bdc535b04851dcf512d1b6afa16be0",
+      "decision_s": 0.17732591601088643
+    },
+    {
+      "prompt_id": 6486,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "bd87be7f342cc328184dc4f3c4c564dff8819c39a3677a00d9ad47754fe9a056",
+      "decision_s": 0.20164883299730718
+    },
+    {
+      "prompt_id": 6486,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "452fced33a31c626a555462caa9df083f2dc7491468154d7754bb08ad62b51f6",
+      "decision_s": 0.2020960410591215
+    },
+    {
+      "prompt_id": 2068,
+      "slot": 0,
+      "decision_score": 0.0013443192309064214,
+      "candidate_sha256": "c52890a216ca137fdfdd94b1d88abc83da9239a1e79dd9dbbe7685aea2b95897",
+      "decision_s": 0.20676591689698398
+    },
+    {
+      "prompt_id": 2068,
+      "slot": 1,
+      "decision_score": 0.18624452570119188,
+      "candidate_sha256": "410c6adae19e47e07288081aa7c8cbc653a2a12b0a91224b8e45ca53504d76d9",
+      "decision_s": 0.20165279204957187
+    },
+    {
+      "prompt_id": 6621,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "22e4fc8255131892ed61c7477edc69b3a3192d6308de4781dfb3df2acb2849ce",
+      "decision_s": 0.18034320790320635
+    },
+    {
+      "prompt_id": 6621,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f99ad8263e63d4b5b980b33ecdb31624fe41d25bddfcdd46891d6b3df5b66bd5",
+      "decision_s": 0.20017583318986
+    },
+    {
+      "prompt_id": 3407,
+      "slot": 0,
+      "decision_score": 0.5928484665887738,
+      "candidate_sha256": "f484583300b44fb9790ff463241bf966225b9e0452b807c4ab08db7c77fe32a8",
+      "decision_s": 0.10901520913466811
+    },
+    {
+      "prompt_id": 3407,
+      "slot": 1,
+      "decision_score": 0.1725000481440365,
+      "candidate_sha256": "76054b9a7e27e9cd988c86af57f6d7004a886301660f25b95a91bdf943280675",
+      "decision_s": 0.157483333023265
+    },
+    {
+      "prompt_id": 1773,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "536a8d5bf95737b62ed27d11de2ea5b62166f0b1919e231c27cd29ff716660b0",
+      "decision_s": 0.20189183298498392
+    },
+    {
+      "prompt_id": 1773,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "2276c57c2b568bc7e73871ba591ebb84d96648687bc55be48266d4d47825d90e",
+      "decision_s": 0.20387145783752203
+    },
+    {
+      "prompt_id": 6007,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "580b14661921b51bb4ce9935611a5793df8a5024ec212cd27bef336fbb2bf053",
+      "decision_s": 0.20314499991945922
+    },
+    {
+      "prompt_id": 6007,
+      "slot": 1,
+      "decision_score": 0.5459192129082721,
+      "candidate_sha256": "ce38adcfdbeade3df67d6fe67ab961a0f505798fc0ae2efa1d93199e12cb96ff",
+      "decision_s": 0.15390720800496638
+    },
+    {
+      "prompt_id": 6325,
+      "slot": 0,
+      "decision_score": 0.7190165111205005,
+      "candidate_sha256": "809de0f8c23a002af1fd619de092cff95165c7bb3bce4352e6d490af0a3b63e3",
+      "decision_s": 0.1306487498804927
+    },
+    {
+      "prompt_id": 6325,
+      "slot": 1,
+      "decision_score": 0.6777737854874326,
+      "candidate_sha256": "192d12a2448b9788960fd1a6f176d23f7814925b8cf29b0645f7b2301d81c431",
+      "decision_s": 0.13209933298639953
+    },
+    {
+      "prompt_id": 7263,
+      "slot": 0,
+      "decision_score": 0.019216691360286232,
+      "candidate_sha256": "122ccb66f700a8a2e2e78494ccaa73c4a46ca1cfa4018a6f3a5aed72b38ab686",
+      "decision_s": 0.15399245801381767
+    },
+    {
+      "prompt_id": 7263,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f866b45c5bb4a0382dbd0abf1997c187a7bd281b96b61a7bf902ee22f748c318",
+      "decision_s": 0.2014109999872744
+    },
+    {
+      "prompt_id": 1268,
+      "slot": 0,
+      "decision_score": 0.044160369338550345,
+      "candidate_sha256": "b4b723bf169a89df6b2637937bc235a1d3ecf783db07f0fd45aee07015c7cee9",
+      "decision_s": 0.1548504577949643
+    },
+    {
+      "prompt_id": 1268,
+      "slot": 1,
+      "decision_score": 0.01753254730708191,
+      "candidate_sha256": "f74a27af973b7c28aa52165dbbec3c4b7e8689d0b37f60eff208ac8eabc22d65",
+      "decision_s": 0.13669616705738008
+    },
+    {
+      "prompt_id": 5347,
+      "slot": 0,
+      "decision_score": 0.393620713513636,
+      "candidate_sha256": "3ec445a4829f8c103abb929cd632a545afa990d6123d191056f927924bba3650",
+      "decision_s": 0.13597308285534382
+    },
+    {
+      "prompt_id": 5347,
+      "slot": 1,
+      "decision_score": 0.2228343081109195,
+      "candidate_sha256": "e5795d178c63ad5c665a7bb712188540b9c3a744652ee4b07d92658a08a5244e",
+      "decision_s": 0.17875966685824096
+    },
+    {
+      "prompt_id": 4086,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f2ee96f599bec15d3991ca6634fced170795a190758558a357866061270b584f",
+      "decision_s": 0.17946741683408618
+    },
+    {
+      "prompt_id": 4086,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5c44686843f8f4ba0d5eb084d076e48856d8c379626d400f9b961932423989e4",
+      "decision_s": 0.1777212079614401
+    },
+    {
+      "prompt_id": 979,
+      "slot": 0,
+      "decision_score": 0.06422760850693063,
+      "candidate_sha256": "e4848ca7d813edce97339edf8af00f40ff6ff7aa738fe1ab473b2046acd40ab2",
+      "decision_s": 0.15864270785823464
+    },
+    {
+      "prompt_id": 979,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "7ed1aa81302548853b3d5b983720de106c09125d74bf142164a26bb577ab5930",
+      "decision_s": 0.11006166599690914
+    },
+    {
+      "prompt_id": 3240,
+      "slot": 0,
+      "decision_score": 0.20291211702045445,
+      "candidate_sha256": "341ce87c0f92f0500d7867c9c29fe1effaad1fd1ec96ccf37e3c07200e785851",
+      "decision_s": 0.13146745809353888
+    },
+    {
+      "prompt_id": 3240,
+      "slot": 1,
+      "decision_score": 0.22007459935289783,
+      "candidate_sha256": "3f2c3a72fe59a6868a3aedd0d450211850fcc7615c06649a63b57e5d2d3eb604",
+      "decision_s": 0.17855324991978705
+    },
+    {
+      "prompt_id": 798,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "6b6116b5111f4eec556f1c123ca4170485459fc7c412da7053b9c0669619129f",
+      "decision_s": 0.17500462499447167
+    },
+    {
+      "prompt_id": 798,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "8fdd6be0fe3b4ca09ce33cb68fe90f7c2d6943bb3e78efd88ea5c297610dbabc",
+      "decision_s": 0.1756609589792788
+    },
+    {
+      "prompt_id": 4207,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "6eb10293fdd8af70b696fa9e4bdef6441106b5c02f124ecce0f380c4371fe188",
+      "decision_s": 0.1794951669871807
+    },
+    {
+      "prompt_id": 4207,
+      "slot": 1,
+      "decision_score": 0.36459728110022793,
+      "candidate_sha256": "8dc44303b06d223a2df5f34f88534d175fc33e19c6a455dcabe6b0f04f1b787b",
+      "decision_s": 0.13177666696719825
+    },
+    {
+      "prompt_id": 739,
+      "slot": 0,
+      "decision_score": 0.26272073763465237,
+      "candidate_sha256": "d2204805e90540621fedd3ecde8b605f6c93a2d2a762e8e832475fa73c6da4ea",
+      "decision_s": 0.1617655830923468
+    },
+    {
+      "prompt_id": 739,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a2a0acf91e28dba54aab53546b69eb96148efbe8546ac8b29f1e4daf5b9a0943",
+      "decision_s": 0.1823419169522822
+    },
+    {
+      "prompt_id": 6434,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "8968e760c02b3b4395c1e393099a6aaea8bb6760b3f3da21ebe91bd73c33b465",
+      "decision_s": 0.1795528340153396
+    },
+    {
+      "prompt_id": 6434,
+      "slot": 1,
+      "decision_score": 0.4121253299561277,
+      "candidate_sha256": "6a878c0cb695ddddfb2c37f478dfa8011dce9b8be2f136c797df477950344d98",
+      "decision_s": 0.10678724991157651
+    },
+    {
+      "prompt_id": 1190,
+      "slot": 0,
+      "decision_score": 0.16073388865907978,
+      "candidate_sha256": "8aa9906f41a2bf67425678a1162b61868568313feb2dd4a5f72e80da6666ffe1",
+      "decision_s": 0.17713733320124447
+    },
+    {
+      "prompt_id": 1190,
+      "slot": 1,
+      "decision_score": 0.3533722995876713,
+      "candidate_sha256": "b868d7264185f9022298ec0751c48349c3a259d292d21b175dbf4add8e70eff3",
+      "decision_s": 0.17493987502530217
+    },
+    {
+      "prompt_id": 471,
+      "slot": 0,
+      "decision_score": 0.06479749882465358,
+      "candidate_sha256": "82aa94d94a123cf027dfdc6038e8562f312bcac6a3a7c157ba83bfe9339d2949",
+      "decision_s": 0.1322611249051988
+    },
+    {
+      "prompt_id": 471,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b631170627c95602ada4b17177497acbff11672d3f8202063248b6c5f979e433",
+      "decision_s": 0.17831237497739494
+    },
+    {
+      "prompt_id": 3287,
+      "slot": 0,
+      "decision_score": 0.14133580646505112,
+      "candidate_sha256": "81a1e39c90b53616d9b884151a0724bd6c0acb89a69bf4703696bc9bb842ff8b",
+      "decision_s": 0.1778015000745654
+    },
+    {
+      "prompt_id": 3287,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "741d0b36b55f459cdfcf1111adffaebcd57aa3761caeaf3fff96d3a89e5841d8",
+      "decision_s": 0.17731399997137487
+    },
+    {
+      "prompt_id": 2818,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "acb91ccd7529c28190a4011d743784f79cafa2d790dc5225704f1710a7170c18",
+      "decision_s": 0.17929920786991715
+    },
+    {
+      "prompt_id": 2818,
+      "slot": 1,
+      "decision_score": 0.5771565549399457,
+      "candidate_sha256": "2c923c07d8a1fe07a3b1a1baf30cc1b4eef2a25ff7c05bd56d784e0c4c700de3",
+      "decision_s": 0.13717533298768103
+    },
+    {
+      "prompt_id": 3895,
+      "slot": 0,
+      "decision_score": 0.23377036964296458,
+      "candidate_sha256": "ee093af867e7515fdc36a3baa9fb2d1e614d5d514a87fcf7f93126cc24c18d08",
+      "decision_s": 0.16024524997919798
+    },
+    {
+      "prompt_id": 3895,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "0d9196af5da43fccd77c6ce1ca14fa86062ad958499ccd34188c72c591e85e98",
+      "decision_s": 0.18096095812506974
+    },
+    {
+      "prompt_id": 6559,
+      "slot": 0,
+      "decision_score": 0.16761480947840296,
+      "candidate_sha256": "e1b0b59958628f355d56f10ca4adb7ccaa385b7af9ca046e75fdd0f3648b72ca",
+      "decision_s": 0.13190645794384181
+    },
+    {
+      "prompt_id": 6559,
+      "slot": 1,
+      "decision_score": 0.5949572418258903,
+      "candidate_sha256": "4225c85b8f5deeed268e08262372ecb82f0408aecbf390ef7cb43c34fc305eca",
+      "decision_s": 0.13390441704541445
+    },
+    {
+      "prompt_id": 6161,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f911f2b4906ef0c0276f34a3cbe2908c02921eae81ad29d70b71200456ec0849",
+      "decision_s": 0.17711679101921618
+    },
+    {
+      "prompt_id": 6161,
+      "slot": 1,
+      "decision_score": 0.16388162704725157,
+      "candidate_sha256": "b9ddcaffd972c4fa2c093d4511cf190ffd876c84166607900423092b0757eb66",
+      "decision_s": 0.17889462504535913
+    },
+    {
+      "prompt_id": 3454,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "5d9d6ad699ffb8b16253f0fc77902bdb99e2984a7d28ad045d2ffb5d351fc02c",
+      "decision_s": 0.20351229212246835
+    },
+    {
+      "prompt_id": 3454,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "64caecf1d1063646a563a20c18866e98f3c6c2f81eae89d19720f1d6e4f7ea18",
+      "decision_s": 0.20269904215820134
+    },
+    {
+      "prompt_id": 980,
+      "slot": 0,
+      "decision_score": 0.3369008738180652,
+      "candidate_sha256": "c540f382a7a7cb199ff202ff818a411f39ca789687a9ca6884e0391559ad0b1c",
+      "decision_s": 0.1801242500077933
+    },
+    {
+      "prompt_id": 980,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "9f189c714c6ee0da80e46c945a95975b3267a15ed3a553a266c2173172027fdc",
+      "decision_s": 0.17613508319482207
+    },
+    {
+      "prompt_id": 2229,
+      "slot": 0,
+      "decision_score": 0.020705221048723143,
+      "candidate_sha256": "fb3fbca5d65094866659e4cf292563d724e0f15377546eab7e4b3f0b06bf6e00",
+      "decision_s": 0.13671745778992772
+    },
+    {
+      "prompt_id": 2229,
+      "slot": 1,
+      "decision_score": 0.1429506662538255,
+      "candidate_sha256": "b67d3ccbd6cbfc3fc21aa96db82a4b143f961c17ed1bf6b3bc33d6cf9a67ffe6",
+      "decision_s": 0.1086262920871377
+    },
+    {
+      "prompt_id": 2540,
+      "slot": 0,
+      "decision_score": 0.20688768440186758,
+      "candidate_sha256": "538cc2c7e463511ee287873a5030592cf4f4f83ee47edf3219ad244c9542193e",
+      "decision_s": 0.15841266699135303
+    },
+    {
+      "prompt_id": 2540,
+      "slot": 1,
+      "decision_score": 0.626060109032383,
+      "candidate_sha256": "caf5a159964093387be94f06240c286edfc883b512871b73d65a7ea084e4e581",
+      "decision_s": 0.1336133328732103
+    },
+    {
+      "prompt_id": 2041,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "04beada8b1db0d58338b3828b1cb19534f321f8de5139f0f1605f2c2e7949969",
+      "decision_s": 0.2024282079655677
+    },
+    {
+      "prompt_id": 2041,
+      "slot": 1,
+      "decision_score": 0.0008278413850797045,
+      "candidate_sha256": "0c334bada30e69451efa4bd9e2f5f3a05e71aee6abd1efd385dc4995e50efab2",
+      "decision_s": 0.20363654103130102
+    },
+    {
+      "prompt_id": 6095,
+      "slot": 0,
+      "decision_score": 0.05823622810264996,
+      "candidate_sha256": "2a97f697a21981f399a76c29c8239848985c2f396557a94ec0888cd10a72d79b",
+      "decision_s": 0.1377234999090433
+    },
+    {
+      "prompt_id": 6095,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "c04a2f203a8e778205c938f43b1662de02ff8a1db26faeb4cec4bb2b9dfc6c86",
+      "decision_s": 0.18074258300475776
+    },
+    {
+      "prompt_id": 1566,
+      "slot": 0,
+      "decision_score": 0.13834846740886536,
+      "candidate_sha256": "b46000e0a289cf3e30729ed582d909c3a6a6d31246d086c88f492854401faa13",
+      "decision_s": 0.15539787500165403
+    },
+    {
+      "prompt_id": 1566,
+      "slot": 1,
+      "decision_score": 0.07250363548584389,
+      "candidate_sha256": "2771cc8e5b406026f6ba38060b67ff4d8dfca701534e7cd4a140d7d39dc05d7d",
+      "decision_s": 0.17934037512168288
+    },
+    {
+      "prompt_id": 3185,
+      "slot": 0,
+      "decision_score": 0.09770690033989185,
+      "candidate_sha256": "496291d0ad343edf949e8d761a5e20a835c6a02fbfb393248a107d9a22a5578f",
+      "decision_s": 0.1558440828230232
+    },
+    {
+      "prompt_id": 3185,
+      "slot": 1,
+      "decision_score": 0.27526271802741004,
+      "candidate_sha256": "7b9b30ee623b5028b15af8064d49ed015e6b11f4795db7c72868553598252807",
+      "decision_s": 0.13203716604039073
+    },
+    {
+      "prompt_id": 4403,
+      "slot": 0,
+      "decision_score": 0.0065163350473636745,
+      "candidate_sha256": "353d624f85fbdad62d3ebd8bf9d5c8cdb9ba911fdc355c22d42f45687e9f0928",
+      "decision_s": 0.18042787513695657
+    },
+    {
+      "prompt_id": 4403,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b71698be5c8aed755941fd25f6b97af09ebff615b2f85570ede81c4b33831c5a",
+      "decision_s": 0.20063454192131758
+    },
+    {
+      "prompt_id": 2071,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f673e3b962d2e5d9038a8abe5049c24951980fcb8d1bd3888449ee0812545b3b",
+      "decision_s": 0.1801183340139687
+    },
+    {
+      "prompt_id": 2071,
+      "slot": 1,
+      "decision_score": 0.1874803822090186,
+      "candidate_sha256": "774a16d9b4dc57b7b6ad8cab13e62e4fc9c94a47d590a39c1f0c969d354fbe41",
+      "decision_s": 0.15839245915412903
+    },
+    {
+      "prompt_id": 1901,
+      "slot": 0,
+      "decision_score": 0.25761557706018307,
+      "candidate_sha256": "86bc0b636748544dc41c53c75afd0ce7ad34ea023880678389c15bab03dff05e",
+      "decision_s": 0.15535879111848772
+    },
+    {
+      "prompt_id": 1901,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "33affdb93c12a2c69cf3639348f9b3e3fcce6b8161d21ca2365999d2a39243de",
+      "decision_s": 0.2024301670026034
+    },
+    {
+      "prompt_id": 7187,
+      "slot": 0,
+      "decision_score": 0.21026001055762342,
+      "candidate_sha256": "8a31eca9f6aebb1e5cbb2748d952dac425ddbbce74a7720bf55033c63adc6369",
+      "decision_s": 0.13360562501475215
+    },
+    {
+      "prompt_id": 7187,
+      "slot": 1,
+      "decision_score": 0.12067942500367212,
+      "candidate_sha256": "bc31a7a8b35ab6a5df4d200e5fef1589102ddfa29ff12b8e4ed625e6c1e0eb40",
+      "decision_s": 0.14966362505219877
+    },
+    {
+      "prompt_id": 1104,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "4f447ae6cc7137773919c5ba1ada1f4300f6f5d5bab51857bd93eca34a8415ad",
+      "decision_s": 0.14966916688717902
+    },
+    {
+      "prompt_id": 1104,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "5d450c51b885a8ddbd2ac64718d7d8210aa52685a62f0bd1cd5d800e699b371a",
+      "decision_s": 0.20164404110983014
+    },
+    {
+      "prompt_id": 4104,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d03d9fe0966fc0675066363391e09629fefc07bdac59886a1e63b338d0d435d5",
+      "decision_s": 0.19963854178786278
+    },
+    {
+      "prompt_id": 4104,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b8b83939913ff2e81616af87ba7e89e611b052c782580fe4188e13232dce6592",
+      "decision_s": 0.13581579201854765
+    },
+    {
+      "prompt_id": 4184,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "2b07baf660bec983c26197c7745a9b41a5d1dea9e29817fe2ff15e520cf4ae85",
+      "decision_s": 0.18146729189902544
+    },
+    {
+      "prompt_id": 4184,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "cdbd9e873bca7b170905d3771769be6153a772f2e8c43a411fe782e41466392c",
+      "decision_s": 0.18052104185335338
+    },
+    {
+      "prompt_id": 6899,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "398bff9e4a6821f0390818c5307a05d625db9a76d94f765e29e5413ac01f50be",
+      "decision_s": 0.18109137495048344
+    },
+    {
+      "prompt_id": 6899,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "042810ea15710ebb6f3e357564518c3ee5d731efcb76267a1ac0950a958c55f1",
+      "decision_s": 0.13264100020751357
+    },
+    {
+      "prompt_id": 1407,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "5a9b01381a2e647456637f1296a24c20f9940adc79a7cedaba40435425e393a2",
+      "decision_s": 0.18053774978034198
+    },
+    {
+      "prompt_id": 1407,
+      "slot": 1,
+      "decision_score": 0.48717697897777085,
+      "candidate_sha256": "b66e6cb75bf39bb7cfa1981b901e6e6717f6d2cc808eaa5a5dd0d1347108d79a",
+      "decision_s": 0.1327574581373483
+    },
+    {
+      "prompt_id": 4830,
+      "slot": 0,
+      "decision_score": 0.3543885344874479,
+      "candidate_sha256": "7f704ccf416f327828a42bc2e51b6d8b1a8a30d37b454933b31e25a705c1eed6",
+      "decision_s": 0.18186333286575973
+    },
+    {
+      "prompt_id": 4830,
+      "slot": 1,
+      "decision_score": 0.2345091503450714,
+      "candidate_sha256": "640ef7cc2034b0263d0db9eb72e9136c98e5442be194763916aeafa732404f28",
+      "decision_s": 0.18024424999020994
+    },
+    {
+      "prompt_id": 29,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "931e305955d143cd190beecbeab958e5981238801f7ec077d4b0b06c92a9be12",
+      "decision_s": 0.17809708300046623
+    },
+    {
+      "prompt_id": 29,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a8b1f2656d9db03c2ac9d848ea910a399219a799e803fc74acd97dc013f8b726",
+      "decision_s": 0.1780207499396056
+    },
+    {
+      "prompt_id": 2764,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d916e443c85c6ff31af1c4d35a1a7371fb4b4feb20bcc72a8d4c1effbeca6e13",
+      "decision_s": 0.200171957956627
+    },
+    {
+      "prompt_id": 2764,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "60af9d8df275f8050be23472787cbb554b9c9acbbed6a9b35c1babbe4f369370",
+      "decision_s": 0.1996955000795424
+    },
+    {
+      "prompt_id": 3976,
+      "slot": 0,
+      "decision_score": 0.003695004646852314,
+      "candidate_sha256": "1b2c4ebedf11b01c7176cc823434df348fb3709caba15fa26f3ea9117be40747",
+      "decision_s": 0.20165420905686915
+    },
+    {
+      "prompt_id": 3976,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "42b7a9fe1ebfe1adaa4688424a80ed9a13024ff724de6add642f3d79afa958f1",
+      "decision_s": 0.2019200420472771
+    },
+    {
+      "prompt_id": 6582,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "efe551dc0648dfc264853b4e2c9892866f9904d11aa80414a8686c434ec84c3b",
+      "decision_s": 0.13343233289197087
+    },
+    {
+      "prompt_id": 6582,
+      "slot": 1,
+      "decision_score": 0.029472276572987986,
+      "candidate_sha256": "c3485aa67ab4254d3af361807877b8a5023f382a2c893992b65d2719da403ae8",
+      "decision_s": 0.159309167182073
+    },
+    {
+      "prompt_id": 1242,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cc24ca4b71ee73d667e60ac09bcc4cda6e33acc912b1c3aef0059d653d5b763b",
+      "decision_s": 0.201011500088498
+    },
+    {
+      "prompt_id": 1242,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "631cf01c1f1d1f117ce2f5caa604337d87466cddc592880fa035c4d76357e989",
+      "decision_s": 0.20183587516658008
+    },
+    {
+      "prompt_id": 4902,
+      "slot": 0,
+      "decision_score": 0.2968066783936037,
+      "candidate_sha256": "8adf1fe404eb0b63badc05fdfcd64b0ffec1c966d87702d5346424bba70723c3",
+      "decision_s": 0.1586081669665873
+    },
+    {
+      "prompt_id": 4902,
+      "slot": 1,
+      "decision_score": 0.4857279044710945,
+      "candidate_sha256": "82bb47f1b23ce305a252239265343085a2faa410ea6e72151a022711a75ae3f4",
+      "decision_s": 0.13552012504078448
+    },
+    {
+      "prompt_id": 3118,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "5a3e6abac96dd0c4ce535c935843783ecb663c637d012ca0213839c734d417b1",
+      "decision_s": 0.20623054215684533
+    },
+    {
+      "prompt_id": 3118,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "9fa8efa6b67cc03bb7516320c3322f82cd4059065d04bda25ff81896a6bfb07e",
+      "decision_s": 0.20400454103946686
+    },
+    {
+      "prompt_id": 2757,
+      "slot": 0,
+      "decision_score": 0.11063604432939617,
+      "candidate_sha256": "2c26f0595f0bc79e181edb564cfa2d78aae883c200b25d204ebef72a1ea029a6",
+      "decision_s": 0.19931862503290176
+    },
+    {
+      "prompt_id": 2757,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "85f68822fa72a256fc042ba83f03a45f4e7e7d1b9e366935b8b7550605f98340",
+      "decision_s": 0.20405066688545048
+    },
+    {
+      "prompt_id": 4377,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "816a5d2d6e8fd93b65ba06f8f4bf62da3a6b05f9703bad7d8d63b5d182e4c471",
+      "decision_s": 0.13124979194253683
+    },
+    {
+      "prompt_id": 4377,
+      "slot": 1,
+      "decision_score": 0.0021121008063490084,
+      "candidate_sha256": "0a36c1660d1a551015caf32dfcde5217af9143e3a058a648e2605fb9804430e6",
+      "decision_s": 0.13166412501595914
+    },
+    {
+      "prompt_id": 7467,
+      "slot": 0,
+      "decision_score": 0.011717025620912785,
+      "candidate_sha256": "bb2a1b02b59d2c61372339ab932dadd40aa23fc001cb4c667bdddef11cd16afd",
+      "decision_s": 0.17443091608583927
+    },
+    {
+      "prompt_id": 7467,
+      "slot": 1,
+      "decision_score": 0.013580753880404774,
+      "candidate_sha256": "8157ae7cbc9410f147df2cd98b79f8a976a554bb7b717700ec5394a8f688e677",
+      "decision_s": 0.2012950419448316
+    },
+    {
+      "prompt_id": 1795,
+      "slot": 0,
+      "decision_score": 0.10501968392542452,
+      "candidate_sha256": "fcc00f162566db92c67d96cf9d936dcdb9fca15257d6becb0b9531d5c5a3ae42",
+      "decision_s": 0.20146766700781882
+    },
+    {
+      "prompt_id": 1795,
+      "slot": 1,
+      "decision_score": 0.10916304114183278,
+      "candidate_sha256": "c4442aafc44e664bdc10a50a3e6eac1c5fdaa572affb379be1ab52e2af9460a0",
+      "decision_s": 0.13516691699624062
+    },
+    {
+      "prompt_id": 4298,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "939a28f75847f9ed4cb20bb40cec35f328ea5f9c494b30388def38b6b3d00ee5",
+      "decision_s": 0.2011388330720365
+    },
+    {
+      "prompt_id": 4298,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f0fc73eb38c58c71202da6059e1e2518bbff958497ba6f42aed21db3924e4293",
+      "decision_s": 0.2018049161415547
+    },
+    {
+      "prompt_id": 1252,
+      "slot": 0,
+      "decision_score": 0.5716783713634424,
+      "candidate_sha256": "02ec944409b65e8f19726639dd502fd53cff2fceb0b36c4a91e99f4002ad1124",
+      "decision_s": 0.15759254107251763
+    },
+    {
+      "prompt_id": 1252,
+      "slot": 1,
+      "decision_score": 0.41112899223394206,
+      "candidate_sha256": "e7ffa872b94e09930c817077f87a5bbc71ff63730c753c62578db7fc15fec3ba",
+      "decision_s": 0.1335488329641521
+    },
+    {
+      "prompt_id": 2233,
+      "slot": 0,
+      "decision_score": 0.4403309926738496,
+      "candidate_sha256": "bd36b2efb2e011408b2474be5304351915209c3aab3bf8b848c3e801b398d087",
+      "decision_s": 0.1807581251487136
+    },
+    {
+      "prompt_id": 2233,
+      "slot": 1,
+      "decision_score": 0.27400760306875993,
+      "candidate_sha256": "5bea1af3296926f20d39dd6a55bfb63557c24a98cd3683fd08808e3b81ffaaa7",
+      "decision_s": 0.18118016584776342
+    },
+    {
+      "prompt_id": 5952,
+      "slot": 0,
+      "decision_score": 0.029767297747094083,
+      "candidate_sha256": "8f4e2a7697e146bad99e057052306ce2d16ec3c62b22a9b58d1e2796bf0f284d",
+      "decision_s": 0.1802638340741396
+    },
+    {
+      "prompt_id": 5952,
+      "slot": 1,
+      "decision_score": 0.6405799044247297,
+      "candidate_sha256": "f760adb4d6981debcb316ec5098ccf054bf6672491a5d8e08facd87a1f2ad477",
+      "decision_s": 0.13517183321528137
+    },
+    {
+      "prompt_id": 3450,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "3fc5701d2347c899ae23ce008ff6ab67a23a0d83a1a400372415adbee0fe2869",
+      "decision_s": 0.1786384170409292
+    },
+    {
+      "prompt_id": 3450,
+      "slot": 1,
+      "decision_score": 0.39176484455098914,
+      "candidate_sha256": "57f86c859a48ed17af8574c10bab7c4acb3e680ecc3fdc5382a177b1f1220a6a",
+      "decision_s": 0.13481254200451076
+    },
+    {
+      "prompt_id": 1017,
+      "slot": 0,
+      "decision_score": 0.4806780589795914,
+      "candidate_sha256": "e0408917714ea04c0558d10302afbeff43d796da8d5546ff1dd7121387e40844",
+      "decision_s": 0.17147025000303984
+    },
+    {
+      "prompt_id": 1017,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "662d9931476cc270476d9831c92f3c731b667510e06e96eb76af59b630fc995c",
+      "decision_s": 0.17927412502467632
+    },
+    {
+      "prompt_id": 7079,
+      "slot": 0,
+      "decision_score": 0.5786879417705422,
+      "candidate_sha256": "48db51a104ba2db09b4b71ef45eb3c384f6ba56cd1214c93794a01b525277209",
+      "decision_s": 0.1323587920051068
+    },
+    {
+      "prompt_id": 7079,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "0026b848edfc291af45143071dcc8c1ef95caa250956bcf40e944287bef40420",
+      "decision_s": 0.1799797499552369
+    },
+    {
+      "prompt_id": 6175,
+      "slot": 0,
+      "decision_score": 0.008529723396805305,
+      "candidate_sha256": "516876bd8e8ad32455630756c97d0f4b55c96e4f9c1ad8dfd9d21252da120de4",
+      "decision_s": 0.1814223330002278
+    },
+    {
+      "prompt_id": 6175,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "d484abe860d3baa2dfa74c792f906822aa9c066e80af705a86a95b5fc3f90114",
+      "decision_s": 0.15750700002536178
+    },
+    {
+      "prompt_id": 5786,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "26c5e95b940350acb147df31804d2fe2a0647c62f72f4e39735a1c626010ea42",
+      "decision_s": 0.17966691590845585
+    },
+    {
+      "prompt_id": 5786,
+      "slot": 1,
+      "decision_score": 0.17903977677709787,
+      "candidate_sha256": "09deb3f67bdf984e97e3b96af4be242f422314037427d068b7a688549943bfa0",
+      "decision_s": 0.10092283389531076
+    },
+    {
+      "prompt_id": 3811,
+      "slot": 0,
+      "decision_score": 0.011009185760255846,
+      "candidate_sha256": "014fbe01748ad2137555fb89efd4c8f1abce26c539ff606fe59e2b0730bbd0de",
+      "decision_s": 0.1790953748859465
+    },
+    {
+      "prompt_id": 3811,
+      "slot": 1,
+      "decision_score": 0.0005133527208630995,
+      "candidate_sha256": "9b9fdcdba2562c108fb0aa5415645682304107e18f0255818f1f061a76a46bf8",
+      "decision_s": 0.1992293749935925
+    },
+    {
+      "prompt_id": 545,
+      "slot": 0,
+      "decision_score": 0.35087749933546325,
+      "candidate_sha256": "c67666fcc9884182ae7e6f3aa1f5547d11ad232634ee394670e615a940a2c07a",
+      "decision_s": 0.1526131669525057
+    },
+    {
+      "prompt_id": 545,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "433c8a44760b10e0f11a3f4c7146aa9316e3174d3cbc668116c30285ee9c4036",
+      "decision_s": 0.17613133299164474
+    },
+    {
+      "prompt_id": 5151,
+      "slot": 0,
+      "decision_score": 0.5901303442521842,
+      "candidate_sha256": "fb26ad2c114b494753d19bb90369b679813de00a1b691171335bb3896dc98ed2",
+      "decision_s": 0.13233529194258153
+    },
+    {
+      "prompt_id": 5151,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a4aa68f26ad0a82a1eea8574275495cf0cdd006c81d110abb118597a905c2332",
+      "decision_s": 0.10533087491057813
+    },
+    {
+      "prompt_id": 3212,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "3ec6d92663ce7cb56e4781a35846f42fde100ab80a9d90758185bceee244ca04",
+      "decision_s": 0.18014370813034475
+    },
+    {
+      "prompt_id": 3212,
+      "slot": 1,
+      "decision_score": 0.46477022796677675,
+      "candidate_sha256": "49252801f67a666472b22a9427d23d9593a5104935340e13157666390d9cfbcb",
+      "decision_s": 0.18013608292676508
+    },
+    {
+      "prompt_id": 1727,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f7b478f27ce1a3077ad9677ccd6aec752e6eec9284059be36a25ec49b7f99f44",
+      "decision_s": 0.17786229215562344
+    },
+    {
+      "prompt_id": 1727,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f845c3dadf785d7232f453e96033f161befd1d04979a72ad022e4ff42cdb6b10",
+      "decision_s": 0.17916850000619888
+    },
+    {
+      "prompt_id": 5881,
+      "slot": 0,
+      "decision_score": 0.16325890646410157,
+      "candidate_sha256": "9d541fdd3b0c2895eeba2d10811c99149fd8cfac736a17fd877d7eff433cfe19",
+      "decision_s": 0.15284758294001222
+    },
+    {
+      "prompt_id": 5881,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "26034838ec595cb15c717787fc5e4e4b279e18c57cf60cb12611a6477ed5e394",
+      "decision_s": 0.17942529101856053
+    },
+    {
+      "prompt_id": 4948,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "a77ee3e6a630022de122632a52adaceb0c1a700c704f6cdcf3d3d3636c7d845b",
+      "decision_s": 0.17815212486311793
+    },
+    {
+      "prompt_id": 4948,
+      "slot": 1,
+      "decision_score": 0.04795647532430998,
+      "candidate_sha256": "2bf87af2488652975dc16df9d59d69d7c1ad625887dcd40af5cc5a1fd4d25577",
+      "decision_s": 0.1535940000321716
+    },
+    {
+      "prompt_id": 6372,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "0be76c9f4e9bef63dd517d2a7a2e29a0902add04f6da67bd436cbeb94ee5dc7a",
+      "decision_s": 0.20347083290107548
+    },
+    {
+      "prompt_id": 6372,
+      "slot": 1,
+      "decision_score": 0.009748434715896514,
+      "candidate_sha256": "c82bfd85d897aaa651c116b0920141e69e3c728ebbdb7fc8473da46dcf87c1d2",
+      "decision_s": 0.20414449996314943
+    },
+    {
+      "prompt_id": 1399,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d0d47b2e23dff711d88f9728570e57ede14a79470d71fa52815cdc8f0bfc8145",
+      "decision_s": 0.15656241681426764
+    },
+    {
+      "prompt_id": 1399,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "c58a4ebe3bdb4246c351d5812742ec60e251bd87127db2c7c58c3de5ab0868de",
+      "decision_s": 0.2007879160810262
+    },
+    {
+      "prompt_id": 1694,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "d5ff9a7d0b47373bb1ff6152aaedd6199c24bcbee0321ac7b4c909c5c2f4da1a",
+      "decision_s": 0.18070449982769787
+    },
+    {
+      "prompt_id": 1694,
+      "slot": 1,
+      "decision_score": 0.1325550560759945,
+      "candidate_sha256": "0a29a5a4b3b5b14d1c56026f8e112c0f25df364b9205a26d290cca917788703f",
+      "decision_s": 0.18075195793062449
+    },
+    {
+      "prompt_id": 5763,
+      "slot": 0,
+      "decision_score": 0.1297545689305759,
+      "candidate_sha256": "63cb19e40dc7f6a78d9874aedd7f8d26f9d97c9b9a8a030b19a5fb683af46a05",
+      "decision_s": 0.1800571670755744
+    },
+    {
+      "prompt_id": 5763,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "ce2cc5053752a4ee4984d983bab0d3d68ade0f17ddfc6d3d8519a0454ae88daf",
+      "decision_s": 0.17787258280441165
+    },
+    {
+      "prompt_id": 6115,
+      "slot": 0,
+      "decision_score": 0.09280583583471598,
+      "candidate_sha256": "5a73dc960ad2fab9fd3eabcd33f0ba87657b8b6b634289ae45bc655826f2e778",
+      "decision_s": 0.15808108379133046
+    },
+    {
+      "prompt_id": 6115,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "d7d94bb7cf50c1a0f8e7abb3749ee98a948b8ea8fea67671cd3bd630e348952a",
+      "decision_s": 0.20549149997532368
+    },
+    {
+      "prompt_id": 5833,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "7bfa321ddbf03ad4a6d2dc442cfd26f00b07f46225e18c96429e77c577ad9715",
+      "decision_s": 0.17855624994263053
+    },
+    {
+      "prompt_id": 5833,
+      "slot": 1,
+      "decision_score": 0.7235430299914376,
+      "candidate_sha256": "d8d3c0b312ae27ef16f5ec083940c2dd468a5886d534e8ef27120d2a3fa8a4b3",
+      "decision_s": 0.13794725015759468
+    },
+    {
+      "prompt_id": 6498,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "f3e7560fbc068581e46c4be9ab0426a45bf1ac63be5bf4fbbd2b9232e1824224",
+      "decision_s": 0.20268204202875495
+    },
+    {
+      "prompt_id": 6498,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "22612dd5515de3b143424c71935729331e4d01d3a88ecc4349a79d89d60758a3",
+      "decision_s": 0.2024117500986904
+    },
+    {
+      "prompt_id": 6432,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "0491f501d668a2febfc8852310f0d56771e2551c1c2a20076e2a4b2a9aa7117e",
+      "decision_s": 0.1780117501039058
+    },
+    {
+      "prompt_id": 6432,
+      "slot": 1,
+      "decision_score": 0.03717029850230231,
+      "candidate_sha256": "a767da33654e354402bb25423d022a11fb0b2a7ae8e09fcb985138fb8402d929",
+      "decision_s": 0.1587592090945691
+    },
+    {
+      "prompt_id": 356,
+      "slot": 0,
+      "decision_score": 0.5734420396213636,
+      "candidate_sha256": "3373e1e112e2d4c8b700bfc5f12874f6298e10cef682c4d415d1796dbe2e8df4",
+      "decision_s": 0.1318035840522498
+    },
+    {
+      "prompt_id": 356,
+      "slot": 1,
+      "decision_score": 0.01619751707435838,
+      "candidate_sha256": "081b4288a8f5d5080627395cf1f4cf1581df0080a8467caa6c1287653b005623",
+      "decision_s": 0.13422670820727944
+    },
+    {
+      "prompt_id": 3067,
+      "slot": 0,
+      "decision_score": 0.3993656695055634,
+      "candidate_sha256": "7e7721397ddbd32701682176391b755d5443417fae569015b361c96cee7cdca7",
+      "decision_s": 0.15729687502607703
+    },
+    {
+      "prompt_id": 3067,
+      "slot": 1,
+      "decision_score": 0.23819315232824737,
+      "candidate_sha256": "1328417417db17c514a64c35068248ad47c1b10c70379f580df924f232ac0614",
+      "decision_s": 0.15609379182569683
+    },
+    {
+      "prompt_id": 2568,
+      "slot": 0,
+      "decision_score": 0.27223026836505354,
+      "candidate_sha256": "82938a814ec5cc3b7f4ec8c421a5897af13f6aef6d7666c1aa3a5aa025e15d9f",
+      "decision_s": 0.13563445885665715
+    },
+    {
+      "prompt_id": 2568,
+      "slot": 1,
+      "decision_score": 0.18449234128071834,
+      "candidate_sha256": "65e41b2dad9d5c3732fde19367dd89e357d9d1cf1a20e76597107a4d221f0503",
+      "decision_s": 0.13675570907071233
+    },
+    {
+      "prompt_id": 123,
+      "slot": 0,
+      "decision_score": 0.13356106189187036,
+      "candidate_sha256": "eb150d8be330579e1d7e327bc257cf85a615dfbb378aa874def978e1c4cb00bd",
+      "decision_s": 0.1769866249524057
+    },
+    {
+      "prompt_id": 123,
+      "slot": 1,
+      "decision_score": 0.15884513859347535,
+      "candidate_sha256": "5cacd4f573661c8f0c55439d8c3ae285876d61ebaf0348cdf81afa35f709bfef",
+      "decision_s": 0.1797132920473814
+    },
+    {
+      "prompt_id": 4439,
+      "slot": 0,
+      "decision_score": 0.2197015952031804,
+      "candidate_sha256": "a19e33d9822c012507f06ab7925f141fc16ac039e8282afdad73e6e9d9a3f6e2",
+      "decision_s": 0.13182758283801377
+    },
+    {
+      "prompt_id": 4439,
+      "slot": 1,
+      "decision_score": 0.19262876328640133,
+      "candidate_sha256": "dc572796d3e929c1d207ad88fbc3166528cb8ec927093c26d185c726f2209943",
+      "decision_s": 0.16040854109451175
+    },
+    {
+      "prompt_id": 2133,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "cd8276d9bd6dd58bfaf5f18668ea989fbe36af8a9226244cef75405b93bc23d9",
+      "decision_s": 0.1826234171167016
+    },
+    {
+      "prompt_id": 2133,
+      "slot": 1,
+      "decision_score": 0.01022913306587085,
+      "candidate_sha256": "43968fe8800137f87cf9f0f568a779cae05b43d444397146a953e5c00c4697ae",
+      "decision_s": 0.18062604102306068
+    },
+    {
+      "prompt_id": 6743,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "943e2af64ab7d06e2e44c25fbfba8fa1d650d1cc8c36e99d53356b6177e23d8c",
+      "decision_s": 0.17724383319728076
+    },
+    {
+      "prompt_id": 6743,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b593aabfbf2c61f80fa8c1ad098077c02c03c49ca9f3f6088c8d3e243eaa4fe4",
+      "decision_s": 0.17932645906694233
+    },
+    {
+      "prompt_id": 1174,
+      "slot": 0,
+      "decision_score": 0.4330142504172042,
+      "candidate_sha256": "4fae523a4e9c60cf0176eaf65f5e8a4325b8b7bbcd040055a90335f61f5cc994",
+      "decision_s": 0.15919162495993078
+    },
+    {
+      "prompt_id": 1174,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "ddade4be386018346c4835ca0b7b485dc50ec44968c7e7ac50f313721ca972fc",
+      "decision_s": 0.17714104102924466
+    },
+    {
+      "prompt_id": 7069,
+      "slot": 0,
+      "decision_score": 0.010749032981224762,
+      "candidate_sha256": "f60a2e1a3028ae3738a2d12452dd783c644b8372237a07547925c3865d2a8763",
+      "decision_s": 0.20491374982520938
+    },
+    {
+      "prompt_id": 7069,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "770fe0c58f1c8a3e85df5315e2cf82195256d744f78b278e9aa1de22b2a64b2b",
+      "decision_s": 0.17891412507742643
+    },
+    {
+      "prompt_id": 2378,
+      "slot": 0,
+      "decision_score": 0.16624594258720854,
+      "candidate_sha256": "aa4130bc624119d0f5529912e7f84ae9dcf97b8dcf142e91b3c1adf0c18f96ff",
+      "decision_s": 0.16184229194186628
+    },
+    {
+      "prompt_id": 2378,
+      "slot": 1,
+      "decision_score": 0.4425236170620092,
+      "candidate_sha256": "988ada38cb8c28c88d43940472758e53acca45dc7ba29f69f51bb73337a3cf33",
+      "decision_s": 0.13785287481732666
+    },
+    {
+      "prompt_id": 1118,
+      "slot": 0,
+      "decision_score": 0.3510403552964064,
+      "candidate_sha256": "885eb97a37b400eca13da36035c757656ce44f3edb950884dd100c269c63fb57",
+      "decision_s": 0.15699137514457107
+    },
+    {
+      "prompt_id": 1118,
+      "slot": 1,
+      "decision_score": 0.08917391999061029,
+      "candidate_sha256": "58a5e5cd8d62b6cf9fdc17206a96643a4546159d01f7d6071bfaa4b0f0889cfb",
+      "decision_s": 0.15929979109205306
+    },
+    {
+      "prompt_id": 3702,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "5dc0a5dd9d6f421c5798d1aa4899949110a8fac8ec6d2c41dca82938c318ad23",
+      "decision_s": 0.2027201249729842
+    },
+    {
+      "prompt_id": 3702,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "b68ba74cf7528cf9a544f51fffb140ce5e7d43bc564225a26c498945985812c8",
+      "decision_s": 0.2016168748959899
+    },
+    {
+      "prompt_id": 6158,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "6dc3577ec9832e10ad62339dc257477c81af2379d3d1340e4c1b79e8090bb9c0",
+      "decision_s": 0.20323033398017287
+    },
+    {
+      "prompt_id": 6158,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "f2a37afcad38e36f1a29c90378c74167cd9a55d4f14293633489754871d3e622",
+      "decision_s": 0.20418974990025163
+    },
+    {
+      "prompt_id": 1735,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "ee50d809e5a7b0085bb7c63326824449e67dc5d43499d4366bd0955c6399f820",
+      "decision_s": 0.1041287500411272
+    },
+    {
+      "prompt_id": 1735,
+      "slot": 1,
+      "decision_score": 0.36007682250271994,
+      "candidate_sha256": "cb788abe85502ac76702202a376ce696969777a1e2d1a223585c37c54b403f0a",
+      "decision_s": 0.18092816602438688
+    },
+    {
+      "prompt_id": 7398,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "62fbf879afb61b59dbc23cd7a199e9141b88e71ce68376a54eda57ef74ded99e",
+      "decision_s": 0.1780959169846028
+    },
+    {
+      "prompt_id": 7398,
+      "slot": 1,
+      "decision_score": 0.2908993269930164,
+      "candidate_sha256": "eb571be67037d3673a095ebc0bbd0f7d38c9235792de00191711b195f26ef793",
+      "decision_s": 0.18000154197216034
+    },
+    {
+      "prompt_id": 4480,
+      "slot": 0,
+      "decision_score": 0.2087178062021721,
+      "candidate_sha256": "4239c464d5621c6fda566b5bcb44fbb5a8d9da8362278bfd731c807b264fb6f2",
+      "decision_s": 0.1579384170472622
+    },
+    {
+      "prompt_id": 4480,
+      "slot": 1,
+      "decision_score": 0.3276070133000538,
+      "candidate_sha256": "450bc208123f03033f62a0fcebff3368b30b7012d2c4c898d8052cf66741e568",
+      "decision_s": 0.1998064999934286
+    },
+    {
+      "prompt_id": 4861,
+      "slot": 0,
+      "decision_score": 0.6960605654406645,
+      "candidate_sha256": "974983a66abf0f09bb60da925dd76acd6867f9d8d13252dbc3baf95f86df27d3",
+      "decision_s": 0.1389789159875363
+    },
+    {
+      "prompt_id": 4861,
+      "slot": 1,
+      "decision_score": 0.618295330508487,
+      "candidate_sha256": "ceaed9875ef95adf499a128dcba7034560cfee5914a3f2c64647b7ccf3705df7",
+      "decision_s": 0.1072480829898268
+    },
+    {
+      "prompt_id": 4223,
+      "slot": 0,
+      "decision_score": 0.1905675379799278,
+      "candidate_sha256": "b7ba541b8de187fca024e75edb084309ef471dc578b0e05bd906c7bc0ae0f413",
+      "decision_s": 0.1572132920846343
+    },
+    {
+      "prompt_id": 4223,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "fa4d78d541f9d5d01ddc0a2bd526ccff98db2fe0d4120c5ac73bfc68c6fe2b5b",
+      "decision_s": 0.1791496251244098
+    },
+    {
+      "prompt_id": 3622,
+      "slot": 0,
+      "decision_score": 0.3708729739530612,
+      "candidate_sha256": "9f3a3ef54f2412d3c3b11215568dd90df0188f60394f1ea796632c908ab84638",
+      "decision_s": 0.13273083278909326
+    },
+    {
+      "prompt_id": 3622,
+      "slot": 1,
+      "decision_score": 0.4370194735145671,
+      "candidate_sha256": "2d4cc64e74d971536ffbc6da82435b0a5cdc5ba540b1e47a69d95fc48525405b",
+      "decision_s": 0.13166529079899192
+    },
+    {
+      "prompt_id": 7145,
+      "slot": 0,
+      "decision_score": 0.19617524278905865,
+      "candidate_sha256": "608458a46a3df512937eaefacaf24afef3a8198c3af2e4443eccf0e8c4091a9f",
+      "decision_s": 0.1570272499229759
+    },
+    {
+      "prompt_id": 7145,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "a247b3977321ca5ee3fcfa0b0796be0c25191c0dc408c56c5b423b1bbe4d63a0",
+      "decision_s": 0.17866254202090204
+    },
+    {
+      "prompt_id": 218,
+      "slot": 0,
+      "decision_score": 0.0,
+      "candidate_sha256": "dae25d3fffe885c54898616af8f5a2c4d1cd46b414563e9e76011040b3adfb54",
+      "decision_s": 0.18164737499319017
+    },
+    {
+      "prompt_id": 218,
+      "slot": 1,
+      "decision_score": 0.22687767914949686,
+      "candidate_sha256": "cb37fedc1d111e090dfa42be42bb6eb62be1cb37b814b45e933232659a9aa4ee",
+      "decision_s": 0.16228291695006192
+    },
+    {
+      "prompt_id": 7337,
+      "slot": 0,
+      "decision_score": 0.02348683656772066,
+      "candidate_sha256": "27e7ef181b07e43243755491d1060a13273b32794f8d18e7f69ac93ab8d60af1",
+      "decision_s": 0.2008904169779271
+    },
+    {
+      "prompt_id": 7337,
+      "slot": 1,
+      "decision_score": 0.0,
+      "candidate_sha256": "4a9bb252c767b6bb4e89c4d43ae74d99082d88e48c19e6167c50e9a4b4d0e549",
+      "decision_s": 0.20272749988362193
+    },
+    {
+      "prompt_id": 6812,
+      "slot": 0,
+      "decision_score": 0.0016195675704324397,
+      "candidate_sha256": "b1fbb16d5cb7f3dee04ae7e8df67477fe4b5a211540e66390868e844ad7645f0",
+      "decision_s": 0.13396020885556936
+    },
+    {
+      "prompt_id": 6812,
+      "slot": 1,
+      "decision_score": 0.18046981433519468,
+      "candidate_sha256": "70d30aef50386c5f07f3cccc6a2c9dd51a00b1acb2f7aa851e7cd08398d6d200",
+      "decision_s": 0.15460891695693135
+    }
+  ],
+  "wall_s": 86.67794154095463,
+  "feature_binding": "e51779625dd72c68bf537f368f0e984a6bdf908ac310727b3929aa3c14495bf8"
+}

@@ -29,6 +29,8 @@ In a five-seed online GRPO comparison, drawing half the training questions from 
 
 After continuing the five mixed-sampling models to 131,072 tokens each, all five beat their common SFT starting point on a separate 256-question panel. The median gain was **9 questions (+3.52 points, 95% interval +0.39 to +6.64)**. Against their own 32,768-token checkpoints they gained **13, 6, 8, −2 and 2 questions**. That median gain of **+2.34 points** had a 95% interval of **−0.39 to +4.69**, missing the preregistered stability criterion. The median difference on the 83 questions with at least four annotations was zero. [Budget comparison](RESULTS.md#u-相同生成预算下按参考算式数量选题)
 
+With the 80-example SFT generator frozen, a learned correctness head selected **254/1,280** correct answers on 256 new GSM8K questions across five sampling seeds. On the same pairs, prioritizing a complete answer tag and then higher mean token log probability selected **260/1,280**. This simple rule gained a paired median **7.03 points** over keeping the first of the two answers (95% question-bootstrap interval **+4.69 to +9.38**). With 16,384 additional generation tokens per seed to allocate to retries, the learned head scored **208/1,280**, low generation probability **209/1,280**, and random allocation **199/1,280**. On the 32-question live timing panel, learned allocation took **111.5 s** and low-probability allocation took **106.9 s** at the same 7,650 generated tokens. [Decision-head results](RESULTS.md#v-冻结生成器用判断器选解和分配重算预算)
+
 Kubernetes validation covered one KV-replay Job in one Pod on local kind. [Job details](#local-kubernetes-job)
 
 ## CPU baseline
