@@ -1,0 +1,12 @@
+{
+  "audit_passed": true,
+  "protocol_sha256": "11ba13b9a2e5b3b3cc756200bd33a3d5dc5f63fa5d0ef8a4951e465f93cd7152",
+  "protocol_only": true,
+  "historical": {
+    "train_questions": 712,
+    "dev_questions": 179,
+    "train_candidates": 2890,
+    "dev_candidates": 730
+  },
+  "holdout_questions": 256
+}

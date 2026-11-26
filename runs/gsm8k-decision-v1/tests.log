@@ -1,0 +1,39 @@
+...........lr-0.001-groups-2 0 4/5 v1 active groups 2
+lr-0.001-groups-2 0 9/14 v2 active groups 2
+lr-0.001-groups-2 0 13/14 v3 active groups 2
+lr-0.001-groups-2 0 9/14 v2 active groups 2
+lr-0.001-groups-2 0 13/14 v3 active groups 2
+...holdout seed 0: 2/2 pairs
+.........lr-0.0001-groups-1 0 2/3 v1 active groups 1
+...........outcome Q1 seed 4: 48 (initial 46)
+outcome Q1 seed 0: 48 (initial 46)
+outcome Q1 seed 3: 48 (initial 46)
+outcome Q1 seed 1: 48 (initial 46)
+outcome Q1 seed 2: 48 (initial 46)
+steps Q1 seed 4: 45 (initial 46)
+format Q1 seed 4: 48 (initial 46)
+format Q1 seed 0: 48 (initial 46)
+format Q1 seed 3: 48 (initial 46)
+format Q1 seed 1: 48 (initial 46)
+format Q1 seed 2: 48 (initial 46)
+outcome Q1 seed 4: 48 (initial 46)
+outcome Q1 seed 0: 48 (initial 46)
+outcome Q1 seed 3: 48 (initial 46)
+outcome Q1 seed 1: 48 (initial 46)
+outcome Q1 seed 2: 48 (initial 46)
+steps Q1 seed 4: 45 (initial 46)
+format Q1 seed 4: 48 (initial 46)
+format Q1 seed 0: 48 (initial 46)
+format Q1 seed 3: 48 (initial 46)
+format Q1 seed 1: 48 (initial 46)
+format Q1 seed 2: 48 (initial 46)
+..lr-0.0001-groups-2 0 16/20 v1 active groups 1
+lr-0.0001-groups-2 0 20/20 v2 active groups 1
+lr-0.0001-groups-2 0 16/17 v1 active groups 1
+lr-0.0001-groups-2 0 9/9 v1 active groups 1
+lr-0.0001-groups-2 0 16/16 v0 active groups 0
+.........
+----------------------------------------------------------------------
+Ran 45 tests in 1.351s
+
+OK
